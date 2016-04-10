@@ -1,0 +1,148 @@
+// gestion synchro BDD : doit-on avoir une entité logicielle spécifique et des méthodes spécifiques
+
+module modControledAcces 
+{
+	typedef sequence <string> ListeZones; 
+	typedef string nom ; 
+	typedef string prenom ; 
+	typedef string mdp; 
+	
+	struct Date
+	{
+		string timestamp;
+	};
+	
+	struct AccesZone
+	{
+		string idSal;
+		string idZone;
+		Date dateDdeAcces;
+		boolean statutAcces;
+		Date jourEntree;
+		Date jourSortie;
+		Date heureEntree;
+		Date heureSortie;
+	};
+	
+	struct EvenementJournalisation 
+	{
+		AccesZone accesZoneSal;
+		string operation; 
+		string contenuOperation;			
+	};
+	
+	
+	
+	struct InfoSalarie 
+	{
+		string idSal;
+		//string mdp ?  // mélanie : oui, il est dans salarié, pourquoi tu le mets plus ?
+		// Landry: pour moi il faut le mettre, je vois pas pourquoi on ne le mettrait pas..
+		string nom ;
+		string prenom; 
+		string photo; 
+		string empreinte;  
+		short dateFinValidateCompte;
+		//boolean estPermanent;   // melanie : idem, on va en avoir besoin, ca générera le get pour ça,
+		// Landry: pour moi il faut le mettre, je vois pas pourquoi on ne le mettrait pas.. Par contre je ne crois pas que ça génère des GET, il faut le définir en tant que attribut pour qu'il y est des GET générés
+	};
+	
+	
+	struct AccreditationZone
+	{
+		string idZone;
+		Date dateAcreditation;
+		Date jourDebut;
+		Date jourFin;
+		Date heureDebut;
+		Date heureFin;
+	};
+	
+	typedef sequence <AccreditationZone> ListeAccreditationZone; 
+	
+	struct InfoSalarieAccreditation 
+	{
+		string idSal;
+		ListeAccreditationZone listeAccreditationSal;
+	};
+
+	
+	
+	//typedef sequence <InfoSalarieAccreditation> ListInfoSalarieAccreditation;    // melanie : redondant avec plus haut 
+	//Landry: Pour moi ce n'est pas redondant car grâce a cette liste on peut avoir la liste des salariés avec leurs accréditations alors que celle d'avant on a une liste d'accréditation par zone
+	//        mais ne l'utilisant pas dans les méthodes, elle est inutile. (pour le moment on souhaite juste retourner pour un salarié donné ses accréditations par zone)
+	
+
+	interface EntiteLogiciellePorte
+	{
+		void afficherMessage();  //deverouillage de la porte 
+		//Landry: on le renomme ou pas ? afficherMessage --> deverrouillagePorte ? C'est ce que Teyssier nous avait conseiller. Mais je trouve pas que c'est plus clair...
+		
+		//pour information dans le code généré : appel de la méthode sauthentifier puis de la méthode verifierCorrespondance
+	};
+	
+	exception EmpreinteIncorrecte {string raisonEmpreinteIncorrecte;};
+	exception EmpreinteExistante {string raisonEmpreinteExistante;};
+	exception CleInconnue {string raisonCleInconnue;};
+	exception ErreurSalarieInexistant {string raisonErreurSalarieInexistant;};
+	exception ErreurZoneInexistant {string raisonErreurZoneInexistant;};
+	exception ErreurSalarieExistant {string raisonErreurSalarieExistant;};
+
+	
+	
+	interface EntiteLogicielleEmpreinte
+	{
+		void ajouterEmpreinte (in string idSal, in string empreinte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
+		//modifierEmpreinte <=> modifier sa propre empreinte
+		void modifierEmpreinte(in string idSal, in string empreinte, in EntiteLogiciellePorte el_Porte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
+		
+		//a garder ??  // melanie : je sais pas ... 
+		//Landry: Il me semble que c'était moi qui avait posé cette question ^^
+		//        Pour répondre, je pense que cela dépend de comment on fonctionne. 
+		//        La méthode permet de demander à Empreinte la correspondance avec une autre empreinte dans le système et si correspondance de retourner l'id du salarié.
+		//        Pour s'en servir pour appeler d'autres méthodes. Je ne sais pas si on s'en sert, mais c'est possible que l'on en ait besoin..
+		//        Je propose de la garder et si on s'en sert pas pendant la réalisation du code on la supprimera.
+		string getCorrespondance (in string empreinte,in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue);
+		
+		//verifierCorrespondance <=> Vérifier correspondance empreinte et identifiant
+		void verifierCorrespondance (in string idSal, in string empreinte, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, EmpreinteIncorrecte);
+		void supprimerEmpreinte(in string idSal, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue); 
+		
+	};
+	
+	interface EntiteLogicielleAutorisation
+	{
+	
+	// qui, ou, quand --> accreditation
+	// idSal, zone, quand --> boolean (autorisation)
+	
+		ListeZones listeToutesZones();
+		
+		boolean verifierAutorisation(in string idSal, in string idZone, in EntiteLogiciellePorte el_Porte) raises (ErreurSalarieInexistant, ErreurZoneInexistant); 
+		void creerAccreditation(in string idSal, in string idZone, in Date dateAccessDebut, in Date dateAccessFin, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
+		InfoSalarieAccreditation lireAccreditationSalarie(in string idSal) raises (ErreurSalarieInexistant);
+		InfoSalarieAccreditation modifierAccreditation (in string idSal, in string idZone, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
+		InfoSalarieAccreditation supprimerAccreditation (in string idSal, in string idZone, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
+
+	};
+	
+	interface EntiteLogicielleAnnuaire 
+	{
+		InfoSalarie recupererNomPhotoSalarie(in string idSal, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant);
+		
+		InfoSalarie infosSalarie(in string idSal, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant);
+
+		//retourne l'id d'un salarié
+		string creerSalarie(in string mdp, in string nom, in string prenom, in string photo, in Date heureDebut, in Date heureFin, in Date jourDebut, in Date jourFin, in short dureeValidationCompte) raises (ErreurSalarieExistant);		
+		
+		//retourne l'id d'un salarié
+		string sauthentifier (in string photo, in EntiteLogiciellePorte el_Porte) raises (ErreurSalarieInexistant); //erreru d'authentification
+	};
+	
+	interface EntiteLogicielleJournalisation
+	{
+		EvenementJournalisation consulter(in string qui, in string  quoi, in string quand_debut, in string quand_fin); // "" <> null
+		void enregistrerEvenement (in EvenementJournalisation evenementJournalisation);
+		
+	};
+};

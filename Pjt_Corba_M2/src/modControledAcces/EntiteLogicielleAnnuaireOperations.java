@@ -1,0 +1,34 @@
+package modControledAcces;
+
+/**
+ * Interface definition : EntiteLogicielleAnnuaire
+ * 
+ * @author OpenORB Compiler
+ */
+public interface EntiteLogicielleAnnuaireOperations
+{
+    /**
+     * Operation recupererNomPhotoSalarie
+     */
+    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+        throws modControledAcces.ErreurSalarieInexistant;
+
+    /**
+     * Operation infosSalarie
+     */
+    public modControledAcces.InfoSalarie infosSalarie(String idSal, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+        throws modControledAcces.ErreurSalarieInexistant;
+
+    /**
+     * Operation creerSalarie
+     */
+    public String creerSalarie(String mdp, String nom, String prenom, String photo, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, short dureeValidationCompte)
+        throws modControledAcces.ErreurSalarieExistant;
+
+    /**
+     * Operation sauthentifier
+     */
+    public String sauthentifier(String photo, modControledAcces.EntiteLogiciellePorte el_Porte)
+        throws modControledAcces.ErreurSalarieInexistant;
+
+}
