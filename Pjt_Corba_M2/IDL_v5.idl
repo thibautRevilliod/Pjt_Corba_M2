@@ -79,6 +79,9 @@ module modControledAcces
 		//Landry: on le renomme ou pas ? afficherMessage --> deverrouillagePorte ? C'est ce que Teyssier nous avait conseiller. Mais je trouve pas que c'est plus clair...
 		
 		//pour information dans le code généré : appel de la méthode sauthentifier puis de la méthode verifierCorrespondance
+		void demandeEntrerSortirZone(in string idSal, in string idZone, in EntiteLogiciellePorte el_Porte);
+		void demanderAuthentifier (in string photo, in EntiteLogiciellePorte el_Porte);
+		void demanderModifierEmpreinte(in string idSal, in string empreinte, in EntiteLogiciellePorte el_Porte);
 	};
 	
 	exception EmpreinteIncorrecte {string raisonEmpreinteIncorrecte;};
@@ -94,7 +97,7 @@ module modControledAcces
 	{
 		void ajouterEmpreinte (in string idSal, in string empreinte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
 		//modifierEmpreinte <=> modifier sa propre empreinte
-		void modifierEmpreinte(in string idSal, in string empreinte, in EntiteLogiciellePorte el_Porte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
+		string modifierEmpreinte(in string idSal, in string empreinte, in EntiteLogiciellePorte el_Porte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
 		
 		//a garder ??  // melanie : je sais pas ... 
 		//Landry: Il me semble que c'était moi qui avait posé cette question ^^
@@ -105,7 +108,7 @@ module modControledAcces
 		string getCorrespondance (in string empreinte,in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue);
 		
 		//verifierCorrespondance <=> Vérifier correspondance empreinte et identifiant
-		void verifierCorrespondance (in string idSal, in string empreinte, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, EmpreinteIncorrecte);
+		boolean verifierCorrespondance (in string idSal, in string empreinte, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, EmpreinteIncorrecte);
 		void supprimerEmpreinte(in string idSal, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue); 
 		
 	};
@@ -119,7 +122,7 @@ module modControledAcces
 		ListeZones listeToutesZones();
 		
 		boolean verifierAutorisation(in string idSal, in string idZone, in EntiteLogiciellePorte el_Porte) raises (ErreurSalarieInexistant, ErreurZoneInexistant); 
-		void creerAccreditation(in string idSal, in string idZone, in Date dateAccessDebut, in Date dateAccessFin, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
+		void creerAccreditation(in string idSal, in string idZone, in Date dateAccessDebut, in Date dateAccessFin, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant);
 		InfoSalarieAccreditation lireAccreditationSalarie(in string idSal) raises (ErreurSalarieInexistant);
 		InfoSalarieAccreditation modifierAccreditation (in string idSal, in string idZone, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
 		InfoSalarieAccreditation supprimerAccreditation (in string idSal, in string idZone, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
@@ -141,7 +144,7 @@ module modControledAcces
 	
 	interface EntiteLogicielleJournalisation
 	{
-		EvenementJournalisation consulter(in string qui, in string  quoi, in string quand_debut, in string quand_fin); // "" <> null
+		EvenementJournalisation consulter(in string qui, in string  quoi, in string quand_debut, in string quand_fin, in string cleDemandeur) raises (CleInconnue); // "" <> null
 		void enregistrerEvenement (in EvenementJournalisation evenementJournalisation);
 		
 	};

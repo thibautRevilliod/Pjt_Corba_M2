@@ -21,8 +21,8 @@ public interface EntiteLogicielleAutorisationOperations
     /**
      * Operation creerAccreditation
      */
-    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date dateAccessDebut, modControledAcces.Date dateAccessFin, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
-        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant;
+    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date dateAccessDebut, modControledAcces.Date dateAccessFin, String cleDemandeur)
+        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue, modControledAcces.ErreurZoneInexistant;
 
     /**
      * Operation lireAccreditationSalarie

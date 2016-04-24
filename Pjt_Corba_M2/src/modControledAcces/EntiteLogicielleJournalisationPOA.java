@@ -51,12 +51,21 @@ public abstract class EntiteLogicielleJournalisationPOA extends org.omg.Portable
         String arg1_in = _is.read_string();
         String arg2_in = _is.read_string();
         String arg3_in = _is.read_string();
+        String arg4_in = _is.read_string();
 
-        modControledAcces.EvenementJournalisation _arg_result = consulter(arg0_in, arg1_in, arg2_in, arg3_in);
+        try
+        {
+            modControledAcces.EvenementJournalisation _arg_result = consulter(arg0_in, arg1_in, arg2_in, arg3_in, arg4_in);
 
-        _output = handler.createReply();
-        modControledAcces.EvenementJournalisationHelper.write(_output,_arg_result);
+            _output = handler.createReply();
+            modControledAcces.EvenementJournalisationHelper.write(_output,_arg_result);
 
+        }
+        catch (modControledAcces.CleInconnue _exception)
+        {
+            _output = handler.createExceptionReply();
+            modControledAcces.CleInconnueHelper.write(_output,_exception);
+        }
         return _output;
     }
 

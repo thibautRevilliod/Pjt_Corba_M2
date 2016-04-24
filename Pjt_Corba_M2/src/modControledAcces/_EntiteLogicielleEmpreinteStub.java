@@ -91,7 +91,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
     /**
      * Operation modifierEmpreinte
      */
-    public void modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
+    public String modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte
     {
         while(true)
@@ -107,7 +107,8 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                     modControledAcces.EntiteLogiciellePorteHelper.write(_output,el_Porte);
                     _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
-                    return;
+                    String _arg_ret = _input.read_string();
+                    return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)
                 {
@@ -146,8 +147,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                 modControledAcces.EntiteLogicielleEmpreinteOperations _self = (modControledAcces.EntiteLogicielleEmpreinteOperations) _so.servant;
                 try
                 {
-                    _self.modifierEmpreinte( idSal,  empreinte,  el_Porte,  cleDemandeur);
-                    return;
+                    return _self.modifierEmpreinte( idSal,  empreinte,  el_Porte,  cleDemandeur);
                 }
                 finally
                 {
@@ -222,7 +222,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
     /**
      * Operation verifierCorrespondance
      */
-    public void verifierCorrespondance(String idSal, String empreinte, String cleDemandeur)
+    public boolean verifierCorrespondance(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte
     {
         while(true)
@@ -237,7 +237,8 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                     _output.write_string(empreinte);
                     _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
-                    return;
+                    boolean _arg_ret = _input.read_boolean();
+                    return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)
                 {
@@ -276,8 +277,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                 modControledAcces.EntiteLogicielleEmpreinteOperations _self = (modControledAcces.EntiteLogicielleEmpreinteOperations) _so.servant;
                 try
                 {
-                    _self.verifierCorrespondance( idSal,  empreinte,  cleDemandeur);
-                    return;
+                    return _self.verifierCorrespondance( idSal,  empreinte,  cleDemandeur);
                 }
                 finally
                 {

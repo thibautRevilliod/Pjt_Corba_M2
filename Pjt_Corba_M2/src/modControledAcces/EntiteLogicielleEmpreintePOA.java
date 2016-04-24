@@ -93,9 +93,10 @@ public abstract class EntiteLogicielleEmpreintePOA extends org.omg.PortableServe
 
         try
         {
-            modifierEmpreinte(arg0_in, arg1_in, arg2_in, arg3_in);
+            String _arg_result = modifierEmpreinte(arg0_in, arg1_in, arg2_in, arg3_in);
 
             _output = handler.createReply();
+            _output.write_string(_arg_result);
 
         }
         catch (modControledAcces.EmpreinteExistante _exception)
@@ -154,9 +155,10 @@ public abstract class EntiteLogicielleEmpreintePOA extends org.omg.PortableServe
 
         try
         {
-            verifierCorrespondance(arg0_in, arg1_in, arg2_in);
+            boolean _arg_result = verifierCorrespondance(arg0_in, arg1_in, arg2_in);
 
             _output = handler.createReply();
+            _output.write_boolean(_arg_result);
 
         }
         catch (modControledAcces.ErreurSalarieInexistant _exception)

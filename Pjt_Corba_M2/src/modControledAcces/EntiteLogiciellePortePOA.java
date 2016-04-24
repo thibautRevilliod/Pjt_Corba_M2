@@ -35,6 +35,12 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
 
         if (opName.equals("afficherMessage")) {
                 return _invoke_afficherMessage(_is, handler);
+        } else if (opName.equals("demandeEntrerSortirZone")) {
+                return _invoke_demandeEntrerSortirZone(_is, handler);
+        } else if (opName.equals("demanderAuthentifier")) {
+                return _invoke_demanderAuthentifier(_is, handler);
+        } else if (opName.equals("demanderModifierEmpreinte")) {
+                return _invoke_demanderModifierEmpreinte(_is, handler);
         } else {
             throw new org.omg.CORBA.BAD_OPERATION(opName);
         }
@@ -47,6 +53,50 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
         org.omg.CORBA.portable.OutputStream _output;
 
         afficherMessage();
+
+        _output = handler.createReply();
+
+        return _output;
+    }
+
+    private org.omg.CORBA.portable.OutputStream _invoke_demandeEntrerSortirZone(
+            final org.omg.CORBA.portable.InputStream _is,
+            final org.omg.CORBA.portable.ResponseHandler handler) {
+        org.omg.CORBA.portable.OutputStream _output;
+        String arg0_in = _is.read_string();
+        String arg1_in = _is.read_string();
+        modControledAcces.EntiteLogiciellePorte arg2_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
+
+        demandeEntrerSortirZone(arg0_in, arg1_in, arg2_in);
+
+        _output = handler.createReply();
+
+        return _output;
+    }
+
+    private org.omg.CORBA.portable.OutputStream _invoke_demanderAuthentifier(
+            final org.omg.CORBA.portable.InputStream _is,
+            final org.omg.CORBA.portable.ResponseHandler handler) {
+        org.omg.CORBA.portable.OutputStream _output;
+        String arg0_in = _is.read_string();
+        modControledAcces.EntiteLogiciellePorte arg1_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
+
+        demanderAuthentifier(arg0_in, arg1_in);
+
+        _output = handler.createReply();
+
+        return _output;
+    }
+
+    private org.omg.CORBA.portable.OutputStream _invoke_demanderModifierEmpreinte(
+            final org.omg.CORBA.portable.InputStream _is,
+            final org.omg.CORBA.portable.ResponseHandler handler) {
+        org.omg.CORBA.portable.OutputStream _output;
+        String arg0_in = _is.read_string();
+        String arg1_in = _is.read_string();
+        modControledAcces.EntiteLogiciellePorte arg2_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
+
+        demanderModifierEmpreinte(arg0_in, arg1_in, arg2_in);
 
         _output = handler.createReply();
 

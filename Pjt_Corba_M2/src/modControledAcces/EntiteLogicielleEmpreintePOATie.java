@@ -74,10 +74,10 @@ public class EntiteLogicielleEmpreintePOATie extends EntiteLogicielleEmpreintePO
     /**
      * Operation modifierEmpreinte
      */
-    public void modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
+    public String modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte
     {
-        _tie.modifierEmpreinte( idSal,  empreinte,  el_Porte,  cleDemandeur);
+        return _tie.modifierEmpreinte( idSal,  empreinte,  el_Porte,  cleDemandeur);
     }
 
     /**
@@ -92,10 +92,10 @@ public class EntiteLogicielleEmpreintePOATie extends EntiteLogicielleEmpreintePO
     /**
      * Operation verifierCorrespondance
      */
-    public void verifierCorrespondance(String idSal, String empreinte, String cleDemandeur)
+    public boolean verifierCorrespondance(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte
     {
-        _tie.verifierCorrespondance( idSal,  empreinte,  cleDemandeur);
+        return _tie.verifierCorrespondance( idSal,  empreinte,  cleDemandeur);
     }
 
     /**

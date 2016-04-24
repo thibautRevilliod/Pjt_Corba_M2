@@ -65,9 +65,10 @@ public class EntiteLogicielleJournalisationPOATie extends EntiteLogicielleJourna
     /**
      * Operation consulter
      */
-    public modControledAcces.EvenementJournalisation consulter(String qui, String quoi, String quand_debut, String quand_fin)
+    public modControledAcces.EvenementJournalisation consulter(String qui, String quoi, String quand_debut, String quand_fin, String cleDemandeur)
+        throws modControledAcces.CleInconnue
     {
-        return _tie.consulter( qui,  quoi,  quand_debut,  quand_fin);
+        return _tie.consulter( qui,  quoi,  quand_debut,  quand_fin,  cleDemandeur);
     }
 
     /**

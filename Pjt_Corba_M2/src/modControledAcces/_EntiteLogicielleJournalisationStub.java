@@ -23,7 +23,8 @@ public class _EntiteLogicielleJournalisationStub extends org.omg.CORBA.portable.
     /**
      * Operation consulter
      */
-    public modControledAcces.EvenementJournalisation consulter(String qui, String quoi, String quand_debut, String quand_fin)
+    public modControledAcces.EvenementJournalisation consulter(String qui, String quoi, String quand_debut, String quand_fin, String cleDemandeur)
+        throws modControledAcces.CleInconnue
     {
         while(true)
         {
@@ -37,6 +38,7 @@ public class _EntiteLogicielleJournalisationStub extends org.omg.CORBA.portable.
                     _output.write_string(quoi);
                     _output.write_string(quand_debut);
                     _output.write_string(quand_fin);
+                    _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
                     modControledAcces.EvenementJournalisation _arg_ret = modControledAcces.EvenementJournalisationHelper.read(_input);
                     return _arg_ret;
@@ -48,6 +50,11 @@ public class _EntiteLogicielleJournalisationStub extends org.omg.CORBA.portable.
                 catch(org.omg.CORBA.portable.ApplicationException _exception)
                 {
                     String _exception_id = _exception.getId();
+                    if (_exception_id.equals(modControledAcces.CleInconnueHelper.id()))
+                    {
+                        throw modControledAcces.CleInconnueHelper.read(_exception.getInputStream());
+                    }
+
                     throw new org.omg.CORBA.UNKNOWN("Unexpected User Exception: "+ _exception_id);
                 }
                 finally
@@ -63,7 +70,7 @@ public class _EntiteLogicielleJournalisationStub extends org.omg.CORBA.portable.
                 modControledAcces.EntiteLogicielleJournalisationOperations _self = (modControledAcces.EntiteLogicielleJournalisationOperations) _so.servant;
                 try
                 {
-                    return _self.consulter( qui,  quoi,  quand_debut,  quand_fin);
+                    return _self.consulter( qui,  quoi,  quand_debut,  quand_fin,  cleDemandeur);
                 }
                 finally
                 {

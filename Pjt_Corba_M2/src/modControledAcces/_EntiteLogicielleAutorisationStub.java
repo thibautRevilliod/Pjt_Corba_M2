@@ -135,8 +135,8 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
     /**
      * Operation creerAccreditation
      */
-    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date dateAccessDebut, modControledAcces.Date dateAccessFin, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
-        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant
+    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date dateAccessDebut, modControledAcces.Date dateAccessFin, String cleDemandeur)
+        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue, modControledAcces.ErreurZoneInexistant
     {
         while(true)
         {
@@ -150,7 +150,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                     _output.write_string(idZone);
                     modControledAcces.DateHelper.write(_output,dateAccessDebut);
                     modControledAcces.DateHelper.write(_output,dateAccessFin);
-                    modControledAcces.EntiteLogicielleEmpreinteHelper.write(_output,el_Empreinte);
+                    _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
                     return;
                 }
@@ -164,6 +164,11 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                     if (_exception_id.equals(modControledAcces.ErreurSalarieInexistantHelper.id()))
                     {
                         throw modControledAcces.ErreurSalarieInexistantHelper.read(_exception.getInputStream());
+                    }
+
+                    if (_exception_id.equals(modControledAcces.CleInconnueHelper.id()))
+                    {
+                        throw modControledAcces.CleInconnueHelper.read(_exception.getInputStream());
                     }
 
                     if (_exception_id.equals(modControledAcces.ErreurZoneInexistantHelper.id()))
@@ -186,7 +191,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                 modControledAcces.EntiteLogicielleAutorisationOperations _self = (modControledAcces.EntiteLogicielleAutorisationOperations) _so.servant;
                 try
                 {
-                    _self.creerAccreditation( idSal,  idZone,  dateAccessDebut,  dateAccessFin,  el_Empreinte);
+                    _self.creerAccreditation( idSal,  idZone,  dateAccessDebut,  dateAccessFin,  cleDemandeur);
                     return;
                 }
                 finally

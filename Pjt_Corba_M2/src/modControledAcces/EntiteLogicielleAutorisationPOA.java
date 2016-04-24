@@ -101,7 +101,7 @@ public abstract class EntiteLogicielleAutorisationPOA extends org.omg.PortableSe
         String arg1_in = _is.read_string();
         modControledAcces.Date arg2_in = modControledAcces.DateHelper.read(_is);
         modControledAcces.Date arg3_in = modControledAcces.DateHelper.read(_is);
-        modControledAcces.EntiteLogicielleEmpreinte arg4_in = modControledAcces.EntiteLogicielleEmpreinteHelper.read(_is);
+        String arg4_in = _is.read_string();
 
         try
         {
@@ -114,6 +114,11 @@ public abstract class EntiteLogicielleAutorisationPOA extends org.omg.PortableSe
         {
             _output = handler.createExceptionReply();
             modControledAcces.ErreurSalarieInexistantHelper.write(_output,_exception);
+        }
+        catch (modControledAcces.CleInconnue _exception)
+        {
+            _output = handler.createExceptionReply();
+            modControledAcces.CleInconnueHelper.write(_output,_exception);
         }
         catch (modControledAcces.ErreurZoneInexistant _exception)
         {

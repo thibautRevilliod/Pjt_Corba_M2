@@ -16,7 +16,7 @@ public interface EntiteLogicielleEmpreinteOperations
     /**
      * Operation modifierEmpreinte
      */
-    public void modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
+    public String modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte;
 
     /**
@@ -28,7 +28,7 @@ public interface EntiteLogicielleEmpreinteOperations
     /**
      * Operation verifierCorrespondance
      */
-    public void verifierCorrespondance(String idSal, String empreinte, String cleDemandeur)
+    public boolean verifierCorrespondance(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte;
 
     /**
