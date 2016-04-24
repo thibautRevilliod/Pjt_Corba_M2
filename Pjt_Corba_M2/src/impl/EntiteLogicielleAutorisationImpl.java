@@ -14,6 +14,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	@Override
 	public String[] listeToutesZones() {
 		// TODO Auto-generated method stub
+		System.out.println("keznfjkzejfzejkfk");
 		return null;
 	}
 
@@ -28,7 +29,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	public void creerAccreditation(String idSal, String idZone, Date dateAccessDebut, Date dateAccessFin,
 			String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant {
 		// TODO Auto-generated method stub
-		
+		System.out.println("test !!!!");
 	}
 
 	@Override
