@@ -1,5 +1,8 @@
 package LanceurPersonnel;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import modControledAcces.*;
 
 public class PersonnelSecurite {
@@ -15,7 +18,7 @@ public class PersonnelSecurite {
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 
 
-	/*
+
 
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
 	        System.out.println("Quel objet Corba voulez-vous contacter ?");
@@ -31,21 +34,21 @@ public class PersonnelSecurite {
 	         nameToFind[0] = new org.omg.CosNaming.NameComponent(idObj,"");
 
 	        // Recherche aupres du naming service
-	        org.omg.CORBA.Object distantEuro = nameRoot.resolve(nameToFind);
+	        org.omg.CORBA.Object distantELAutorisation = nameRoot.resolve(nameToFind);
 	        System.out.println("Objet '" + idObj + "' trouve aupres du service de noms. IOR de l'objet :");
-	        System.out.println(orb.object_to_string(distantEuro));
-	*/
+	        System.out.println(orb.object_to_string(distantELAutorisation));
+
 	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
-	        org.omg.CORBA.Object distantELAutorisation = orb.string_to_object("IOR:000000000000003749444C3A6D6F64436F6E74726F6C656441636365732F456E746974654C6F67696369656C6C654175746F7269736174696F6E3A312E300000000000010000000000000060000102000000000D3139322E3136382E35362E310000D89000000014004F4F01E4AAC64854010000504F41FE20895CB200000001000000010000002400000000100204E4000000030001000F0001000100010020000101090000000100010100");
+//	        org.omg.CORBA.Object distantEuro = orb.string_to_object("IOR:000000000000001B49444C3A436F6E766572746973736575722F4575726F3A312E300000000000010000000000000060000102000000000D3139322E3136382E35362E31000012A000000014004F4F01A72446DC50010000504F41FE7703957F00000001000000010000002400000000100204E4000000030001000F0001000100010020000101090000000100010100");
 	        // Casting de l'objet CORBA au type convertisseur euro
+
 	        monELAutorisation = EntiteLogicielleAutorisationHelper.narrow(distantELAutorisation);
-	        
-//	        monELAutorisation.creerAccreditation("aaa","aaaa",new Date(),new Date(),"aaaa");
-	        monELAutorisation.listeToutesZones();
 
 	        // Appel de l'interface graphique
 //	        JFrame frame = new InterfaceFrame();
 //	        frame.setVisible(true);
+	        
+	        monELAutorisation.listeToutesZones();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
