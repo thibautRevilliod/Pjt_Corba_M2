@@ -3,6 +3,7 @@ package LanceurPersonnel;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import config.Config;
 import modControledAcces.*;
 
 public class PersonnelSecurite {
@@ -37,6 +38,7 @@ public class PersonnelSecurite {
 	        org.omg.CORBA.Object distantELAutorisation = nameRoot.resolve(nameToFind);
 	        System.out.println("Objet '" + idObj + "' trouve aupres du service de noms. IOR de l'objet :");
 	        System.out.println(orb.object_to_string(distantELAutorisation));
+	        Config.IOR_EL_Autorisation = orb.object_to_string(distantELAutorisation);
 
 	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
 //	        org.omg.CORBA.Object distantEuro = orb.string_to_object("IOR:000000000000001B49444C3A436F6E766572746973736575722F4575726F3A312E300000000000010000000000000060000102000000000D3139322E3136382E35362E31000012A000000014004F4F01A72446DC50010000504F41FE7703957F00000001000000010000002400000000100204E4000000030001000F0001000100010020000101090000000100010100");
