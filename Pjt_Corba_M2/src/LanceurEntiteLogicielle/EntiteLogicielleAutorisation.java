@@ -11,7 +11,14 @@ public class EntiteLogicielleAutorisation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		enregistrementNS(args);
+
 		
+		
+	}
+	
+	private static void enregistrementNS(String[] args)
+	{
 		try {
 	        // Intialisation de l'ORB
 	        //************************
@@ -62,8 +69,7 @@ public class EntiteLogicielleAutorisation {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
+	
 
 }
