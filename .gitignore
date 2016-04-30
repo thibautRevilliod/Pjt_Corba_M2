@@ -25,7 +25,6 @@ OpenORB/examples
 .externalToolBuilders/
 
 # Locally stored "Eclipse launch configurations"
-*.launch
 
 # CDT-specific
 .cproject
