@@ -2,16 +2,36 @@
 
 module modControledAcces 
 {
-	typedef sequence <string> ListeZones; 
-	typedef sequence <string> ListeSalaries; 
-	typedef string nom ; 
-	typedef string prenom ; 
-	typedef string mdp; 
-	
 	struct Date
 	{
 		string timestamp;
 	};
+	
+	struct InfoZone
+	{
+		string idZone;
+		string libelleZone;
+	};
+	
+	struct InfoSalarie 
+	{
+		string idSal;
+		//string mdp ?  // mélanie : oui, il est dans salarié, pourquoi tu le mets plus ?
+		// Landry: pour moi il faut le mettre, je vois pas pourquoi on ne le mettrait pas..
+		string nom ;
+		string prenom; 
+		string photo; 
+		string empreinte;  
+		Date dateFinValidateCompte;
+		//boolean estPermanent;   // melanie : idem, on va en avoir besoin, ca générera le get pour ça,
+		// Landry: pour moi il faut le mettre, je vois pas pourquoi on ne le mettrait pas.. Par contre je ne crois pas que ça génère des GET, il faut le définir en tant que attribut pour qu'il y est des GET générés
+	};
+	
+	typedef sequence <InfoZone> ListeZones; 
+	typedef sequence <InfoSalarie> ListeSalaries; 
+	typedef string nom ; 
+	typedef string prenom ; 
+	typedef string mdp; 
 	
 	struct AccesZone
 	{
@@ -33,20 +53,6 @@ module modControledAcces
 	};
 	
 	
-	
-	struct InfoSalarie 
-	{
-		string idSal;
-		//string mdp ?  // mélanie : oui, il est dans salarié, pourquoi tu le mets plus ?
-		// Landry: pour moi il faut le mettre, je vois pas pourquoi on ne le mettrait pas..
-		string nom ;
-		string prenom; 
-		string photo; 
-		string empreinte;  
-		Date dateFinValidateCompte;
-		//boolean estPermanent;   // melanie : idem, on va en avoir besoin, ca générera le get pour ça,
-		// Landry: pour moi il faut le mettre, je vois pas pourquoi on ne le mettrait pas.. Par contre je ne crois pas que ça génère des GET, il faut le définir en tant que attribut pour qu'il y est des GET générés
-	};
 	
 	
 	struct AccreditationZone
@@ -123,9 +129,9 @@ module modControledAcces
 		ListeZones listeToutesZones();
 		
 		boolean verifierAutorisation(in string idSal, in string idZone, in EntiteLogiciellePorte el_Porte) raises (ErreurSalarieInexistant, ErreurZoneInexistant); 
-		void creerAccreditation(in string idSal, in string idZone, in Date dateAccessDebut, in Date dateAccessFin, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant);
+		void creerAccreditation(in string idSal, in string idZone, in Date jourDebut, in Date jourFin, in Date heureDebut, in Date heureFin, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant);
 		InfoSalarieAccreditation lireAccreditationSalarie(in string idSal) raises (ErreurSalarieInexistant);
-		InfoSalarieAccreditation modifierAccreditation (in string idSal, in string idZone, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
+		InfoSalarieAccreditation modifierAccreditation (in string idSal, in string idZone, in Date jourDebut, in Date jourFin, in Date heureDebut, in Date heureFin, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
 		InfoSalarieAccreditation supprimerAccreditation (in string idSal, in string idZone, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
 
 	};

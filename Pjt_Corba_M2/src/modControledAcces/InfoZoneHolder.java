@@ -1,58 +1,58 @@
 package modControledAcces;
 
 /**
- * Holder class for : ListeZones
+ * Holder class for : InfoZone
  * 
  * @author OpenORB Compiler
  */
-final public class ListeZonesHolder
+final public class InfoZoneHolder
         implements org.omg.CORBA.portable.Streamable
 {
     /**
-     * Internal ListeZones value
+     * Internal InfoZone value
      */
-    public modControledAcces.InfoZone[] value;
+    public modControledAcces.InfoZone value;
 
     /**
      * Default constructor
      */
-    public ListeZonesHolder()
+    public InfoZoneHolder()
     { }
 
     /**
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public ListeZonesHolder(modControledAcces.InfoZone[] initial)
+    public InfoZoneHolder(modControledAcces.InfoZone initial)
     {
         value = initial;
     }
 
     /**
-     * Read ListeZones from a marshalled stream
+     * Read InfoZone from a marshalled stream
      * @param istream the input stream
      */
     public void _read(org.omg.CORBA.portable.InputStream istream)
     {
-        value = ListeZonesHelper.read(istream);
+        value = InfoZoneHelper.read(istream);
     }
 
     /**
-     * Write ListeZones into a marshalled stream
+     * Write InfoZone into a marshalled stream
      * @param ostream the output stream
      */
     public void _write(org.omg.CORBA.portable.OutputStream ostream)
     {
-        ListeZonesHelper.write(ostream,value);
+        InfoZoneHelper.write(ostream,value);
     }
 
     /**
-     * Return the ListeZones TypeCode
+     * Return the InfoZone TypeCode
      * @return a TypeCode
      */
     public org.omg.CORBA.TypeCode _type()
     {
-        return ListeZonesHelper.type();
+        return InfoZoneHelper.type();
     }
 
 }

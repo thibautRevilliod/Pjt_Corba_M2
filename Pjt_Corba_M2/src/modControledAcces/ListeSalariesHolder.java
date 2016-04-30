@@ -11,7 +11,7 @@ final public class ListeSalariesHolder
     /**
      * Internal ListeSalaries value
      */
-    public String[] value;
+    public modControledAcces.InfoSalarie[] value;
 
     /**
      * Default constructor
@@ -23,7 +23,7 @@ final public class ListeSalariesHolder
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public ListeSalariesHolder(String[] initial)
+    public ListeSalariesHolder(modControledAcces.InfoSalarie[] initial)
     {
         value = initial;
     }

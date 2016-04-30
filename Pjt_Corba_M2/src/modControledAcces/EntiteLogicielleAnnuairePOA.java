@@ -54,7 +54,7 @@ public abstract class EntiteLogicielleAnnuairePOA extends org.omg.PortableServer
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
 
-        String[] _arg_result = listeTousSalaries();
+        modControledAcces.InfoSalarie[] _arg_result = listeTousSalaries();
 
         _output = handler.createReply();
         modControledAcces.ListeSalariesHelper.write(_output,_arg_result);

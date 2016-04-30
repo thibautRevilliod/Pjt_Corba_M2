@@ -23,7 +23,7 @@ public class ListeSalariesHelper
      * @param a an any
      * @param t ListeSalaries value
      */
-    public static void insert(org.omg.CORBA.Any a, String[] t)
+    public static void insert(org.omg.CORBA.Any a, modControledAcces.InfoSalarie[] t)
     {
         a.insert_Streamable(new modControledAcces.ListeSalariesHolder(t));
     }
@@ -33,7 +33,7 @@ public class ListeSalariesHelper
      * @param a an any
      * @return the extracted ListeSalaries value
      */
-    public static String[] extract(org.omg.CORBA.Any a)
+    public static modControledAcces.InfoSalarie[] extract(org.omg.CORBA.Any a)
     {
         if (!a.type().equal(type()))
             throw new org.omg.CORBA.MARSHAL();
@@ -66,7 +66,7 @@ public class ListeSalariesHelper
     {
         if (_tc == null) {
             org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init();
-            _tc = orb.create_alias_tc(id(),"ListeSalaries",orb.create_sequence_tc(0,orb.get_primitive_tc(org.omg.CORBA.TCKind.tk_string)));
+            _tc = orb.create_alias_tc(id(),"ListeSalaries",orb.create_sequence_tc(0,modControledAcces.InfoSalarieHelper.type()));
         }
         return _tc;
     }
@@ -87,15 +87,15 @@ public class ListeSalariesHelper
      * @param istream the input stream
      * @return the readed ListeSalaries value
      */
-    public static String[] read(org.omg.CORBA.portable.InputStream istream)
+    public static modControledAcces.InfoSalarie[] read(org.omg.CORBA.portable.InputStream istream)
     {
-        String[] new_one;
+        modControledAcces.InfoSalarie[] new_one;
         {
         int size7 = istream.read_ulong();
-        new_one = new String[size7];
+        new_one = new modControledAcces.InfoSalarie[size7];
         for (int i7=0; i7<new_one.length; i7++)
          {
-            new_one[i7] = istream.read_string();
+            new_one[i7] = modControledAcces.InfoSalarieHelper.read(istream);
 
          }
         }
@@ -108,12 +108,12 @@ public class ListeSalariesHelper
      * @param ostream the output stream
      * @param value ListeSalaries value
      */
-    public static void write(org.omg.CORBA.portable.OutputStream ostream, String[] value)
+    public static void write(org.omg.CORBA.portable.OutputStream ostream, modControledAcces.InfoSalarie[] value)
     {
         ostream.write_ulong(value.length);
         for (int i7=0; i7<value.length; i7++)
         {
-            ostream.write_string(value[i7]);
+            modControledAcces.InfoSalarieHelper.write(ostream,value[i7]);
 
         }
     }

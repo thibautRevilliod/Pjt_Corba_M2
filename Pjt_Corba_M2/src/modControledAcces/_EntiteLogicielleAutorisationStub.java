@@ -23,7 +23,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
     /**
      * Operation listeToutesZones
      */
-    public String[] listeToutesZones()
+    public modControledAcces.InfoZone[] listeToutesZones()
     {
         while(true)
         {
@@ -34,7 +34,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                 {
                     org.omg.CORBA.portable.OutputStream _output = this._request("listeToutesZones",true);
                     _input = this._invoke(_output);
-                    String[] _arg_ret = modControledAcces.ListeZonesHelper.read(_input);
+                    modControledAcces.InfoZone[] _arg_ret = modControledAcces.ListeZonesHelper.read(_input);
                     return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)
@@ -135,7 +135,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
     /**
      * Operation creerAccreditation
      */
-    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date dateAccessDebut, modControledAcces.Date dateAccessFin, String cleDemandeur)
+    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue, modControledAcces.ErreurZoneInexistant
     {
         while(true)
@@ -148,8 +148,10 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                     org.omg.CORBA.portable.OutputStream _output = this._request("creerAccreditation",true);
                     _output.write_string(idSal);
                     _output.write_string(idZone);
-                    modControledAcces.DateHelper.write(_output,dateAccessDebut);
-                    modControledAcces.DateHelper.write(_output,dateAccessFin);
+                    modControledAcces.DateHelper.write(_output,jourDebut);
+                    modControledAcces.DateHelper.write(_output,jourFin);
+                    modControledAcces.DateHelper.write(_output,heureDebut);
+                    modControledAcces.DateHelper.write(_output,heureFin);
                     _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
                     return;
@@ -191,7 +193,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                 modControledAcces.EntiteLogicielleAutorisationOperations _self = (modControledAcces.EntiteLogicielleAutorisationOperations) _so.servant;
                 try
                 {
-                    _self.creerAccreditation( idSal,  idZone,  dateAccessDebut,  dateAccessFin,  cleDemandeur);
+                    _self.creerAccreditation( idSal,  idZone,  jourDebut,  jourFin,  heureDebut,  heureFin,  cleDemandeur);
                     return;
                 }
                 finally
@@ -261,7 +263,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
     /**
      * Operation modifierAccreditation
      */
-    public modControledAcces.InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant
     {
         while(true)
@@ -274,6 +276,10 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                     org.omg.CORBA.portable.OutputStream _output = this._request("modifierAccreditation",true);
                     _output.write_string(idSal);
                     _output.write_string(idZone);
+                    modControledAcces.DateHelper.write(_output,jourDebut);
+                    modControledAcces.DateHelper.write(_output,jourFin);
+                    modControledAcces.DateHelper.write(_output,heureDebut);
+                    modControledAcces.DateHelper.write(_output,heureFin);
                     modControledAcces.EntiteLogicielleEmpreinteHelper.write(_output,el_Empreinte);
                     _input = this._invoke(_output);
                     modControledAcces.InfoSalarieAccreditation _arg_ret = modControledAcces.InfoSalarieAccreditationHelper.read(_input);
@@ -311,7 +317,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                 modControledAcces.EntiteLogicielleAutorisationOperations _self = (modControledAcces.EntiteLogicielleAutorisationOperations) _so.servant;
                 try
                 {
-                    return _self.modifierAccreditation( idSal,  idZone,  el_Empreinte);
+                    return _self.modifierAccreditation( idSal,  idZone,  jourDebut,  jourFin,  heureDebut,  heureFin,  el_Empreinte);
                 }
                 finally
                 {

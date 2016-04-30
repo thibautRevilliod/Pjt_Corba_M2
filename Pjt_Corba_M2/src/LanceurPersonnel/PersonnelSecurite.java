@@ -8,8 +8,8 @@ import modControledAcces.*;
 
 public class PersonnelSecurite {
 	
-	public static String[] listeZones;
-	public static String[] listeSalaries;
+	public static InfoZone[] listeZones;
+	public static InfoSalarie[] listeSalaries;
 	public static EntiteLogicielleAutorisation monELAutorisation;
 	public static EntiteLogicielleAnnuaire monELAnnuaire;
 	public static String cleAutorisation = "personnel_securite";
@@ -107,7 +107,7 @@ public class PersonnelSecurite {
 		listeSalaries = monELAnnuaire.listeTousSalaries();
 		System.out.println("liste salaries : " + listeSalaries.toString());
 		
-		monELAutorisation.creerAccreditation("1", "1", new Date("1462023812"), new Date("1464615812"), cleAutorisation);
+		monELAutorisation.creerAccreditation("1", "1", new Date("1462023812"), new Date("1464615812"), new Date("1462023812"), new Date("1464615812"), cleAutorisation);
 	}
 
 }

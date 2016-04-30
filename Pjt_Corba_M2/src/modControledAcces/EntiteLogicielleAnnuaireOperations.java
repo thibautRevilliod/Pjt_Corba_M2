@@ -10,7 +10,7 @@ public interface EntiteLogicielleAnnuaireOperations
     /**
      * Operation listeTousSalaries
      */
-    public String[] listeTousSalaries();
+    public modControledAcces.InfoSalarie[] listeTousSalaries();
 
     /**
      * Operation recupererNomPhotoSalarie

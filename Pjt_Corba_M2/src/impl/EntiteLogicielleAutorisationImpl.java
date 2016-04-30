@@ -8,17 +8,20 @@ import modControledAcces.EntiteLogiciellePorte;
 import modControledAcces.ErreurSalarieInexistant;
 import modControledAcces.ErreurZoneInexistant;
 import modControledAcces.InfoSalarieAccreditation;
+import modControledAcces.InfoZone;
 
 public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisationPOA {
+	
+	public static String clePersonnel = "personnel_securite";
 
 	@Override
-	public String[] listeToutesZones() {
-		// TODO Auto-generated method stub
+	public InfoZone[] listeToutesZones() {
 		
-		String tabTemp[] = {"une valeur"};
+		InfoZone infoZone = new InfoZone();
+		InfoZone[] listeZones = {infoZone};
 		
 		System.out.println("test !!!!!");
-		return tabTemp;
+		return listeZones;
 	}
 
 	@Override
@@ -29,9 +32,16 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	}
 
 	@Override
-	public void creerAccreditation(String idSal, String idZone, Date dateAccessDebut, Date dateAccessFin,
-			String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant {
-		// TODO Auto-generated method stub
+	public void creerAccreditation(String idSal, String idZone, Date jourDebut, Date jourFin, 
+			Date heureDebut, Date heureFin, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant {
+		if(cleDemandeur.equals(clePersonnel))
+		{
+			
+		}
+		else
+		{
+			throw new CleInconnue("La clé demandeur n'est pas valide");
+		}
 	}
 
 	@Override
@@ -41,8 +51,8 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	}
 
 	@Override
-	public InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone,
-			EntiteLogicielleEmpreinte el_Empreinte) throws ErreurSalarieInexistant, ErreurZoneInexistant {
+	public InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, Date jourDebut, Date jourFin, 
+			Date heureDebut, Date heureFin, EntiteLogicielleEmpreinte el_Empreinte) throws ErreurSalarieInexistant, ErreurZoneInexistant {
 		// TODO Auto-generated method stub
 		return null;
 	}

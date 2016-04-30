@@ -23,7 +23,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
     /**
      * Operation listeTousSalaries
      */
-    public String[] listeTousSalaries()
+    public modControledAcces.InfoSalarie[] listeTousSalaries()
     {
         while(true)
         {
@@ -34,7 +34,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 {
                     org.omg.CORBA.portable.OutputStream _output = this._request("listeTousSalaries",true);
                     _input = this._invoke(_output);
-                    String[] _arg_ret = modControledAcces.ListeSalariesHelper.read(_input);
+                    modControledAcces.InfoSalarie[] _arg_ret = modControledAcces.ListeSalariesHelper.read(_input);
                     return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)

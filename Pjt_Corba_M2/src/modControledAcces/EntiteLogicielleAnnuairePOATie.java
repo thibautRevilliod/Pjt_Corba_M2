@@ -65,7 +65,7 @@ public class EntiteLogicielleAnnuairePOATie extends EntiteLogicielleAnnuairePOA
     /**
      * Operation listeTousSalaries
      */
-    public String[] listeTousSalaries()
+    public modControledAcces.InfoSalarie[] listeTousSalaries()
     {
         return _tie.listeTousSalaries();
     }

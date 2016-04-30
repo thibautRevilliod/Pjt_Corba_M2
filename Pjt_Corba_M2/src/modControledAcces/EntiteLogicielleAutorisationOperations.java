@@ -10,7 +10,7 @@ public interface EntiteLogicielleAutorisationOperations
     /**
      * Operation listeToutesZones
      */
-    public String[] listeToutesZones();
+    public modControledAcces.InfoZone[] listeToutesZones();
 
     /**
      * Operation verifierAutorisation
@@ -21,7 +21,7 @@ public interface EntiteLogicielleAutorisationOperations
     /**
      * Operation creerAccreditation
      */
-    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date dateAccessDebut, modControledAcces.Date dateAccessFin, String cleDemandeur)
+    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue, modControledAcces.ErreurZoneInexistant;
 
     /**
@@ -33,7 +33,7 @@ public interface EntiteLogicielleAutorisationOperations
     /**
      * Operation modifierAccreditation
      */
-    public modControledAcces.InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant;
 
     /**

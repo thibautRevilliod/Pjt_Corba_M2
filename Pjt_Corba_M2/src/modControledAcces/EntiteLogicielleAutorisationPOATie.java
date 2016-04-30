@@ -65,7 +65,7 @@ public class EntiteLogicielleAutorisationPOATie extends EntiteLogicielleAutorisa
     /**
      * Operation listeToutesZones
      */
-    public String[] listeToutesZones()
+    public modControledAcces.InfoZone[] listeToutesZones()
     {
         return _tie.listeToutesZones();
     }
@@ -82,10 +82,10 @@ public class EntiteLogicielleAutorisationPOATie extends EntiteLogicielleAutorisa
     /**
      * Operation creerAccreditation
      */
-    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date dateAccessDebut, modControledAcces.Date dateAccessFin, String cleDemandeur)
+    public void creerAccreditation(String idSal, String idZone, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue, modControledAcces.ErreurZoneInexistant
     {
-        _tie.creerAccreditation( idSal,  idZone,  dateAccessDebut,  dateAccessFin,  cleDemandeur);
+        _tie.creerAccreditation( idSal,  idZone,  jourDebut,  jourFin,  heureDebut,  heureFin,  cleDemandeur);
     }
 
     /**
@@ -100,10 +100,10 @@ public class EntiteLogicielleAutorisationPOATie extends EntiteLogicielleAutorisa
     /**
      * Operation modifierAccreditation
      */
-    public modControledAcces.InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant
     {
-        return _tie.modifierAccreditation( idSal,  idZone,  el_Empreinte);
+        return _tie.modifierAccreditation( idSal,  idZone,  jourDebut,  jourFin,  heureDebut,  heureFin,  el_Empreinte);
     }
 
     /**
