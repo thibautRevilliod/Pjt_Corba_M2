@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 
+import modControledAcces.InfoZone;
+
 public class BddJDBC_EL_Autorisation {
 
 	Connection conn;
@@ -182,8 +184,8 @@ public class BddJDBC_EL_Autorisation {
 	}
 
 	//liste zones
-	public ArrayList<InfoZone> listeZones() {
-		InfoZone[] res;
+	public InfoZone[] listeZones() {
+		InfoZone[] res = null;
 		
 		try {
 			Statement s = conn.createStatement();
@@ -192,14 +194,14 @@ public class BddJDBC_EL_Autorisation {
 
 			if (rs.next())
         	{
-				res = new InfosZone[rs.getInt(1)];
+				res = new InfoZone[rs.getInt(1)];
         	}
         	//récupère le dernier ID
 			rs = s.executeQuery("select idZone, libelleZone from Zones");
 			int i =0;
     		while(rs.next())
     		{
-    			res[i] = new InfoZone(getString(1)),rs.getString(2));
+    			res[i] = new InfoZone(rs.getString(1),rs.getString(2));
     			i++;
     		}
     		
