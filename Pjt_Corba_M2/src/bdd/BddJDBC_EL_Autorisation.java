@@ -23,7 +23,7 @@ public class BddJDBC_EL_Autorisation {
 			
         	s.execute("create table IF NOT EXISTS Zones  ( " +
         			" idZone VARCHAR( 4 ) NOT NULL PRIMARY KEY, " +
-        			" libelleZone VARCHAR( 500 ) UNIQUE, ");
+        			" libelleZone VARCHAR( 500 ) UNIQUE )");
 
         	s.execute("create table IF NOT EXISTS Accrediter  ( " +
         			" idSal VARCHAR( 4 ) NOT NULL, " +
@@ -34,7 +34,7 @@ public class BddJDBC_EL_Autorisation {
 					" heureDebut TIMESTAMP , " +
 					" heureFin TIMESTAMP , " +
 					" PRIMARY KEY (idSal, idZone) , " +
-					" FOREIGN KEY (Zones) REFERENCES Zones(idZone))");
+					" FOREIGN KEY (idZone) REFERENCES Zones(idZone))");
 	        
         	s.execute("create table IF NOT EXISTS Acceder  ( " +
         			" idSal VARCHAR( 4 ) NOT NULL, " +
@@ -46,7 +46,7 @@ public class BddJDBC_EL_Autorisation {
 					" heureEntree TIMESTAMP , " +
 					" heureSortie TIMESTAMP , " +
 					" PRIMARY KEY (idSal, idZone) , " +
-        			" FOREIGN KEY (Zones) REFERENCES Zones(idZone))");
+        			" FOREIGN KEY (idZone) REFERENCES Zones(idZone))");
 			
 		} catch(Exception e) {
 			// il y a eu une erreur
@@ -103,10 +103,10 @@ public class BddJDBC_EL_Autorisation {
 		int id = -1;
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select idZone from PROFIL WHERE idZone = '"+pidZone+"'");
+			ResultSet rs = s.executeQuery("select idZone from Zones WHERE idZone = '"+pidZone+"'");
 			if (!rs.next())
 			{
-	        	s.executeUpdate("insert into PROFIL (idZone,libelleZone) values ('"+pidZone+"', '"+plibelleZone+"'");
+	        	s.executeUpdate("insert into Zones (idZone,libelleZone) values ('"+pidZone+"', '"+plibelleZone+"')");
 			}
 			else
 			{

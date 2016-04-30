@@ -1,0 +1,49 @@
+04-30 18:06:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS ZONES  (  IDZONE VARCHAR( 4 ) NOT NULL PRIMARY KEY,  LIBELLEZONE VARCHAR( 500 ) UNIQUE,  "; expected "identifier"; SQL statement:
+create table IF NOT EXISTS Zones  (  idZone VARCHAR( 4 ) NOT NULL PRIMARY KEY,  libelleZone VARCHAR( 500 ) UNIQUE,  [42001-147]
+04-30 18:08:17 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS ZONES  (  IDZONE VARCHAR( 4 ) NOT NULL PRIMARY KEY,  LIBELLEZONE VARCHAR( 500 ) UNIQUE "; expected ")"; SQL statement:
+create table IF NOT EXISTS Zones  (  idZone VARCHAR( 4 ) NOT NULL PRIMARY KEY,  libelleZone VARCHAR( 500 ) UNIQUE [42001-147]
+04-30 18:09:01 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "ZONES" not found; SQL statement:
+create table IF NOT EXISTS Accrediter  (  idSal VARCHAR( 4 ) NOT NULL,  idZone VARCHAR( 4 ) NOT NULL,  dateAccreditation date ,  jourDebut TIMESTAMP ,  jourFin TIMESTAMP ,  heureDebut TIMESTAMP ,  heureFin TIMESTAMP ,  PRIMARY KEY (idSal, idZone) ,  FOREIGN KEY (Zones) REFERENCES Zones(idZone)) [42122-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.table.Table.getColumn(Table.java:556)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:180)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:68)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:163)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:69)
+	at org.h2.command.Command.executeUpdate(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:178)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:153)
+	at bdd.BddJDBC_EL_Autorisation.<init>(BddJDBC_EL_Autorisation.java:28)
+	at impl.EntiteLogicielleAutorisationImpl.<clinit>(EntiteLogicielleAutorisationImpl.java:17)
+	at LanceurEntiteLogicielle.EntiteLogicielleAutorisation.enregistrementNS(EntiteLogicielleAutorisation.java:35)
+	at LanceurEntiteLogicielle.EntiteLogicielleAutorisation.main(EntiteLogicielleAutorisation.java:14)
+04-30 18:10:46 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "PROFIL" not found; SQL statement:
+select idZone from PROFIL WHERE idZone = '1' [42102-147]
+04-30 18:10:46 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "PROFIL" not found; SQL statement:
+select idZone from PROFIL WHERE idZone = '2' [42102-147]
+04-30 18:10:46 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "PROFIL" not found; SQL statement:
+select idZone from PROFIL WHERE idZone = '3' [42102-147]
+04-30 18:10:46 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "PROFIL" not found; SQL statement:
+select idZone from PROFIL WHERE idZone = '4' [42102-147]
+04-30 18:13:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ZONES (IDZONE,LIBELLEZONE) VALUES ('1', 'Zone1' "; expected ")"; SQL statement:
+insert into Zones (idZone,libelleZone) values ('1', 'Zone1' [42001-147]
+04-30 18:13:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ZONES (IDZONE,LIBELLEZONE) VALUES ('2', 'Zone2' "; expected ")"; SQL statement:
+insert into Zones (idZone,libelleZone) values ('2', 'Zone2' [42001-147]
+04-30 18:13:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ZONES (IDZONE,LIBELLEZONE) VALUES ('3', 'Zone3' "; expected ")"; SQL statement:
+insert into Zones (idZone,libelleZone) values ('3', 'Zone3' [42001-147]
+04-30 18:13:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ZONES (IDZONE,LIBELLEZONE) VALUES ('4', 'Zone4' "; expected ")"; SQL statement:
+insert into Zones (idZone,libelleZone) values ('4', 'Zone4' [42001-147]
