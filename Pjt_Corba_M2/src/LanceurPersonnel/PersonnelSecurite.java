@@ -103,11 +103,11 @@ public class PersonnelSecurite {
 		listeZones = monELAutorisation.listeToutesZones();
 		System.out.println("liste zones : " + listeZones.toString());
 		
-		connexionELannuaire(args);
-		listeSalaries = monELAnnuaire.listeTousSalaries();
-		System.out.println("liste salaries : " + listeSalaries.toString());
+//		connexionELannuaire(args);
+//		listeSalaries = monELAnnuaire.listeTousSalaries();
+//		System.out.println("liste salaries : " + listeSalaries.toString());
 		
-		monELAutorisation.creerAccreditation("1", "1", new Date("1462023812"), new Date("1464615812"), new Date("1462023812"), new Date("1464615812"), cleAutorisation);
+//		monELAutorisation.creerAccreditation("1", "1", new Date("1462023812"), new Date("1464615812"), new Date("1462023812"), new Date("1464615812"), cleAutorisation);
 	}
 
 }
