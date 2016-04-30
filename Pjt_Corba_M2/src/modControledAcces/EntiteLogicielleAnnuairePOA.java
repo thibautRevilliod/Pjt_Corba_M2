@@ -37,6 +37,8 @@ public abstract class EntiteLogicielleAnnuairePOA extends org.omg.PortableServer
                 return _invoke_creerSalarie(_is, handler);
         } else if (opName.equals("infosSalarie")) {
                 return _invoke_infosSalarie(_is, handler);
+        } else if (opName.equals("listeTousSalaries")) {
+                return _invoke_listeTousSalaries(_is, handler);
         } else if (opName.equals("recupererNomPhotoSalarie")) {
                 return _invoke_recupererNomPhotoSalarie(_is, handler);
         } else if (opName.equals("sauthentifier")) {
@@ -47,6 +49,19 @@ public abstract class EntiteLogicielleAnnuairePOA extends org.omg.PortableServer
     }
 
     // helper methods
+    private org.omg.CORBA.portable.OutputStream _invoke_listeTousSalaries(
+            final org.omg.CORBA.portable.InputStream _is,
+            final org.omg.CORBA.portable.ResponseHandler handler) {
+        org.omg.CORBA.portable.OutputStream _output;
+
+        String[] _arg_result = listeTousSalaries();
+
+        _output = handler.createReply();
+        modControledAcces.ListeSalariesHelper.write(_output,_arg_result);
+
+        return _output;
+    }
+
     private org.omg.CORBA.portable.OutputStream _invoke_recupererNomPhotoSalarie(
             final org.omg.CORBA.portable.InputStream _is,
             final org.omg.CORBA.portable.ResponseHandler handler) {

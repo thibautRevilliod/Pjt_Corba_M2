@@ -35,7 +35,7 @@ public final class InfoSalarie implements org.omg.CORBA.portable.IDLEntity
     /**
      * Struct member dateFinValidateCompte
      */
-    public short dateFinValidateCompte;
+    public modControledAcces.Date dateFinValidateCompte;
 
     /**
      * Default constructor
@@ -52,7 +52,7 @@ public final class InfoSalarie implements org.omg.CORBA.portable.IDLEntity
      * @param empreinte empreinte struct member
      * @param dateFinValidateCompte dateFinValidateCompte struct member
      */
-    public InfoSalarie(String idSal, String nom, String prenom, String photo, String empreinte, short dateFinValidateCompte)
+    public InfoSalarie(String idSal, String nom, String prenom, String photo, String empreinte, modControledAcces.Date dateFinValidateCompte)
     {
         this.idSal = idSal;
         this.nom = nom;

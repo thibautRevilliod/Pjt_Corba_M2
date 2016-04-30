@@ -92,7 +92,7 @@ public class InfoSalarieHelper
                 _members[4].type = orb.get_primitive_tc(org.omg.CORBA.TCKind.tk_string);
                 _members[5] = new org.omg.CORBA.StructMember();
                 _members[5].name = "dateFinValidateCompte";
-                _members[5].type = orb.get_primitive_tc(org.omg.CORBA.TCKind.tk_short);
+                _members[5].type = modControledAcces.DateHelper.type();
                 _tc = orb.create_struct_tc(id(),"InfoSalarie",_members);
                 _working = false;
             }
@@ -125,7 +125,7 @@ public class InfoSalarieHelper
         new_one.prenom = istream.read_string();
         new_one.photo = istream.read_string();
         new_one.empreinte = istream.read_string();
-        new_one.dateFinValidateCompte = istream.read_short();
+        new_one.dateFinValidateCompte = modControledAcces.DateHelper.read(istream);
 
         return new_one;
     }
@@ -142,7 +142,7 @@ public class InfoSalarieHelper
         ostream.write_string(value.prenom);
         ostream.write_string(value.photo);
         ostream.write_string(value.empreinte);
-        ostream.write_short(value.dateFinValidateCompte);
+        modControledAcces.DateHelper.write(ostream,value.dateFinValidateCompte);
     }
 
 }

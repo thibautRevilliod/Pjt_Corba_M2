@@ -63,6 +63,14 @@ public class EntiteLogicielleAnnuairePOATie extends EntiteLogicielleAnnuairePOA
     }
 
     /**
+     * Operation listeTousSalaries
+     */
+    public String[] listeTousSalaries()
+    {
+        return _tie.listeTousSalaries();
+    }
+
+    /**
      * Operation recupererNomPhotoSalarie
      */
     public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)

@@ -8,6 +8,11 @@ package modControledAcces;
 public interface EntiteLogicielleAnnuaireOperations
 {
     /**
+     * Operation listeTousSalaries
+     */
+    public String[] listeTousSalaries();
+
+    /**
      * Operation recupererNomPhotoSalarie
      */
     public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
