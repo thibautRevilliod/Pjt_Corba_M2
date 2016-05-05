@@ -7,7 +7,7 @@ import org.omg.PortableServer.*;
 
 import impl.EntiteLogicielleAutorisationImpl;
 
-public class EntiteLogicielleAnnuaire {
+public class LanceurEntiteLogicielleAnnuaire {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

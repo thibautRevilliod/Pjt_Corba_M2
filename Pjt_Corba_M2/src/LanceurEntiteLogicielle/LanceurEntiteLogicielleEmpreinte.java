@@ -2,19 +2,19 @@ package LanceurEntiteLogicielle;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
-import org.omg.CosNaming.NamingContext;
-import org.omg.PortableServer.POA;
-import org.omg.PortableServer.POAHelper;
+import org.omg.CosNaming.*;
+import org.omg.PortableServer.*;
 
 import impl.EntiteLogicielleAutorisationImpl;
-import impl.EntiteLogicielleJournalisationImpl;
 
-public class EntiteLogicielleJournalisation {
+public class LanceurEntiteLogicielleEmpreinte {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		enregistrementNS(args);
+
+		
+		
 	}
 	
 	private static void enregistrementNS(String[] args)
@@ -32,10 +32,10 @@ public class EntiteLogicielleJournalisation {
 
 	        // Creation du servant
 	        //*********************
-	        EntiteLogicielleJournalisationImpl maJournalisation = new EntiteLogicielleJournalisationImpl();
+	        EntiteLogicielleAutorisationImpl monAutorisation = new EntiteLogicielleAutorisationImpl();
 
 	        // Activer le servant au sein du POA et recuperer son ID
-	        byte[] monEuroId = rootPOA.activate_object(maJournalisation);
+	        byte[] monEuroId = rootPOA.activate_object(monAutorisation);
 
 	        // Activer le POA manager
 	        rootPOA.the_POAManager().activate();
@@ -54,7 +54,7 @@ public class EntiteLogicielleJournalisation {
 	        nameToRegister[0] = new org.omg.CosNaming.NameComponent(nomObj,"");
 
 	        // Enregistrement de l'objet CORBA dans le service de noms
-	        nameRoot.rebind(nameToRegister,rootPOA.servant_to_reference(maJournalisation));
+	        nameRoot.rebind(nameToRegister,rootPOA.servant_to_reference(monAutorisation));
 	        System.out.println("==> Nom '"+ nomObj + "' est enregistre dans le service de noms.");
 
 //	        String IORServant = orb.object_to_string(rootPOA.servant_to_reference(monEuro));
@@ -70,5 +70,6 @@ public class EntiteLogicielleJournalisation {
 			e.printStackTrace();
 		}
 	}
+	
 
 }

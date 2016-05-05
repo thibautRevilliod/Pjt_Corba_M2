@@ -1,50 +1,34 @@
 package impl;
 
-import modControledAcces.Date;
-import modControledAcces.EntiteLogicielleAnnuairePOA;
-import modControledAcces.EntiteLogicielleEmpreinte;
-import modControledAcces.EntiteLogiciellePorte;
-import modControledAcces.ErreurSalarieExistant;
-import modControledAcces.ErreurSalarieInexistant;
-import modControledAcces.InfoSalarie;
+import bdd.BddJDBC_EL_Autorisation;
+import bdd.BddJDBC_EL_Journalisation;
+import modControledAcces.CleInconnue;
 
-public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleAnnuairePOA {
+import modControledAcces.EntiteLogicielleJournalisationPOA;
+
+import modControledAcces.EvenementJournalisation;
+
+
+public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournalisationPOA {
+	
+	public static BddJDBC_EL_Journalisation bddJDBC_EL_Journalisation = new BddJDBC_EL_Journalisation("BD_Journalisation");
 	
 	@Override
-	public InfoSalarie[] listeTousSalaries() {
+	public EvenementJournalisation consulter(String qui, String quoi, String quand_debut, String quand_fin,
+			String cleDemandeur) throws CleInconnue {
+		// TODO Auto-generated method stub
 		
-		InfoSalarie infoSalarie = new InfoSalarie();
-		InfoSalarie[] listeSalaries = {infoSalarie};
+		EvenementJournalisation evenementJournalisation = bddJDBC_EL_Journalisation.consulter(qui, 
+				quoi, quand_debut,  quand_fin);
 		
-		System.out.println("test !!!!!");
-		return listeSalaries;
+		return evenementJournalisation;
 	}
 
 	@Override
-	public InfoSalarie recupererNomPhotoSalarie(String idSal, EntiteLogicielleEmpreinte el_Empreinte)
-			throws ErreurSalarieInexistant {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InfoSalarie infosSalarie(String idSal, EntiteLogicielleEmpreinte el_Empreinte)
-			throws ErreurSalarieInexistant {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String creerSalarie(String mdp, String nom, String prenom, String photo, Date heureDebut, Date heureFin,
-			Date jourDebut, Date jourFin, short dureeValidationCompte) throws ErreurSalarieExistant {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String sauthentifier(String photo, EntiteLogiciellePorte el_Porte) throws ErreurSalarieInexistant {
-		// TODO Auto-generated method stub
-		return null;
+	public void enregistrerEvenement(EvenementJournalisation evenementJournalisation) {
+		// TODO Auto-generated method stub 
+		
+		bddJDBC_EL_Journalisation.enregistrerEvenement(evenementJournalisation);
 	}
 
 }
