@@ -7,7 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
+import modControledAcces.AccreditationZone;
+import modControledAcces.InfoSalarieAccreditation;
 import modControledAcces.InfoZone;
 
 public class BddJDBC_EL_Autorisation {
@@ -28,7 +32,7 @@ public class BddJDBC_EL_Autorisation {
         	s.execute("create table IF NOT EXISTS Accrediter  ( " +
         			" idSal int NOT NULL, " +
         			" idZone int NOT NULL, " +
-        			" dateAccreditation date , " +
+        			" dateAccreditation TIMESTAMP , " +
 					" jourDebut TIMESTAMP , " +
         			" jourFin TIMESTAMP , " +
 					" heureDebut TIMESTAMP , " +
@@ -108,7 +112,7 @@ public class BddJDBC_EL_Autorisation {
 		}
 	}
 	
-	public int creerAccrediter(String pidSal, String pidZone, Date pdateAccreditation, Timestamp pjourDebut, Timestamp pjourFin, Timestamp pheureDebut,Timestamp pheureFin) {
+	public int creerAccrediter(String pidSal, String pidZone, Timestamp pdateAccreditation, Timestamp pjourDebut, Timestamp pjourFin, Timestamp pheureDebut,Timestamp pheureFin) {
 		int id = 0;
 		try {
 			Statement s = conn.createStatement();
@@ -150,24 +154,131 @@ public class BddJDBC_EL_Autorisation {
 //		}
 //	}
 	
-	public int modifierAccreditation(String pidSal, String pidZone, Timestamp pjourDebut, Timestamp pjourFin, Timestamp pheureDebut,Timestamp pheureFin) {
-		int id = 0;
+	public InfoSalarieAccreditation supprimerAccreditation(String pidSal, String pidZone) {
+		InfoSalarieAccreditation res = null;
+		AccreditationZone[] accreditationZone = null;
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select idSal from Accrediter WHERE idZone = "+pidZone+" AND idSal = "+pidSal);
+			ResultSet rs = s.executeQuery("SELECT idSal,idZone FROM Accrediter WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
+        	if (rs.next())
+        	{
+        		s.executeUpdate("DELETE FROM Accrediter WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
+        	}
+        	
+        	//retourne les droits qui restent au salarié
+        	rs = s.executeQuery("SELECT COUNT(*) FROM Accrediter WHERE idSal = "+pidSal+"");
+
 			if (rs.next())
-			{
-				s.executeUpdate("UPDATE Accrediter SET jourDebut = "+pjourDebut+" AND jourFin = "+pjourFin+" AND heureDebut = "+pheureDebut+" AND heureFin = "+pheureFin+" WHERE idZone = "+pidZone+" AND idSal = "+pidSal);
-			}
-			else
-			{
-				id = -2; // le cas ou accreditation existe déjà
-			}
-	        return id;
+        	{
+				accreditationZone = new AccreditationZone[rs.getInt(1)];
+        	}
+			
+			rs = s.executeQuery("select idZone, dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Zones");
+			int i =0;
+    		while(rs.next())
+    		{
+    			accreditationZone[i] = new AccreditationZone(String.valueOf(rs.getInt(1)),new modControledAcces.Date(rs.getTimestamp(2).toString()), new modControledAcces.Date(rs.getTimestamp(3).toString()), new modControledAcces.Date(rs.getTimestamp(4).toString()),new modControledAcces.Date(rs.getTimestamp(5).toString()), new modControledAcces.Date(rs.getTimestamp(6).toString()));
+    			i++;
+    		}
+        	res = new InfoSalarieAccreditation(pidSal,accreditationZone);
+        	return res;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			id = -1;
-			return id;
+			return res;
+		}
+	}
+	
+	public InfoSalarieAccreditation modifierAccreditation(String pidSal, String pidZone, Timestamp pjourDebut, Timestamp pjourFin, Timestamp pheureDebut, Timestamp pheureFin) {
+		InfoSalarieAccreditation res = null;
+		AccreditationZone[] accreditationZone = null;
+		try {
+			Statement s = conn.createStatement();
+			ResultSet rs = s.executeQuery("SELECT idSal,idZone FROM Accrediter WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
+        	if (rs.next())
+        	{
+        		//TODO : Doit-on mettre à jour la dateAccreditation ? (avec la date du jour où l'on fait la modification)
+        		s.executeUpdate("UPDATE Accrediter SET jourDebut = "+pjourDebut+", jourFin = "+pjourFin+", heureDebut = "+pheureDebut+", heureFin = "+pheureFin+" WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
+        	}
+        	
+        	//retourne les droits qui restent au salarié
+        	rs = s.executeQuery("SELECT COUNT(*) FROM Accrediter WHERE idSal = "+pidSal+"");
+
+			if (rs.next())
+        	{
+				accreditationZone = new AccreditationZone[rs.getInt(1)];
+        	}
+			
+			rs = s.executeQuery("select idZone, dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Zones");
+			int i =0;
+    		while(rs.next())
+    		{
+    			accreditationZone[i] = new AccreditationZone(String.valueOf(rs.getInt(1)),new modControledAcces.Date(rs.getTimestamp(2).toString()), new modControledAcces.Date(rs.getTimestamp(3).toString()), new modControledAcces.Date(rs.getTimestamp(4).toString()),new modControledAcces.Date(rs.getTimestamp(5).toString()), new modControledAcces.Date(rs.getTimestamp(6).toString()));
+    			i++;
+    		}
+        	res = new InfoSalarieAccreditation(pidSal,accreditationZone);
+        	return res;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return res;
+		}
+	}
+	
+	public InfoSalarieAccreditation lireAccreditation(String pidSal) {
+		InfoSalarieAccreditation res = null;
+		AccreditationZone[] accreditationZone = null;
+		try {
+			Statement s = conn.createStatement();
+			ResultSet rs = s.executeQuery("SELECT COUNT(*) FROM Accrediter WHERE idSal = "+pidSal+"");
+
+			if (rs.next())
+        	{
+				accreditationZone = new AccreditationZone[rs.getInt(1)];
+        	}
+			
+			rs = s.executeQuery("select idZone, dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Zones");
+			int i =0;
+    		while(rs.next())
+    		{
+    			accreditationZone[i] = new AccreditationZone(String.valueOf(rs.getInt(1)),new modControledAcces.Date(rs.getTimestamp(2).toString()), new modControledAcces.Date(rs.getTimestamp(3).toString()), new modControledAcces.Date(rs.getTimestamp(4).toString()),new modControledAcces.Date(rs.getTimestamp(5).toString()), new modControledAcces.Date(rs.getTimestamp(6).toString()));
+    			i++;
+    		}
+        	res = new InfoSalarieAccreditation(pidSal,accreditationZone);
+        	return res;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return res;
+		}
+	}
+	
+	public boolean verifierAutorisation(String pidSal, String pidZone, Timestamp dateHeureDde) {
+		//Timestamp dateHeureDde <=> à la date de la demande actuelle pour vérifier son droit d'accès à la zone
+		boolean res = false;
+		
+		try {
+			Statement s = conn.createStatement();
+			ResultSet rs = s.executeQuery("SELECT jourDebut, jourFin, heureDebut, heureFin FROM Accrediter WHERE idSal = "+pidSal+" AND idZone = "+pidZone);
+
+			if (rs.next())
+        	{
+				Timestamp jourDebut = rs.getTimestamp(1);
+				Timestamp jourFin = rs.getTimestamp(2);
+				Timestamp heureDebut = rs.getTimestamp(3);
+				Timestamp heureFin = rs.getTimestamp(4);
+				Calendar cal1 = GregorianCalendar.getInstance();
+
+				if(dateHeureDde.before(jourFin) && dateHeureDde.after(jourDebut))
+				{
+					Date d = new Date(dateHeureDde.getTime());
+					
+						//TODO : comparer les heures ????
+				}
+        	}
+			
+			
+        	return res;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return res;
 		}
 	}
 
@@ -211,10 +322,76 @@ public class BddJDBC_EL_Autorisation {
 	}
 	
 	public void init() {
-		creerZone("1", "Zone1");
-		creerZone("2", "Zone2");
-		creerZone("3", "Zone3");
-		creerZone("4", "Zone4");	
+		//zones
+			creerZone("1", "Zone1");
+			creerZone("2", "Zone2");
+			creerZone("3", "Zone3");
+			creerZone("4", "Zone4");	
+		//accreditations
+			//accreditation1
+				//cal1 : pdateAccreditation
+				Calendar cal1 = GregorianCalendar.getInstance();
+				cal1.set(Calendar.DAY_OF_MONTH, 05);
+				cal1.set(Calendar.MONTH, 05-1);// -1 as month is zero-based
+				cal1.set(Calendar.YEAR, 2016);
+				Timestamp tstamp1 = new Timestamp(cal1.getTimeInMillis());
+				//cal2 : pjourDebut
+				Calendar cal2 = GregorianCalendar.getInstance();
+				cal2.set(Calendar.DAY_OF_MONTH, 06);
+				cal2.set(Calendar.MONTH, 05-1);// -1 as month is zero-based
+				cal2.set(Calendar.YEAR, 2016);
+				Timestamp tstamp2 = new Timestamp(cal2.getTimeInMillis());
+				//cal3 : pjourFin
+				Calendar cal3 = GregorianCalendar.getInstance();
+				cal3.set(Calendar.DAY_OF_MONTH, 25);
+				cal3.set(Calendar.MONTH, 06-1);// -1 as month is zero-based
+				cal3.set(Calendar.YEAR, 2016);
+				Timestamp tstamp3 = new Timestamp(cal3.getTimeInMillis());
+				//cal4 : pheureDebut
+				Calendar cal4 = GregorianCalendar.getInstance();
+				cal4.set(Calendar.HOUR_OF_DAY, 8);
+				cal4.set(Calendar.MINUTE, 00);
+				cal4.set(Calendar.SECOND, 00);
+				Timestamp tstamp4 = new Timestamp(cal4.getTimeInMillis());
+				//cal5 : pheureFin
+				Calendar cal5 = GregorianCalendar.getInstance();
+				cal5.set(Calendar.HOUR_OF_DAY, 17);
+				cal5.set(Calendar.MINUTE, 00);
+				cal5.set(Calendar.SECOND, 00);
+				Timestamp tstamp5 = new Timestamp(cal5.getTimeInMillis());
+				creerAccrediter("1", "1", tstamp1, tstamp2, tstamp3, tstamp4, tstamp5);
+			//accreditation2
+				//cal1 : pdateAccreditation
+				cal1 = GregorianCalendar.getInstance();
+				cal1.set(Calendar.DAY_OF_MONTH, 05);
+				cal1.set(Calendar.MONTH, 05-1);// -1 as month is zero-based
+				cal1.set(Calendar.YEAR, 2016);
+				tstamp1 = new Timestamp(cal1.getTimeInMillis());
+				//cal2 : pjourDebut
+				cal2 = GregorianCalendar.getInstance();
+				cal2.set(Calendar.DAY_OF_MONTH, 16);
+				cal2.set(Calendar.MONTH, 05-1);// -1 as month is zero-based
+				cal2.set(Calendar.YEAR, 2016);
+				tstamp2 = new Timestamp(cal2.getTimeInMillis());
+				//cal3 : pjourFin
+				cal3 = GregorianCalendar.getInstance();
+				cal3.set(Calendar.DAY_OF_MONTH, 21);
+				cal3.set(Calendar.MONTH, 05-1);// -1 as month is zero-based
+				cal3.set(Calendar.YEAR, 2016);
+				tstamp3 = new Timestamp(cal3.getTimeInMillis());
+				//cal4 : pheureDebut
+				cal4 = GregorianCalendar.getInstance();
+				cal4.set(Calendar.HOUR_OF_DAY, 9);
+				cal4.set(Calendar.MINUTE, 00);
+				cal4.set(Calendar.SECOND, 00);
+				tstamp4 = new Timestamp(cal4.getTimeInMillis());
+				//cal5 : pheureFin
+				cal5 = GregorianCalendar.getInstance();
+				cal5.set(Calendar.HOUR_OF_DAY, 18);
+				cal5.set(Calendar.MINUTE, 00);
+				cal5.set(Calendar.SECOND, 00);
+				tstamp5 = new Timestamp(cal5.getTimeInMillis());
+				creerAccrediter("2", "2", tstamp1, tstamp2, tstamp3, tstamp4, tstamp5);
 	}
 	
 	/*
