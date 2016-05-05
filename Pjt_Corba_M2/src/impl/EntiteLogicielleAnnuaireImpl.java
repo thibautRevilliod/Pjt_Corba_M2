@@ -17,7 +17,7 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	@Override
 	public InfoSalarie[] listeTousSalaries() {
 		
-		return bddJDBC_EL_Annuaire.listeTousSalaries();;
+		return bddJDBC_EL_Annuaire.listeTousSalaries();
 	}
 
 	@Override
