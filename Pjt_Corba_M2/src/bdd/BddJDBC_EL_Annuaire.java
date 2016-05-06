@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import modControledAcces.Date;
 import modControledAcces.InfoSalarie;
 import modControledAcces.InfoZone;
 
@@ -29,6 +30,10 @@ public class BddJDBC_EL_Annuaire {
         			" nom VARCHAR( 500 ), " + 
         			" prenom VARCHAR( 500 ), " +
         			" photo VARCHAR( 500 ) UNIQUE, " +
+        			" heureDebut TimesTamp, " +
+        			" heureFin TimesTamp, " +
+        			" jourDebut TimesTamp, " +
+        			" jourFin TimesTamp, " +
         			" dateFinValiditeCompte TIMESTAMP, " +
         			" estPermanent boolean )");
 			
@@ -65,7 +70,8 @@ public class BddJDBC_EL_Annuaire {
 		return res;
 	}
 	
-	public String creerSalarie(String pmdp, String pnom, String pprenom, String pphoto, Timestamp pdateFinValiditeCompte, boolean pestPermanent) {
+	public String creerSalarie(String pmdp, String pnom, String pprenom, String pphoto, Timestamp pheureDebut, Timestamp pheureFin,
+			Timestamp pjourDebut, Timestamp pjourFin, Timestamp pdateFinValiditeCompte, boolean pestPermanent) {
 		String ids = "";
 		int id = 0;
 		
@@ -79,8 +85,16 @@ public class BddJDBC_EL_Annuaire {
 			rs = s.executeQuery("select photo from Salarie WHERE idSal = '"+pphoto+"'");
 			if (!rs.next())
 			{
-	        	s.executeUpdate("insert into Salarie (idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent) values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', "+pdateFinValiditeCompte+", "+pestPermanent+")");
-	        	ids = String.valueOf(id);
+				if(pheureDebut == null && pheureFin == null && pjourDebut == null && pjourFin == null)
+				{
+					s.executeUpdate("insert into Salarie (idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent) "
+		        			+ "values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', "+pdateFinValiditeCompte+", "+pestPermanent+")");
+				}else
+				{
+		        	s.executeUpdate("insert into Salarie (idSal,mdp,nom,prenom,photo,heureDebut,heureFin,jourDebut,jourFin,dateFinValiditeCompte,estPermanent) "
+		        			+ "values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', "+pheureDebut+", "+pheureFin+", "+pjourDebut+", "+pjourFin+", "+pdateFinValiditeCompte+", "+pestPermanent+")");
+				}
+		        ids = String.valueOf(id);
 			}
 			else
 			{
@@ -197,7 +211,7 @@ public class BddJDBC_EL_Annuaire {
 			cal.set(Calendar.MONTH, mois-1);// -1 as month is zero-based
 			cal.set(Calendar.YEAR, annee);
 			Timestamp tstamp = new Timestamp(cal.getTimeInMillis());
-			creerSalarie("mdp1","nom1","prenom1","photo1",tstamp,true);	
+			creerSalarie("mdp1","nom1","prenom1","photo1",null,null,null,null,tstamp,true);	
 		//salarie 2
 			jour = 16;
 			mois = 06;
@@ -207,6 +221,6 @@ public class BddJDBC_EL_Annuaire {
 			cal.set(Calendar.MONTH, mois-1);// -1 as month is zero-based
 			cal.set(Calendar.YEAR, annee);
 			tstamp = new Timestamp(cal.getTimeInMillis());
-			creerSalarie("mdp2","nom2","prenom2","photo2",tstamp,true);	
+			creerSalarie("mdp2","nom2","prenom2","photo2",null,null,null,null,tstamp,true);	
 	}
 }
