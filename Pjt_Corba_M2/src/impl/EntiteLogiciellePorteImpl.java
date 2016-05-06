@@ -7,7 +7,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import bdd.BddJDBC_EL_Autorisation;
+import modControledAcces.CleInconnue;
 import modControledAcces.Date;
+import modControledAcces.EmpreinteExistante;
+import modControledAcces.EmpreinteIncorrecte;
 import modControledAcces.EntiteLogicielleAnnuaire;
 import modControledAcces.EntiteLogiciellePortePOA;
 import modControledAcces.EntiteLogicielleEmpreinte;
@@ -30,6 +33,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	public static EntiteLogicielleEmpreinte monELEmpreinte;
 	public static EntiteLogicielleAutorisation monELAutorisation;
 	public static EntiteLogicielleJournalisation monELJournalisation;
+	public static String cleEmpreinte = "EntiteLogiciellePorte_empreinte";
 	public static BddJDBC_EL_Porte bddJDBC_EL_Porte = new BddJDBC_EL_Porte("BD_Porte");
 
 	@Override
@@ -62,13 +66,29 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	public void demanderAuthentifier(String photo) {
 		// TODO Auto-generated method stub
 		connexionELannuaire();
-		monELAnnuaire.sauthentifier(photo);
+		try {
+			monELAnnuaire.sauthentifier(photo);
+		} catch (ErreurSalarieInexistant e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		String empreinte;
 		
 		connexionELempreinte();
 		String idSal;
-		monELEmpreinte.verifierCorrespondance(idSal, empreinte);
+		try {
+			monELEmpreinte.verifierCorrespondance(idSal, empreinte, cleEmpreinte);
+		} catch (ErreurSalarieInexistant e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CleInconnue e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EmpreinteIncorrecte e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -76,7 +96,18 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		// TODO Auto-generated method stub
 		
 		connexionELempreinte();
-		monELEmpreinte.modifierEmpreinte(idSal, empreinte);
+		try {
+			monELEmpreinte.modifierEmpreinte(idSal, empreinte, cleEmpreinte);
+		} catch (EmpreinteExistante e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CleInconnue e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EmpreinteIncorrecte e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

@@ -94,7 +94,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 
 	@Override
 	public InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, Date jourDebut, Date jourFin, 
-			Date heureDebut, Date heureFin, EntiteLogicielleEmpreinte el_Empreinte) throws ErreurSalarieInexistant, ErreurZoneInexistant {
+			Date heureDebut, Date heureFin) throws ErreurSalarieInexistant, ErreurZoneInexistant {
 		
 		Timestamp tjourDebut = new Timestamp(Long.valueOf(jourDebut.timestamp));
 		Timestamp tjourFin = new Timestamp(Long.valueOf(jourFin.timestamp));
@@ -108,8 +108,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	}
 
 	@Override
-	public InfoSalarieAccreditation supprimerAccreditation(String idSal, String idZone,
-			EntiteLogicielleEmpreinte el_Empreinte) throws ErreurSalarieInexistant, ErreurZoneInexistant {
+	public InfoSalarieAccreditation supprimerAccreditation(String idSal, String idZone) throws ErreurSalarieInexistant, ErreurZoneInexistant {
 		
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.supprimerAccreditation(idSal, idZone);
 		

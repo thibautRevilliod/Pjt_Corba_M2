@@ -140,8 +140,8 @@ module modControledAcces
 		boolean verifierAutorisation(in string idSal, in string idZone) raises (ErreurSalarieInexistant, ErreurZoneInexistant); 
 		void creerAccreditation(in string idSal, in string idZone, in Date jourDebut, in Date jourFin, in Date heureDebut, in Date heureFin, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant);
 		InfoSalarieAccreditation lireAccreditationSalarie(in string idSal) raises (ErreurSalarieInexistant);
-		InfoSalarieAccreditation modifierAccreditation (in string idSal, in string idZone, in Date jourDebut, in Date jourFin, in Date heureDebut, in Date heureFin, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
-		InfoSalarieAccreditation supprimerAccreditation (in string idSal, in string idZone, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
+		InfoSalarieAccreditation modifierAccreditation (in string idSal, in string idZone, in Date jourDebut, in Date jourFin, in Date heureDebut, in Date heureFin) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
+		InfoSalarieAccreditation supprimerAccreditation (in string idSal, in string idZone) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
 
 	};
 	

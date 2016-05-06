@@ -13,7 +13,7 @@ public class PersonnelRH {
 	public static InfoSalarie[] listeSalaries;
 	public static EntiteLogicielleEmpreinte monELEmpreinte;
 	public static EntiteLogicielleAnnuaire monELAnnuaire;
-	public static String cleEmpreinte = "personnel_rh";
+	public static String cleEmpreinte = "personnel_rh_empreinte";
 	
 	public static void connexionELempreinte (String[] args) {
 		

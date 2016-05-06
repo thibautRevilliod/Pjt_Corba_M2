@@ -33,13 +33,13 @@ public interface EntiteLogicielleAutorisationOperations
     /**
      * Operation modifierAccreditation
      */
-    public modControledAcces.InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date heureDebut, modControledAcces.Date heureFin)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant;
 
     /**
      * Operation supprimerAccreditation
      */
-    public modControledAcces.InfoSalarieAccreditation supprimerAccreditation(String idSal, String idZone, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarieAccreditation supprimerAccreditation(String idSal, String idZone)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant;
 
 }

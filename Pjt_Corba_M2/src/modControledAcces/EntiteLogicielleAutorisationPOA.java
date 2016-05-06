@@ -161,11 +161,10 @@ public abstract class EntiteLogicielleAutorisationPOA extends org.omg.PortableSe
         modControledAcces.Date arg3_in = modControledAcces.DateHelper.read(_is);
         modControledAcces.Date arg4_in = modControledAcces.DateHelper.read(_is);
         modControledAcces.Date arg5_in = modControledAcces.DateHelper.read(_is);
-        modControledAcces.EntiteLogicielleEmpreinte arg6_in = modControledAcces.EntiteLogicielleEmpreinteHelper.read(_is);
 
         try
         {
-            modControledAcces.InfoSalarieAccreditation _arg_result = modifierAccreditation(arg0_in, arg1_in, arg2_in, arg3_in, arg4_in, arg5_in, arg6_in);
+            modControledAcces.InfoSalarieAccreditation _arg_result = modifierAccreditation(arg0_in, arg1_in, arg2_in, arg3_in, arg4_in, arg5_in);
 
             _output = handler.createReply();
             modControledAcces.InfoSalarieAccreditationHelper.write(_output,_arg_result);
@@ -190,11 +189,10 @@ public abstract class EntiteLogicielleAutorisationPOA extends org.omg.PortableSe
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
         String arg1_in = _is.read_string();
-        modControledAcces.EntiteLogicielleEmpreinte arg2_in = modControledAcces.EntiteLogicielleEmpreinteHelper.read(_is);
 
         try
         {
-            modControledAcces.InfoSalarieAccreditation _arg_result = supprimerAccreditation(arg0_in, arg1_in, arg2_in);
+            modControledAcces.InfoSalarieAccreditation _arg_result = supprimerAccreditation(arg0_in, arg1_in);
 
             _output = handler.createReply();
             modControledAcces.InfoSalarieAccreditationHelper.write(_output,_arg_result);
