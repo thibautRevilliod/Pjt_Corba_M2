@@ -101,35 +101,53 @@ public class PersonnelRH {
 		// TODO Auto-generated method stub
 		
 		connexionELempreinte(args);
-		String empreinte;
+		String empreinte = null;
 		monELEmpreinte.getCorrespondance(empreinte, cleEmpreinte);
 		
 		connexionELannuaire(args);
-		String idSal;
+		String idSal = null;
 		monELAnnuaire.infosSalarie(idSal);
 		
 		connexionELempreinte(args);
 		monELEmpreinte.supprimerEmpreinte(idSal, cleEmpreinte);
 		
 		connexionELempreinte(args);
-		monELEmpreinte.ajouterEmpreinte(idSal, empreinte, cleEmpreinte);
+		try {
+			monELEmpreinte.ajouterEmpreinte(idSal, empreinte, cleEmpreinte);
+		} catch (EmpreinteExistante e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EmpreinteIncorrecte e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		connexionELempreinte(args);
-		monELEmpreinte.verifierCorrespondance(idSal, empreinte, cleEmpreinte);
+		try {
+			monELEmpreinte.verifierCorrespondance(idSal, empreinte, cleEmpreinte);
+		} catch (EmpreinteIncorrecte e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		connexionELannuaire(args);
-		String mdp;
-		String prenom;
-		String nom;
-		String photo;
-		Date heureDebut;
-		Date heureFin;
-		Date jourDebut;
-		Date jourFin;
+		String mdp = null;
+		String prenom = null;
+		String nom = null;
+		String photo = null;
+		Date heureDebut = null;
+		Date heureFin = null;
+		Date jourDebut = null;
+		Date jourFin = null;
 		boolean estPermanent = true;
 		//TODO renommer dureeeValiditeCompte
-		short dureeValidationCompte;
-		monELAnnuaire.creerSalarie(mdp, nom, prenom, photo, heureDebut, heureFin, jourDebut, jourFin, dureeValidationCompte, estPermanent);
+		Date dateValiditeCompte = null;
+		try {
+			monELAnnuaire.creerSalarie(mdp, nom, prenom, photo, heureDebut, heureFin, jourDebut, jourFin, dateValiditeCompte, estPermanent);
+		} catch (ErreurSalarieExistant e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		connexionELannuaire(args);
 		monELAnnuaire.recupererNomPhotoSalarie(idSal);

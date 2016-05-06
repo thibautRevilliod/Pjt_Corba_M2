@@ -73,10 +73,10 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 			e1.printStackTrace();
 		}
 		
-		String empreinte;
+		String empreinte = null;
 		
 		connexionELempreinte();
-		String idSal;
+		String idSal = null;
 		try {
 			monELEmpreinte.verifierCorrespondance(idSal, empreinte, cleEmpreinte);
 		} catch (ErreurSalarieInexistant e) {

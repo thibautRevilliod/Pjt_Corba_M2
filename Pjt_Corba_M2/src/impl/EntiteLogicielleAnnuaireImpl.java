@@ -1,5 +1,7 @@
 package impl;
 
+import java.sql.Timestamp;
+
 import bdd.BddJDBC_EL_Annuaire;
 import bdd.BddJDBC_EL_Autorisation;
 import modControledAcces.Date;
@@ -38,7 +40,14 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	public String creerSalarie(String mdp, String nom, String prenom, String photo, Date heureDebut, Date heureFin,
 			Date jourDebut, Date jourFin, Date dateValiditeCompte, boolean estPermanent) throws ErreurSalarieExistant {
 		//TODO: Il manque estPermanent et le type de date ne correspond pas : il faut juste une dateFinValiditeCompte de type Timestamp
-		return bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, heureDebut, heureFin, jourDebut, jourFin, dateValiditeCompte, estPermanent);
+
+		Timestamp tjourDebut = new Timestamp(Long.valueOf(jourDebut.timestamp));
+		Timestamp tjourFin = new Timestamp(Long.valueOf(jourFin.timestamp));
+		Timestamp theureDebut = new Timestamp(Long.valueOf(heureDebut.timestamp));
+		Timestamp theureFin = new Timestamp(Long.valueOf(heureFin.timestamp));
+		Timestamp tdateValiditeCompte = new Timestamp(Long.valueOf(dateValiditeCompte.timestamp));
+		
+		return bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, theureDebut, theureFin, tjourDebut, tjourFin, tdateValiditeCompte, estPermanent);
 	}
 
 	@Override

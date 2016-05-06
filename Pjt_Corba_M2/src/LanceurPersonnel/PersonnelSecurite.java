@@ -148,25 +148,25 @@ public class PersonnelSecurite {
 		System.out.println("liste zones : " + Arrays.toString(listeZones));
 		
 		connexionELautorisation(args);
-		String idSal;
+		String idSal = null;
 		monELAutorisation.lireAccreditationSalarie(idSal);
 		
 		connexionELautorisation(args);
-		String idZone;
-		Date jourDebut;
-		Date jourFin;
-		Date heureDebut;
-		Date heureFin;
+		String idZone = null;
+		Date jourDebut = null;
+		Date jourFin = null;
+		Date heureDebut = null;
+		Date heureFin = null;
 		monELAutorisation.modifierAccreditation(idSal, idZone, jourDebut, jourFin, heureDebut, heureFin);
 		
 		connexionELautorisation(args);
 		monELAutorisation.supprimerAccreditation(idSal, idZone);
 		
 		connexionELjournalisation(args);
-		String qui;
-		String quoi;
-		String quand_debut;
-		String quand_fin;
+		String qui = null;
+		String quoi = null;
+		String quand_debut = null;
+		String quand_fin = null;
 		monELJournalisation.consulter(qui, quoi, quand_debut, quand_fin, cleJournalisation);
 		
 	}
