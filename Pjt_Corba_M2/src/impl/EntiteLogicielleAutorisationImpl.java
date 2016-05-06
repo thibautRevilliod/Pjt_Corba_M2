@@ -4,6 +4,7 @@ package impl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.sql.Timestamp;
 
 import LanceurEntiteLogicielle.LanceurEntiteLogicielleJournalisation;
 import bdd.BddJDBC_EL_Autorisation;
@@ -41,7 +42,6 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		try {
 			bddJDBC_EL_Autorisation.fermer();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -51,8 +51,9 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	@Override
 	public boolean verifierAutorisation(String idSal, String idZone, EntiteLogiciellePorte el_Porte)
 			throws ErreurSalarieInexistant, ErreurZoneInexistant {
-		// TODO Auto-generated method stub
-		return bddJDBC_EL_Autorisation.verifierAutorisation(idSal, idZone);
+		java.util.Date d = new java.util.Date();
+		
+		return bddJDBC_EL_Autorisation.verifierAutorisation(idSal, idZone, new Timestamp(d.getTime()));
 	}
 
 	@Override
@@ -60,6 +61,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 			Date heureDebut, Date heureFin, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant {
 		if(cleDemandeur.equals(clePersonnel))
 		{
+			//TODO : il faut transformer les types date en TimesTamp
 			bddJDBC_EL_Autorisation.creerAccrediter(idSal, idZone, new Date(), jourDebut, jourFin, heureDebut, heureFin);
 			connexionELjournalisation();
 			EvenementJournalisation evenementJournalisation = new EvenementJournalisation(null, "creerAccreditation", 
@@ -75,9 +77,8 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 
 	@Override
 	public InfoSalarieAccreditation lireAccreditationSalarie(String idSal) throws ErreurSalarieInexistant {
-		// TODO Auto-generated method stub
 		
-		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.lireAccreditationSalarie(idSal);
+		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.lireAccreditation(idSal);
 		
 		return infoSalarieAccreditation;
 	}
@@ -85,10 +86,9 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	@Override
 	public InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, Date jourDebut, Date jourFin, 
 			Date heureDebut, Date heureFin, EntiteLogicielleEmpreinte el_Empreinte) throws ErreurSalarieInexistant, ErreurZoneInexistant {
-		// TODO Auto-generated method stub
 		
-		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.modifierAccreditation(idSal, 
-				idZone, jourDebut, jourFin, heureDebut, heureFin);
+		// TODO : modifier le type date en TimesTamp
+		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.modifierAccreditation(idSal, idZone, jourDebut, jourFin, heureDebut, heureFin);
 		
 		return infoSalarieAccreditation;
 	}
@@ -96,10 +96,10 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	@Override
 	public InfoSalarieAccreditation supprimerAccreditation(String idSal, String idZone,
 			EntiteLogicielleEmpreinte el_Empreinte) throws ErreurSalarieInexistant, ErreurZoneInexistant {
-		// TODO Auto-generated method stub
 		
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.supprimerAccreditation(idSal, idZone);
 		
+		//TODO : il faut pas mettre "null" sinon ça va planter ! 
 		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(null, "supprimerAccreditation", 
 				"idSal : "+idSal+ "idZone : "+idZone);
 		monELJournalisation.enregistrerEvenement(evenementJournalisation);
