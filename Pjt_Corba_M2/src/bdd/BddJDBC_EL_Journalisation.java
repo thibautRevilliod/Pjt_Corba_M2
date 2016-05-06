@@ -69,7 +69,7 @@ public class BddJDBC_EL_Journalisation {
 	public void enregistrerEvenement(String pidSal, String pidZone, Boolean pstatuAcces, Timestamp pjourHeure, String poperation,String pcontenuOperation) {
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select idSal,idZone,jourHeure from Acceder WHERE idZone = "+pidZone+" AND idSal = "+pidSal+" AND jourHeure = "+pjourHeure);
+			ResultSet rs = s.executeQuery("select idSal,idZone,jourHeure from Acceder WHERE jourHeure = "+pjourHeure);
 			if (!rs.next())
 			{
 	        	s.executeUpdate("insert into Acceder (idSal,idZone,statuAcces,jourHeure,operation,contenuOperation) values ("+pidSal+", "+pidZone+", "+pstatuAcces+","+pjourHeure+",'"+poperation+"','"+pcontenuOperation+"'");

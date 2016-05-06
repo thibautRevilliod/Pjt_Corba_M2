@@ -32,9 +32,11 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 
 	@Override
 	public void enregistrerEvenement(EvenementJournalisation evenementJournalisation) {
-		// TODO : il faut tranformer evenementJournalisation.accesZoneSal.jourHeure en type TimesTamp pour le passer en paramètre de la méthode : comment fait-on pour le transformer ?
+		// TODO : il faut tranformer evenementJournalisation.accesZoneSal.jourHeure en type TimesTamp pour le passer en paramètre de la méthode : comment fait-on pour le transformer ? :: OK
 		
-		bddJDBC_EL_Journalisation.enregistrerEvenement(evenementJournalisation.accesZoneSal.idSal, evenementJournalisation.accesZoneSal.idZone, evenementJournalisation.accesZoneSal.statutAcces, evenementJournalisation.accesZoneSal.jourHeure, evenementJournalisation.operation, evenementJournalisation.contenuOperation);
+		Timestamp tjourHeure = new Timestamp(Long.valueOf(evenementJournalisation.accesZoneSal.jourHeure.timestamp));
+		
+		bddJDBC_EL_Journalisation.enregistrerEvenement(evenementJournalisation.accesZoneSal.idSal, evenementJournalisation.accesZoneSal.idZone, evenementJournalisation.accesZoneSal.statutAcces, tjourHeure, evenementJournalisation.operation, evenementJournalisation.contenuOperation);
 	}
 
 }

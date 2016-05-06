@@ -6,9 +6,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
 
-import LanceurEntiteLogicielle.LanceurEntiteLogicielleJournalisation;
 import bdd.BddJDBC_EL_Autorisation;
 import config.Config;
+import modControledAcces.AccesZone;
 import modControledAcces.CleInconnue;
 import modControledAcces.Date;
 import modControledAcces.EntiteLogicielleAutorisationHelper;
@@ -61,11 +61,20 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 			Date heureDebut, Date heureFin, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant {
 		if(cleDemandeur.equals(clePersonnel))
 		{
-			//TODO : il faut transformer les types date en TimesTamp
-			bddJDBC_EL_Autorisation.creerAccrediter(idSal, idZone, new Date(), jourDebut, jourFin, heureDebut, heureFin);
+			//TODO : il faut transformer les types date en TimesTamp :: OK
+			java.util.Date d = new java.util.Date();
+			Timestamp tdate = new Timestamp(d.getTime());
+			Timestamp tjourDebut = new Timestamp(Long.valueOf(jourDebut.timestamp));
+			Timestamp tjourFin = new Timestamp(Long.valueOf(jourFin.timestamp));
+			Timestamp theureDebut = new Timestamp(Long.valueOf(heureDebut.timestamp));
+			Timestamp theureFin = new Timestamp(Long.valueOf(heureFin.timestamp));
+
+			bddJDBC_EL_Autorisation.creerAccrediter(idSal, idZone, tdate, tjourDebut, tjourFin, theureDebut, theureFin);
 			connexionELjournalisation();
-			EvenementJournalisation evenementJournalisation = new EvenementJournalisation(null, "creerAccreditation", 
-					"idSal : "+idSal+ "idZone : "+idZone+ "jourDebut : "+jourDebut+ "jourFin : "+jourFin+ 
+			d = new java.util.Date();
+			tdate = new Timestamp(d.getTime());
+			AccesZone accesZone = new AccesZone(idSal, idZone, true, new Date(tdate.toString()));
+			EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "creerAccreditation", "jourDebut : "+jourDebut+ "jourFin : "+jourFin+ 
 					"heureDebut : "+heureDebut+ "heureFin : "+heureFin);
 			monELJournalisation.enregistrerEvenement(evenementJournalisation);
 		}
@@ -87,8 +96,13 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	public InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, Date jourDebut, Date jourFin, 
 			Date heureDebut, Date heureFin, EntiteLogicielleEmpreinte el_Empreinte) throws ErreurSalarieInexistant, ErreurZoneInexistant {
 		
+		Timestamp tjourDebut = new Timestamp(Long.valueOf(jourDebut.timestamp));
+		Timestamp tjourFin = new Timestamp(Long.valueOf(jourFin.timestamp));
+		Timestamp theureDebut = new Timestamp(Long.valueOf(heureDebut.timestamp));
+		Timestamp theureFin = new Timestamp(Long.valueOf(heureFin.timestamp));
+		
 		// TODO : modifier le type date en TimesTamp
-		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.modifierAccreditation(idSal, idZone, jourDebut, jourFin, heureDebut, heureFin);
+		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.modifierAccreditation(idSal, idZone, tjourDebut, tjourFin, theureDebut, theureFin);
 		
 		return infoSalarieAccreditation;
 	}
@@ -99,9 +113,11 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.supprimerAccreditation(idSal, idZone);
 		
-		//TODO : il faut pas mettre "null" sinon ça va planter ! 
-		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(null, "supprimerAccreditation", 
-				"idSal : "+idSal+ "idZone : "+idZone);
+		//TODO : il faut pas mettre "null" sinon ça va planter ! :: OK
+		java.util.Date d = new java.util.Date();
+		Timestamp tdate = new Timestamp(d.getTime());
+		AccesZone accesZone = new AccesZone(idSal, idZone, true, new Date(tdate.toString()));
+		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "supprimerAccreditation","");
 		monELJournalisation.enregistrerEvenement(evenementJournalisation);
 		
 		return infoSalarieAccreditation;
