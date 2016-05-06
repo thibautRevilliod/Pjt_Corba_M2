@@ -96,8 +96,8 @@ public class BddJDBC_EL_Journalisation {
     		while(rs.next())
     		{
     			//TODO : modifier l'IDL en fonction !
-    			//accesZone = new AccesZone(pidSal, String.valueOf(rs.getInt(1)), rs.getString(2), rs.getTimestamp(3));
-    		//	res[i] = new EvenementJournalisation(accesZone, rs.getString(4),rs.getString(5));
+    			accesZone = new AccesZone(pidSal, String.valueOf(rs.getInt(1)), rs.getBoolean(2), new modControledAcces.Date(rs.getTimestamp(3).toString()));
+    			res[i] = new EvenementJournalisation(accesZone, rs.getString(4),rs.getString(5));
     			i++;
 			}
     		return res;

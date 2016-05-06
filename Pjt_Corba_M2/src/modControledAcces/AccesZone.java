@@ -18,34 +18,14 @@ public final class AccesZone implements org.omg.CORBA.portable.IDLEntity
     public String idZone;
 
     /**
-     * Struct member dateDdeAcces
-     */
-    public modControledAcces.Date dateDdeAcces;
-
-    /**
      * Struct member statutAcces
      */
     public boolean statutAcces;
 
     /**
-     * Struct member jourEntree
+     * Struct member jourHeure
      */
-    public modControledAcces.Date jourEntree;
-
-    /**
-     * Struct member jourSortie
-     */
-    public modControledAcces.Date jourSortie;
-
-    /**
-     * Struct member heureEntree
-     */
-    public modControledAcces.Date heureEntree;
-
-    /**
-     * Struct member heureSortie
-     */
-    public modControledAcces.Date heureSortie;
+    public modControledAcces.Date jourHeure;
 
     /**
      * Default constructor
@@ -57,23 +37,15 @@ public final class AccesZone implements org.omg.CORBA.portable.IDLEntity
      * Constructor with fields initialization
      * @param idSal idSal struct member
      * @param idZone idZone struct member
-     * @param dateDdeAcces dateDdeAcces struct member
      * @param statutAcces statutAcces struct member
-     * @param jourEntree jourEntree struct member
-     * @param jourSortie jourSortie struct member
-     * @param heureEntree heureEntree struct member
-     * @param heureSortie heureSortie struct member
+     * @param jourHeure jourHeure struct member
      */
-    public AccesZone(String idSal, String idZone, modControledAcces.Date dateDdeAcces, boolean statutAcces, modControledAcces.Date jourEntree, modControledAcces.Date jourSortie, modControledAcces.Date heureEntree, modControledAcces.Date heureSortie)
+    public AccesZone(String idSal, String idZone, boolean statutAcces, modControledAcces.Date jourHeure)
     {
         this.idSal = idSal;
         this.idZone = idZone;
-        this.dateDdeAcces = dateDdeAcces;
         this.statutAcces = statutAcces;
-        this.jourEntree = jourEntree;
-        this.jourSortie = jourSortie;
-        this.heureEntree = heureEntree;
-        this.heureSortie = heureSortie;
+        this.jourHeure = jourHeure;
     }
 
 }

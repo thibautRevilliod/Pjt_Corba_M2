@@ -265,16 +265,46 @@ public class BddJDBC_EL_Autorisation {
 				Timestamp heureDebut = rs.getTimestamp(3);
 				Timestamp heureFin = rs.getTimestamp(4);
 				Calendar cal1 = GregorianCalendar.getInstance();
+				Calendar cal2 = GregorianCalendar.getInstance();
+				Calendar cal3 = GregorianCalendar.getInstance();
+				
+				//test des dates
+				cal1.setTimeInMillis(dateHeureDde.getTime());
+				cal1.set(Calendar.HOUR_OF_DAY, 00);
+				cal1.set(Calendar.MINUTE, 00);
+				cal1.set(Calendar.SECOND, 00);
+				cal2.setTimeInMillis(jourDebut.getTime());
+				cal2.set(Calendar.HOUR_OF_DAY, 00);
+				cal2.set(Calendar.MINUTE, 00);
+				cal2.set(Calendar.SECOND, 00);
+				cal3.setTimeInMillis(jourFin.getTime());
+				cal3.set(Calendar.HOUR_OF_DAY, 00);
+				cal3.set(Calendar.MINUTE, 00);
+				cal3.set(Calendar.SECOND, 00);
 
-				if(dateHeureDde.before(jourFin) && dateHeureDde.after(jourDebut))
+				if(cal1.after(cal2) && cal1.before(cal3))
 				{
-					Date d = new Date(dateHeureDde.getTime());
+					//test des heures
+					cal1.setTimeInMillis(dateHeureDde.getTime());
+					cal1.set(Calendar.DAY_OF_MONTH, 10);
+					cal1.set(Calendar.MONTH, 10);
+					cal1.set(Calendar.YEAR, 2015);
+					cal2.setTimeInMillis(heureDebut.getTime());
+					cal2.set(Calendar.DAY_OF_MONTH, 10);
+					cal2.set(Calendar.MONTH, 10);
+					cal2.set(Calendar.YEAR, 2015);
+					cal3.setTimeInMillis(heureFin.getTime());
+					cal3.set(Calendar.DAY_OF_MONTH, 10);
+					cal3.set(Calendar.MONTH, 10);
+					cal3.set(Calendar.YEAR, 2015);
 					
-						//TODO : comparer les heures ????
+					if(cal1.after(cal2) && cal1.before(cal3))
+					{
+						res = true;
+					}
 				}
         	}
-			
-			
+					
         	return res;
 		} catch (SQLException e) {
 			e.printStackTrace();

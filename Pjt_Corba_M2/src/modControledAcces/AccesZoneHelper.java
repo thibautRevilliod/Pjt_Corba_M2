@@ -73,7 +73,7 @@ public class AccesZoneHelper
                     return org.omg.CORBA.ORB.init().create_recursive_tc(id());
                 _working = true;
                 org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init();
-                org.omg.CORBA.StructMember []_members = new org.omg.CORBA.StructMember[8];
+                org.omg.CORBA.StructMember []_members = new org.omg.CORBA.StructMember[4];
 
                 _members[0] = new org.omg.CORBA.StructMember();
                 _members[0].name = "idSal";
@@ -82,23 +82,11 @@ public class AccesZoneHelper
                 _members[1].name = "idZone";
                 _members[1].type = orb.get_primitive_tc(org.omg.CORBA.TCKind.tk_string);
                 _members[2] = new org.omg.CORBA.StructMember();
-                _members[2].name = "dateDdeAcces";
-                _members[2].type = modControledAcces.DateHelper.type();
+                _members[2].name = "statutAcces";
+                _members[2].type = orb.get_primitive_tc(org.omg.CORBA.TCKind.tk_boolean);
                 _members[3] = new org.omg.CORBA.StructMember();
-                _members[3].name = "statutAcces";
-                _members[3].type = orb.get_primitive_tc(org.omg.CORBA.TCKind.tk_boolean);
-                _members[4] = new org.omg.CORBA.StructMember();
-                _members[4].name = "jourEntree";
-                _members[4].type = modControledAcces.DateHelper.type();
-                _members[5] = new org.omg.CORBA.StructMember();
-                _members[5].name = "jourSortie";
-                _members[5].type = modControledAcces.DateHelper.type();
-                _members[6] = new org.omg.CORBA.StructMember();
-                _members[6].name = "heureEntree";
-                _members[6].type = modControledAcces.DateHelper.type();
-                _members[7] = new org.omg.CORBA.StructMember();
-                _members[7].name = "heureSortie";
-                _members[7].type = modControledAcces.DateHelper.type();
+                _members[3].name = "jourHeure";
+                _members[3].type = modControledAcces.DateHelper.type();
                 _tc = orb.create_struct_tc(id(),"AccesZone",_members);
                 _working = false;
             }
@@ -128,12 +116,8 @@ public class AccesZoneHelper
 
         new_one.idSal = istream.read_string();
         new_one.idZone = istream.read_string();
-        new_one.dateDdeAcces = modControledAcces.DateHelper.read(istream);
         new_one.statutAcces = istream.read_boolean();
-        new_one.jourEntree = modControledAcces.DateHelper.read(istream);
-        new_one.jourSortie = modControledAcces.DateHelper.read(istream);
-        new_one.heureEntree = modControledAcces.DateHelper.read(istream);
-        new_one.heureSortie = modControledAcces.DateHelper.read(istream);
+        new_one.jourHeure = modControledAcces.DateHelper.read(istream);
 
         return new_one;
     }
@@ -147,12 +131,8 @@ public class AccesZoneHelper
     {
         ostream.write_string(value.idSal);
         ostream.write_string(value.idZone);
-        modControledAcces.DateHelper.write(ostream,value.dateDdeAcces);
         ostream.write_boolean(value.statutAcces);
-        modControledAcces.DateHelper.write(ostream,value.jourEntree);
-        modControledAcces.DateHelper.write(ostream,value.jourSortie);
-        modControledAcces.DateHelper.write(ostream,value.heureEntree);
-        modControledAcces.DateHelper.write(ostream,value.heureSortie);
+        modControledAcces.DateHelper.write(ostream,value.jourHeure);
     }
 
 }

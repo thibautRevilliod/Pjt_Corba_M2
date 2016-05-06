@@ -33,16 +33,25 @@ module modControledAcces
 	typedef string prenom ; 
 	typedef string mdp; 
 	
+// modification Landry - 06-05-2016
+//	struct AccesZone
+//	{
+//		string idSal;
+//		string idZone;
+//		Date dateDdeAcces;
+//		boolean statutAcces;
+//		Date jourEntree;
+//		Date jourSortie;
+//		Date heureEntree;
+//		Date heureSortie;
+//	};
+
 	struct AccesZone
 	{
 		string idSal;
 		string idZone;
-		Date dateDdeAcces;
 		boolean statutAcces;
-		Date jourEntree;
-		Date jourSortie;
-		Date heureEntree;
-		Date heureSortie;
+		Date jourHeure;
 	};
 	
 	struct EvenementJournalisation 
