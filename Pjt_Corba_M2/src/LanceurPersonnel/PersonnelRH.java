@@ -126,9 +126,10 @@ public class PersonnelRH {
 		Date heureFin;
 		Date jourDebut;
 		Date jourFin;
+		boolean estPermanent = true;
 		//TODO renommer dureeeValiditeCompte
 		short dureeValidationCompte;
-		monELAnnuaire.creerSalarie(mdp, nom, prenom, photo, heureDebut, heureFin, jourDebut, jourFin, dureeValidationCompte);
+		monELAnnuaire.creerSalarie(mdp, nom, prenom, photo, heureDebut, heureFin, jourDebut, jourFin, dureeValidationCompte, estPermanent);
 		
 		connexionELannuaire(args);
 		monELAnnuaire.recupererNomPhotoSalarie(idSal);

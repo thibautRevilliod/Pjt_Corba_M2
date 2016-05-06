@@ -67,11 +67,10 @@ public abstract class EntiteLogicielleAnnuairePOA extends org.omg.PortableServer
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
-        modControledAcces.EntiteLogicielleEmpreinte arg1_in = modControledAcces.EntiteLogicielleEmpreinteHelper.read(_is);
 
         try
         {
-            modControledAcces.InfoSalarie _arg_result = recupererNomPhotoSalarie(arg0_in, arg1_in);
+            modControledAcces.InfoSalarie _arg_result = recupererNomPhotoSalarie(arg0_in);
 
             _output = handler.createReply();
             modControledAcces.InfoSalarieHelper.write(_output,_arg_result);
@@ -90,11 +89,10 @@ public abstract class EntiteLogicielleAnnuairePOA extends org.omg.PortableServer
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
-        modControledAcces.EntiteLogicielleEmpreinte arg1_in = modControledAcces.EntiteLogicielleEmpreinteHelper.read(_is);
 
         try
         {
-            modControledAcces.InfoSalarie _arg_result = infosSalarie(arg0_in, arg1_in);
+            modControledAcces.InfoSalarie _arg_result = infosSalarie(arg0_in);
 
             _output = handler.createReply();
             modControledAcces.InfoSalarieHelper.write(_output,_arg_result);

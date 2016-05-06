@@ -67,6 +67,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		String empreinte;
 		
 		connexionELempreinte();
+		String idSal;
 		monELEmpreinte.verifierCorrespondance(idSal, empreinte);
 	}
 

@@ -21,14 +21,14 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	}
 
 	@Override
-	public InfoSalarie recupererNomPhotoSalarie(String idSal, EntiteLogicielleEmpreinte el_Empreinte)
+	public InfoSalarie recupererNomPhotoSalarie(String idSal)
 			throws ErreurSalarieInexistant {
 		
 		return bddJDBC_EL_Annuaire.infoSalarieNomPhoto(idSal);
 	}
 
 	@Override
-	public InfoSalarie infosSalarie(String idSal, EntiteLogicielleEmpreinte el_Empreinte)
+	public InfoSalarie infosSalarie(String idSal)
 			throws ErreurSalarieInexistant {
 		
 		return bddJDBC_EL_Annuaire.infoSalarie(idSal);
@@ -36,9 +36,9 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 
 	@Override
 	public String creerSalarie(String mdp, String nom, String prenom, String photo, Date heureDebut, Date heureFin,
-			Date jourDebut, Date jourFin, short dureeValidationCompte) throws ErreurSalarieExistant {
+			Date jourDebut, Date jourFin, Date dateValiditeCompte, boolean estPermanent) throws ErreurSalarieExistant {
 		//TODO: Il manque estPermanent et le type de date ne correspond pas : il faut juste une dateFinValiditeCompte de type Timestamp
-		return bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, heureDebut, heureFin, jourDebut, jourFin, dureeValidationCompte);
+		return bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, heureDebut, heureFin, jourDebut, jourFin, dateValiditeCompte, estPermanent);
 	}
 
 	@Override

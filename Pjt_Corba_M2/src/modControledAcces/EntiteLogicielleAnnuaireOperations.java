@@ -15,13 +15,13 @@ public interface EntiteLogicielleAnnuaireOperations
     /**
      * Operation recupererNomPhotoSalarie
      */
-    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal)
         throws modControledAcces.ErreurSalarieInexistant;
 
     /**
      * Operation infosSalarie
      */
-    public modControledAcces.InfoSalarie infosSalarie(String idSal, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarie infosSalarie(String idSal)
         throws modControledAcces.ErreurSalarieInexistant;
 
     /**

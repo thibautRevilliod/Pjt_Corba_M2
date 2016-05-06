@@ -72,7 +72,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
     /**
      * Operation recupererNomPhotoSalarie
      */
-    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal)
         throws modControledAcces.ErreurSalarieInexistant
     {
         while(true)
@@ -84,7 +84,6 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 {
                     org.omg.CORBA.portable.OutputStream _output = this._request("recupererNomPhotoSalarie",true);
                     _output.write_string(idSal);
-                    modControledAcces.EntiteLogicielleEmpreinteHelper.write(_output,el_Empreinte);
                     _input = this._invoke(_output);
                     modControledAcces.InfoSalarie _arg_ret = modControledAcces.InfoSalarieHelper.read(_input);
                     return _arg_ret;
@@ -116,7 +115,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 modControledAcces.EntiteLogicielleAnnuaireOperations _self = (modControledAcces.EntiteLogicielleAnnuaireOperations) _so.servant;
                 try
                 {
-                    return _self.recupererNomPhotoSalarie( idSal,  el_Empreinte);
+                    return _self.recupererNomPhotoSalarie( idSal);
                 }
                 finally
                 {
@@ -129,7 +128,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
     /**
      * Operation infosSalarie
      */
-    public modControledAcces.InfoSalarie infosSalarie(String idSal, modControledAcces.EntiteLogicielleEmpreinte el_Empreinte)
+    public modControledAcces.InfoSalarie infosSalarie(String idSal)
         throws modControledAcces.ErreurSalarieInexistant
     {
         while(true)
@@ -141,7 +140,6 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 {
                     org.omg.CORBA.portable.OutputStream _output = this._request("infosSalarie",true);
                     _output.write_string(idSal);
-                    modControledAcces.EntiteLogicielleEmpreinteHelper.write(_output,el_Empreinte);
                     _input = this._invoke(_output);
                     modControledAcces.InfoSalarie _arg_ret = modControledAcces.InfoSalarieHelper.read(_input);
                     return _arg_ret;
@@ -173,7 +171,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 modControledAcces.EntiteLogicielleAnnuaireOperations _self = (modControledAcces.EntiteLogicielleAnnuaireOperations) _so.servant;
                 try
                 {
-                    return _self.infosSalarie( idSal,  el_Empreinte);
+                    return _self.infosSalarie( idSal);
                 }
                 finally
                 {
