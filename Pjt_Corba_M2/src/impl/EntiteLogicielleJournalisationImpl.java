@@ -2,7 +2,6 @@ package impl;
 
 import java.sql.Timestamp;
 
-import bdd.BddJDBC_EL_Autorisation;
 import bdd.BddJDBC_EL_Journalisation;
 import modControledAcces.CleInconnue;
 
@@ -16,7 +15,7 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 	public static BddJDBC_EL_Journalisation bddJDBC_EL_Journalisation = new BddJDBC_EL_Journalisation("BD_Journalisation");
 	
 	@Override
-	public EvenementJournalisation consulter(String qui, String quoi, String quand_debut, String quand_fin,
+	public EvenementJournalisation[] consulter(String qui, String quoi, String quand_debut, String quand_fin,
 			String cleDemandeur) throws CleInconnue {
 	
 		

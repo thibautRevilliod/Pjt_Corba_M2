@@ -20,6 +20,7 @@ import modControledAcces.EntiteLogicielleAutorisationHelper;
 import modControledAcces.EntiteLogiciellePorte;
 import modControledAcces.ErreurSalarieExistant;
 import modControledAcces.ErreurSalarieInexistant;
+import modControledAcces.ErreurZoneInexistant;
 import modControledAcces.EvenementJournalisation;
 import modControledAcces.InfoSalarie;
 
@@ -41,7 +42,15 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	public void demandeEntrerSortirZone(String idSal, String idZone) {
 		// TODO Auto-generated method stub
 		connexionELautorisation();
-		monELAutorisation.verifierAutorisation(idSal, idZone);
+		try {
+			monELAutorisation.verifierAutorisation(idSal, idZone);
+		} catch (ErreurSalarieInexistant e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ErreurZoneInexistant e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		connexionELjournalisation();
 		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(null, "demandeEntrerSortirZone", "idSal"+idSal+ "idZone"+idZone);

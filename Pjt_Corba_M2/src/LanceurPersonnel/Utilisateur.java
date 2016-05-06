@@ -100,16 +100,16 @@ public class Utilisateur {
 		// TODO Auto-generated method stub
 		
 		connexionELporte(args);
-		String photo;
+		String photo = null;
 		monELPorte.demanderAuthentifier(photo);
 		
 		connexionELporte(args);
-		String idSal;
-		String idZone;
+		String idSal = null;
+		String idZone = null;
 		monELPorte.demandeEntrerSortirZone(idSal, idZone);
 		
 		connexionELporte(args);
-		String empreinte;
+		String empreinte = null;
 		monELPorte.demanderModifierEmpreinte(idSal, empreinte);
 		
 	}

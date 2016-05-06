@@ -142,8 +142,8 @@ public class BddJDBC_EL_Empreinte {
 		}
 	}
 	
-	public int modifierEmpreinte(String pidSal, String pempreinte) {
-		int id = 0;
+	public String modifierEmpreinte(String pidSal, String pempreinte) {
+		String id = "0";
 		try {
 			Statement s = conn.createStatement();
 			ResultSet rs = s.executeQuery("select idSal from empreintes WHERE idSal = "+pidSal+"");
@@ -153,12 +153,12 @@ public class BddJDBC_EL_Empreinte {
 			}
 			else
 			{
-				id = -2; // le cas ou accreditation existe déjà
+				id = "-2"; // le cas ou accreditation existe déjà
 			}
 	        return id;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			id = -1;
+			id = "-1";
 			return id;
 		}
 	}
