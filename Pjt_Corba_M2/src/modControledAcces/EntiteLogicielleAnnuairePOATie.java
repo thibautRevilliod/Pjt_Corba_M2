@@ -91,10 +91,10 @@ public class EntiteLogicielleAnnuairePOATie extends EntiteLogicielleAnnuairePOA
     /**
      * Operation creerSalarie
      */
-    public String creerSalarie(String mdp, String nom, String prenom, String photo, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, short dureeValidationCompte)
+    public String creerSalarie(String mdp, String nom, String prenom, String photo, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date dateFinValiditeCompte, boolean estPermanent)
         throws modControledAcces.ErreurSalarieExistant
     {
-        return _tie.creerSalarie( mdp,  nom,  prenom,  photo,  heureDebut,  heureFin,  jourDebut,  jourFin,  dureeValidationCompte);
+        return _tie.creerSalarie( mdp,  nom,  prenom,  photo,  heureDebut,  heureFin,  jourDebut,  jourFin,  dateFinValiditeCompte,  estPermanent);
     }
 
     /**

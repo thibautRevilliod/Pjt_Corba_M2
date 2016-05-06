@@ -120,11 +120,12 @@ public abstract class EntiteLogicielleAnnuairePOA extends org.omg.PortableServer
         modControledAcces.Date arg5_in = modControledAcces.DateHelper.read(_is);
         modControledAcces.Date arg6_in = modControledAcces.DateHelper.read(_is);
         modControledAcces.Date arg7_in = modControledAcces.DateHelper.read(_is);
-        short arg8_in = _is.read_short();
+        modControledAcces.Date arg8_in = modControledAcces.DateHelper.read(_is);
+        boolean arg9_in = _is.read_boolean();
 
         try
         {
-            String _arg_result = creerSalarie(arg0_in, arg1_in, arg2_in, arg3_in, arg4_in, arg5_in, arg6_in, arg7_in, arg8_in);
+            String _arg_result = creerSalarie(arg0_in, arg1_in, arg2_in, arg3_in, arg4_in, arg5_in, arg6_in, arg7_in, arg8_in, arg9_in);
 
             _output = handler.createReply();
             _output.write_string(_arg_result);

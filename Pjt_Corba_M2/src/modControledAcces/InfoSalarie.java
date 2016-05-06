@@ -33,9 +33,14 @@ public final class InfoSalarie implements org.omg.CORBA.portable.IDLEntity
     public String empreinte;
 
     /**
-     * Struct member dateFinValidateCompte
+     * Struct member dateFinValiditeCompte
      */
-    public modControledAcces.Date dateFinValidateCompte;
+    public modControledAcces.Date dateFinValiditeCompte;
+
+    /**
+     * Struct member estPermanent
+     */
+    public boolean estPermanent;
 
     /**
      * Default constructor
@@ -50,16 +55,18 @@ public final class InfoSalarie implements org.omg.CORBA.portable.IDLEntity
      * @param prenom prenom struct member
      * @param photo photo struct member
      * @param empreinte empreinte struct member
-     * @param dateFinValidateCompte dateFinValidateCompte struct member
+     * @param dateFinValiditeCompte dateFinValiditeCompte struct member
+     * @param estPermanent estPermanent struct member
      */
-    public InfoSalarie(String idSal, String nom, String prenom, String photo, String empreinte, modControledAcces.Date dateFinValidateCompte)
+    public InfoSalarie(String idSal, String nom, String prenom, String photo, String empreinte, modControledAcces.Date dateFinValiditeCompte, boolean estPermanent)
     {
         this.idSal = idSal;
         this.nom = nom;
         this.prenom = prenom;
         this.photo = photo;
         this.empreinte = empreinte;
-        this.dateFinValidateCompte = dateFinValidateCompte;
+        this.dateFinValiditeCompte = dateFinValiditeCompte;
+        this.estPermanent = estPermanent;
     }
 
 }

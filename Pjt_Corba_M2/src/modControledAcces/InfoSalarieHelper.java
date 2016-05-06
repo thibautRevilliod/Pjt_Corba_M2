@@ -73,7 +73,7 @@ public class InfoSalarieHelper
                     return org.omg.CORBA.ORB.init().create_recursive_tc(id());
                 _working = true;
                 org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init();
-                org.omg.CORBA.StructMember []_members = new org.omg.CORBA.StructMember[6];
+                org.omg.CORBA.StructMember []_members = new org.omg.CORBA.StructMember[7];
 
                 _members[0] = new org.omg.CORBA.StructMember();
                 _members[0].name = "idSal";
@@ -91,8 +91,11 @@ public class InfoSalarieHelper
                 _members[4].name = "empreinte";
                 _members[4].type = orb.get_primitive_tc(org.omg.CORBA.TCKind.tk_string);
                 _members[5] = new org.omg.CORBA.StructMember();
-                _members[5].name = "dateFinValidateCompte";
+                _members[5].name = "dateFinValiditeCompte";
                 _members[5].type = modControledAcces.DateHelper.type();
+                _members[6] = new org.omg.CORBA.StructMember();
+                _members[6].name = "estPermanent";
+                _members[6].type = orb.get_primitive_tc(org.omg.CORBA.TCKind.tk_boolean);
                 _tc = orb.create_struct_tc(id(),"InfoSalarie",_members);
                 _working = false;
             }
@@ -125,7 +128,8 @@ public class InfoSalarieHelper
         new_one.prenom = istream.read_string();
         new_one.photo = istream.read_string();
         new_one.empreinte = istream.read_string();
-        new_one.dateFinValidateCompte = modControledAcces.DateHelper.read(istream);
+        new_one.dateFinValiditeCompte = modControledAcces.DateHelper.read(istream);
+        new_one.estPermanent = istream.read_boolean();
 
         return new_one;
     }
@@ -142,7 +146,8 @@ public class InfoSalarieHelper
         ostream.write_string(value.prenom);
         ostream.write_string(value.photo);
         ostream.write_string(value.empreinte);
-        modControledAcces.DateHelper.write(ostream,value.dateFinValidateCompte);
+        modControledAcces.DateHelper.write(ostream,value.dateFinValiditeCompte);
+        ostream.write_boolean(value.estPermanent);
     }
 
 }

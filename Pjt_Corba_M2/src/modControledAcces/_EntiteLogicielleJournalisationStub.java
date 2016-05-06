@@ -23,7 +23,7 @@ public class _EntiteLogicielleJournalisationStub extends org.omg.CORBA.portable.
     /**
      * Operation consulter
      */
-    public modControledAcces.EvenementJournalisation consulter(String qui, String quoi, String quand_debut, String quand_fin, String cleDemandeur)
+    public modControledAcces.EvenementJournalisation[] consulter(String qui, String quoi, String quand_debut, String quand_fin, String cleDemandeur)
         throws modControledAcces.CleInconnue
     {
         while(true)
@@ -40,7 +40,7 @@ public class _EntiteLogicielleJournalisationStub extends org.omg.CORBA.portable.
                     _output.write_string(quand_fin);
                     _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
-                    modControledAcces.EvenementJournalisation _arg_ret = modControledAcces.EvenementJournalisationHelper.read(_input);
+                    modControledAcces.EvenementJournalisation[] _arg_ret = modControledAcces.ListeEvenementsJournalisationHelper.read(_input);
                     return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)

@@ -186,7 +186,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
     /**
      * Operation creerSalarie
      */
-    public String creerSalarie(String mdp, String nom, String prenom, String photo, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, short dureeValidationCompte)
+    public String creerSalarie(String mdp, String nom, String prenom, String photo, modControledAcces.Date heureDebut, modControledAcces.Date heureFin, modControledAcces.Date jourDebut, modControledAcces.Date jourFin, modControledAcces.Date dateFinValiditeCompte, boolean estPermanent)
         throws modControledAcces.ErreurSalarieExistant
     {
         while(true)
@@ -205,7 +205,8 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                     modControledAcces.DateHelper.write(_output,heureFin);
                     modControledAcces.DateHelper.write(_output,jourDebut);
                     modControledAcces.DateHelper.write(_output,jourFin);
-                    _output.write_short(dureeValidationCompte);
+                    modControledAcces.DateHelper.write(_output,dateFinValiditeCompte);
+                    _output.write_boolean(estPermanent);
                     _input = this._invoke(_output);
                     String _arg_ret = _input.read_string();
                     return _arg_ret;
@@ -237,7 +238,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 modControledAcces.EntiteLogicielleAnnuaireOperations _self = (modControledAcces.EntiteLogicielleAnnuaireOperations) _so.servant;
                 try
                 {
-                    return _self.creerSalarie( mdp,  nom,  prenom,  photo,  heureDebut,  heureFin,  jourDebut,  jourFin,  dureeValidationCompte);
+                    return _self.creerSalarie( mdp,  nom,  prenom,  photo,  heureDebut,  heureFin,  jourDebut,  jourFin,  dateFinValiditeCompte,  estPermanent);
                 }
                 finally
                 {

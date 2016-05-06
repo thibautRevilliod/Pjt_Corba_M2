@@ -10,7 +10,7 @@ public interface EntiteLogicielleJournalisationOperations
     /**
      * Operation consulter
      */
-    public modControledAcces.EvenementJournalisation consulter(String qui, String quoi, String quand_debut, String quand_fin, String cleDemandeur)
+    public modControledAcces.EvenementJournalisation[] consulter(String qui, String quoi, String quand_debut, String quand_fin, String cleDemandeur)
         throws modControledAcces.CleInconnue;
 
     /**
