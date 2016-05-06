@@ -100,10 +100,10 @@ public class EntiteLogicielleAnnuairePOATie extends EntiteLogicielleAnnuairePOA
     /**
      * Operation sauthentifier
      */
-    public String sauthentifier(String photo, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public String sauthentifier(String photo)
         throws modControledAcces.ErreurSalarieInexistant
     {
-        return _tie.sauthentifier( photo,  el_Porte);
+        return _tie.sauthentifier( photo);
     }
 
 }

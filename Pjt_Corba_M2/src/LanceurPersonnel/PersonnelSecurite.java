@@ -157,10 +157,10 @@ public class PersonnelSecurite {
 		Date jourFin;
 		Date heureDebut;
 		Date heureFin;
-		monELAutorisation.modifierAccreditation(idSal, idZone, jourDebut, jourFin, heureDebut, heureFin, el_Empreinte);
+		monELAutorisation.modifierAccreditation(idSal, idZone, jourDebut, jourFin, heureDebut, heureFin);
 		
 		connexionELautorisation(args);
-		monELAutorisation.supprimerAccreditation(idSal, idZone, el_Empreinte);
+		monELAutorisation.supprimerAccreditation(idSal, idZone);
 		
 		connexionELjournalisation(args);
 		String qui;

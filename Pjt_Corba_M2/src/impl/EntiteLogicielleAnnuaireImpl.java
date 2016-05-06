@@ -42,7 +42,7 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	}
 
 	@Override
-	public String sauthentifier(String photo, EntiteLogiciellePorte el_Porte) throws ErreurSalarieInexistant {
+	public String sauthentifier(String photo) throws ErreurSalarieInexistant {
 		
 		return bddJDBC_EL_Annuaire.sauthentifier(photo);
 	}

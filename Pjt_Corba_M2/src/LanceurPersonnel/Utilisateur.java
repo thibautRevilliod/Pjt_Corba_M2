@@ -101,16 +101,16 @@ public class Utilisateur {
 		
 		connexionELporte(args);
 		String photo;
-		monELPorte.demanderAuthentifier(photo, el_Porte);
+		monELPorte.demanderAuthentifier(photo);
 		
 		connexionELporte(args);
 		String idSal;
 		String idZone;
-		monELPorte.demandeEntrerSortirZone(idSal, idZone, el_Porte);
+		monELPorte.demandeEntrerSortirZone(idSal, idZone);
 		
 		connexionELporte(args);
 		String empreinte;
-		monELPorte.demanderModifierEmpreinte(idSal, empreinte, el_Porte);
+		monELPorte.demanderModifierEmpreinte(idSal, empreinte);
 		
 	}
 

@@ -95,9 +95,9 @@ module modControledAcces
 		//Landry: on le renomme ou pas ? afficherMessage --> deverrouillagePorte ? C'est ce que Teyssier nous avait conseiller. Mais je trouve pas que c'est plus clair...
 		
 		//pour information dans le code généré : appel de la méthode sauthentifier puis de la méthode verifierCorrespondance
-		void demandeEntrerSortirZone(in string idSal, in string idZone, in EntiteLogiciellePorte el_Porte);
-		void demanderAuthentifier (in string photo, in EntiteLogiciellePorte el_Porte);
-		void demanderModifierEmpreinte(in string idSal, in string empreinte, in EntiteLogiciellePorte el_Porte);
+		void demandeEntrerSortirZone(in string idSal, in string idZone);
+		void demanderAuthentifier (in string photo);
+		void demanderModifierEmpreinte(in string idSal, in string empreinte);
 	};
 	
 	exception EmpreinteIncorrecte {string raisonEmpreinteIncorrecte;};
@@ -113,7 +113,7 @@ module modControledAcces
 	{
 		void ajouterEmpreinte (in string idSal, in string empreinte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
 		//modifierEmpreinte <=> modifier sa propre empreinte
-		string modifierEmpreinte(in string idSal, in string empreinte, in EntiteLogiciellePorte el_Porte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
+		string modifierEmpreinte(in string idSal, in string empreinte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
 		
 		//a garder ??  // melanie : je sais pas ... 
 		//Landry: Il me semble que c'était moi qui avait posé cette question ^^
@@ -137,7 +137,7 @@ module modControledAcces
 	
 		ListeZones listeToutesZones();
 		
-		boolean verifierAutorisation(in string idSal, in string idZone, in EntiteLogiciellePorte el_Porte) raises (ErreurSalarieInexistant, ErreurZoneInexistant); 
+		boolean verifierAutorisation(in string idSal, in string idZone) raises (ErreurSalarieInexistant, ErreurZoneInexistant); 
 		void creerAccreditation(in string idSal, in string idZone, in Date jourDebut, in Date jourFin, in Date heureDebut, in Date heureFin, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant);
 		InfoSalarieAccreditation lireAccreditationSalarie(in string idSal) raises (ErreurSalarieInexistant);
 		InfoSalarieAccreditation modifierAccreditation (in string idSal, in string idZone, in Date jourDebut, in Date jourFin, in Date heureDebut, in Date heureFin, in EntiteLogicielleEmpreinte el_Empreinte) raises (ErreurSalarieInexistant, ErreurZoneInexistant);
@@ -158,7 +158,7 @@ module modControledAcces
 		string creerSalarie(in string mdp, in string nom, in string prenom, in string photo, in Date heureDebut, in Date heureFin, in Date jourDebut, in Date jourFin, in short dureeValidationCompte) raises (ErreurSalarieExistant);		
 		
 		//retourne l'id d'un salarié
-		string sauthentifier (in string photo, in EntiteLogiciellePorte el_Porte) raises (ErreurSalarieInexistant); //erreru d'authentification
+		string sauthentifier (in string photo) raises (ErreurSalarieInexistant); //erreru d'authentification
 	};
 	
 	interface EntiteLogicielleJournalisation

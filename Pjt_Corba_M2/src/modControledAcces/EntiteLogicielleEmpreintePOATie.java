@@ -74,10 +74,10 @@ public class EntiteLogicielleEmpreintePOATie extends EntiteLogicielleEmpreintePO
     /**
      * Operation modifierEmpreinte
      */
-    public String modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
+    public String modifierEmpreinte(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte
     {
-        return _tie.modifierEmpreinte( idSal,  empreinte,  el_Porte,  cleDemandeur);
+        return _tie.modifierEmpreinte( idSal,  empreinte,  cleDemandeur);
     }
 
     /**

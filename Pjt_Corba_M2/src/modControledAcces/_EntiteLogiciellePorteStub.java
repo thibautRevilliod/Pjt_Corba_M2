@@ -72,7 +72,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
     /**
      * Operation demandeEntrerSortirZone
      */
-    public void demandeEntrerSortirZone(String idSal, String idZone, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public void demandeEntrerSortirZone(String idSal, String idZone)
     {
         while(true)
         {
@@ -84,7 +84,6 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                     org.omg.CORBA.portable.OutputStream _output = this._request("demandeEntrerSortirZone",true);
                     _output.write_string(idSal);
                     _output.write_string(idZone);
-                    modControledAcces.EntiteLogiciellePorteHelper.write(_output,el_Porte);
                     _input = this._invoke(_output);
                     return;
                 }
@@ -110,7 +109,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                 modControledAcces.EntiteLogiciellePorteOperations _self = (modControledAcces.EntiteLogiciellePorteOperations) _so.servant;
                 try
                 {
-                    _self.demandeEntrerSortirZone( idSal,  idZone,  el_Porte);
+                    _self.demandeEntrerSortirZone( idSal,  idZone);
                     return;
                 }
                 finally
@@ -124,7 +123,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
     /**
      * Operation demanderAuthentifier
      */
-    public void demanderAuthentifier(String photo, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public void demanderAuthentifier(String photo)
     {
         while(true)
         {
@@ -135,7 +134,6 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                 {
                     org.omg.CORBA.portable.OutputStream _output = this._request("demanderAuthentifier",true);
                     _output.write_string(photo);
-                    modControledAcces.EntiteLogiciellePorteHelper.write(_output,el_Porte);
                     _input = this._invoke(_output);
                     return;
                 }
@@ -161,7 +159,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                 modControledAcces.EntiteLogiciellePorteOperations _self = (modControledAcces.EntiteLogiciellePorteOperations) _so.servant;
                 try
                 {
-                    _self.demanderAuthentifier( photo,  el_Porte);
+                    _self.demanderAuthentifier( photo);
                     return;
                 }
                 finally
@@ -175,7 +173,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
     /**
      * Operation demanderModifierEmpreinte
      */
-    public void demanderModifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public void demanderModifierEmpreinte(String idSal, String empreinte)
     {
         while(true)
         {
@@ -187,7 +185,6 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                     org.omg.CORBA.portable.OutputStream _output = this._request("demanderModifierEmpreinte",true);
                     _output.write_string(idSal);
                     _output.write_string(empreinte);
-                    modControledAcces.EntiteLogiciellePorteHelper.write(_output,el_Porte);
                     _input = this._invoke(_output);
                     return;
                 }
@@ -213,7 +210,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                 modControledAcces.EntiteLogiciellePorteOperations _self = (modControledAcces.EntiteLogiciellePorteOperations) _so.servant;
                 try
                 {
-                    _self.demanderModifierEmpreinte( idSal,  empreinte,  el_Porte);
+                    _self.demanderModifierEmpreinte( idSal,  empreinte);
                     return;
                 }
                 finally

@@ -65,9 +65,8 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
         String arg1_in = _is.read_string();
-        modControledAcces.EntiteLogiciellePorte arg2_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
 
-        demandeEntrerSortirZone(arg0_in, arg1_in, arg2_in);
+        demandeEntrerSortirZone(arg0_in, arg1_in);
 
         _output = handler.createReply();
 
@@ -79,9 +78,8 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
-        modControledAcces.EntiteLogiciellePorte arg1_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
 
-        demanderAuthentifier(arg0_in, arg1_in);
+        demanderAuthentifier(arg0_in);
 
         _output = handler.createReply();
 
@@ -94,9 +92,8 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
         String arg1_in = _is.read_string();
-        modControledAcces.EntiteLogiciellePorte arg2_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
 
-        demanderModifierEmpreinte(arg0_in, arg1_in, arg2_in);
+        demanderModifierEmpreinte(arg0_in, arg1_in);
 
         _output = handler.createReply();
 

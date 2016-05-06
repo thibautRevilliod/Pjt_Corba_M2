@@ -26,7 +26,7 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 	}
 
 	@Override
-	public String modifierEmpreinte(String idSal, String empreinte, EntiteLogiciellePorte el_Porte, String cleDemandeur)
+	public String modifierEmpreinte(String idSal, String empreinte, String cleDemandeur)
 			throws EmpreinteExistante, CleInconnue, EmpreinteIncorrecte {
 		
 		return bddJDBC_EL_Empreinte.modifierEmpreinte(idSal, empreinte);

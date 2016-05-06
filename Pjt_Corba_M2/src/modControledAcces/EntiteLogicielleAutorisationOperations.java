@@ -15,7 +15,7 @@ public interface EntiteLogicielleAutorisationOperations
     /**
      * Operation verifierAutorisation
      */
-    public boolean verifierAutorisation(String idSal, String idZone, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public boolean verifierAutorisation(String idSal, String idZone)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant;
 
     /**

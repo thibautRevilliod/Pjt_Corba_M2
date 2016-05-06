@@ -250,7 +250,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
     /**
      * Operation sauthentifier
      */
-    public String sauthentifier(String photo, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public String sauthentifier(String photo)
         throws modControledAcces.ErreurSalarieInexistant
     {
         while(true)
@@ -262,7 +262,6 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 {
                     org.omg.CORBA.portable.OutputStream _output = this._request("sauthentifier",true);
                     _output.write_string(photo);
-                    modControledAcces.EntiteLogiciellePorteHelper.write(_output,el_Porte);
                     _input = this._invoke(_output);
                     String _arg_ret = _input.read_string();
                     return _arg_ret;
@@ -294,7 +293,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 modControledAcces.EntiteLogicielleAnnuaireOperations _self = (modControledAcces.EntiteLogicielleAnnuaireOperations) _so.servant;
                 try
                 {
-                    return _self.sauthentifier( photo,  el_Porte);
+                    return _self.sauthentifier( photo);
                 }
                 finally
                 {

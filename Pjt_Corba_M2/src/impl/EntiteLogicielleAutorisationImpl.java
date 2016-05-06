@@ -49,7 +49,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	}
 
 	@Override
-	public boolean verifierAutorisation(String idSal, String idZone, EntiteLogiciellePorte el_Porte)
+	public boolean verifierAutorisation(String idSal, String idZone)
 			throws ErreurSalarieInexistant, ErreurZoneInexistant {
 		java.util.Date d = new java.util.Date();
 		

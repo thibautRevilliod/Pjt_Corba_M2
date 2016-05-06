@@ -91,7 +91,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
     /**
      * Operation modifierEmpreinte
      */
-    public String modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
+    public String modifierEmpreinte(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte
     {
         while(true)
@@ -104,7 +104,6 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                     org.omg.CORBA.portable.OutputStream _output = this._request("modifierEmpreinte",true);
                     _output.write_string(idSal);
                     _output.write_string(empreinte);
-                    modControledAcces.EntiteLogiciellePorteHelper.write(_output,el_Porte);
                     _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
                     String _arg_ret = _input.read_string();
@@ -147,7 +146,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                 modControledAcces.EntiteLogicielleEmpreinteOperations _self = (modControledAcces.EntiteLogicielleEmpreinteOperations) _so.servant;
                 try
                 {
-                    return _self.modifierEmpreinte( idSal,  empreinte,  el_Porte,  cleDemandeur);
+                    return _self.modifierEmpreinte( idSal,  empreinte,  cleDemandeur);
                 }
                 finally
                 {

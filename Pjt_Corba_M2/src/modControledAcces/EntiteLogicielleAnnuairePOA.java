@@ -143,11 +143,10 @@ public abstract class EntiteLogicielleAnnuairePOA extends org.omg.PortableServer
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
-        modControledAcces.EntiteLogiciellePorte arg1_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
 
         try
         {
-            String _arg_result = sauthentifier(arg0_in, arg1_in);
+            String _arg_result = sauthentifier(arg0_in);
 
             _output = handler.createReply();
             _output.write_string(_arg_result);

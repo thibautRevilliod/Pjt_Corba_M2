@@ -106,7 +106,7 @@ public class PersonnelRH {
 		
 		connexionELannuaire(args);
 		String idSal;
-		monELAnnuaire.infosSalarie(idSal, el_Empreinte);
+		monELAnnuaire.infosSalarie(idSal);
 		
 		connexionELempreinte(args);
 		monELEmpreinte.supprimerEmpreinte(idSal, cleEmpreinte);
@@ -131,7 +131,7 @@ public class PersonnelRH {
 		monELAnnuaire.creerSalarie(mdp, nom, prenom, photo, heureDebut, heureFin, jourDebut, jourFin, dureeValidationCompte);
 		
 		connexionELannuaire(args);
-		monELAnnuaire.recupererNomPhotoSalarie(idSal, el_Empreinte);
+		monELAnnuaire.recupererNomPhotoSalarie(idSal);
 		
 	}
 

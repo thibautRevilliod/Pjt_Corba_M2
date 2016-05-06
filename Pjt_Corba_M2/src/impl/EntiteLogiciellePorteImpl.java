@@ -38,10 +38,10 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	}
 
 	@Override
-	public void demandeEntrerSortirZone(String idSal, String idZone, EntiteLogiciellePorte el_Porte) {
+	public void demandeEntrerSortirZone(String idSal, String idZone) {
 		// TODO Auto-generated method stub
 		connexionELautorisation();
-		monELAutorisation.verifierAutorisation(idSal, idZone, el_Porte);
+		monELAutorisation.verifierAutorisation(idSal, idZone);
 		
 		connexionELjournalisation();
 		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(null, "demandeEntrerSortirZone", "idSal"+idSal+ "idZone"+idZone);
@@ -50,10 +50,10 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	}
 
 	@Override
-	public void demanderAuthentifier(String photo, EntiteLogiciellePorte el_Porte) {
+	public void demanderAuthentifier(String photo) {
 		// TODO Auto-generated method stub
 		connexionELannuaire();
-		monELAnnuaire.sauthentifier(photo, el_Porte);
+		monELAnnuaire.sauthentifier(photo);
 		
 		String empreinte;
 		
@@ -62,11 +62,11 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	}
 
 	@Override
-	public void demanderModifierEmpreinte(String idSal, String empreinte, EntiteLogiciellePorte el_Porte) {
+	public void demanderModifierEmpreinte(String idSal, String empreinte) {
 		// TODO Auto-generated method stub
 		
 		connexionELempreinte();
-		monELEmpreinte.modifierEmpreinte(idSal, empreinte, el_Porte);
+		monELEmpreinte.modifierEmpreinte(idSal, empreinte);
 		
 	}
 	

@@ -33,7 +33,7 @@ public interface EntiteLogicielleAnnuaireOperations
     /**
      * Operation sauthentifier
      */
-    public String sauthentifier(String photo, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public String sauthentifier(String photo)
         throws modControledAcces.ErreurSalarieInexistant;
 
 }

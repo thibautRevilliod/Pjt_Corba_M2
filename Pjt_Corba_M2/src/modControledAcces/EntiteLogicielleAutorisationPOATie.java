@@ -73,10 +73,10 @@ public class EntiteLogicielleAutorisationPOATie extends EntiteLogicielleAutorisa
     /**
      * Operation verifierAutorisation
      */
-    public boolean verifierAutorisation(String idSal, String idZone, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public boolean verifierAutorisation(String idSal, String idZone)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant
     {
-        return _tie.verifierAutorisation( idSal,  idZone,  el_Porte);
+        return _tie.verifierAutorisation( idSal,  idZone);
     }
 
     /**

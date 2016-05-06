@@ -72,7 +72,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
     /**
      * Operation verifierAutorisation
      */
-    public boolean verifierAutorisation(String idSal, String idZone, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public boolean verifierAutorisation(String idSal, String idZone)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.ErreurZoneInexistant
     {
         while(true)
@@ -85,7 +85,6 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                     org.omg.CORBA.portable.OutputStream _output = this._request("verifierAutorisation",true);
                     _output.write_string(idSal);
                     _output.write_string(idZone);
-                    modControledAcces.EntiteLogiciellePorteHelper.write(_output,el_Porte);
                     _input = this._invoke(_output);
                     boolean _arg_ret = _input.read_boolean();
                     return _arg_ret;
@@ -122,7 +121,7 @@ public class _EntiteLogicielleAutorisationStub extends org.omg.CORBA.portable.Ob
                 modControledAcces.EntiteLogicielleAutorisationOperations _self = (modControledAcces.EntiteLogicielleAutorisationOperations) _so.servant;
                 try
                 {
-                    return _self.verifierAutorisation( idSal,  idZone,  el_Porte);
+                    return _self.verifierAutorisation( idSal,  idZone);
                 }
                 finally
                 {

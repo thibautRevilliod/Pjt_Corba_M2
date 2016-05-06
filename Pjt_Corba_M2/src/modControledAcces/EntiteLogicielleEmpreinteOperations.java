@@ -16,7 +16,7 @@ public interface EntiteLogicielleEmpreinteOperations
     /**
      * Operation modifierEmpreinte
      */
-    public String modifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte, String cleDemandeur)
+    public String modifierEmpreinte(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte;
 
     /**

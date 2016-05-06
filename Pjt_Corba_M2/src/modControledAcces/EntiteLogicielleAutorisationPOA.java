@@ -70,11 +70,10 @@ public abstract class EntiteLogicielleAutorisationPOA extends org.omg.PortableSe
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
         String arg1_in = _is.read_string();
-        modControledAcces.EntiteLogiciellePorte arg2_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
 
         try
         {
-            boolean _arg_result = verifierAutorisation(arg0_in, arg1_in, arg2_in);
+            boolean _arg_result = verifierAutorisation(arg0_in, arg1_in);
 
             _output = handler.createReply();
             _output.write_boolean(_arg_result);

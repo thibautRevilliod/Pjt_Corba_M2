@@ -15,16 +15,16 @@ public interface EntiteLogiciellePorteOperations
     /**
      * Operation demandeEntrerSortirZone
      */
-    public void demandeEntrerSortirZone(String idSal, String idZone, modControledAcces.EntiteLogiciellePorte el_Porte);
+    public void demandeEntrerSortirZone(String idSal, String idZone);
 
     /**
      * Operation demanderAuthentifier
      */
-    public void demanderAuthentifier(String photo, modControledAcces.EntiteLogiciellePorte el_Porte);
+    public void demanderAuthentifier(String photo);
 
     /**
      * Operation demanderModifierEmpreinte
      */
-    public void demanderModifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte);
+    public void demanderModifierEmpreinte(String idSal, String empreinte);
 
 }

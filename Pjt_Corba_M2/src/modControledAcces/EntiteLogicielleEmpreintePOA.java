@@ -88,12 +88,11 @@ public abstract class EntiteLogicielleEmpreintePOA extends org.omg.PortableServe
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
         String arg1_in = _is.read_string();
-        modControledAcces.EntiteLogiciellePorte arg2_in = modControledAcces.EntiteLogiciellePorteHelper.read(_is);
-        String arg3_in = _is.read_string();
+        String arg2_in = _is.read_string();
 
         try
         {
-            String _arg_result = modifierEmpreinte(arg0_in, arg1_in, arg2_in, arg3_in);
+            String _arg_result = modifierEmpreinte(arg0_in, arg1_in, arg2_in);
 
             _output = handler.createReply();
             _output.write_string(_arg_result);

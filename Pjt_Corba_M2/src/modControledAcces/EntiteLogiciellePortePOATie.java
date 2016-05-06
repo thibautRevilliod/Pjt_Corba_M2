@@ -73,25 +73,25 @@ public class EntiteLogiciellePortePOATie extends EntiteLogiciellePortePOA
     /**
      * Operation demandeEntrerSortirZone
      */
-    public void demandeEntrerSortirZone(String idSal, String idZone, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public void demandeEntrerSortirZone(String idSal, String idZone)
     {
-        _tie.demandeEntrerSortirZone( idSal,  idZone,  el_Porte);
+        _tie.demandeEntrerSortirZone( idSal,  idZone);
     }
 
     /**
      * Operation demanderAuthentifier
      */
-    public void demanderAuthentifier(String photo, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public void demanderAuthentifier(String photo)
     {
-        _tie.demanderAuthentifier( photo,  el_Porte);
+        _tie.demanderAuthentifier( photo);
     }
 
     /**
      * Operation demanderModifierEmpreinte
      */
-    public void demanderModifierEmpreinte(String idSal, String empreinte, modControledAcces.EntiteLogiciellePorte el_Porte)
+    public void demanderModifierEmpreinte(String idSal, String empreinte)
     {
-        _tie.demanderModifierEmpreinte( idSal,  empreinte,  el_Porte);
+        _tie.demanderModifierEmpreinte( idSal,  empreinte);
     }
 
 }
