@@ -81,7 +81,7 @@ public class VuePasserPorte extends JFrame {
 		
 		// Traitement pour la validation du formulaire: 
 		
-		
+		btnValider.addActionListener(new LValiderPasserPorte(this)); 
 		
 	}
 

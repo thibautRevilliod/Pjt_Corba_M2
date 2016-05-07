@@ -63,6 +63,11 @@ public class VueSupprimerEmpreinte extends JFrame {
 		// abonnements
 		
 		btnQuitter.addActionListener(new LFermerVueSupprimerEmpreinte(this)); 
+		
+		// traitement pour le valider 
+
+		btnValider.addActionListener(new LValiderVueSupprimerEmpreinte(this)); 
+		
 	}
 
 }

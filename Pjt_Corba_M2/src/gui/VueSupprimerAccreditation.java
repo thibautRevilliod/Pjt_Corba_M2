@@ -65,5 +65,6 @@ public class VueSupprimerAccreditation extends JFrame {
 		btnQuitter.addActionListener(new LFermerVueSupprimerAccreditation(this)); 
 		
 		// traitement du bouton valider
+		btnValider.addActionListener(new LValiderVueSupprimerAccreditation(this)); 
 	}
 }

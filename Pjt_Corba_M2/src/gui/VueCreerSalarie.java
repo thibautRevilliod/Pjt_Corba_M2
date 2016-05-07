@@ -134,6 +134,8 @@ public class VueCreerSalarie extends JFrame {
 		btnQuitter.addActionListener(new LFermerVueCreerSalarie(this)); 
 		
 		// traitement pour le bouton valider
+		btnValider.addActionListener(new LValiderCreerSalarie(this)); 
+		
 	}
 
 }

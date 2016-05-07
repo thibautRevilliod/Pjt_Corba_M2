@@ -79,6 +79,7 @@ public class VueAjouterEmpreinte extends JFrame {
 		btnQuitter.addActionListener(new LFermerVueAjouterEmpreinte(this));  
 		
 		// traitement du bouton valider
+		btnValider.addActionListener(new LValiderAjouterEmpreinte(this));  
 		
 	}
 

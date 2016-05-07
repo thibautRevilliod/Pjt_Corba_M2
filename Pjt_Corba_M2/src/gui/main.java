@@ -12,12 +12,12 @@ public class main {
 	public static void main(String[] args) 
 	{
 
-		//VueMenuPorte menuPorte;
-		//VueMenuRH menuRH;
+		VueMenuPorte menuPorte;
+		VueMenuRH menuRH;
 		//VueMenuAnnuaire menuAnnuaire;
 		VueMenuSecurite menuSecurite;
 	
-	/*// pour ouvrir le menu Porte 		
+		// pour ouvrir le menu Porte 		
 		
 		menuPorte = new VueMenuPorte();
 		menuPorte.setVisible(true);
@@ -30,7 +30,7 @@ public class main {
 		menuRH.setVisible(true);
 		menuRH.setLocation(500, 200);
 	
-		
+	/*	
 	// pour ouvrir le menu Annuaire		
 		
 		menuAnnuaire = new VueMenuAnnuaire();

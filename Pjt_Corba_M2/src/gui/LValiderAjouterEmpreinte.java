@@ -4,12 +4,12 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LValiderAjouterAccreditation implements ActionListener
+public class LValiderAjouterEmpreinte implements ActionListener
 {
 
-	private VueAjouterAccreditation vm;
+	private VueAjouterEmpreinte vm;
 
-	public LValiderAjouterAccreditation (VueAjouterAccreditation vueAjouterEmpreinte)
+	public LValiderAjouterEmpreinte (VueAjouterEmpreinte vueAjouterEmpreinte)
 	{
 		this.vm=vueAjouterEmpreinte;
 	}
@@ -20,6 +20,6 @@ public class LValiderAjouterAccreditation implements ActionListener
 		
 		// ici l'action a réaliser pour ajouter une accred
 		
-		System.out.println("yo");
+		System.out.println("yo 2 !");
 	}
 }

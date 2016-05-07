@@ -79,6 +79,7 @@ public class VueModifierEmpreinte extends JFrame {
 		btnQuitter.addActionListener(new LFermerVueModifierEmpreinte(this)); 
 		
 		// traitement valider :
+		btnValider.addActionListener(new LValiderModifierEmpreinte(this)); 
 		
 	}
 
