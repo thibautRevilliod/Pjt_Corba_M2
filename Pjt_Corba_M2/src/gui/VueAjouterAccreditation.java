@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -91,21 +93,25 @@ public class VueAjouterAccreditation extends JFrame {
 		btnQuitter.setBounds(204, 212, 89, 23);
 		contentPane.add(btnQuitter);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
+		DateFormat format = new SimpleDateFormat("yyyy--MMMM--dd");
+		
+		JFormattedTextField formattedTextField = new JFormattedTextField(format);
 		formattedTextField.setBounds(189, 58, 86, 20);
 		contentPane.add(formattedTextField);
 		
-		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
+		JFormattedTextField formattedTextField_1 = new JFormattedTextField(format);
 		formattedTextField_1.setBounds(189, 93, 86, 20);
 		contentPane.add(formattedTextField_1);
 		
-		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
-		formattedTextField_2.setBounds(79, 135, 92, 20);
+		JFormattedTextField formattedTextField_2 = new JFormattedTextField(format);
+		formattedTextField_2.setBounds(79, 135, 86, 20);
 		contentPane.add(formattedTextField_2);
 		
-		JFormattedTextField formattedTextField_3 = new JFormattedTextField();
-		formattedTextField_3.setBounds(231, 135, 86, 20);
+		JFormattedTextField formattedTextField_3 = new JFormattedTextField(format);
+		formattedTextField_3.setBounds(215, 135, 86, 20);
 		contentPane.add(formattedTextField_3);
+		
+		
 		
 		// abonnements
 		btnQuitter.addActionListener(new LFermerVueAjouterAccreditation(this)); 
