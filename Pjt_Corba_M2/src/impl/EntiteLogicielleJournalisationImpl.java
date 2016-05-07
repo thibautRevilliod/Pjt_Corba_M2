@@ -19,8 +19,8 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 			String cleDemandeur) throws CleInconnue {
 	
 		
-		Timestamp tquand_debut = new Timestamp(Long.valueOf(quand_debut));
-		Timestamp tquand_fin = new Timestamp(Long.valueOf(quand_fin));
+		Timestamp tquand_debut = Timestamp.valueOf(quand_debut);
+		Timestamp tquand_fin = Timestamp.valueOf(quand_fin);
 		
 		
 		EvenementJournalisation[] evenementJournalisation = bddJDBC_EL_Journalisation.consulterEvenement(qui, quoi, tquand_debut, tquand_fin);
@@ -33,7 +33,7 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 	public void enregistrerEvenement(EvenementJournalisation evenementJournalisation) {
 		// TODO : il faut tranformer evenementJournalisation.accesZoneSal.jourHeure en type TimesTamp pour le passer en paramètre de la méthode : comment fait-on pour le transformer ? :: OK
 		
-		Timestamp tjourHeure = new Timestamp(Long.valueOf(evenementJournalisation.accesZoneSal.jourHeure.timestamp));
+		Timestamp tjourHeure = Timestamp.valueOf(evenementJournalisation.accesZoneSal.jourHeure.timestamp);
 		
 		bddJDBC_EL_Journalisation.enregistrerEvenement(evenementJournalisation.accesZoneSal.idSal, evenementJournalisation.accesZoneSal.idZone, evenementJournalisation.accesZoneSal.statutAcces, tjourHeure, evenementJournalisation.operation, evenementJournalisation.contenuOperation);
 	}

@@ -119,7 +119,7 @@ public class BddJDBC_EL_Autorisation {
 			ResultSet rs = s.executeQuery("select dateAccreditation from Accrediter WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
 			if (!rs.next())
 			{
-	        	s.executeUpdate("insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values ("+pidSal+", "+pidZone+", {ts '"+pdateAccreditation+"'}, {ts '"+pjourDebut+",{ts '"+pjourFin+"'},{ts '"+pheureDebut+"'},{ts '"+pheureFin+"'})");
+	        	s.executeUpdate("insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values ("+pidSal+", "+pidZone+", {ts '"+pdateAccreditation+"'}, {ts '"+pjourDebut+"'},{ts '"+pjourFin+"'},{ts '"+pheureDebut+"'},{ts '"+pheureFin+"'})");
 			}
 			else
 			{
@@ -196,8 +196,9 @@ public class BddJDBC_EL_Autorisation {
 			ResultSet rs = s.executeQuery("SELECT idSal,idZone FROM Accrediter WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
         	if (rs.next())
         	{
-        		//TODO : Doit-on mettre à jour la dateAccreditation ? (avec la date du jour où l'on fait la modification)
-        		s.executeUpdate("UPDATE Accrediter SET jourDebut = "+pjourDebut+", jourFin = "+pjourFin+", heureDebut = "+pheureDebut+", heureFin = "+pheureFin+" WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
+        		java.util.Date d = new java.util.Date();
+    			Timestamp tdate = new Timestamp(d.getTime());
+        		s.executeUpdate("UPDATE Accrediter SET jourDebut = {ts '"+pjourDebut+"'}, jourFin = {ts '"+pjourFin+"'}, heureDebut = {ts '"+pheureDebut+"'}, heureFin = {ts '"+pheureFin+"'}, dateAccreditation = {ts '"+tdate+"'} WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
         	}
         	
         	//retourne les droits qui restent au salarié

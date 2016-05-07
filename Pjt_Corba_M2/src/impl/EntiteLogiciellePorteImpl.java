@@ -2,11 +2,14 @@ package impl;
 
 import bdd.BddJDBC_EL_Porte;
 import config.Config;
+import gui.main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.sql.Timestamp;
 
 import bdd.BddJDBC_EL_Autorisation;
+import modControledAcces.AccesZone;
 import modControledAcces.CleInconnue;
 import modControledAcces.Date;
 import modControledAcces.EmpreinteExistante;
@@ -45,7 +48,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	@Override
 	public void demandeEntrerSortirZone(String idSal, String idZone) {
 		// TODO Auto-generated method stub
-		connexionELautorisation();
+		connexionELautorisation(main.param);
 		try {
 			monELAutorisation.verifierAutorisation(idSal, idZone);
 		} catch (ErreurSalarieInexistant e) {
@@ -55,9 +58,11 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		connexionELjournalisation();
-		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(null, "demandeEntrerSortirZone", "idSal"+idSal+ "idZone"+idZone);
+		java.util.Date d = new java.util.Date();
+		Timestamp tdate = new Timestamp(d.getTime());
+		AccesZone accesZone = new AccesZone(idSal, idZone, true, new Date(tdate.toString()));
+		connexionELjournalisation(main.param);
+		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "demandeEntrerSortirZone", "idSal"+idSal+ "idZone"+idZone);
 		monELJournalisation.enregistrerEvenement(evenementJournalisation);
 		
 	}
@@ -65,7 +70,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	@Override
 	public void demanderAuthentifier(String photo) {
 		// TODO Auto-generated method stub
-		connexionELannuaire();
+		connexionELannuaire(main.param);
 		try {
 			monELAnnuaire.sauthentifier(photo);
 		} catch (ErreurSalarieInexistant e1) {
@@ -75,7 +80,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		
 		String empreinte = null;
 		
-		connexionELempreinte();
+		connexionELempreinte(main.param);
 		String idSal = null;
 		try {
 			monELEmpreinte.verifierCorrespondance(idSal, empreinte, cleEmpreinte);
@@ -95,7 +100,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	public void demanderModifierEmpreinte(String idSal, String empreinte) {
 		// TODO Auto-generated method stub
 		
-		connexionELempreinte();
+		connexionELempreinte(main.param);
 		try {
 			monELEmpreinte.modifierEmpreinte(idSal, empreinte, cleEmpreinte);
 		} catch (EmpreinteExistante e) {
@@ -111,17 +116,19 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		
 	}
 	
-	private static void connexionELannuaire () {
+	private static void connexionELannuaire (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
-			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init();
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
-	        System.out.println("Quel objet Corba voulez-vous contacter ?");
+/*	        System.out.println("Quel objet Corba voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
-
+*/
+			String idObj = "ELannuaire";
+			
 	        // Recuperation du naming service
 	        org.omg.CosNaming.NamingContext nameRoot =
 	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
@@ -152,17 +159,19 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		
 	}
 	
-	private static void connexionELempreinte () {
+	private static void connexionELempreinte (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
-			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init();
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
-	        System.out.println("Quel objet Corba voulez-vous contacter ?");
+/*	        System.out.println("Quel objet Corba voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
-
+*/
+			String idObj = "ELempreinte";
+			
 	        // Recuperation du naming service
 	        org.omg.CosNaming.NamingContext nameRoot =
 	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
@@ -193,17 +202,20 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		
 	}
 	
-	private static void connexionELautorisation () {
+	private static void connexionELautorisation (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
-			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init();
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
-	        System.out.println("Quel objet Corba voulez-vous contacter ?");
+/*	        System.out.println("Quel objet Corba voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
-
+*/
+			
+			String idObj = "ELautorisation";
+			
 	        // Recuperation du naming service
 	        org.omg.CosNaming.NamingContext nameRoot =
 	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
@@ -234,17 +246,19 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		
 	}
 	
-	private static void connexionELjournalisation () {
+	private static void connexionELjournalisation (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
-			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init();
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
-	        System.out.println("Quel objet Corba voulez-vous contacter ?");
+/*	        System.out.println("Quel objet Corba voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
-
+*/
+			String idObj = "ELjournalisation";
+			
 	        // Recuperation du naming service
 	        org.omg.CosNaming.NamingContext nameRoot =
 	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));

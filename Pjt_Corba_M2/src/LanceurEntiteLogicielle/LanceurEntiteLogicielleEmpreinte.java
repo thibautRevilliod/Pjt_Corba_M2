@@ -1,7 +1,6 @@
 package LanceurEntiteLogicielle;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import org.omg.CosNaming.*;
 import org.omg.PortableServer.*;
 
@@ -48,9 +47,12 @@ public class LanceurEntiteLogicielleEmpreinte {
 
 	        // Construction du nom a enregistrer
 	        org.omg.CosNaming.NameComponent[] nameToRegister = new org.omg.CosNaming.NameComponent[1];
-	        System.out.println("Sous quel nom voulez-vous enregistrer l'objet Corba ?");
+/*	        System.out.println("Sous quel nom voulez-vous enregistrer l'objet Corba ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String nomObj = in.readLine();
+*/
+	        String nomObj = "ELempreinte";
+	        
 	        nameToRegister[0] = new org.omg.CosNaming.NameComponent(nomObj,"");
 
 	        // Enregistrement de l'objet CORBA dans le service de noms

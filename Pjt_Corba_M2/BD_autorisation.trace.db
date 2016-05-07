@@ -169,3 +169,41 @@ insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDe
 05-07 20:39:03 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ACCREDITER (IDSAL,IDZONE,DATEACCREDITATION,JOURDEBUT,JOURFIN,HEUREDEBUT,HEUREFIN) VALUES (2, 2, 2016-05-05 20[*]:39:03.352, 2016-05-16 20:39:03.352,2016-05-21 20:39:03.352,2016-05-07 09:00:00.352,2016-05-07 18:00:00.352) "; expected ")"; SQL statement:
 insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (2, 2, 2016-05-05 20:39:03.352, 2016-05-16 20:39:03.352,2016-05-21 20:39:03.352,2016-05-07 09:00:00.352,2016-05-07 18:00:00.352) [42001-147]
+05-07 22:04:04 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (1, 1, {ts '2016-05-05 22:04:04.101'}, {ts '2016-05-06 22:04:04.104,{ts '2016-06-25 22:04:04.104'},{ts '2016-05-07 08:00:00.104'},{ts '2016-05-07 17:00:00.104[*]'})" [42000-147]
+05-07 22:04:04 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (2, 2, {ts '2016-05-05 22:04:04.123'}, {ts '2016-05-16 22:04:04.123,{ts '2016-05-21 22:04:04.123'},{ts '2016-05-07 09:00:00.123'},{ts '2016-05-07 18:00:00.123[*]'})" [42000-147]
+05-07 22:28:20 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ACCREDITER[*] SELECT * FROM ACCEDER"; expected "ALTER, ANALYZE, {"; SQL statement:
+ACCREDITER SELECT * FROM ACCEDER [42001-147]
+05-07 22:30:11 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (1, 1, {ts '2016-05-05 22:30:11.883'}, {ts '2016-05-06 22:30:11.884,{ts '2016-06-25 22:30:11.884'},{ts '2016-05-07 08:00:00.884'},{ts '2016-05-07 17:00:00.884[*]'})" [42000-147]
+05-07 22:30:11 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (2, 2, {ts '2016-05-05 22:30:11.894'}, {ts '2016-05-16 22:30:11.894,{ts '2016-05-21 22:30:11.894'},{ts '2016-05-07 09:00:00.894'},{ts '2016-05-07 18:00:00.894[*]'})" [42000-147]
+05-07 22:37:35 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (1, 1, {ts '2016-05-05 22:30:11.883'}, {ts '2016-05-06 22:30:11.884,{ts '2016-06-25 22:30:11.884'},{ts '2016-05-07 08:00:00.884'},{ts '2016-05-07 17:00:00.884[*][*]'})" [42000-147]
+05-07 22:37:45 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (1, 1, {ts '2016-05-05 22:30:11.883'}, {ts '2016-05-06 22:30:11.884,{ts '2016-06-25 22:30:11.884'},{ts '2016-05-07 08:00:00.884'},{ts '2016-05-07 17:00:00.884[*]'})" [42000-147]
+05-07 23:52:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "JOURDEBUT" not found; SQL statement:
+select * from Acceder WHERE jourdebut =     '2016-05-06 22:51:55.991'  [42122-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:126)
+	at org.h2.expression.Comparison.optimize(Comparison.java:154)
+	at org.h2.command.dml.Select.prepare(Select.java:776)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:165)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:153)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)

@@ -98,7 +98,7 @@ public class VueAjouterAccreditation extends JFrame {
 		contentPane.add(btnQuitter);
 		
 		DateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
-		DateFormat formatHeure = new SimpleDateFormat("hh:mm");
+		DateFormat formatHeure = new SimpleDateFormat("HH:mm");
 		
 		formattedTextField = new JFormattedTextField(formatDate);
 		formattedTextField.setBounds(189, 58, 86, 20);

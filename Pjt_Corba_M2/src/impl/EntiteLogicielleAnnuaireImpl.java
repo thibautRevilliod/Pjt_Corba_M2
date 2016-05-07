@@ -41,11 +41,11 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 			Date jourDebut, Date jourFin, Date dateValiditeCompte, boolean estPermanent) throws ErreurSalarieExistant {
 		//TODO: Il manque estPermanent et le type de date ne correspond pas : il faut juste une dateFinValiditeCompte de type Timestamp
 
-		Timestamp tjourDebut = new Timestamp(Long.valueOf(jourDebut.timestamp));
-		Timestamp tjourFin = new Timestamp(Long.valueOf(jourFin.timestamp));
-		Timestamp theureDebut = new Timestamp(Long.valueOf(heureDebut.timestamp));
-		Timestamp theureFin = new Timestamp(Long.valueOf(heureFin.timestamp));
-		Timestamp tdateValiditeCompte = new Timestamp(Long.valueOf(dateValiditeCompte.timestamp));
+		Timestamp tjourDebut = Timestamp.valueOf(jourDebut.timestamp);
+		Timestamp tjourFin = Timestamp.valueOf(jourFin.timestamp);
+		Timestamp theureDebut = Timestamp.valueOf(heureDebut.timestamp);
+		Timestamp theureFin = Timestamp.valueOf(heureFin.timestamp);
+		Timestamp tdateValiditeCompte = Timestamp.valueOf(dateValiditeCompte.timestamp);
 		
 		return bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, theureDebut, theureFin, tjourDebut, tjourFin, tdateValiditeCompte, estPermanent);
 	}

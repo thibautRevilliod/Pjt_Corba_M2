@@ -88,11 +88,11 @@ public class BddJDBC_EL_Annuaire {
 				if(pheureDebut == null && pheureFin == null && pjourDebut == null && pjourFin == null)
 				{
 					s.executeUpdate("insert into Salarie (idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent) "
-		        			+ "values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', "+pdateFinValiditeCompte+", "+pestPermanent+")");
+		        			+ "values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', {ts '"+pdateFinValiditeCompte+"'}, "+pestPermanent+")");
 				}else
 				{
 		        	s.executeUpdate("insert into Salarie (idSal,mdp,nom,prenom,photo,heureDebut,heureFin,jourDebut,jourFin,dateFinValiditeCompte,estPermanent) "
-		        			+ "values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', "+pheureDebut+", "+pheureFin+", "+pjourDebut+", "+pjourFin+", "+pdateFinValiditeCompte+", "+pestPermanent+")");
+		        			+ "values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', {ts '"+pheureDebut+"'}, {ts '"+pheureFin+"'}, {ts '"+pjourDebut+"'}, {ts '"+pjourFin+"'}, {ts '"+pdateFinValiditeCompte+"'}, "+pestPermanent+")");
 				}
 		        ids = String.valueOf(id);
 			}

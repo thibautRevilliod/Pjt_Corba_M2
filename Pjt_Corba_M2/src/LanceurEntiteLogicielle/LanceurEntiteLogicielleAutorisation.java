@@ -1,6 +1,5 @@
 package LanceurEntiteLogicielle;
 
-import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import org.omg.CosNaming.*;
 import org.omg.PortableServer.*;

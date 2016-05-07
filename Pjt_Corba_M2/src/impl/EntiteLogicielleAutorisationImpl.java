@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 
 import bdd.BddJDBC_EL_Autorisation;
 import config.Config;
+import gui.main;
 import modControledAcces.AccesZone;
 import modControledAcces.CleInconnue;
 import modControledAcces.Date;
@@ -32,7 +33,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	@Override
 	public InfoZone[] listeToutesZones() {
 		
-		bddJDBC_EL_Autorisation.init();
+//		bddJDBC_EL_Autorisation.init();
 //		BddJDBC_EL_Autorisation.clearBDD("BD_autorisation");
 		InfoZone[] listeZones = bddJDBC_EL_Autorisation.listeZones();
 		
@@ -64,18 +65,18 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 			//TODO : il faut transformer les types date en TimesTamp :: OK
 			java.util.Date d = new java.util.Date();
 			Timestamp tdate = new Timestamp(d.getTime());
-			Timestamp tjourDebut = new Timestamp(Long.valueOf(jourDebut.timestamp));
-			Timestamp tjourFin = new Timestamp(Long.valueOf(jourFin.timestamp));
-			Timestamp theureDebut = new Timestamp(Long.valueOf(heureDebut.timestamp));
-			Timestamp theureFin = new Timestamp(Long.valueOf(heureFin.timestamp));
+			Timestamp tjourDebut = Timestamp.valueOf(jourDebut.timestamp);
+			Timestamp tjourFin = Timestamp.valueOf(jourFin.timestamp);
+			Timestamp theureDebut = Timestamp.valueOf(heureDebut.timestamp);
+			Timestamp theureFin = Timestamp.valueOf(heureFin.timestamp);
 
 			bddJDBC_EL_Autorisation.creerAccrediter(idSal, idZone, tdate, tjourDebut, tjourFin, theureDebut, theureFin);
-			connexionELjournalisation();
+			connexionELjournalisation(main.param);
 			d = new java.util.Date();
 			tdate = new Timestamp(d.getTime());
 			AccesZone accesZone = new AccesZone(idSal, idZone, true, new Date(tdate.toString()));
-			EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "creerAccreditation", "jourDebut : "+jourDebut+ "jourFin : "+jourFin+ 
-					"heureDebut : "+heureDebut+ "heureFin : "+heureFin);
+			EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "creerAccreditation", "jourDebut : "+jourDebut.timestamp+ " jourFin : "+jourFin.timestamp+ 
+					" heureDebut : "+heureDebut.timestamp+ " heureFin : "+heureFin.timestamp);
 			monELJournalisation.enregistrerEvenement(evenementJournalisation);
 		}
 		else
@@ -96,10 +97,10 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 	public InfoSalarieAccreditation modifierAccreditation(String idSal, String idZone, Date jourDebut, Date jourFin, 
 			Date heureDebut, Date heureFin) throws ErreurSalarieInexistant, ErreurZoneInexistant {
 		
-		Timestamp tjourDebut = new Timestamp(Long.valueOf(jourDebut.timestamp));
-		Timestamp tjourFin = new Timestamp(Long.valueOf(jourFin.timestamp));
-		Timestamp theureDebut = new Timestamp(Long.valueOf(heureDebut.timestamp));
-		Timestamp theureFin = new Timestamp(Long.valueOf(heureFin.timestamp));
+		Timestamp tjourDebut = Timestamp.valueOf(jourDebut.timestamp);
+		Timestamp tjourFin = Timestamp.valueOf(jourFin.timestamp);
+		Timestamp theureDebut = Timestamp.valueOf(heureDebut.timestamp);
+		Timestamp theureFin = Timestamp.valueOf(heureFin.timestamp);
 		
 		// TODO : modifier le type date en TimesTamp
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.modifierAccreditation(idSal, idZone, tjourDebut, tjourFin, theureDebut, theureFin);
@@ -122,17 +123,19 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		return infoSalarieAccreditation;
 	}
 	
-	private static void connexionELjournalisation () {
+	private static void connexionELjournalisation (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
-			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init();
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
-	        System.out.println("Quel objet Corba voulez-vous contacter ?");
+/*	        System.out.println("Quel objet Corba voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
-
+*/
+			String idObj = "ELjournalisation";
+			
 	        // Recuperation du naming service
 	        org.omg.CosNaming.NamingContext nameRoot =
 	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));

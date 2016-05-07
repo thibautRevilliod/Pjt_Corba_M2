@@ -30,7 +30,7 @@ public class BddJDBC_EL_Journalisation {
 					" statuAcces boolean, " +
 					" jourHeure TIMESTAMP , " +
 					" operation VARCHAR( 500 ) , " +
-					" contenuOperation VARCHAR( 500 ) , " +
+					" contenuOperation VARCHAR( 2000 ) , " +
 					" PRIMARY KEY (idSal, idZone, jourHeure) )");
 
 		} catch(Exception e) {
@@ -69,10 +69,10 @@ public class BddJDBC_EL_Journalisation {
 	public void enregistrerEvenement(String pidSal, String pidZone, Boolean pstatuAcces, Timestamp pjourHeure, String poperation,String pcontenuOperation) {
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select idSal,idZone,jourHeure from Acceder WHERE jourHeure = "+pjourHeure);
+			ResultSet rs = s.executeQuery("select idSal,idZone,jourHeure from Acceder WHERE jourHeure = {ts '"+pjourHeure+"'}");
 			if (!rs.next())
 			{
-	        	s.executeUpdate("insert into Acceder (idSal,idZone,statuAcces,jourHeure,operation,contenuOperation) values ("+pidSal+", "+pidZone+", "+pstatuAcces+","+pjourHeure+",'"+poperation+"','"+pcontenuOperation+"'");
+	        	s.executeUpdate("insert into Acceder (idSal,idZone,statuAcces,jourHeure,operation,contenuOperation) values ("+pidSal+", "+pidZone+", "+pstatuAcces+",{ts '"+pjourHeure+"'},'"+poperation+"','"+pcontenuOperation+"')");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class BddJDBC_EL_Journalisation {
 		AccesZone accesZone;
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select count(*) from Acceder WHERE idSal = "+pidSal+" AND operation = "+poperation+" AND jourHeure BETWEEN "+pjourHeureDebut+" AND "+pjourHeureFin);
+			ResultSet rs = s.executeQuery("select count(*) from Acceder WHERE idSal = "+pidSal+" AND operation = "+poperation+" AND jourHeure BETWEEN {ts '"+pjourHeureDebut+"'} AND {ts '"+pjourHeureFin+"'}");
 
 			if (rs.next())
         	{

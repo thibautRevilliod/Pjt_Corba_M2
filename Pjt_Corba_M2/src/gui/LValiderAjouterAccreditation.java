@@ -9,6 +9,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import LanceurPersonnel.PersonnelSecurite;
 import modControledAcces.CleInconnue;
 import modControledAcces.ErreurSalarieInexistant;
@@ -26,35 +28,49 @@ public class LValiderAjouterAccreditation implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		try {
-			PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-			personnelSecurite.connexionELautorisation(main.param);
+		String message;
+		if (!vm.getFormattedTextField().getText().equals("") && !vm.getFormattedTextField_1().getText().equals("") && !vm.getFormattedTextField_2().getText().equals("") 
+				&& !vm.getFormattedTextField_3().getText().equals("") && !vm.getTextField().getText().equals("") && !vm.getTextField_5().getText().equals(""))
+		{
+			try {
+				PersonnelSecurite personnelSecurite = new PersonnelSecurite();
+				personnelSecurite.connexionELautorisation(main.param);
+				
+				SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
+				Date jourDebut = formatDate.parse(vm.getFormattedTextField().getText());
+				Date jourFin = formatDate.parse(vm.getFormattedTextField_1().getText());
+				SimpleDateFormat formatHeure = new SimpleDateFormat("HH:mm");
+				Date heureDebut = formatHeure.parse(vm.getFormattedTextField_2().getText());
+				Date heureFin = formatHeure.parse(vm.getFormattedTextField_3().getText());
+				Timestamp tjourDebut = new Timestamp(jourDebut.getTime());
+				Timestamp tjourFin = new Timestamp(jourFin.getTime());
+				Timestamp theureDebut = new Timestamp(heureDebut.getTime());
+				Timestamp theureFin = new Timestamp(heureFin.getTime());
+				
+				personnelSecurite.monELAutorisation.creerAccreditation(vm.getTextField().getText(), vm.getTextField_5().getText(), new modControledAcces.Date(tjourDebut.toString()), new modControledAcces.Date(tjourFin.toString()), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()), personnelSecurite.getCleAutorisation());
+			} catch (ErreurSalarieInexistant e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (CleInconnue e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ErreurZoneInexistant e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
-			SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
-			Date jourDebut = formatDate.parse(vm.getFormattedTextField().getText());
-			Date jourFin = formatDate.parse(vm.getFormattedTextField_1().getText());
-			SimpleDateFormat formatHeure = new SimpleDateFormat("hh:mm");
-			Date heureDebut = formatHeure.parse(vm.getFormattedTextField_2().getText());
-			Date heureFin = formatHeure.parse(vm.getFormattedTextField_3().getText());
-			Timestamp tjourDebut = new Timestamp(jourDebut.getTime());
-			Timestamp tjourFin = new Timestamp(jourFin.getTime());
-			Timestamp theureDebut = new Timestamp(heureDebut.getTime());
-			Timestamp theureFin = new Timestamp(heureFin.getTime());
+			message = "creerAccreditation : OK";
+			JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 	
-			personnelSecurite.monELAutorisation.creerAccreditation(vm.getTextField().getText(), vm.getTextField_5().getText(), new modControledAcces.Date(tjourDebut.toString()), new modControledAcces.Date(tjourFin.toString()), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()), personnelSecurite.getCleAutorisation());
-		} catch (ErreurSalarieInexistant e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (CleInconnue e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ErreurZoneInexistant e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			//fermeture fenêtre
+			this.vm.setVisible(false);
+			
+		}else {
+			message = "Vous devez remplir les champs";
+			JOptionPane.showMessageDialog(vm, message, "Erreur", JOptionPane.WARNING_MESSAGE);
 		}
-
 	}
 }
