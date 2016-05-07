@@ -8,10 +8,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 
 public class main {
-	
+	public static String[] param;
 	public static void main(String[] args) 
 	{
-
+		param = args;
+		
 		VueMenuPorte menuPorte;
 		VueMenuRH menuRH;
 		//VueMenuAnnuaire menuAnnuaire;
@@ -19,16 +20,16 @@ public class main {
 	
 		// pour ouvrir le menu Porte 		
 		
-		menuPorte = new VueMenuPorte();
+		/*menuPorte = new VueMenuPorte();
 		menuPorte.setVisible(true);
-		menuPorte.setLocation(500, 200);
+		menuPorte.setLocation(500, 200);*/
 
 		
 		// pour ouvrir le menu RH 		
 		
-		menuRH = new VueMenuRH();
+	/*	menuRH = new VueMenuRH();
 		menuRH.setVisible(true);
-		menuRH.setLocation(500, 200);
+		menuRH.setLocation(500, 200);*/
 	
 	/*	
 	// pour ouvrir le menu Annuaire		

@@ -18,6 +18,10 @@ public class VueAjouterAccreditation extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_5;
+	private JFormattedTextField formattedTextField;
+	private JFormattedTextField formattedTextField_1;
+	private JFormattedTextField formattedTextField_2;
+	private JFormattedTextField formattedTextField_3;
 
 	/**
 	 * Launch the application.
@@ -93,21 +97,22 @@ public class VueAjouterAccreditation extends JFrame {
 		btnQuitter.setBounds(204, 212, 89, 23);
 		contentPane.add(btnQuitter);
 		
-		DateFormat format = new SimpleDateFormat("yyyy--MMMM--dd");
+		DateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
+		DateFormat formatHeure = new SimpleDateFormat("hh:mm");
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField(format);
+		formattedTextField = new JFormattedTextField(formatDate);
 		formattedTextField.setBounds(189, 58, 86, 20);
 		contentPane.add(formattedTextField);
 		
-		JFormattedTextField formattedTextField_1 = new JFormattedTextField(format);
+		formattedTextField_1 = new JFormattedTextField(formatDate);
 		formattedTextField_1.setBounds(189, 93, 86, 20);
 		contentPane.add(formattedTextField_1);
 		
-		JFormattedTextField formattedTextField_2 = new JFormattedTextField(format);
+		formattedTextField_2 = new JFormattedTextField(formatHeure);
 		formattedTextField_2.setBounds(79, 135, 86, 20);
 		contentPane.add(formattedTextField_2);
 		
-		JFormattedTextField formattedTextField_3 = new JFormattedTextField(format);
+		formattedTextField_3 = new JFormattedTextField(formatHeure);
 		formattedTextField_3.setBounds(215, 135, 86, 20);
 		contentPane.add(formattedTextField_3);
 		
@@ -118,5 +123,53 @@ public class VueAjouterAccreditation extends JFrame {
 		
 		// traitement pour le bouton valider
 		btnValider.addActionListener(new LValiderAjouterAccreditation(this)); 
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JTextField getTextField_5() {
+		return textField_5;
+	}
+
+	public void setTextField_5(JTextField textField_5) {
+		this.textField_5 = textField_5;
+	}
+
+	public JFormattedTextField getFormattedTextField() {
+		return formattedTextField;
+	}
+
+	public void setFormattedTextField(JFormattedTextField formattedTextField) {
+		this.formattedTextField = formattedTextField;
+	}
+
+	public JFormattedTextField getFormattedTextField_1() {
+		return formattedTextField_1;
+	}
+
+	public void setFormattedTextField_1(JFormattedTextField formattedTextField_1) {
+		this.formattedTextField_1 = formattedTextField_1;
+	}
+
+	public JFormattedTextField getFormattedTextField_2() {
+		return formattedTextField_2;
+	}
+
+	public void setFormattedTextField_2(JFormattedTextField formattedTextField_2) {
+		this.formattedTextField_2 = formattedTextField_2;
+	}
+
+	public JFormattedTextField getFormattedTextField_3() {
+		return formattedTextField_3;
+	}
+
+	public void setFormattedTextField_3(JFormattedTextField formattedTextField_3) {
+		this.formattedTextField_3 = formattedTextField_3;
 	}
 }

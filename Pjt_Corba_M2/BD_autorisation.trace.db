@@ -47,3 +47,125 @@ insert into Zones (idZone,libelleZone) values ('3', 'Zone3' [42001-147]
 04-30 18:13:42 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ZONES (IDZONE,LIBELLEZONE) VALUES ('4', 'Zone4' "; expected ")"; SQL statement:
 insert into Zones (idZone,libelleZone) values ('4', 'Zone4' [42001-147]
+05-07 20:06:50 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "LIBELLEPORTE" not found; SQL statement:
+select libelleZone from zones WHERE libellePorte = 'Zone1' [42122-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:126)
+	at org.h2.expression.Comparison.optimize(Comparison.java:154)
+	at org.h2.command.dml.Select.prepare(Select.java:776)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:71)
+	at bdd.BddJDBC_EL_Autorisation.creerZone(BddJDBC_EL_Autorisation.java:97)
+	at bdd.BddJDBC_EL_Autorisation.init(BddJDBC_EL_Autorisation.java:356)
+	at impl.EntiteLogicielleAutorisationImpl.listeToutesZones(EntiteLogicielleAutorisationImpl.java:35)
+	at modControledAcces.EntiteLogicielleAutorisationPOA._invoke_listeToutesZones(EntiteLogicielleAutorisationPOA.java:59)
+	at modControledAcces.EntiteLogicielleAutorisationPOA._invoke(EntiteLogicielleAutorisationPOA.java:41)
+	at org.openorb.adapter.poa.POA.dispatch(Unknown Source)
+	at org.openorb.net.AbstractServerRequest.dispatch(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.serve_request(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.thread_pool_main(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.access$200(Unknown Source)
+	at org.openorb.net.ServerManagerImpl$PoolThread.run(Unknown Source)
+05-07 20:06:50 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "LIBELLEPORTE" not found; SQL statement:
+select libelleZone from zones WHERE libellePorte = 'Zone2' [42122-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:126)
+	at org.h2.expression.Comparison.optimize(Comparison.java:154)
+	at org.h2.command.dml.Select.prepare(Select.java:776)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:71)
+	at bdd.BddJDBC_EL_Autorisation.creerZone(BddJDBC_EL_Autorisation.java:97)
+	at bdd.BddJDBC_EL_Autorisation.init(BddJDBC_EL_Autorisation.java:357)
+	at impl.EntiteLogicielleAutorisationImpl.listeToutesZones(EntiteLogicielleAutorisationImpl.java:35)
+	at modControledAcces.EntiteLogicielleAutorisationPOA._invoke_listeToutesZones(EntiteLogicielleAutorisationPOA.java:59)
+	at modControledAcces.EntiteLogicielleAutorisationPOA._invoke(EntiteLogicielleAutorisationPOA.java:41)
+	at org.openorb.adapter.poa.POA.dispatch(Unknown Source)
+	at org.openorb.net.AbstractServerRequest.dispatch(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.serve_request(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.thread_pool_main(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.access$200(Unknown Source)
+	at org.openorb.net.ServerManagerImpl$PoolThread.run(Unknown Source)
+05-07 20:06:50 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "LIBELLEPORTE" not found; SQL statement:
+select libelleZone from zones WHERE libellePorte = 'Zone3' [42122-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:126)
+	at org.h2.expression.Comparison.optimize(Comparison.java:154)
+	at org.h2.command.dml.Select.prepare(Select.java:776)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:71)
+	at bdd.BddJDBC_EL_Autorisation.creerZone(BddJDBC_EL_Autorisation.java:97)
+	at bdd.BddJDBC_EL_Autorisation.init(BddJDBC_EL_Autorisation.java:358)
+	at impl.EntiteLogicielleAutorisationImpl.listeToutesZones(EntiteLogicielleAutorisationImpl.java:35)
+	at modControledAcces.EntiteLogicielleAutorisationPOA._invoke_listeToutesZones(EntiteLogicielleAutorisationPOA.java:59)
+	at modControledAcces.EntiteLogicielleAutorisationPOA._invoke(EntiteLogicielleAutorisationPOA.java:41)
+	at org.openorb.adapter.poa.POA.dispatch(Unknown Source)
+	at org.openorb.net.AbstractServerRequest.dispatch(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.serve_request(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.thread_pool_main(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.access$200(Unknown Source)
+	at org.openorb.net.ServerManagerImpl$PoolThread.run(Unknown Source)
+05-07 20:06:50 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "LIBELLEPORTE" not found; SQL statement:
+select libelleZone from zones WHERE libellePorte = 'Zone4' [42122-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:126)
+	at org.h2.expression.Comparison.optimize(Comparison.java:154)
+	at org.h2.command.dml.Select.prepare(Select.java:776)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:71)
+	at bdd.BddJDBC_EL_Autorisation.creerZone(BddJDBC_EL_Autorisation.java:97)
+	at bdd.BddJDBC_EL_Autorisation.init(BddJDBC_EL_Autorisation.java:359)
+	at impl.EntiteLogicielleAutorisationImpl.listeToutesZones(EntiteLogicielleAutorisationImpl.java:35)
+	at modControledAcces.EntiteLogicielleAutorisationPOA._invoke_listeToutesZones(EntiteLogicielleAutorisationPOA.java:59)
+	at modControledAcces.EntiteLogicielleAutorisationPOA._invoke(EntiteLogicielleAutorisationPOA.java:41)
+	at org.openorb.adapter.poa.POA.dispatch(Unknown Source)
+	at org.openorb.net.AbstractServerRequest.dispatch(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.serve_request(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.thread_pool_main(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.access$200(Unknown Source)
+	at org.openorb.net.ServerManagerImpl$PoolThread.run(Unknown Source)
+05-07 20:06:50 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ACCREDITER (IDSAL,IDZONE,DATEACCREDITATION,JOURDEBUT,JOURFIN,HEUREDEBUT,HEUREFIN) VALUES (1, 1, 2016-05-05 20[*]:06:50.723, 2016-05-06 20:06:50.723,2016-06-25 20:06:50.723,2016-05-07 08:00:00.723,2016-05-07 17:00:00.723 "; expected ")"; SQL statement:
+insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (1, 1, 2016-05-05 20:06:50.723, 2016-05-06 20:06:50.723,2016-06-25 20:06:50.723,2016-05-07 08:00:00.723,2016-05-07 17:00:00.723 [42001-147]
+05-07 20:06:50 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ACCREDITER (IDSAL,IDZONE,DATEACCREDITATION,JOURDEBUT,JOURFIN,HEUREDEBUT,HEUREFIN) VALUES (2, 2, 2016-05-05 20[*]:06:50.728, 2016-05-16 20:06:50.728,2016-05-21 20:06:50.728,2016-05-07 09:00:00.728,2016-05-07 18:00:00.728 "; expected ")"; SQL statement:
+insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (2, 2, 2016-05-05 20:06:50.728, 2016-05-16 20:06:50.728,2016-05-21 20:06:50.728,2016-05-07 09:00:00.728,2016-05-07 18:00:00.728 [42001-147]
+05-07 20:11:29 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ACCREDITER (IDSAL,IDZONE,DATEACCREDITATION,JOURDEBUT,JOURFIN,HEUREDEBUT,HEUREFIN) VALUES (1, 1, 2016-05-05 20[*]:11:29.796, 2016-05-06 20:11:29.798,2016-06-25 20:11:29.798,2016-05-07 08:00:00.798,2016-05-07 17:00:00.798 "; expected ")"; SQL statement:
+insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (1, 1, 2016-05-05 20:11:29.796, 2016-05-06 20:11:29.798,2016-06-25 20:11:29.798,2016-05-07 08:00:00.798,2016-05-07 17:00:00.798 [42001-147]
+05-07 20:11:29 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ACCREDITER (IDSAL,IDZONE,DATEACCREDITATION,JOURDEBUT,JOURFIN,HEUREDEBUT,HEUREFIN) VALUES (2, 2, 2016-05-05 20[*]:11:29.809, 2016-05-16 20:11:29.809,2016-05-21 20:11:29.809,2016-05-07 09:00:00.809,2016-05-07 18:00:00.809 "; expected ")"; SQL statement:
+insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (2, 2, 2016-05-05 20:11:29.809, 2016-05-16 20:11:29.809,2016-05-21 20:11:29.809,2016-05-07 09:00:00.809,2016-05-07 18:00:00.809 [42001-147]
+05-07 20:39:03 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ACCREDITER (IDSAL,IDZONE,DATEACCREDITATION,JOURDEBUT,JOURFIN,HEUREDEBUT,HEUREFIN) VALUES (1, 1, 2016-05-05 20[*]:39:03.34, 2016-05-06 20:39:03.341,2016-06-25 20:39:03.341,2016-05-07 08:00:00.341,2016-05-07 17:00:00.341) "; expected ")"; SQL statement:
+insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (1, 1, 2016-05-05 20:39:03.34, 2016-05-06 20:39:03.341,2016-06-25 20:39:03.341,2016-05-07 08:00:00.341,2016-05-07 17:00:00.341) [42001-147]
+05-07 20:39:03 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ACCREDITER (IDSAL,IDZONE,DATEACCREDITATION,JOURDEBUT,JOURFIN,HEUREDEBUT,HEUREFIN) VALUES (2, 2, 2016-05-05 20[*]:39:03.352, 2016-05-16 20:39:03.352,2016-05-21 20:39:03.352,2016-05-07 09:00:00.352,2016-05-07 18:00:00.352) "; expected ")"; SQL statement:
+insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values (2, 2, 2016-05-05 20:39:03.352, 2016-05-16 20:39:03.352,2016-05-21 20:39:03.352,2016-05-07 09:00:00.352,2016-05-07 18:00:00.352) [42001-147]

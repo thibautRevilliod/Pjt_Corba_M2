@@ -26,7 +26,7 @@ import modControledAcces.InfoZone;
 public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisationPOA {
 	
 	public static EntiteLogicielleJournalisation monELJournalisation;
-	public static String clePersonnel = "personnel_securite";
+	public static String clePersonnel = "personnel_securite_autorisation";
 	public static BddJDBC_EL_Autorisation bddJDBC_EL_Autorisation = new BddJDBC_EL_Autorisation("BD_Autorisation");
 
 	@Override

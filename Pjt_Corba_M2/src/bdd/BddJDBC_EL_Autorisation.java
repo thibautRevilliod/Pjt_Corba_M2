@@ -94,7 +94,7 @@ public class BddJDBC_EL_Autorisation {
         	{
         		id = rs.getInt(1) + 1;
         	}
-			rs = s.executeQuery("select libelleZone from zones WHERE libellePorte = '"+plibelleZone+"'");
+			rs = s.executeQuery("select libelleZone from zones WHERE libelleZone = '"+plibelleZone+"'");
 			if (!rs.next())
 			{
 				s.executeUpdate("insert into Zones (idZone,libelleZone) values ("+idz+", '"+plibelleZone+"')");
@@ -119,7 +119,7 @@ public class BddJDBC_EL_Autorisation {
 			ResultSet rs = s.executeQuery("select dateAccreditation from Accrediter WHERE idZone = "+pidZone+" AND idSal = "+pidSal+"");
 			if (!rs.next())
 			{
-	        	s.executeUpdate("insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values ("+pidSal+", "+pidZone+", "+pdateAccreditation+", "+pjourDebut+","+pjourFin+","+pheureDebut+","+pheureFin+"");
+	        	s.executeUpdate("insert into Accrediter (idSal,idZone,dateAccreditation,jourDebut,jourFin,heureDebut,heureFin) values ("+pidSal+", "+pidZone+", {ts '"+pdateAccreditation+"'}, {ts '"+pjourDebut+",{ts '"+pjourFin+"'},{ts '"+pheureDebut+"'},{ts '"+pheureFin+"'})");
 			}
 			else
 			{

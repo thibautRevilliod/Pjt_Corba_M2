@@ -22,12 +22,14 @@ public class PersonnelSecurite {
 		try {
 			// Intialisation de l'orb
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
-
+/*
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
 	        System.out.println("Quel objet Corba voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
-
+*/
+			String idObj = "ELautorisation";
+			
 	        // Recuperation du naming service
 	        org.omg.CosNaming.NamingContext nameRoot =
 	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
@@ -142,7 +144,6 @@ public class PersonnelSecurite {
 
 	public static void main(String[] args) throws ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant {
 		// TODO Auto-generated method stub
-		
 		connexionELautorisation(args);
 		listeZones = monELAutorisation.listeToutesZones();
 		System.out.println("liste zones : " + Arrays.toString(listeZones));
@@ -169,6 +170,22 @@ public class PersonnelSecurite {
 		String quand_fin = null;
 		monELJournalisation.consulter(qui, quoi, quand_debut, quand_fin, cleJournalisation);
 		
+	}
+
+	public static String getCleAutorisation() {
+		return cleAutorisation;
+	}
+
+	public static void setCleAutorisation(String cleAutorisation) {
+		PersonnelSecurite.cleAutorisation = cleAutorisation;
+	}
+
+	public static String getCleJournalisation() {
+		return cleJournalisation;
+	}
+
+	public static void setCleJournalisation(String cleJournalisation) {
+		PersonnelSecurite.cleJournalisation = cleJournalisation;
 	}
 
 }
