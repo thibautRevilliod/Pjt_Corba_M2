@@ -9,15 +9,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 
 public class VueAjouterAccreditation extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
 	private JTextField textField_5;
 
 	/**
@@ -61,37 +58,17 @@ public class VueAjouterAccreditation extends JFrame {
 		lblJourDbut.setBounds(23, 61, 148, 14);
 		contentPane.add(lblJourDbut);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(189, 58, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
 		JLabel lblJourFin = new JLabel("Jour fin :");
 		lblJourFin.setBounds(23, 96, 142, 14);
 		contentPane.add(lblJourFin);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(189, 93, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
 		
 		JLabel lblEntre = new JLabel("Entre ");
 		lblEntre.setBounds(23, 138, 46, 14);
 		contentPane.add(lblEntre);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(79, 135, 86, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
 		JLabel lblHEt = new JLabel("h     et ");
 		lblHEt.setBounds(175, 138, 46, 14);
 		contentPane.add(lblHEt);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(231, 135, 86, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
 		
 		JLabel lblH = new JLabel("h");
 		lblH.setBounds(327, 138, 46, 14);
@@ -114,11 +91,26 @@ public class VueAjouterAccreditation extends JFrame {
 		btnQuitter.setBounds(204, 212, 89, 23);
 		contentPane.add(btnQuitter);
 		
+		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setBounds(189, 58, 86, 20);
+		contentPane.add(formattedTextField);
+		
+		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
+		formattedTextField_1.setBounds(189, 93, 86, 20);
+		contentPane.add(formattedTextField_1);
+		
+		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
+		formattedTextField_2.setBounds(79, 135, 92, 20);
+		contentPane.add(formattedTextField_2);
+		
+		JFormattedTextField formattedTextField_3 = new JFormattedTextField();
+		formattedTextField_3.setBounds(231, 135, 86, 20);
+		contentPane.add(formattedTextField_3);
+		
 		// abonnements
 		btnQuitter.addActionListener(new LFermerVueAjouterAccreditation(this)); 
 		
 		// traitement pour le bouton valider
 		btnValider.addActionListener(new LValiderAjouterAccreditation(this)); 
 	}
-
 }
