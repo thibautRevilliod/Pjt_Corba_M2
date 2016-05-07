@@ -118,6 +118,7 @@ public class VueAjouterAccreditation extends JFrame {
 		btnQuitter.addActionListener(new LFermerVueAjouterAccreditation(this)); 
 		
 		// traitement pour le bouton valider
+		btnValider.addActionListener(new LValiderAjouterAccreditation(this)); 
 	}
 
 }
