@@ -77,22 +77,22 @@ public class BddJDBC_EL_Annuaire {
 		
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select MAX(idSal) from salarie");
+			ResultSet rs = s.executeQuery("select MAX(idSal) from Salaries");
         	if (rs.next())
         	{
         		id = rs.getInt(1) + 1;
         	}
-			rs = s.executeQuery("select photo from Salarie WHERE idSal = '"+pphoto+"'");
+			rs = s.executeQuery("select photo from Salaries WHERE photo = '"+pphoto+"'");
 			if (!rs.next())
 			{
 				if(pheureDebut == null && pheureFin == null && pjourDebut == null && pjourFin == null)
 				{
-					s.executeUpdate("insert into Salarie (idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent) "
-		        			+ "values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', {ts '"+pdateFinValiditeCompte+"'}, "+pestPermanent+")");
+					s.executeUpdate("insert into Salaries (idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent) "
+		        			+ "values ("+id+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', {ts '"+pdateFinValiditeCompte+"'}, "+pestPermanent+")");
 				}else
 				{
-		        	s.executeUpdate("insert into Salarie (idSal,mdp,nom,prenom,photo,heureDebut,heureFin,jourDebut,jourFin,dateFinValiditeCompte,estPermanent) "
-		        			+ "values ("+ids+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', {ts '"+pheureDebut+"'}, {ts '"+pheureFin+"'}, {ts '"+pjourDebut+"'}, {ts '"+pjourFin+"'}, {ts '"+pdateFinValiditeCompte+"'}, "+pestPermanent+")");
+		        	s.executeUpdate("insert into Salaries (idSal,mdp,nom,prenom,photo,heureDebut,heureFin,jourDebut,jourFin,dateFinValiditeCompte,estPermanent) "
+		        			+ "values ("+id+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', {ts '"+pheureDebut+"'}, {ts '"+pheureFin+"'}, {ts '"+pjourDebut+"'}, {ts '"+pjourFin+"'}, {ts '"+pdateFinValiditeCompte+"'}, "+pestPermanent+")");
 				}
 		        ids = String.valueOf(id);
 			}
@@ -113,7 +113,7 @@ public class BddJDBC_EL_Annuaire {
 
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent from Salarie where idSal = "+pidSal);
+			ResultSet rs = s.executeQuery("select idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent from Salaries where idSal = "+pidSal);
     		if(rs.next())
     		{
     			res = new InfoSalarie(String.valueOf(rs.getInt(1)),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), new modControledAcces.Date(rs.getTimestamp(6).toString()), rs.getBoolean(7));
@@ -145,7 +145,7 @@ public class BddJDBC_EL_Annuaire {
 			int i =0;
     		while(rs.next())
     		{
-    			res[i] = new InfoSalarie(String.valueOf(rs.getInt(1)),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),new modControledAcces.Date(rs.getTimestamp(6).toString()), rs.getBoolean(7));
+    			res[i] = new InfoSalarie(String.valueOf(rs.getInt(1)),rs.getString(2),rs.getString(3),rs.getString(4),"",new modControledAcces.Date(rs.getTimestamp(5).toString()), rs.getBoolean(6));
     			i++;
     		}
     		
@@ -161,7 +161,7 @@ public class BddJDBC_EL_Annuaire {
 		
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select nom,photo,estPermanent from Salarie where idSal = "+pidSal);
+			ResultSet rs = s.executeQuery("select nom,photo,estPermanent from Salaries where idSal = "+pidSal);
     		if(rs.next())
     		{
     			res = new InfoSalarie(pidSal, rs.getString(1), "",rs.getString(2),"",null,rs.getBoolean(3));
@@ -179,7 +179,7 @@ public class BddJDBC_EL_Annuaire {
 		
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select idSal from Salarie where photo = '"+pphoto+"'");
+			ResultSet rs = s.executeQuery("select idSal from Salaries where photo = '"+pphoto+"'");
     		if(rs.next())
     		{
     			res = String.valueOf(rs.getInt(1));
@@ -222,5 +222,21 @@ public class BddJDBC_EL_Annuaire {
 			cal.set(Calendar.YEAR, annee);
 			tstamp = new Timestamp(cal.getTimeInMillis());
 			creerSalarie("mdp2","nom2","prenom2","photo2",null,null,null,null,tstamp,true);	
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BddJDBC_EL_Annuaire bddJDBC_EL_Annuaire = new BddJDBC_EL_Annuaire("BD_Annuaire");
+		//bddJDBC_EL_Annuaire.init();
+		
+		bddJDBC_EL_Annuaire.listeTousSalaries();
+		try {
+			bddJDBC_EL_Annuaire.fermer();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 }

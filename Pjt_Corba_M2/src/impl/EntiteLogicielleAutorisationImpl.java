@@ -37,14 +37,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 //		BddJDBC_EL_Autorisation.clearBDD("BD_autorisation");
 		InfoZone[] listeZones = bddJDBC_EL_Autorisation.listeZones();
 		
-		
-		System.out.println("test !!!!!");
-		
-		try {
-			bddJDBC_EL_Autorisation.fermer();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 		
 		return listeZones;
 	}
@@ -114,6 +107,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.supprimerAccreditation(idSal, idZone);
 		
 		//TODO : il faut pas mettre "null" sinon ça va planter ! :: OK
+		connexionELjournalisation(main.param);
 		java.util.Date d = new java.util.Date();
 		Timestamp tdate = new Timestamp(d.getTime());
 		AccesZone accesZone = new AccesZone(idSal, idZone, true, new Date(tdate.toString()));

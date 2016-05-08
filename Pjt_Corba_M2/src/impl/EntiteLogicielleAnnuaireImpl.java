@@ -3,7 +3,6 @@ package impl;
 import java.sql.Timestamp;
 
 import bdd.BddJDBC_EL_Annuaire;
-import bdd.BddJDBC_EL_Autorisation;
 import modControledAcces.Date;
 import modControledAcces.EntiteLogicielleAnnuairePOA;
 import modControledAcces.EntiteLogicielleEmpreinte;

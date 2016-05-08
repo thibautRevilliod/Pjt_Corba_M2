@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import org.omg.CosNaming.*;
 import org.omg.PortableServer.*;
 
-import impl.EntiteLogicielleAutorisationImpl;
+import impl.EntiteLogicielleAnnuaireImpl;
 
 public class LanceurEntiteLogicielleAnnuaire {
 
@@ -31,10 +31,10 @@ public class LanceurEntiteLogicielleAnnuaire {
 
 	        // Creation du servant
 	        //*********************
-	        EntiteLogicielleAutorisationImpl monAutorisation = new EntiteLogicielleAutorisationImpl();
+	        EntiteLogicielleAnnuaireImpl monAnnuaire = new EntiteLogicielleAnnuaireImpl();
 
 	        // Activer le servant au sein du POA et recuperer son ID
-	        byte[] monEuroId = rootPOA.activate_object(monAutorisation);
+	        byte[] monEuroId = rootPOA.activate_object(monAnnuaire);
 
 	        // Activer le POA manager
 	        rootPOA.the_POAManager().activate();
@@ -57,7 +57,7 @@ public class LanceurEntiteLogicielleAnnuaire {
 	        nameToRegister[0] = new org.omg.CosNaming.NameComponent(nomObj,"");
 
 	        // Enregistrement de l'objet CORBA dans le service de noms
-	        nameRoot.rebind(nameToRegister,rootPOA.servant_to_reference(monAutorisation));
+	        nameRoot.rebind(nameToRegister,rootPOA.servant_to_reference(monAnnuaire));
 	        System.out.println("==> Nom '"+ nomObj + "' est enregistre dans le service de noms.");
 
 //	        String IORServant = orb.object_to_string(rootPOA.servant_to_reference(monEuro));

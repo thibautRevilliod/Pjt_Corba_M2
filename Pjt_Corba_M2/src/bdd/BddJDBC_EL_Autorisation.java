@@ -166,14 +166,14 @@ public class BddJDBC_EL_Autorisation {
         	}
         	
         	//retourne les droits qui restent au salarié
-        	rs = s.executeQuery("SELECT COUNT(*) FROM Accrediter WHERE idSal = "+pidSal+"");
+        	rs = s.executeQuery("SELECT COUNT(*) FROM Accrediter WHERE idSal = "+pidSal);
 
 			if (rs.next())
         	{
 				accreditationZone = new AccreditationZone[rs.getInt(1)];
         	}
 			
-			rs = s.executeQuery("select idZone, dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Zones");
+			rs = s.executeQuery("select idZone,dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Accrediter WHERE idSal = "+pidSal);
 			int i =0;
     		while(rs.next())
     		{
@@ -202,14 +202,14 @@ public class BddJDBC_EL_Autorisation {
         	}
         	
         	//retourne les droits qui restent au salarié
-        	rs = s.executeQuery("SELECT COUNT(*) FROM Accrediter WHERE idSal = "+pidSal+"");
+        	rs = s.executeQuery("SELECT COUNT(*) FROM Accrediter WHERE idSal = "+pidSal);
 
 			if (rs.next())
         	{
 				accreditationZone = new AccreditationZone[rs.getInt(1)];
         	}
 			
-			rs = s.executeQuery("select idZone, dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Zones");
+			rs = s.executeQuery("select idZone,dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Accrediter WHERE idSal = "+pidSal);
 			int i =0;
     		while(rs.next())
     		{
@@ -425,71 +425,20 @@ public class BddJDBC_EL_Autorisation {
 				creerAccrediter("2", "2", tstamp1, tstamp2, tstamp3, tstamp4, tstamp5);
 	}
 	
-	/*
-	public static void main(String[] args) throws Exception {
-		JmsJDBC.clearBDD("JMS");
-		JmsJDBC bdd = new JmsJDBC("JMS");
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BddJDBC_EL_Autorisation bddJDBC_EL_Autorisation = new BddJDBC_EL_Autorisation("BD_autorisation");
+		//bddJDBC_EL_Annuaire.init();
 		
-		System.out.println(" Création des profils : ");
-			System.out.println("Profil n°: " + bdd.creerProfil("patoche", "mdp", "Sébastien", "Patrick", "Paris"));
-			System.out.println("Profil n°: " +bdd.creerProfil("mimie", "mdp", "Mathy", "Mimie", "Rennes"));
-			System.out.println("Profil n°: " +bdd.creerProfil("claire", "mdp", "Chazal", "Claire", "Rennes"));
-			System.out.println(" --> OK");
-		System.out.println(" Création des Gazouilli : ");
-			//récupère la dateHeure
-	    	Date date= new Date();
-			Timestamp time = new Timestamp(date.getTime());
-			System.out.println("gazouilli n°: " + bdd.creerGazouilli("Bonjour je suis patoche", "patoche", time, false));
-			System.out.println("gazouilli n°: " + bdd.creerGazouilli("Bonjour je suis patoche de Paris", "patoche", time, true));
-			System.out.println("gazouilli n°: " + bdd.creerGazouilli("Bonjour je suis mimie", "mimie", time, false));
-			System.out.println("gazouilli n°: " + bdd.creerGazouilli("Bonjour je suis claire", "claire", time, false));
-			System.out.println(" --> OK");
+		bddJDBC_EL_Autorisation.supprimerAccreditation("1", "1");
+		try {
+			bddJDBC_EL_Autorisation.fermer();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		System.out.println("--> Vérification mdp : " + bdd.verificationIDMDP("patoche", "mdp"));
-		System.out.println("--> Information profil : ");
-			ProfilType profil = bdd.informationProfil("patoche");
-			System.out.println("     " + profil.getPSEUDO() + " " + profil.getNOM() + " " + profil.getPRENOM() + " " + profil.getVILLE());
 		
-		System.out.println("--> Création Abonnement : " + bdd.creerAbonnement("patoche", "mimie"));
-		System.out.println("--> Création Abonnement : " + bdd.creerAbonnement("mimie", "patoche"));
-		System.out.println("--> Création Abonnement : " + bdd.creerAbonnement("claire", "mimie"));
-		
-		System.out.println("--> Liste Abonne : ");
-			System.out.print("     ");
-			for(int i = 0; i < bdd.listeAbonne("mimie").size(); i++)
-			{
-				System.out.print(bdd.listeAbonne("mimie").get(i) + " ");
-			}
-			System.out.println("");
-			
-		System.out.println("--> Liste Suivi : ");
-			System.out.print("     ");
-			for(int i = 0; i < bdd.listeSuivi("mimie").size(); i++)
-			{
-				System.out.print(bdd.listeSuivi("mimie").get(i) + " ");
-			}
-			System.out.println("");
-			
-		System.out.println("--> Supprimer Abonnement : " + bdd.supprimerAbonnement("patoche", "mimie"));
-		
-		System.out.println("--> Création Abonnement : " + bdd.creerAbonnement("mimie", "patoche"));
-		
-		System.out.println("--> Création Abonnement : " + bdd.creerAbonnement("patoche", "mimie"));
-		
-		System.out.println("--> Liste gazouilli de mimie : " +bdd.listeGazouilli("mimie").toString());
-
-		System.out.println("--> Liste gazouilli des abonnements de mimie : " +bdd.listeGazouilliAbonnements("mimie").toString());
-		
-		System.out.println("--> Nombre de gazouilli de patoche : " +bdd.nbGazouilliPourUnProfil("patoche"));
-		
-		System.out.println("--> Liste des profils : " +bdd.listeProfil().get(0).toString());
-
-		
-
-		//Pour ouvrir H2 il faut pointer sur le bon dossier:
-		//C:\Users\landt\Dropbox\USB\MIAGE\M2\S9\Intergiciels pour la répartition\Projet_JMS\M2_JMS_proj\M2_JMS_proj_code\Projet_Twitter
-		
-		bdd.fermer();		
-	}*/
+	}
 	
 }

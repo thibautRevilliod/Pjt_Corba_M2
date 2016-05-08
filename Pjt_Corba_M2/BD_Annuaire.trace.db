@@ -1,0 +1,76 @@
+05-08 11:20:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "SALARIE" not found; SQL statement:
+select MAX(idSal) from salarie [42102-147]
+05-08 11:20:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "SALARIE" not found; SQL statement:
+select MAX(idSal) from salarie [42102-147]
+05-08 11:21:52 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "SALARIE" not found; SQL statement:
+select photo from Salarie WHERE idSal = 'photo1' [42102-147]
+05-08 11:21:52 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "SALARIE" not found; SQL statement:
+select photo from Salarie WHERE idSal = 'photo2' [42102-147]
+05-08 11:22:20 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "photo1"; SQL statement:
+select photo from Salaries WHERE idSal = 'photo1' [90021-147]
+05-08 11:22:20 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "photo2"; SQL statement:
+select photo from Salaries WHERE idSal = 'photo2' [90021-147]
+05-08 11:24:01 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO SALARIES (IDSAL,MDP,NOM,PRENOM,PHOTO,DATEFINVALIDITECOMPTE,ESTPERMANENT) VALUES (,[*] 'mdp1', 'nom1', 'prenom1', 'photo1',     '2016-05-15 11:24:01.152' , TRUE) "; expected "), DEFAULT, NOT, EXISTS, SELECT, FROM"; SQL statement:
+insert into Salaries (idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent) values (, 'mdp1', 'nom1', 'prenom1', 'photo1',     '2016-05-15 11:24:01.152' , true) [42001-147]
+05-08 11:24:01 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO SALARIES (IDSAL,MDP,NOM,PRENOM,PHOTO,DATEFINVALIDITECOMPTE,ESTPERMANENT) VALUES (,[*] 'mdp2', 'nom2', 'prenom2', 'photo2',     '2016-06-16 11:24:01.173' , TRUE) "; expected "), DEFAULT, NOT, EXISTS, SELECT, FROM"; SQL statement:
+insert into Salaries (idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent) values (, 'mdp2', 'nom2', 'prenom2', 'photo2',     '2016-06-16 11:24:01.173' , true) [42001-147]
+05-08 11:25:23 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse timestamp constant "TRUE", cause: "format yyyy-mm-dd" [90011-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueTimestamp.parseTimestamp(ValueTimestamp.java:82)
+	at org.h2.value.Value.convertTo(Value.java:804)
+	at org.h2.value.Value.getTimestamp(Value.java:384)
+	at org.h2.jdbc.JdbcResultSet.getTimestamp(JdbcResultSet.java:379)
+	at bdd.BddJDBC_EL_Annuaire.listeTousSalaries(BddJDBC_EL_Annuaire.java:148)
+	at impl.EntiteLogicielleAnnuaireImpl.listeTousSalaries(EntiteLogicielleAnnuaireImpl.java:22)
+	at modControledAcces.EntiteLogicielleAnnuairePOA._invoke_listeTousSalaries(EntiteLogicielleAnnuairePOA.java:57)
+	at modControledAcces.EntiteLogicielleAnnuairePOA._invoke(EntiteLogicielleAnnuairePOA.java:41)
+	at org.openorb.adapter.poa.POA.dispatch(Unknown Source)
+	at org.openorb.net.AbstractServerRequest.dispatch(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.serve_request(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.thread_pool_main(Unknown Source)
+	at org.openorb.net.ServerManagerImpl.access$200(Unknown Source)
+	at org.openorb.net.ServerManagerImpl$PoolThread.run(Unknown Source)
+05-08 11:27:51 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse timestamp constant "TRUE", cause: "format yyyy-mm-dd" [90011-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueTimestamp.parseTimestamp(ValueTimestamp.java:82)
+	at org.h2.value.Value.convertTo(Value.java:804)
+	at org.h2.value.Value.getTimestamp(Value.java:384)
+	at org.h2.jdbc.JdbcResultSet.getTimestamp(JdbcResultSet.java:379)
+	at bdd.BddJDBC_EL_Annuaire.listeTousSalaries(BddJDBC_EL_Annuaire.java:148)
+	at bdd.BddJDBC_EL_Annuaire.main(BddJDBC_EL_Annuaire.java:233)
+05-08 11:28:28 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse timestamp constant "TRUE", cause: "format yyyy-mm-dd" [90011-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueTimestamp.parseTimestamp(ValueTimestamp.java:82)
+	at org.h2.value.Value.convertTo(Value.java:804)
+	at org.h2.value.Value.getTimestamp(Value.java:384)
+	at org.h2.jdbc.JdbcResultSet.getTimestamp(JdbcResultSet.java:379)
+	at bdd.BddJDBC_EL_Annuaire.listeTousSalaries(BddJDBC_EL_Annuaire.java:148)
+	at bdd.BddJDBC_EL_Annuaire.main(BddJDBC_EL_Annuaire.java:233)
+05-08 11:30:34 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse timestamp constant "TRUE", cause: "format yyyy-mm-dd" [90011-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueTimestamp.parseTimestamp(ValueTimestamp.java:82)
+	at org.h2.value.Value.convertTo(Value.java:804)
+	at org.h2.value.Value.getTimestamp(Value.java:384)
+	at org.h2.jdbc.JdbcResultSet.getTimestamp(JdbcResultSet.java:379)
+	at bdd.BddJDBC_EL_Annuaire.listeTousSalaries(BddJDBC_EL_Annuaire.java:149)
+	at bdd.BddJDBC_EL_Annuaire.main(BddJDBC_EL_Annuaire.java:233)
