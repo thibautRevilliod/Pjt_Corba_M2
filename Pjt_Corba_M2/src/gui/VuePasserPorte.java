@@ -9,13 +9,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class VuePasserPorte extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -79,10 +79,9 @@ public class VuePasserPorte extends JFrame {
 		lblZone.setBounds(37, 100, 46, 14);
 		contentPane.add(lblZone);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(109, 97, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(109, 97, 86, 20);
+		contentPane.add(comboBox);
 		
 		
 		// abonnements
@@ -110,5 +109,4 @@ public class VuePasserPorte extends JFrame {
 	public void setTextField_1(JTextField textField_1) {
 		this.textField_1 = textField_1;
 	}
-
 }
