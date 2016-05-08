@@ -149,7 +149,7 @@ public class BddJDBC_EL_Empreinte {
 			ResultSet rs = s.executeQuery("select idSal from empreintes WHERE idSal = "+pidSal+"");
 			if (rs.next())
 			{
-				s.executeUpdate("UPDATE empreintes SET empreinte = '"+pempreinte+"'");
+				s.executeUpdate("UPDATE empreintes SET empreinte = '"+pempreinte+"' WHERE idSal = "+pidSal+"");
 			}
 			else
 			{

@@ -47,10 +47,11 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 
 	@Override
 	public void demandeEntrerSortirZone(String idSal, String idZone) {
+		boolean res = false;
 		// TODO Auto-generated method stub
 		connexionELautorisation(main.param);
 		try {
-			monELAutorisation.verifierAutorisation(idSal, idZone);
+			res = monELAutorisation.verifierAutorisation(idSal, idZone);
 		} catch (ErreurSalarieInexistant e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,9 +61,9 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		}
 		java.util.Date d = new java.util.Date();
 		Timestamp tdate = new Timestamp(d.getTime());
-		AccesZone accesZone = new AccesZone(idSal, idZone, true, new Date(tdate.toString()));
+		AccesZone accesZone = new AccesZone(idSal, idZone, res, new Date(tdate.toString()));
 		connexionELjournalisation(main.param);
-		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "demandeEntrerSortirZone", "idSal"+idSal+ "idZone"+idZone);
+		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "demandeEntrerSortirZone", "idSal : "+idSal+ "  --  idZone : "+idZone);
 		monELJournalisation.enregistrerEvenement(evenementJournalisation);
 		
 	}

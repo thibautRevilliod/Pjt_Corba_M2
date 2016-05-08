@@ -33,21 +33,23 @@ public class LValiderPasserPorte implements ActionListener
 			
 			idSal = utilisateur.monELPorte.demanderAuthentifier(vm.getTextField_1().getText(),vm.getTextField().getText());
 			
-			/*if(!idSal.equals(""))
+			if(!idSal.equals(""))
 			{
-				utilisateur.monELPorte.demandeEntrerSortirZone(idSal,vm.get );
+				utilisateur.monELPorte.demandeEntrerSortirZone(idSal,(String)vm.getComboBox().getSelectedItem());
 				message = "Bienvenue [les portes s'ouvrent..]";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 			}else
 			{
 				message = "Vous n'êtes pas autorisé à rentrer [les portes se ferment..]";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
-			}*/
+			}
 			
 			
 		}else {
 			message = "Vous devez remplir les champs";
 			JOptionPane.showMessageDialog(vm, message, "Erreur", JOptionPane.WARNING_MESSAGE);
 		}
+		
+		vm.setVisible(false);
 	}
 }

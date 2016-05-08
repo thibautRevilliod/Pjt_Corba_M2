@@ -108,4 +108,12 @@ public class VueModifierEmpreinte extends JFrame {
 		btnValider.addActionListener(new LValiderModifierEmpreinte(this)); 
 		
 	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public void setTextField_2(JTextField textField_2) {
+		this.textField_2 = textField_2;
+	}
 }

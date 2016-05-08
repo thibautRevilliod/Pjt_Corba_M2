@@ -22,28 +22,30 @@ public class LValiderModifierEmpreinte implements ActionListener
 	{
 
 		String message = null;
+		String idSal = "";
 		
 		if(!vm.getTextField().getText().equals("") && !vm.getTextField_1().getText().equals(""))
 		{
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.connexionELporte(main.param);
 			
-		//	res = utilisateur.monELPorte.demanderModifierEmpreinte(idSal, empreinte);
+			idSal = utilisateur.monELPorte.demanderAuthentifier(vm.getTextField_2().getText(),vm.getTextField().getText());
 			
-//			if(res)
-//			{
-//				message = "Bienvenue [les portes s'ouvrent..]";
-//				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
-//			}else
-//			{
-//				message = "Vous n'êtes pas autorisé à rentrer [les portes se ferment..]";
-//				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
-//			}
-//			
-			
+			if(!idSal.equals(""))
+			{
+				utilisateur.monELPorte.demanderModifierEmpreinte(idSal,vm.getTextField_1().getText());
+				message = "Empreinte modifiée";
+				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
+			}else
+			{
+				message = "Vous n'êtes pas autorisé à changer votre empreinte";
+				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}else {
 			message = "Vous devez remplir les champs";
 			JOptionPane.showMessageDialog(vm, message, "Erreur", JOptionPane.WARNING_MESSAGE);
 		}
+		
+		vm.setVisible(false);
 	}
 }

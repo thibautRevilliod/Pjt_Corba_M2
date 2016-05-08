@@ -16,15 +16,17 @@ public class VuePasserPorte extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		JComboBox comboBox = new JComboBox();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VuePasserPorte frame = new VuePasserPorte();
+					VuePasserPorte frame = new VuePasserPorte(comboBox);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,8 +37,9 @@ public class VuePasserPorte extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param jComboBox 
 	 */
-	public VuePasserPorte() {
+	public VuePasserPorte(JComboBox _comboBox) {
 		setTitle("Porte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 229, 205);
@@ -79,7 +82,7 @@ public class VuePasserPorte extends JFrame {
 		lblZone.setBounds(37, 100, 46, 14);
 		contentPane.add(lblZone);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = _comboBox;
 		comboBox.setBounds(109, 97, 86, 20);
 		contentPane.add(comboBox);
 		
@@ -108,5 +111,13 @@ public class VuePasserPorte extends JFrame {
 
 	public void setTextField_1(JTextField textField_1) {
 		this.textField_1 = textField_1;
+	}
+
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox comboBox) {
+		this.comboBox = comboBox;
 	}
 }
