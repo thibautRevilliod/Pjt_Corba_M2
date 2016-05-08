@@ -68,7 +68,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	}
 
 	@Override
-	public boolean demanderAuthentifier(String photo, String empreinte) {
+	public String demanderAuthentifier(String photo, String empreinte) {
 		// TODO Auto-generated method stub
 		String idSal = "";
 		boolean res = false;
@@ -97,8 +97,13 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			if(!res)
+			{
+				idSal = "";
+			}
 		}
-		return res;
+		return idSal;
 	}
 
 	@Override

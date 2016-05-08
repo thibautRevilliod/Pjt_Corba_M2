@@ -24,24 +24,25 @@ public class LValiderPasserPorte implements ActionListener
 	{
 		//TODO : pour le test : empreinte1 | photo1
 		String message = null;
-		boolean res = false;
+		String idSal = "";
 		
 		if(!vm.getTextField().getText().equals("") && !vm.getTextField_1().getText().equals(""))
 		{
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.connexionELporte(main.param);
 			
-			res = utilisateur.monELPorte.demanderAuthentifier(vm.getTextField_1().getText(),vm.getTextField().getText());
+			idSal = utilisateur.monELPorte.demanderAuthentifier(vm.getTextField_1().getText(),vm.getTextField().getText());
 			
-			if(res)
+			/*if(!idSal.equals(""))
 			{
+				utilisateur.monELPorte.demandeEntrerSortirZone(idSal,vm.get );
 				message = "Bienvenue [les portes s'ouvrent..]";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 			}else
 			{
 				message = "Vous n'êtes pas autorisé à rentrer [les portes se ferment..]";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
-			}
+			}*/
 			
 			
 		}else {

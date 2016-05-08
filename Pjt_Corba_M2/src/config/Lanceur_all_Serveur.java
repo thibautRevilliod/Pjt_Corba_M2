@@ -23,6 +23,7 @@ public class Lanceur_all_Serveur {
 		Runnable_all_Serveur rporte = new Runnable_all_Serveur(args, "porte");
 		Thread trporte = new Thread(rporte);
 		trporte.start();
+
 	}
 
 }

@@ -20,7 +20,7 @@ public interface EntiteLogiciellePorteOperations
     /**
      * Operation demanderAuthentifier
      */
-    public boolean demanderAuthentifier(String photo, String empreinte);
+    public String demanderAuthentifier(String photo, String empreinte);
 
     /**
      * Operation demanderModifierEmpreinte

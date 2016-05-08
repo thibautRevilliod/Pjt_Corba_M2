@@ -123,7 +123,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
     /**
      * Operation demanderAuthentifier
      */
-    public boolean demanderAuthentifier(String photo, String empreinte)
+    public String demanderAuthentifier(String photo, String empreinte)
     {
         while(true)
         {
@@ -136,7 +136,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                     _output.write_string(photo);
                     _output.write_string(empreinte);
                     _input = this._invoke(_output);
-                    boolean _arg_ret = _input.read_boolean();
+                    String _arg_ret = _input.read_string();
                     return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)
