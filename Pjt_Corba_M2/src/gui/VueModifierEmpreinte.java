@@ -15,6 +15,7 @@ public class VueModifierEmpreinte extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
 
 	public JTextField getTextField() {
 		return textField;
@@ -54,7 +55,7 @@ public class VueModifierEmpreinte extends JFrame {
 	public VueModifierEmpreinte() {
 		setTitle("Modifier votre empreinte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 287, 202);
+		setBounds(100, 100, 360, 241);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,30 +66,39 @@ public class VueModifierEmpreinte extends JFrame {
 		contentPane.add(lblPourModifierVotre);
 		
 		JLabel lblAncienneEmpreinte = new JLabel("Ancienne empreinte :");
-		lblAncienneEmpreinte.setBounds(20, 48, 145, 14);
+		lblAncienneEmpreinte.setBounds(20, 59, 145, 14);
 		contentPane.add(lblAncienneEmpreinte);
 		
 		JLabel lblNouvelleEmpreinte = new JLabel("Nouvelle empreinte : ");
-		lblNouvelleEmpreinte.setBounds(20, 73, 145, 14);
+		lblNouvelleEmpreinte.setBounds(20, 109, 145, 14);
 		contentPane.add(lblNouvelleEmpreinte);
 		
 		textField = new JTextField();
-		textField.setBounds(175, 45, 86, 20);
+		textField.setBounds(175, 56, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(175, 70, 86, 20);
+		textField_1.setBounds(175, 106, 86, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(33, 108, 89, 23);
+		btnValider.setBounds(35, 148, 89, 23);
 		contentPane.add(btnValider);
 		
 		JButton btnQuitter = new JButton("Quitter");
-		btnQuitter.setBounds(141, 108, 89, 23);
+		btnQuitter.setBounds(147, 148, 89, 23);
 		contentPane.add(btnQuitter);
+		
+		JLabel lblPhoto = new JLabel("Photo :");
+		lblPhoto.setBounds(20, 84, 46, 14);
+		contentPane.add(lblPhoto);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(175, 81, 86, 20);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
 		
 		
 		// abonnements :
@@ -98,5 +108,4 @@ public class VueModifierEmpreinte extends JFrame {
 		btnValider.addActionListener(new LValiderModifierEmpreinte(this)); 
 		
 	}
-
 }
