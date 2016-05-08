@@ -39,7 +39,7 @@ public class VuePasserPorte extends JFrame {
 	public VuePasserPorte() {
 		setTitle("Porte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 233, 211);
+		setBounds(100, 100, 229, 205);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
