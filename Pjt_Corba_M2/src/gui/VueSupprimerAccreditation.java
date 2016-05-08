@@ -63,7 +63,7 @@ public class VueSupprimerAccreditation extends JFrame {
 		contentPane.add(btnQuitter);
 		
 		comboBox = new JComboBox();
-		comboBox.setBounds(248, 20, 28, 20);
+		comboBox.setBounds(248, 20, 118, 20);
 		remplirComboBoxSal(comboBox);
 		contentPane.add(comboBox);
 		
@@ -72,7 +72,7 @@ public class VueSupprimerAccreditation extends JFrame {
 		contentPane.add(lblIdentifiantDeLa);
 		
 		comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(248, 59, 28, 20);
+		comboBox_1.setBounds(248, 59, 118, 20);
 		remplirComboBoxZone(comboBox_1);
 		contentPane.add(comboBox_1);
 		
