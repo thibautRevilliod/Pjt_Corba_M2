@@ -43,9 +43,7 @@ public class LFermerVueSupprimerAccreditation implements ActionListener, WindowL
 
 	//@Override
 	public void windowClosing(WindowEvent arg0) {
-		
-		
-		System.exit(0);
+		this.vue.setVisible(false);
 	} 
 	
 }

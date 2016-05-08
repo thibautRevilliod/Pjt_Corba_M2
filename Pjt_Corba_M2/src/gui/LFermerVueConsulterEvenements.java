@@ -45,7 +45,7 @@ public class LFermerVueConsulterEvenements implements ActionListener, WindowList
 	public void windowClosing(WindowEvent arg0) {
 		
 		
-		System.exit(0);
+		this.vue.setVisible(false);
 	} 
 	
 }

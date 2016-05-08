@@ -47,7 +47,7 @@ public class LFermerVueLireAccreditation implements ActionListener, WindowListen
 	public void windowClosing(WindowEvent arg0) {
 		
 		
-		System.exit(0);
+		this.vue.setVisible(false);
 	} 
 	
 }
