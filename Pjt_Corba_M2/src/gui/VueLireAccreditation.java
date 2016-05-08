@@ -15,8 +15,6 @@ public class VueLireAccreditation extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JLabel lblIdentifiantDeLa;
-	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -47,20 +45,12 @@ public class VueLireAccreditation extends JFrame {
 		contentPane.setLayout(null);
 		
 		table = new JTable();
-		table.setBounds(35, 82, 353, 133);
+		table.setBounds(35, 26, 353, 189);
 		contentPane.add(table);
 		
 		JButton btnQuitter = new JButton("Quitter");
 		btnQuitter.setBounds(152, 227, 89, 23);
 		contentPane.add(btnQuitter);
-		
-		lblIdentifiantDeLa = new JLabel("Identifiant de la personne \u00E0 consulter : ");
-		lblIdentifiantDeLa.setBounds(25, 32, 249, 14);
-		contentPane.add(lblIdentifiantDeLa);
-		
-		comboBox = new JComboBox();
-		comboBox.setBounds(311, 29, 28, 20);
-		contentPane.add(comboBox);
 		
 		
 		// abonnements
