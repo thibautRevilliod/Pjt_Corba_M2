@@ -81,9 +81,9 @@ public class EntiteLogiciellePortePOATie extends EntiteLogiciellePortePOA
     /**
      * Operation demanderAuthentifier
      */
-    public void demanderAuthentifier(String photo)
+    public boolean demanderAuthentifier(String photo, String empreinte)
     {
-        _tie.demanderAuthentifier( photo);
+        return _tie.demanderAuthentifier( photo,  empreinte);
     }
 
     /**

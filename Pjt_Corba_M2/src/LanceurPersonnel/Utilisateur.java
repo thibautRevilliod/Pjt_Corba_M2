@@ -21,10 +21,12 @@ public class Utilisateur {
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
-	        System.out.println("Quel objet Corba voulez-vous contacter ?");
+/*	        System.out.println("Quel objet Corba voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
-
+*/
+			String idObj = "ELporte";
+			
 	        // Recuperation du naming service
 	        org.omg.CosNaming.NamingContext nameRoot =
 	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
@@ -62,10 +64,12 @@ public class Utilisateur {
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 
 	        // Saisie du nom de l'objet (si utilisation du service de nommage)
-	        System.out.println("Quel objet Corba voulez-vous contacter ?");
+/*	        System.out.println("Quel objet Corba voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
-
+*/
+			String idObj = "ELannuaire";
+			
 	        // Recuperation du naming service
 	        org.omg.CosNaming.NamingContext nameRoot =
 	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
@@ -101,7 +105,8 @@ public class Utilisateur {
 		
 		connexionELporte(args);
 		String photo = null;
-		monELPorte.demanderAuthentifier(photo);
+		String empreinte = null;
+		monELPorte.demanderAuthentifier(photo,empreinte);
 		
 		connexionELporte(args);
 		String idSal = null;
@@ -109,7 +114,7 @@ public class Utilisateur {
 		monELPorte.demandeEntrerSortirZone(idSal, idZone);
 		
 		connexionELporte(args);
-		String empreinte = null;
+		empreinte = null;
 		monELPorte.demanderModifierEmpreinte(idSal, empreinte);
 		
 	}

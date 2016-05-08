@@ -78,10 +78,12 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
         String arg0_in = _is.read_string();
+        String arg1_in = _is.read_string();
 
-        demanderAuthentifier(arg0_in);
+        boolean _arg_result = demanderAuthentifier(arg0_in, arg1_in);
 
         _output = handler.createReply();
+        _output.write_boolean(_arg_result);
 
         return _output;
     }

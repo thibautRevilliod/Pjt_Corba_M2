@@ -68,32 +68,37 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	}
 
 	@Override
-	public void demanderAuthentifier(String photo) {
+	public boolean demanderAuthentifier(String photo, String empreinte) {
 		// TODO Auto-generated method stub
+		String idSal = "";
+		boolean res = false;
+		
 		connexionELannuaire(main.param);
 		try {
-			monELAnnuaire.sauthentifier(photo);
+			idSal = monELAnnuaire.sauthentifier(photo);
 		} catch (ErreurSalarieInexistant e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		String empreinte = null;
-		
-		connexionELempreinte(main.param);
-		String idSal = null;
-		try {
-			monELEmpreinte.verifierCorrespondance(idSal, empreinte, cleEmpreinte);
-		} catch (ErreurSalarieInexistant e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (CleInconnue e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EmpreinteIncorrecte e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	
+		if(!idSal.equals(""))
+		{
+			connexionELempreinte(main.param);
+	
+			try {
+				res = monELEmpreinte.verifierCorrespondance(idSal, empreinte, cleEmpreinte);
+			} catch (ErreurSalarieInexistant e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (CleInconnue e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (EmpreinteIncorrecte e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		return res;
 	}
 
 	@Override

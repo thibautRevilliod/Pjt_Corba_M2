@@ -16,6 +16,22 @@ public class VueModifierEmpreinte extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
+
 	/**
 	 * Launch the application.
 	 */

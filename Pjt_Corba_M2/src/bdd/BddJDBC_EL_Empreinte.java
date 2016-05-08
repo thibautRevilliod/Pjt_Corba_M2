@@ -178,4 +178,20 @@ public class BddJDBC_EL_Empreinte {
 		//Empreinte 2
 			ajouterEmpreinte("empreinte2", "2");
 	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BddJDBC_EL_Empreinte bddJDBC_EL_Empreinte = new BddJDBC_EL_Empreinte("BD_Empreinte");
+		//bddJDBC_EL_Annuaire.init();
+		
+		bddJDBC_EL_Empreinte.init();
+		try {
+			bddJDBC_EL_Empreinte.fermer();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 }

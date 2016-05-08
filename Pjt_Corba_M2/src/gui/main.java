@@ -20,9 +20,9 @@ public class main {
 	
 		// pour ouvrir le menu Porte 		
 		
-		/*menuPorte = new VueMenuPorte();
+		menuPorte = new VueMenuPorte();
 		menuPorte.setVisible(true);
-		menuPorte.setLocation(500, 200);*/
+		menuPorte.setLocation(500, 200);
 
 		
 		// pour ouvrir le menu RH 		
@@ -41,10 +41,11 @@ public class main {
 			*/
 		
 	// pour ouvrir le menu Securite		
-		
+		/*
 		menuSecurite = new VueMenuSecurite();
 		menuSecurite.setVisible(true);
 		menuSecurite.setLocation(500, 200);
+		*/
 	}
 
 }

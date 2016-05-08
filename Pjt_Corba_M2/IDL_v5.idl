@@ -102,7 +102,7 @@ module modControledAcces
 		
 		//pour information dans le code généré : appel de la méthode sauthentifier puis de la méthode verifierCorrespondance
 		void demandeEntrerSortirZone(in string idSal, in string idZone);
-		void demanderAuthentifier (in string photo);
+		boolean demanderAuthentifier (in string photo, in string empreinte);
 		void demanderModifierEmpreinte(in string idSal, in string empreinte);
 	};
 	

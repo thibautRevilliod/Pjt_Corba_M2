@@ -5,6 +5,8 @@ import org.omg.CosNaming.*;
 import org.omg.PortableServer.*;
 
 import impl.EntiteLogicielleAutorisationImpl;
+import impl.EntiteLogicielleEmpreinteImpl;
+import modControledAcces.EntiteLogicielleEmpreinte;
 
 public class LanceurEntiteLogicielleEmpreinte {
 
@@ -31,10 +33,10 @@ public class LanceurEntiteLogicielleEmpreinte {
 
 	        // Creation du servant
 	        //*********************
-	        EntiteLogicielleAutorisationImpl monAutorisation = new EntiteLogicielleAutorisationImpl();
+	        EntiteLogicielleEmpreinteImpl monEmpreinte = new EntiteLogicielleEmpreinteImpl();
 
 	        // Activer le servant au sein du POA et recuperer son ID
-	        byte[] monEuroId = rootPOA.activate_object(monAutorisation);
+	        byte[] monEuroId = rootPOA.activate_object(monEmpreinte);
 
 	        // Activer le POA manager
 	        rootPOA.the_POAManager().activate();
@@ -56,7 +58,7 @@ public class LanceurEntiteLogicielleEmpreinte {
 	        nameToRegister[0] = new org.omg.CosNaming.NameComponent(nomObj,"");
 
 	        // Enregistrement de l'objet CORBA dans le service de noms
-	        nameRoot.rebind(nameToRegister,rootPOA.servant_to_reference(monAutorisation));
+	        nameRoot.rebind(nameToRegister,rootPOA.servant_to_reference(monEmpreinte));
 	        System.out.println("==> Nom '"+ nomObj + "' est enregistre dans le service de noms.");
 
 //	        String IORServant = orb.object_to_string(rootPOA.servant_to_reference(monEuro));
