@@ -15,7 +15,7 @@ public class LanceurEntiteLogicielleJournalisation {
 		enregistrementNS(args);
 	}
 	
-	private static void enregistrementNS(String[] args)
+	public static void enregistrementNS(String[] args)
 	{
 		try {
 	        // Intialisation de l'ORB

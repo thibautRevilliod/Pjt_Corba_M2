@@ -16,7 +16,7 @@ public class LanceurEntiteLogicielleAnnuaire {
 		
 	}
 	
-	private static void enregistrementNS(String[] args)
+	public static void enregistrementNS(String[] args)
 	{
 		try {
 	        // Intialisation de l'ORB
