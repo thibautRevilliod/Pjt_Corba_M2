@@ -73,7 +73,7 @@ public class VueMenuSecurite extends JFrame {
 		btnAjouterUneAccrditation.addActionListener(new LVueAjouterAccreditation(this)); 
 		btnSupprimerUneAccrditation.addActionListener(new LVueSupprimerAccreditation(this)); 
 		btnLireUneAccrditation.addActionListener(new LVueLireAccreditation(this)); 
-		btnConsulterUnvnement.addActionListener(new LVueConsulterEvenements(this)); 
+		btnConsulterUnvnement.addActionListener(new LVueChoixEvenements(this)); 
 	}
 
 }
