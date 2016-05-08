@@ -4,6 +4,8 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JTable;
+
 public class LVueConsulterEvenements implements ActionListener
 {
 
@@ -16,7 +18,8 @@ public class LVueConsulterEvenements implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		VueConsulterEvenements vPP = new VueConsulterEvenements();
+		JTable table = new JTable();
+		VueConsulterEvenements vPP = new VueConsulterEvenements(table);
 		vPP.setVisible(true);
 		vPP.setLocation(800, 300);
 	}

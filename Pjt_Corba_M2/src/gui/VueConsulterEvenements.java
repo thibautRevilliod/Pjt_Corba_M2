@@ -19,9 +19,10 @@ public class VueConsulterEvenements extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			JTable _table = new JTable();
 			public void run() {
 				try {
-					VueConsulterEvenements frame = new VueConsulterEvenements();
+					VueConsulterEvenements frame = new VueConsulterEvenements(_table);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,8 +33,9 @@ public class VueConsulterEvenements extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param _table 
 	 */
-	public VueConsulterEvenements() {
+	public VueConsulterEvenements(JTable _table) {
 		setTitle("Consulter les \u00E9v\u00E9nements");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 281);
@@ -42,7 +44,8 @@ public class VueConsulterEvenements extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		table = new JTable();
+		//table = new JTable();
+		table = _table;
 		table.setBounds(23, 11, 372, 189);
 		contentPane.add(table);
 		
