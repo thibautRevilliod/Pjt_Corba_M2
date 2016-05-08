@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -20,10 +21,11 @@ public class VueLireAccreditation extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		JTable ttable = new JTable();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueLireAccreditation frame = new VueLireAccreditation();
+					VueLireAccreditation frame = new VueLireAccreditation(ttable);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,8 +36,9 @@ public class VueLireAccreditation extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param _table 
 	 */
-	public VueLireAccreditation() {
+	public VueLireAccreditation(JTable _table) {
 		setTitle("Lire les accreditations");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -45,8 +48,11 @@ public class VueLireAccreditation extends JFrame {
 		contentPane.setLayout(null);
 		
 		table = new JTable();
+		table = _table;
 		table.setBounds(35, 26, 353, 189);
 		contentPane.add(table);
+		//TODO : Afficher le Header du table
+		//contentPane.add(new JScrollPane(table));
 		
 		JButton btnQuitter = new JButton("Quitter");
 		btnQuitter.setBounds(152, 227, 89, 23);
@@ -55,6 +61,14 @@ public class VueLireAccreditation extends JFrame {
 		
 		// abonnements
 		btnQuitter.addActionListener(new LFermerVueLireAccreditation(this)); 
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
 	}
 
 }

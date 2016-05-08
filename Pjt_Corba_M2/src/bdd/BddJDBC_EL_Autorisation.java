@@ -236,7 +236,7 @@ public class BddJDBC_EL_Autorisation {
 				accreditationZone = new AccreditationZone[rs.getInt(1)];
         	}
 			
-			rs = s.executeQuery("select idZone, dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Zones");
+			rs = s.executeQuery("select idZone, dateAccreditation, jourDebut, jourFin, heureDebut, heureFin from Accrediter WHERE idSal = "+pidSal+"");
 			int i =0;
     		while(rs.next())
     		{
@@ -429,7 +429,7 @@ public class BddJDBC_EL_Autorisation {
 		// TODO Auto-generated method stub
 		BddJDBC_EL_Autorisation bddJDBC_EL_Autorisation = new BddJDBC_EL_Autorisation("BD_autorisation");
 		//bddJDBC_EL_Annuaire.init();
-		
+		/*
 		bddJDBC_EL_Autorisation.supprimerAccreditation("1", "1");
 		try {
 			bddJDBC_EL_Autorisation.fermer();
@@ -438,7 +438,8 @@ public class BddJDBC_EL_Autorisation {
 			e.printStackTrace();
 		}
 		
-		
+		*/
+		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.lireAccreditation("1");
 	}
 	
 }

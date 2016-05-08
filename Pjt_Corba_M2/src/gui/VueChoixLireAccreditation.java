@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import LanceurPersonnel.PersonnelSecurite;
+import modControledAcces.InfoSalarie;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,6 +17,7 @@ import javax.swing.JComboBox;
 public class VueChoixLireAccreditation extends JFrame {
 
 	private JPanel contentPane;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -45,8 +50,9 @@ public class VueChoixLireAccreditation extends JFrame {
 		lblIdentifiantDeLa.setBounds(10, 11, 206, 14);
 		contentPane.add(lblIdentifiantDeLa);
 				
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setBounds(173, 8, 108, 20);
+		remplirComboBoxSal(comboBox);
 		contentPane.add(comboBox);
 		
 		JButton btnValider = new JButton("Valider");
@@ -65,5 +71,33 @@ public class VueChoixLireAccreditation extends JFrame {
 		// pour le bouton valider : cela ouvre une nouvelle fenetre + mémorisation des données saisies
 		
 		btnValider.addActionListener(new LValiderChoixLireAccreditation(this)); 
+	}
+
+	private InfoSalarie[] listeIdSal() {
+		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
+		personnelSecurite.connexionELannuaire(main.param);
+		InfoSalarie[] infoSalarie = personnelSecurite.monELAnnuaire.listeTousSalaries();
+		
+		return infoSalarie;
+	}
+	
+	private void remplirComboBoxSal(JComboBox _comboBox)
+	{
+		InfoSalarie[] is = listeIdSal();
+		
+		_comboBox.addItem("");
+		
+		for(int i = 0; i < is.length; i++)
+		{
+			_comboBox.addItem(is[i].idSal);
+		}
+	}
+	
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox comboBox) {
+		this.comboBox = comboBox;
 	}
 }
