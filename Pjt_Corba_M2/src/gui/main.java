@@ -15,7 +15,7 @@ public class main {
 		
 		VueMenuPorte menuPorte;
 		VueMenuRH menuRH;
-		//VueMenuAnnuaire menuAnnuaire;
+		VueMenuAnnuaire menuAnnuaire;
 		VueMenuSecurite menuSecurite;
 	
 		// pour ouvrir le menu Porte 		
