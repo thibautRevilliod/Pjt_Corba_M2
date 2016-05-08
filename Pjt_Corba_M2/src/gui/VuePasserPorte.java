@@ -15,7 +15,6 @@ public class VuePasserPorte extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -39,7 +38,7 @@ public class VuePasserPorte extends JFrame {
 	public VuePasserPorte() {
 		setTitle("Porte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 233, 211);
+		setBounds(100, 100, 233, 167);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -68,21 +67,12 @@ public class VuePasserPorte extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(14, 137, 89, 23);
+		btnValider.setBounds(14, 103, 89, 23);
 		contentPane.add(btnValider);
 		
 		JButton btnQuitter = new JButton("Quitter");
-		btnQuitter.setBounds(109, 137, 89, 23);
+		btnQuitter.setBounds(106, 103, 89, 23);
 		contentPane.add(btnQuitter);
-		
-		JLabel lblZone = new JLabel("Zone :");
-		lblZone.setBounds(37, 100, 46, 14);
-		contentPane.add(lblZone);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(109, 97, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
 		
 		
 		// abonnements
