@@ -48,15 +48,15 @@ public class VueChoixEvenements extends JFrame {
 		contentPane.add(lblIdentifiantDuSalari);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(202, 30, 28, 20);
+		comboBox.setBounds(169, 30, 145, 20);
 		contentPane.add(comboBox);
 		
-		JLabel lblIdentifiantDeLopration = new JLabel("Identifiant de l'op\u00E9ration : ");
-		lblIdentifiantDeLopration.setBounds(29, 70, 161, 14);
+		JLabel lblIdentifiantDeLopration = new JLabel("Nom de l'op\u00E9ration : ");
+		lblIdentifiantDeLopration.setBounds(29, 64, 161, 14);
 		contentPane.add(lblIdentifiantDeLopration);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(202, 61, 28, 20);
+		comboBox_1.setBounds(169, 61, 145, 20);
 		contentPane.add(comboBox_1);
 		
 		JLabel lblEntre = new JLabel("Entre : ");
@@ -67,7 +67,7 @@ public class VueChoixEvenements extends JFrame {
 		formattedTextField.setBounds(83, 112, 67, 20);
 		contentPane.add(formattedTextField);
 		
-		JLabel lblHEt = new JLabel("h        et         ");
+		JLabel lblHEt = new JLabel("       et         ");
 		lblHEt.setBounds(157, 115, 73, 14);
 		contentPane.add(lblHEt);
 		
