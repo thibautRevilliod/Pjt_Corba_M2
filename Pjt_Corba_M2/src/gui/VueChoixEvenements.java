@@ -45,7 +45,7 @@ public class VueChoixEvenements extends JFrame {
 	public VueChoixEvenements(JComboBox _comboBox, JComboBox _comboBox_1) {
 		setTitle("Choix \u00E9v\u00E9nement");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 340, 211);
+		setBounds(100, 100, 395, 251);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,29 +70,37 @@ public class VueChoixEvenements extends JFrame {
 		contentPane.add(comboBox_1);
 		
 		JLabel lblEntre = new JLabel("Entre : ");
-		lblEntre.setBounds(28, 115, 46, 14);
+		lblEntre.setBounds(29, 93, 46, 14);
 		contentPane.add(lblEntre);
 		
 		DateFormat formatDateheure = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		formattedTextField = new JFormattedTextField(formatDateheure);
-		formattedTextField.setBounds(83, 112, 67, 20);
+		formattedTextField.setBounds(72, 89, 118, 20);
 		contentPane.add(formattedTextField);
 		
-		JLabel lblHEt = new JLabel("       et         ");
-		lblHEt.setBounds(157, 115, 73, 14);
+		JLabel lblHEt = new JLabel("et ");
+		lblHEt.setBounds(212, 93, 25, 14);
 		contentPane.add(lblHEt);
 		
 		formattedTextField_1 = new JFormattedTextField(formatDateheure);
-		formattedTextField_1.setBounds(229, 112, 67, 20);
+		formattedTextField_1.setBounds(247, 90, 111, 20);
 		contentPane.add(formattedTextField_1);
 		
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(61, 143, 89, 23);
+		btnValider.setBounds(80, 166, 89, 23);
 		contentPane.add(btnValider);
 		
 		JButton btnQuitter = new JButton("Quitter");
-		btnQuitter.setBounds(167, 143, 89, 23);
+		btnQuitter.setBounds(184, 166, 89, 23);
 		contentPane.add(btnQuitter);
+		
+		JLabel lblVeuillezUtiliserleFormat = new JLabel("Veuillez utiliser le format suivant : yyyy/MM/dd HH:mm:ss");
+		lblVeuillezUtiliserleFormat.setBounds(29, 118, 285, 14);
+		contentPane.add(lblVeuillezUtiliserleFormat);
+		
+		JLabel lblPourRemplirLes = new JLabel("pour remplir les champs ci-dessus");
+		lblPourRemplirLes.setBounds(29, 131, 267, 14);
+		contentPane.add(lblPourRemplirLes);
 		
 		// abonnements
 		btnQuitter.addActionListener(new LFermerVueChoixEvenements(this)); 
