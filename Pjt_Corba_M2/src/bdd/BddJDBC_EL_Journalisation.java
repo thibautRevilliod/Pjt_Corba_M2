@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
 
 import modControledAcces.AccesZone;
 import modControledAcces.EvenementJournalisation;
+import modControledAcces.InfoOperation;
 import modControledAcces.InfoZone;
 
 public class BddJDBC_EL_Journalisation {
@@ -84,14 +85,14 @@ public class BddJDBC_EL_Journalisation {
 		AccesZone accesZone;
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select count(*) from Acceder WHERE idSal = "+pidSal+" AND operation = "+poperation+" AND jourHeure BETWEEN {ts '"+pjourHeureDebut+"'} AND {ts '"+pjourHeureFin+"'}");
+			ResultSet rs = s.executeQuery("select count(*) from Acceder WHERE idSal = "+pidSal+" AND operation = '"+poperation+"' AND jourHeure BETWEEN {ts '"+pjourHeureDebut+"'} AND {ts '"+pjourHeureFin+"'}");
 
 			if (rs.next())
         	{
 				res = new EvenementJournalisation[rs.getInt(1)];
         	}
 			
-			rs = s.executeQuery("select idZone,statuAcces,jourHeure,operation,contenuOperation from Acceder WHERE idSal = "+pidSal+" AND operation = "+poperation+" AND jourHeure BETWEEN "+pjourHeureDebut+" AND "+pjourHeureFin);
+			rs = s.executeQuery("select idZone,statuAcces,jourHeure,operation,contenuOperation from Acceder WHERE idSal = "+pidSal+" AND operation = '"+poperation+"' AND jourHeure BETWEEN {ts '"+pjourHeureDebut+"'} AND {ts '"+pjourHeureFin+"'}");
 			int i =0;
     		while(rs.next())
     		{
@@ -101,6 +102,35 @@ public class BddJDBC_EL_Journalisation {
     			i++;
 			}
     		return res;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return res;
+		}
+	}
+	
+	//liste operation
+	public InfoOperation[] listeOperations() {
+		InfoOperation[] res = null;
+		
+		try {
+			Statement s = conn.createStatement();
+			//récupère le dernier ID
+			ResultSet rs = s.executeQuery("select COUNT(*) FROM Acceder ");
+
+			if (rs.next())
+        	{
+				res = new InfoOperation[rs.getInt(1)];
+        	}
+        	//récupère le dernier ID
+			rs = s.executeQuery("select operation from Acceder");
+			int i =0;
+    		while(rs.next())
+    		{
+    			res[i] = new InfoOperation(rs.getString(1));
+    			i++;
+    		}
+    		
+        	return res;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return res;
@@ -146,5 +176,20 @@ public class BddJDBC_EL_Journalisation {
 			cal.set(Calendar.SECOND, seconde);
 			tstamp = new Timestamp(cal.getTimeInMillis());
 			enregistrerEvenement("1", "1", true, tstamp, "sortie", "blabla");	
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BddJDBC_EL_Journalisation bddJDBC_EL_Journalisation = new BddJDBC_EL_Journalisation("BD_Journalisation");
+		//bddJDBC_EL_Annuaire.init();
+		
+		bddJDBC_EL_Journalisation.listeOperations();
+		try {
+			bddJDBC_EL_Journalisation.fermer();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

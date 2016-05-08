@@ -37,7 +37,7 @@ public class LValiderChoixEvenements implements ActionListener
 		VueConsulterEvenements vce;
 		
 		if (!vm.getFormattedTextField().getText().equals("") && !vm.getFormattedTextField_1().getText().equals("") && 
-				vm.getComboBox().getSelectedItem().equals("") && vm.getComboBox_1().getSelectedItem().equals(""))
+				!vm.getComboBox().getSelectedItem().equals("") && !vm.getComboBox_1().getSelectedItem().equals(""))
 		{
 			try {
 				SimpleDateFormat formatDateHeure = new SimpleDateFormat("yyyy/MM/dd HH:mm");
@@ -49,7 +49,7 @@ public class LValiderChoixEvenements implements ActionListener
 				PersonnelSecurite personnelSecurite = new PersonnelSecurite();
 				personnelSecurite.connexionELjournalisation(main.param);
 
-				EvenementJournalisation[] evenementJournalisation = personnelSecurite.monELJournalisation.consulter((String)vm.getComboBox().getSelectedItem(), (String)vm.getComboBox().getSelectedItem(), tdateHeureDebut.toString(), tdateHeureFin.toString(), personnelSecurite.cleJournalisation);
+				EvenementJournalisation[] evenementJournalisation = personnelSecurite.monELJournalisation.consulter((String)vm.getComboBox().getSelectedItem(), (String)vm.getComboBox_1().getSelectedItem(), tdateHeureDebut.toString(), tdateHeureFin.toString(), personnelSecurite.cleJournalisation);
 				
 				Object rowData[][] = new Object[evenementJournalisation.length][6];
 				
@@ -73,9 +73,6 @@ public class LValiderChoixEvenements implements ActionListener
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			message = "creerAccreditation : OK";
-			JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 			
 			vce = new VueConsulterEvenements(table);
 			vce.setVisible(true);

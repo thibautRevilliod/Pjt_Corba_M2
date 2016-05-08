@@ -37,12 +37,27 @@ public abstract class EntiteLogicielleJournalisationPOA extends org.omg.Portable
                 return _invoke_consulter(_is, handler);
         } else if (opName.equals("enregistrerEvenement")) {
                 return _invoke_enregistrerEvenement(_is, handler);
+        } else if (opName.equals("listeOperations")) {
+                return _invoke_listeOperations(_is, handler);
         } else {
             throw new org.omg.CORBA.BAD_OPERATION(opName);
         }
     }
 
     // helper methods
+    private org.omg.CORBA.portable.OutputStream _invoke_listeOperations(
+            final org.omg.CORBA.portable.InputStream _is,
+            final org.omg.CORBA.portable.ResponseHandler handler) {
+        org.omg.CORBA.portable.OutputStream _output;
+
+        modControledAcces.InfoOperation[] _arg_result = listeOperations();
+
+        _output = handler.createReply();
+        modControledAcces.ListeOperationsHelper.write(_output,_arg_result);
+
+        return _output;
+    }
+
     private org.omg.CORBA.portable.OutputStream _invoke_consulter(
             final org.omg.CORBA.portable.InputStream _is,
             final org.omg.CORBA.portable.ResponseHandler handler) {

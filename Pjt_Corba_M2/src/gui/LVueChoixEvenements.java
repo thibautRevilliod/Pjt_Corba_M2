@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.swing.JComboBox;
 
 import LanceurPersonnel.PersonnelSecurite;
+import modControledAcces.InfoOperation;
 import modControledAcces.InfoSalarie;
 import modControledAcces.InfoZone;
 
@@ -26,7 +27,7 @@ public class LVueChoixEvenements implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		
-		VueChoixEvenements vPP = new VueChoixEvenements(remplirComboBoxSal(),remplirComboBoxZone());
+		VueChoixEvenements vPP = new VueChoixEvenements(remplirComboBoxSal(),remplirComboBoxOperation());
 		
 		vPP.setVisible(true);
 		vPP.setLocation(800, 300);
@@ -40,12 +41,12 @@ public class LVueChoixEvenements implements ActionListener
 		return infoSalarie;
 	}
 	
-	private InfoZone[] listeIdZone() {
+	private InfoOperation[] listeOpreations() {
 		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-		personnelSecurite.connexionELautorisation(main.param);
-		InfoZone[] infoZone = personnelSecurite.monELAutorisation.listeToutesZones();
+		personnelSecurite.connexionELjournalisation(main.param);
+		InfoOperation[] infoOperation = personnelSecurite.monELJournalisation.listeOperations();
 		
-		return infoZone;
+		return infoOperation;
 	}
 	
 	private JComboBox remplirComboBoxSal()
@@ -62,17 +63,17 @@ public class LVueChoixEvenements implements ActionListener
 		return _comboBox;
 	}
 	
-	private JComboBox remplirComboBoxZone()
+	private JComboBox remplirComboBoxOperation()
 	{
 		JComboBox _comboBox = new JComboBox();
 		
-		InfoZone[] iz = listeIdZone();
+		InfoOperation[] io = listeOpreations();
 		
 		_comboBox.addItem("");
 
-		for(int i = 0; i < iz.length; i++)
+		for(int i = 0; i < io.length; i++)
 		{
-			_comboBox.addItem(iz[i].idZone);
+			_comboBox.addItem(io[i].operation);
 		}
 		return _comboBox;
 	}

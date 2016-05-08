@@ -8,6 +8,7 @@ import modControledAcces.CleInconnue;
 import modControledAcces.EntiteLogicielleJournalisationPOA;
 
 import modControledAcces.EvenementJournalisation;
+import modControledAcces.InfoOperation;
 
 
 public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournalisationPOA {
@@ -36,6 +37,15 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 		Timestamp tjourHeure = Timestamp.valueOf(evenementJournalisation.accesZoneSal.jourHeure.timestamp);
 		
 		bddJDBC_EL_Journalisation.enregistrerEvenement(evenementJournalisation.accesZoneSal.idSal, evenementJournalisation.accesZoneSal.idZone, evenementJournalisation.accesZoneSal.statutAcces, tjourHeure, evenementJournalisation.operation, evenementJournalisation.contenuOperation);
+	}
+
+	@Override
+	public InfoOperation[] listeOperations() {
+		// TODO Auto-generated method stub
+		
+		InfoOperation[] infoOperation = bddJDBC_EL_Journalisation.listeOperations();
+
+		return infoOperation;
 	}
 
 }

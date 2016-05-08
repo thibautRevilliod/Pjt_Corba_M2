@@ -8,6 +8,11 @@ package modControledAcces;
 public interface EntiteLogicielleJournalisationOperations
 {
     /**
+     * Operation listeOperations
+     */
+    public modControledAcces.InfoOperation[] listeOperations();
+
+    /**
      * Operation consulter
      */
     public modControledAcces.EvenementJournalisation[] consulter(String qui, String quoi, String quand_debut, String quand_fin, String cleDemandeur)
