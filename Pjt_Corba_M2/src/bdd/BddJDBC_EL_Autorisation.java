@@ -251,6 +251,7 @@ public class BddJDBC_EL_Autorisation {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	public boolean verifierAutorisation(String pidSal, String pidZone, Timestamp dateHeureDde) {
 		//Timestamp dateHeureDde <=> à la date de la demande actuelle pour vérifier son droit d'accès à la zone
 		boolean res = false;
@@ -270,36 +271,52 @@ public class BddJDBC_EL_Autorisation {
 				Calendar cal3 = GregorianCalendar.getInstance();
 				
 				//test des dates
-				cal1.setTimeInMillis(dateHeureDde.getTime());
+				cal1.set(Calendar.DAY_OF_MONTH, dateHeureDde.getDay());
+				cal1.set(Calendar.MONTH, dateHeureDde.getMonth());
+				cal1.set(Calendar.YEAR, dateHeureDde.getYear());
 				cal1.set(Calendar.HOUR_OF_DAY, 00);
 				cal1.set(Calendar.MINUTE, 00);
 				cal1.set(Calendar.SECOND, 00);
-				cal2.setTimeInMillis(jourDebut.getTime());
+				
 				cal2.set(Calendar.HOUR_OF_DAY, 00);
 				cal2.set(Calendar.MINUTE, 00);
 				cal2.set(Calendar.SECOND, 00);
-				cal3.setTimeInMillis(jourFin.getTime());
+				cal2.set(Calendar.DAY_OF_MONTH, jourDebut.getDay());
+				cal2.set(Calendar.MONTH, jourDebut.getMonth());
+				cal2.set(Calendar.YEAR, jourDebut.getYear());
+
 				cal3.set(Calendar.HOUR_OF_DAY, 00);
 				cal3.set(Calendar.MINUTE, 00);
 				cal3.set(Calendar.SECOND, 00);
-
-				if(cal1.after(cal2) && cal1.before(cal3))
+				cal3.set(Calendar.DAY_OF_MONTH, jourFin.getDay());
+				cal3.set(Calendar.MONTH, jourFin.getMonth());
+				cal3.set(Calendar.YEAR, jourFin.getYear());
+	
+				if((cal1.after(cal2) && cal1.before(cal3)) || (cal1.equals(cal2)) || (cal1.equals(cal3)))
 				{
 					//test des heures
-					cal1.setTimeInMillis(dateHeureDde.getTime());
+					cal1.set(Calendar.HOUR, dateHeureDde.getHours());
+					cal1.set(Calendar.MINUTE, dateHeureDde.getMinutes());
+					cal1.set(Calendar.SECOND, dateHeureDde.getSeconds());
 					cal1.set(Calendar.DAY_OF_MONTH, 10);
 					cal1.set(Calendar.MONTH, 10);
 					cal1.set(Calendar.YEAR, 2015);
-					cal2.setTimeInMillis(heureDebut.getTime());
+					
+					cal2.set(Calendar.HOUR, heureDebut.getHours());
+					cal2.set(Calendar.MINUTE, heureDebut.getMinutes());
+					cal2.set(Calendar.SECOND, heureDebut.getSeconds());
 					cal2.set(Calendar.DAY_OF_MONTH, 10);
 					cal2.set(Calendar.MONTH, 10);
 					cal2.set(Calendar.YEAR, 2015);
-					cal3.setTimeInMillis(heureFin.getTime());
+
+					cal3.set(Calendar.HOUR, heureFin.getHours());
+					cal3.set(Calendar.MINUTE, heureFin.getMinutes());
+					cal3.set(Calendar.SECOND, heureFin.getSeconds());
 					cal3.set(Calendar.DAY_OF_MONTH, 10);
 					cal3.set(Calendar.MONTH, 10);
 					cal3.set(Calendar.YEAR, 2015);
-					
-					if(cal1.after(cal2) && cal1.before(cal3))
+
+					if((cal1.after(cal2) && cal1.before(cal3)) || (cal1.equals(cal2)) || (cal1.equals(cal3)))
 					{
 						res = true;
 					}
@@ -439,7 +456,16 @@ public class BddJDBC_EL_Autorisation {
 		}
 		
 		*/
-		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.lireAccreditation("1");
+		//InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.lireAccreditation("1");
+		
+		java.util.Date d = new java.util.Date();
+		d.setDate(16);
+		d.setHours(17);
+		d.setMinutes(0);
+		d.setSeconds(0);
+		System.out.println(d.toString());
+		System.out.println("-----------");
+		System.out.println(bddJDBC_EL_Autorisation.verifierAutorisation("2", "2", new Timestamp(d.getTime())));
 	}
 	
 }

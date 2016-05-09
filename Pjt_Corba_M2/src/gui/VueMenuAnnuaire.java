@@ -33,7 +33,7 @@ public class VueMenuAnnuaire extends JFrame {
 	 * Create the frame.
 	 */
 	public VueMenuAnnuaire() {
-		setTitle("Menu Annuaire");
+		setTitle("Menu RH : Sous menu Annuaire");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 364, 252);
 		contentPane = new JPanel();
