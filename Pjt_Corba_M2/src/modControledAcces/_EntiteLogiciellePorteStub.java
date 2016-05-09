@@ -222,4 +222,61 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
         }
     }
 
+    /**
+     * Operation creerPorte
+     */
+    public String creerPorte(String libellePorte, String idZone)
+        throws modControledAcces.ErreurPorteExistant
+    {
+        while(true)
+        {
+            if (!this._is_local())
+            {
+                org.omg.CORBA.portable.InputStream _input = null;
+                try
+                {
+                    org.omg.CORBA.portable.OutputStream _output = this._request("creerPorte",true);
+                    _output.write_string(libellePorte);
+                    _output.write_string(idZone);
+                    _input = this._invoke(_output);
+                    String _arg_ret = _input.read_string();
+                    return _arg_ret;
+                }
+                catch(org.omg.CORBA.portable.RemarshalException _exception)
+                {
+                    continue;
+                }
+                catch(org.omg.CORBA.portable.ApplicationException _exception)
+                {
+                    String _exception_id = _exception.getId();
+                    if (_exception_id.equals(modControledAcces.ErreurPorteExistantHelper.id()))
+                    {
+                        throw modControledAcces.ErreurPorteExistantHelper.read(_exception.getInputStream());
+                    }
+
+                    throw new org.omg.CORBA.UNKNOWN("Unexpected User Exception: "+ _exception_id);
+                }
+                finally
+                {
+                    this._releaseReply(_input);
+                }
+            }
+            else
+            {
+                org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke("creerPorte",_opsClass);
+                if (_so == null)
+                   continue;
+                modControledAcces.EntiteLogiciellePorteOperations _self = (modControledAcces.EntiteLogiciellePorteOperations) _so.servant;
+                try
+                {
+                    return _self.creerPorte( libellePorte,  idZone);
+                }
+                finally
+                {
+                    _servant_postinvoke(_so);
+                }
+            }
+        }
+    }
+
 }

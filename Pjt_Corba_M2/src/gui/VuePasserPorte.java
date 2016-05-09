@@ -16,17 +16,17 @@ public class VuePasserPorte extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JComboBox comboBox;
+	private String idZone;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		JComboBox comboBox = new JComboBox();
+		String _idZone = "";
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VuePasserPorte frame = new VuePasserPorte(comboBox);
+					VuePasserPorte frame = new VuePasserPorte(_idZone);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,9 +37,12 @@ public class VuePasserPorte extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param _idZone 
 	 * @param jComboBox 
 	 */
-	public VuePasserPorte(JComboBox _comboBox) {
+	public VuePasserPorte(String _idZone) {
+		idZone = _idZone;
+		
 		setTitle("Porte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 229, 205);
@@ -76,16 +79,7 @@ public class VuePasserPorte extends JFrame {
 		
 		JButton btnQuitter = new JButton("Quitter");
 		btnQuitter.setBounds(109, 137, 89, 23);
-		contentPane.add(btnQuitter);
-		
-		JLabel lblZone = new JLabel("Zone :");
-		lblZone.setBounds(37, 100, 46, 14);
-		contentPane.add(lblZone);
-		
-		comboBox = _comboBox;
-		comboBox.setBounds(109, 97, 86, 20);
-		contentPane.add(comboBox);
-		
+		contentPane.add(btnQuitter);		
 		
 		// abonnements
 		
@@ -113,11 +107,11 @@ public class VuePasserPorte extends JFrame {
 		this.textField_1 = textField_1;
 	}
 
-	public JComboBox getComboBox() {
-		return comboBox;
+	public String getIdZone() {
+		return idZone;
 	}
 
-	public void setComboBox(JComboBox comboBox) {
-		this.comboBox = comboBox;
+	public void setIdZone(String idZone) {
+		this.idZone = idZone;
 	}
 }

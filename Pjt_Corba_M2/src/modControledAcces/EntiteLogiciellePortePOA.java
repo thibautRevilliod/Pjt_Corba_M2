@@ -35,6 +35,8 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
 
         if (opName.equals("afficherMessage")) {
                 return _invoke_afficherMessage(_is, handler);
+        } else if (opName.equals("creerPorte")) {
+                return _invoke_creerPorte(_is, handler);
         } else if (opName.equals("demandeEntrerSortirZone")) {
                 return _invoke_demandeEntrerSortirZone(_is, handler);
         } else if (opName.equals("demanderAuthentifier")) {
@@ -99,6 +101,29 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
 
         _output = handler.createReply();
 
+        return _output;
+    }
+
+    private org.omg.CORBA.portable.OutputStream _invoke_creerPorte(
+            final org.omg.CORBA.portable.InputStream _is,
+            final org.omg.CORBA.portable.ResponseHandler handler) {
+        org.omg.CORBA.portable.OutputStream _output;
+        String arg0_in = _is.read_string();
+        String arg1_in = _is.read_string();
+
+        try
+        {
+            String _arg_result = creerPorte(arg0_in, arg1_in);
+
+            _output = handler.createReply();
+            _output.write_string(_arg_result);
+
+        }
+        catch (modControledAcces.ErreurPorteExistant _exception)
+        {
+            _output = handler.createExceptionReply();
+            modControledAcces.ErreurPorteExistantHelper.write(_output,_exception);
+        }
         return _output;
     }
 

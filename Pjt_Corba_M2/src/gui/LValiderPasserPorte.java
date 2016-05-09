@@ -35,7 +35,7 @@ public class LValiderPasserPorte implements ActionListener
 			
 			if(!idSal.equals(""))
 			{
-				utilisateur.monELPorte.demandeEntrerSortirZone(idSal,(String)vm.getComboBox().getSelectedItem());
+				utilisateur.monELPorte.demandeEntrerSortirZone(idSal,vm.getIdZone());
 				message = "Bienvenue [les portes s'ouvrent..]";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 			}else
@@ -43,8 +43,7 @@ public class LValiderPasserPorte implements ActionListener
 				message = "Vous n'êtes pas autorisé à rentrer [les portes se ferment..]";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 			}
-			
-			
+
 		}else {
 			message = "Vous devez remplir les champs";
 			JOptionPane.showMessageDialog(vm, message, "Erreur", JOptionPane.WARNING_MESSAGE);

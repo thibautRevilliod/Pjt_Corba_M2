@@ -15,38 +15,20 @@ public class LVuePasserPorte implements ActionListener
 {
 
 	private VueMenuPorte vm;
+	private String idZone;
 
-	public LVuePasserPorte (VueMenuPorte vueMenuPorte)
+	public LVuePasserPorte (VueMenuPorte vueMenuPorte, String _idZone)
 	{
 		this.vm=vueMenuPorte;
+		this.idZone = _idZone;
 	}
 
 	public void actionPerformed(ActionEvent e)
 	{
-		VuePasserPorte vPP = new VuePasserPorte(remplirComboBoxSal());
+		VuePasserPorte vPP = new VuePasserPorte(idZone);
 		vPP.setVisible(true);
 		vPP.setLocation(800, 300);
 	}
 	
-	private InfoZone[] listeZones() {
-		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-		personnelSecurite.connexionELautorisation(main.param);
-		InfoZone[] infoZone = personnelSecurite.monELAutorisation.listeToutesZones();
-		
-		return infoZone;
-	}
 	
-	private JComboBox remplirComboBoxSal()
-	{
-		JComboBox _comboBox = new JComboBox();
-		InfoZone[] iz = listeZones();
-		
-		_comboBox.addItem("");
-		
-		for(int i = 0; i < iz.length; i++)
-		{
-			_comboBox.addItem(iz[i].idZone);
-		}
-		return _comboBox;
-	}
 }

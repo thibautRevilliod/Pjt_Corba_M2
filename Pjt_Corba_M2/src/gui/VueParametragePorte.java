@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import LanceurPersonnel.PersonnelSecurite;
+import modControledAcces.InfoZone;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -17,6 +21,7 @@ public class VueParametragePorte extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -54,7 +59,7 @@ public class VueParametragePorte extends JFrame {
 		lblLidentifiantDeLa.setBounds(35, 52, 140, 14);
 		contentPane.add(lblLidentifiantDeLa);
 		
-		JLabel lblLidentifiantDeLa_1 = new JLabel("L'identifiant de la porte : ");
+		JLabel lblLidentifiantDeLa_1 = new JLabel("Nom de la porte : ");
 		lblLidentifiantDeLa_1.setBounds(35, 102, 140, 14);
 		contentPane.add(lblLidentifiantDeLa_1);
 		
@@ -70,7 +75,7 @@ public class VueParametragePorte extends JFrame {
 		btnQuitter.setBounds(131, 146, 89, 23);
 		contentPane.add(btnQuitter);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = remplirComboBoxZone();
 		comboBox.setBounds(164, 49, 93, 20);
 		contentPane.add(comboBox);
 		
@@ -84,5 +89,43 @@ public class VueParametragePorte extends JFrame {
 		btnQuitter.addActionListener(new LFermerVueParametragePorte(this)); 
 		btnValider.addActionListener(new LValiderParametragePorte(this)); 
 		
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox comboBox) {
+		this.comboBox = comboBox;
+	}
+	
+	private InfoZone[] listeZones() {
+		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
+		personnelSecurite.connexionELautorisation(main.param);
+		InfoZone[] infoZone = personnelSecurite.monELAutorisation.listeToutesZones();
+		
+		return infoZone;
+	}
+	
+	private JComboBox remplirComboBoxZone()
+	{
+		JComboBox _comboBox = new JComboBox();
+		InfoZone[] iz = listeZones();
+		
+		_comboBox.addItem("");
+		
+		for(int i = 0; i < iz.length; i++)
+		{
+			_comboBox.addItem(iz[i].idZone);
+		}
+		return _comboBox;
 	}
 }

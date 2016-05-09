@@ -56,7 +56,7 @@ public class BddJDBC_EL_Porte {
 	}
 	
 	public String creerPorte(String plibellePorte, String pidZone) {
-		String idp;
+		String idp = "";
 		int id = 0;
 		try {
 			Statement s = conn.createStatement();
@@ -68,17 +68,17 @@ public class BddJDBC_EL_Porte {
 			rs = s.executeQuery("select libellePorte from portes WHERE libellePorte = '"+plibellePorte+"'");
 			if (!rs.next())
 			{
-				s.executeUpdate("insert into portes (idPorte,libellePiece,idZone) values ("+id+", '"+plibellePorte+"', "+pidZone+")");
+				s.executeUpdate("insert into portes (idPorte,libellePorte,idZone) values ("+id+", '"+plibellePorte+"', "+pidZone+")");
 				idp = String.valueOf(id);
 			}
 			else
 			{
-				idp = "-2"; // le cas ou l'empreinte existe déjà
+				idp = "-2"; // le cas ou la porte existe déjà
 			}
 	        return idp;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			idp = "-1";
+			idp = "";
 			return idp;
 		}
 	}

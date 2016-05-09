@@ -12,15 +12,17 @@ import javax.swing.JLabel;
 public class VueMenuPorte extends JFrame {
 
 	private JPanel contentPane;
+	private String idZone;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		String iidZone = null;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueMenuPorte frame = new VueMenuPorte();
+					VueMenuPorte frame = new VueMenuPorte(iidZone);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,8 +33,11 @@ public class VueMenuPorte extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param idZone 
 	 */
-	public VueMenuPorte() {
+	public VueMenuPorte(String _idZone) {
+		idZone = _idZone;
+		
 		setTitle("Menu Porte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 363, 151);
@@ -60,7 +65,7 @@ public class VueMenuPorte extends JFrame {
 		
 		// Abonnements :
 		btnQuitter.addActionListener(new LFermerMenuPorte(this));    
-		btnPasserLaPorte.addActionListener(new LVuePasserPorte(this));
+		btnPasserLaPorte.addActionListener(new LVuePasserPorte(this, idZone));
 		btnModifierVotreEmpreinte.addActionListener(new LVueModifierEmpreinte(this));
 	}
 

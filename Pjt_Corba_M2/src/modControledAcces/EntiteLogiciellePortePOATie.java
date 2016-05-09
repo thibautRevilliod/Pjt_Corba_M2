@@ -94,4 +94,13 @@ public class EntiteLogiciellePortePOATie extends EntiteLogiciellePortePOA
         _tie.demanderModifierEmpreinte( idSal,  empreinte);
     }
 
+    /**
+     * Operation creerPorte
+     */
+    public String creerPorte(String libellePorte, String idZone)
+        throws modControledAcces.ErreurPorteExistant
+    {
+        return _tie.creerPorte( libellePorte,  idZone);
+    }
+
 }

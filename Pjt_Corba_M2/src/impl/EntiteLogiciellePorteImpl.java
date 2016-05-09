@@ -16,6 +16,7 @@ import modControledAcces.EmpreinteExistante;
 import modControledAcces.EmpreinteIncorrecte;
 import modControledAcces.EntiteLogicielleAnnuaire;
 import modControledAcces.EntiteLogiciellePortePOA;
+import modControledAcces.ErreurPorteExistant;
 import modControledAcces.EntiteLogicielleEmpreinte;
 import modControledAcces.EntiteLogicielleEmpreinteHelper;
 import modControledAcces.EntiteLogicielleJournalisation;
@@ -298,6 +299,11 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public String creerPorte(String libellePorte, String idZone) throws ErreurPorteExistant {
+		return bddJDBC_EL_Porte.creerPorte(libellePorte, idZone);
 	}
 
 

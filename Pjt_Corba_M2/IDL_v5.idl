@@ -95,6 +95,15 @@ module modControledAcces
 	//        mais ne l'utilisant pas dans les méthodes, elle est inutile. (pour le moment on souhaite juste retourner pour un salarié donné ses accréditations par zone)
 	
 
+	exception EmpreinteIncorrecte {string raisonEmpreinteIncorrecte;};
+	exception EmpreinteExistante {string raisonEmpreinteExistante;};
+	exception CleInconnue {string raisonCleInconnue;};
+	exception ErreurSalarieInexistant {string raisonErreurSalarieInexistant;};
+	exception ErreurZoneInexistant {string raisonErreurZoneInexistant;};
+	exception ErreurSalarieExistant {string raisonErreurSalarieExistant;};
+	exception ErreurPorteExistant {string raisonErreurPorteExistant;};
+
+
 	interface EntiteLogiciellePorte
 	{
 		void afficherMessage();  //deverouillage de la porte 
@@ -104,16 +113,9 @@ module modControledAcces
 		void demandeEntrerSortirZone(in string idSal, in string idZone);
 		string demanderAuthentifier (in string photo, in string empreinte);
 		void demanderModifierEmpreinte(in string idSal, in string empreinte);
-	};
-	
-	exception EmpreinteIncorrecte {string raisonEmpreinteIncorrecte;};
-	exception EmpreinteExistante {string raisonEmpreinteExistante;};
-	exception CleInconnue {string raisonCleInconnue;};
-	exception ErreurSalarieInexistant {string raisonErreurSalarieInexistant;};
-	exception ErreurZoneInexistant {string raisonErreurZoneInexistant;};
-	exception ErreurSalarieExistant {string raisonErreurSalarieExistant;};
-
-	
+		
+		string creerPorte(in string libellePorte, in string idZone) raises (ErreurPorteExistant);		
+	};	
 	
 	interface EntiteLogicielleEmpreinte
 	{
