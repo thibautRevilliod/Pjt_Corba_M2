@@ -17,13 +17,20 @@ public class main {
 		VueMenuRH menuRH;
 		VueMenuAnnuaire menuAnnuaire;
 		VueMenuSecurite menuSecurite;
+		VueParametragePorte paramPorte;
 	
+		//pour ouvrir la fenetre de paramétrage de la porte: 
+		paramPorte = new VueParametragePorte();
+		paramPorte.setVisible(true);
+		paramPorte.setLocation(500, 200);
+		
 		// pour ouvrir le menu Porte 		
 		
+		/*
 		menuPorte = new VueMenuPorte();
 		menuPorte.setVisible(true);
 		menuPorte.setLocation(500, 200);
-
+*/
 		
 		// pour ouvrir le menu RH 		
 		
