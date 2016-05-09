@@ -11,13 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class VueParametragePorte extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -55,10 +53,6 @@ public class VueParametragePorte extends JFrame {
 		lblLidentifiantDeLa.setBounds(35, 52, 140, 14);
 		contentPane.add(lblLidentifiantDeLa);
 		
-		JLabel lblLeLibelleDe = new JLabel("Le libelle de la zone :");
-		lblLeLibelleDe.setBounds(34, 77, 119, 14);
-		contentPane.add(lblLeLibelleDe);
-		
 		JLabel lblLidentifiantDeLa_1 = new JLabel("L'identifiant de la porte : ");
 		lblLidentifiantDeLa_1.setBounds(35, 102, 140, 14);
 		contentPane.add(lblLidentifiantDeLa_1);
@@ -71,24 +65,17 @@ public class VueParametragePorte extends JFrame {
 		btnValider.setBounds(35, 146, 89, 23);
 		contentPane.add(btnValider);
 		
-		textField = new JTextField();
-		textField.setBounds(162, 49, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(162, 74, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(162, 99, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
 		JButton btnQuitter = new JButton("Quitter");
 		btnQuitter.setBounds(131, 146, 89, 23);
 		contentPane.add(btnQuitter);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(164, 49, 93, 20);
+		contentPane.add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(164, 99, 93, 20);
+		contentPane.add(comboBox_1);
 		
 		// abonnements
 		
