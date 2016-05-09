@@ -39,20 +39,32 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	public String creerSalarie(String mdp, String nom, String prenom, String photo, Date heureDebut, Date heureFin,
 			Date jourDebut, Date jourFin, Date dateValiditeCompte, boolean estPermanent) throws ErreurSalarieExistant {
 		//TODO: Il manque estPermanent et le type de date ne correspond pas : il faut juste une dateFinValiditeCompte de type Timestamp
-
-		Timestamp tjourDebut = Timestamp.valueOf(jourDebut.timestamp);
-		Timestamp tjourFin = Timestamp.valueOf(jourFin.timestamp);
-		Timestamp theureDebut = Timestamp.valueOf(heureDebut.timestamp);
-		Timestamp theureFin = Timestamp.valueOf(heureFin.timestamp);
+		
+		String res;
+		
 		Timestamp tdateValiditeCompte = Timestamp.valueOf(dateValiditeCompte.timestamp);
 		
-		return bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, theureDebut, theureFin, tjourDebut, tjourFin, tdateValiditeCompte, estPermanent);
+		if(!estPermanent)
+		{
+			Timestamp tjourDebut = Timestamp.valueOf(jourDebut.timestamp);
+			Timestamp tjourFin = Timestamp.valueOf(jourFin.timestamp);
+			Timestamp theureDebut = Timestamp.valueOf(heureDebut.timestamp);
+			Timestamp theureFin = Timestamp.valueOf(heureFin.timestamp);
+			
+			res = bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, theureDebut, theureFin, tjourDebut, tjourFin, tdateValiditeCompte, estPermanent);
+		}else
+		{
+			res = bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, null, null, null, null, tdateValiditeCompte, estPermanent);
+		}
+		
+		return res;
 	}
 
 	@Override
 	public String sauthentifier(String photo) throws ErreurSalarieInexistant {
-		
-		return bddJDBC_EL_Annuaire.sauthentifier(photo);
+		java.util.Date d = new java.util.Date();
+		Timestamp tdate = new Timestamp(d.getTime());
+		return bddJDBC_EL_Annuaire.sauthentifier(photo,tdate);
 	}
 
 }

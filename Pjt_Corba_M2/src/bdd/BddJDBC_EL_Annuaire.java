@@ -85,7 +85,7 @@ public class BddJDBC_EL_Annuaire {
 			rs = s.executeQuery("select photo from Salaries WHERE photo = '"+pphoto+"'");
 			if (!rs.next())
 			{
-				if(pheureDebut == null && pheureFin == null && pjourDebut == null && pjourFin == null)
+				if(pestPermanent)
 				{
 					s.executeUpdate("insert into Salaries (idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent) "
 		        			+ "values ("+id+", '"+pmdp+"', '"+pnom+"', '"+pprenom+"', '"+pphoto+"', {ts '"+pdateFinValiditeCompte+"'}, "+pestPermanent+")");
@@ -103,7 +103,7 @@ public class BddJDBC_EL_Annuaire {
 	        return ids;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			ids = "-1";
+			ids = "";
 			return ids;
 		}
 	}
@@ -174,18 +174,87 @@ public class BddJDBC_EL_Annuaire {
 		}
 	}
 	
-	public String sauthentifier(String pphoto) {
+	public String sauthentifier(String pphoto, Timestamp dateHeureDde) {
 		String res = "";
 		
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select idSal from Salaries where photo = '"+pphoto+"'");
+			ResultSet rs = s.executeQuery("select idSal,heureDebut,heureFin,jourDebut,jourFin,dateFinValiditeCompte,estPermanent from Salaries where photo = '"+pphoto+"'");
     		if(rs.next())
     		{
-    			res = String.valueOf(rs.getInt(1));
+    			Timestamp dateFinValiditeCompte = rs.getTimestamp(6);
+    			boolean estPermanent = rs.getBoolean(7);
+    			if(!estPermanent)
+    			{
+    				if(dateHeureDde.before(dateFinValiditeCompte))
+	    			{
+						Timestamp jourDebut = rs.getTimestamp(4);
+						Timestamp jourFin = rs.getTimestamp(5);
+						Timestamp heureDebut = rs.getTimestamp(2);
+						Timestamp heureFin = rs.getTimestamp(3);
+						Calendar cal1 = GregorianCalendar.getInstance();
+						Calendar cal2 = GregorianCalendar.getInstance();
+						Calendar cal3 = GregorianCalendar.getInstance();
+						
+						//test des dates
+						cal1.set(Calendar.DAY_OF_MONTH, dateHeureDde.getDay());
+						cal1.set(Calendar.MONTH, dateHeureDde.getMonth());
+						cal1.set(Calendar.YEAR, dateHeureDde.getYear());
+						cal1.set(Calendar.HOUR_OF_DAY, 00);
+						cal1.set(Calendar.MINUTE, 00);
+						cal1.set(Calendar.SECOND, 00);
+						
+						cal2.set(Calendar.HOUR_OF_DAY, 00);
+						cal2.set(Calendar.MINUTE, 00);
+						cal2.set(Calendar.SECOND, 00);
+						cal2.set(Calendar.DAY_OF_MONTH, jourDebut.getDay());
+						cal2.set(Calendar.MONTH, jourDebut.getMonth());
+						cal2.set(Calendar.YEAR, jourDebut.getYear());
+		
+						cal3.set(Calendar.HOUR_OF_DAY, 00);
+						cal3.set(Calendar.MINUTE, 00);
+						cal3.set(Calendar.SECOND, 00);
+						cal3.set(Calendar.DAY_OF_MONTH, jourFin.getDay());
+						cal3.set(Calendar.MONTH, jourFin.getMonth());
+						cal3.set(Calendar.YEAR, jourFin.getYear());
+			
+						if((cal1.after(cal2) && cal1.before(cal3)) || (cal1.equals(cal2)) || (cal1.equals(cal3)))
+						{
+							//test des heures
+							cal1.set(Calendar.HOUR, dateHeureDde.getHours());
+							cal1.set(Calendar.MINUTE, dateHeureDde.getMinutes());
+							cal1.set(Calendar.SECOND, dateHeureDde.getSeconds());
+							cal1.set(Calendar.DAY_OF_MONTH, 10);
+							cal1.set(Calendar.MONTH, 10);
+							cal1.set(Calendar.YEAR, 2015);
+							
+							cal2.set(Calendar.HOUR, heureDebut.getHours());
+							cal2.set(Calendar.MINUTE, heureDebut.getMinutes());
+							cal2.set(Calendar.SECOND, heureDebut.getSeconds());
+							cal2.set(Calendar.DAY_OF_MONTH, 10);
+							cal2.set(Calendar.MONTH, 10);
+							cal2.set(Calendar.YEAR, 2015);
+		
+							cal3.set(Calendar.HOUR, heureFin.getHours());
+							cal3.set(Calendar.MINUTE, heureFin.getMinutes());
+							cal3.set(Calendar.SECOND, heureFin.getSeconds());
+							cal3.set(Calendar.DAY_OF_MONTH, 10);
+							cal3.set(Calendar.MONTH, 10);
+							cal3.set(Calendar.YEAR, 2015);
+		
+							if((cal1.after(cal2) && cal1.before(cal3)) || (cal1.equals(cal2)) || (cal1.equals(cal3)))
+							{
+								res = String.valueOf(rs.getInt(1));
+							}
+						}
+	    			}
+    			}else
+    			{
+    				res = String.valueOf(rs.getInt(1));
+    			}
     		}
+			return res;
     		
-        	return res;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return res;
@@ -229,7 +298,12 @@ public class BddJDBC_EL_Annuaire {
 		BddJDBC_EL_Annuaire bddJDBC_EL_Annuaire = new BddJDBC_EL_Annuaire("BD_Annuaire");
 		//bddJDBC_EL_Annuaire.init();
 		
-		bddJDBC_EL_Annuaire.listeTousSalaries();
+	//	bddJDBC_EL_Annuaire.listeTousSalaries();
+		
+		java.util.Date d = new java.util.Date();
+		Timestamp tdate = new Timestamp(d.getTime());
+		System.out.println(bddJDBC_EL_Annuaire.sauthentifier("photo1", tdate));
+		
 		try {
 			bddJDBC_EL_Annuaire.fermer();
 		} catch (Exception e) {

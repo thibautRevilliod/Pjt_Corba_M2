@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,14 +13,18 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 
 public class VueCreerSalarie extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JFormattedTextField jFormattedTextField;
+	private JRadioButton rdbtnOui;
+	private JRadioButton rdbtnNon;
+	private  ButtonGroup group;
 	private JTextField textField_4;
 
 	/**
@@ -76,9 +82,6 @@ public class VueCreerSalarie extends JFrame {
 		lblPermanent.setBounds(10, 154, 112, 14);
 		contentPane.add(lblPermanent);
 			
-	    ButtonGroup group;
-		JRadioButton rdbtnOui;
-		JRadioButton rdbtnNon;
 		
 		rdbtnOui = new JRadioButton("Oui");
 		rdbtnOui.setBounds(142, 147, 46, 29);
@@ -96,11 +99,12 @@ public class VueCreerSalarie extends JFrame {
         
         group.add(rdbtnNon);
         getContentPane().add(rdbtnNon);
-		
-		textField = new JTextField();
-		textField.setBounds(173, 112, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+        
+        DateFormat formatDateheure = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        jFormattedTextField = new JFormattedTextField(formatDateheure);
+        jFormattedTextField.setBounds(173, 112, 86, 20);
+		contentPane.add(jFormattedTextField);
+		jFormattedTextField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setBounds(173, 87, 86, 20);
@@ -136,6 +140,70 @@ public class VueCreerSalarie extends JFrame {
 		// traitement pour le bouton valider
 		btnValider.addActionListener(new LValiderCreerSalarie(this)); 
 		
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public void setTextField_2(JTextField textField_2) {
+		this.textField_2 = textField_2;
+	}
+
+	public JTextField getTextField_3() {
+		return textField_3;
+	}
+
+	public void setTextField_3(JTextField textField_3) {
+		this.textField_3 = textField_3;
+	}
+
+	public JRadioButton getRdbtnOui() {
+		return rdbtnOui;
+	}
+
+	public void setRdbtnOui(JRadioButton rdbtnOui) {
+		this.rdbtnOui = rdbtnOui;
+	}
+
+	public JRadioButton getRdbtnNon() {
+		return rdbtnNon;
+	}
+
+	public void setRdbtnNon(JRadioButton rdbtnNon) {
+		this.rdbtnNon = rdbtnNon;
+	}
+
+	public JFormattedTextField getjFormattedTextField() {
+		return jFormattedTextField;
+	}
+
+	public void setjFormattedTextField(JFormattedTextField jFormattedTextField) {
+		this.jFormattedTextField = jFormattedTextField;
+	}
+
+	public ButtonGroup getGroup() {
+		return group;
+	}
+
+	public void setGroup(ButtonGroup group) {
+		this.group = group;
+	}
+
+	public JTextField getTextField_4() {
+		return textField_4;
+	}
+
+	public void setTextField_4(JTextField textField_4) {
+		this.textField_4 = textField_4;
 	}
 
 }
