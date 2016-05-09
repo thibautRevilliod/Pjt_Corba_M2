@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 public class VueParametragePorte extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -73,9 +74,10 @@ public class VueParametragePorte extends JFrame {
 		comboBox.setBounds(164, 49, 93, 20);
 		contentPane.add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(164, 99, 93, 20);
-		contentPane.add(comboBox_1);
+		textField = new JTextField();
+		textField.setBounds(164, 99, 93, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
 		
 		// abonnements
 		
