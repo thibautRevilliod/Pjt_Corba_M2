@@ -43,36 +43,28 @@ public class VueRecupererInfos extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblIdentifiant = new JLabel("Identifiant :");
-		lblIdentifiant.setBounds(30, 11, 86, 14);
+		lblIdentifiant.setBounds(30, 36, 86, 14);
 		contentPane.add(lblIdentifiant);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(157, 11, 86, 14);
+		lblNewLabel.setBounds(157, 36, 86, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNom = new JLabel("Nom : ");
-		lblNom.setBounds(30, 36, 46, 14);
+		lblNom.setBounds(30, 61, 46, 14);
 		contentPane.add(lblNom);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(157, 36, 86, 14);
+		lblNewLabel_1.setBounds(157, 61, 86, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblPrnom = new JLabel("Pr\u00E9nom :");
-		lblPrnom.setBounds(30, 61, 46, 14);
+		lblPrnom.setBounds(30, 86, 46, 14);
 		contentPane.add(lblPrnom);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(157, 61, 86, 14);
+		lblNewLabel_2.setBounds(157, 86, 86, 14);
 		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblMotDePasse = new JLabel("Mot de passe : ");
-		lblMotDePasse.setBounds(30, 86, 100, 14);
-		contentPane.add(lblMotDePasse);
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setBounds(157, 86, 100, 14);
-		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblPhoto = new JLabel("Photo :");
 		lblPhoto.setBounds(30, 111, 46, 14);
