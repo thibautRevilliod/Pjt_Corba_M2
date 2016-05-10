@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
+import java.text.Format;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class VueCreerSalarie extends JFrame {
 
@@ -21,11 +24,15 @@ public class VueCreerSalarie extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JFormattedTextField jFormattedTextField;
+	private JFormattedTextField formattedTextField;
 	private JRadioButton rdbtnOui;
 	private JRadioButton rdbtnNon;
 	private  ButtonGroup group;
 	private JTextField textField_4;
+	private JFormattedTextField formattedTextField_1;
+	private JFormattedTextField formattedTextField_2;
+	private JFormattedTextField formattedTextField_3;
+	private JFormattedTextField formattedTextField_4;
 
 	/**
 	 * Launch the application.
@@ -52,7 +59,7 @@ public class VueCreerSalarie extends JFrame {
 			
 		setTitle("Cr\u00E9er un salari\u00E9");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 307, 261);
+		setBounds(100, 100, 307, 405);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -86,7 +93,7 @@ public class VueCreerSalarie extends JFrame {
 		rdbtnOui = new JRadioButton("Oui");
 		rdbtnOui.setBounds(142, 147, 46, 29);
 		rdbtnOui.setName("Oui");
-				
+		
 		rdbtnNon = new JRadioButton("Non");
 		rdbtnNon.setBounds(193, 147, 76, 29);
 		rdbtnNon.setName("Non");
@@ -101,10 +108,13 @@ public class VueCreerSalarie extends JFrame {
         getContentPane().add(rdbtnNon);
         
         DateFormat formatDateheure = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-        jFormattedTextField = new JFormattedTextField(formatDateheure);
-        jFormattedTextField.setBounds(173, 112, 86, 20);
-		contentPane.add(jFormattedTextField);
-		jFormattedTextField.setColumns(10);
+        DateFormat formatHeure = new SimpleDateFormat("HH:mm");
+        DateFormat formatDate= new SimpleDateFormat("yyyy/MM/dd");
+        
+        formattedTextField = new JFormattedTextField(formatDateheure);
+        formattedTextField.setBounds(173, 112, 86, 20);
+		contentPane.add(formattedTextField);
+		formattedTextField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setBounds(173, 87, 86, 20);
@@ -127,12 +137,66 @@ public class VueCreerSalarie extends JFrame {
 		textField_4.setColumns(10);
 		
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(33, 189, 89, 23);
+		btnValider.setBounds(32, 332, 89, 23);
 		contentPane.add(btnValider);
 		
 		JButton btnQuitter = new JButton("Quitter");
-		btnQuitter.setBounds(142, 189, 89, 23);
+		btnQuitter.setBounds(141, 332, 89, 23);
 		contentPane.add(btnQuitter);
+		
+		formattedTextField_1 = new JFormattedTextField(formatHeure);
+		formattedTextField_1.setColumns(10);
+		formattedTextField_1.setBounds(173, 194, 86, 20);
+		contentPane.add(formattedTextField_1);
+		
+		JLabel lblHeureDebut = new JLabel("Heure debut :");
+		lblHeureDebut.setBounds(10, 197, 153, 14);
+		contentPane.add(lblHeureDebut);
+		
+		formattedTextField_2 = new JFormattedTextField(formatHeure);
+		formattedTextField_2.setColumns(10);
+		formattedTextField_2.setBounds(173, 225, 86, 20);
+		contentPane.add(formattedTextField_2);
+		
+		JLabel lblHeureFin = new JLabel("Heure fin :");
+		lblHeureFin.setBounds(10, 228, 153, 14);
+		contentPane.add(lblHeureFin);
+		
+		formattedTextField_3 = new JFormattedTextField(formatDate);
+		formattedTextField_3.setColumns(10);
+		formattedTextField_3.setBounds(173, 256, 86, 20);
+		contentPane.add(formattedTextField_3);
+		
+		JLabel lblJourDbut = new JLabel("Jour d\u00E9but :");
+		lblJourDbut.setBounds(10, 259, 153, 14);
+		contentPane.add(lblJourDbut);
+		
+		formattedTextField_4 = new JFormattedTextField(formatDate);
+		formattedTextField_4.setColumns(10);
+		formattedTextField_4.setBounds(173, 287, 86, 20);
+		contentPane.add(formattedTextField_4);
+		
+		JLabel lblJourFin = new JLabel("Jour fin :");
+		lblJourFin.setBounds(10, 290, 153, 14);
+		contentPane.add(lblJourFin);
+		
+		rdbtnNon.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				formattedTextField_1.setVisible(true);
+				formattedTextField_2.setVisible(true);
+				formattedTextField_3.setVisible(true);
+				formattedTextField_4.setVisible(true);
+			}
+		});
+		
+		rdbtnOui.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {				
+				formattedTextField_1.setVisible(false);
+				formattedTextField_2.setVisible(false);
+				formattedTextField_3.setVisible(false);
+				formattedTextField_4.setVisible(false);
+			}
+		});
 		
 		// abonnements
 		btnQuitter.addActionListener(new LFermerVueCreerSalarie(this)); 
@@ -183,11 +247,11 @@ public class VueCreerSalarie extends JFrame {
 	}
 
 	public JFormattedTextField getjFormattedTextField() {
-		return jFormattedTextField;
+		return formattedTextField;
 	}
 
 	public void setjFormattedTextField(JFormattedTextField jFormattedTextField) {
-		this.jFormattedTextField = jFormattedTextField;
+		this.formattedTextField = jFormattedTextField;
 	}
 
 	public ButtonGroup getGroup() {
@@ -206,4 +270,35 @@ public class VueCreerSalarie extends JFrame {
 		this.textField_4 = textField_4;
 	}
 
+	public JFormattedTextField getFormattedTextField_1() {
+		return formattedTextField_1;
+	}
+
+	public void setFormattedTextField_1(JFormattedTextField formattedTextField_1) {
+		this.formattedTextField_1 = formattedTextField_1;
+	}
+
+	public JFormattedTextField getFormattedTextField_2() {
+		return formattedTextField_2;
+	}
+
+	public void setFormattedTextField_2(JFormattedTextField formattedTextField_2) {
+		this.formattedTextField_2 = formattedTextField_2;
+	}
+
+	public JFormattedTextField getFormattedTextField_3() {
+		return formattedTextField_3;
+	}
+
+	public void setFormattedTextField_3(JFormattedTextField formattedTextField_3) {
+		this.formattedTextField_3 = formattedTextField_3;
+	}
+
+	public JFormattedTextField getFormattedTextField_4() {
+		return formattedTextField_4;
+	}
+
+	public void setFormattedTextField_4(JFormattedTextField formattedTextField_4) {
+		this.formattedTextField_4 = formattedTextField_4;
+	}
 }

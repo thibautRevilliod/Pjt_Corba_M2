@@ -34,7 +34,8 @@ public class LValiderCreerSalarie implements ActionListener
 		if(((!vm.getTextField_4().getText().equals("") && !vm.getTextField_1().getText().equals("") && !vm.getTextField_2().getText().equals("") &&
 				!vm.getTextField_3().getText().equals("")) && vm.getRdbtnOui().isSelected()) ||
 			((!vm.getTextField_4().getText().equals("") && !vm.getTextField_1().getText().equals("") && !vm.getTextField_2().getText().equals("") &&
-				!vm.getTextField_3().getText().equals("")) && vm.getRdbtnNon().isSelected()))
+				!vm.getTextField_3().getText().equals("") && !vm.getFormattedTextField_1().getText().equals("") && !vm.getFormattedTextField_2().getText().equals("")
+				 && !vm.getFormattedTextField_3().getText().equals("") && !vm.getFormattedTextField_4().getText().equals("")) && vm.getRdbtnNon().isSelected()))
 		{
 			PersonnelRH personnelRH = new PersonnelRH();
 			personnelRH.connexionELannuaire(main.param);
@@ -52,15 +53,15 @@ public class LValiderCreerSalarie implements ActionListener
 					//remplir avec les champs correspondant getjFormattedTextField_1 , ????
 					SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
 					SimpleDateFormat formatHeure = new SimpleDateFormat("HH:mm");
-					Date heureDebut = formatHeure.parse(vm.getjFormattedTextField().getText());
-					Date heureFin = formatHeure.parse(vm.getjFormattedTextField().getText());
-					Date dateDebut = formatDate.parse(vm.getjFormattedTextField().getText());
-					Date dateFin = formatDate.parse(vm.getjFormattedTextField().getText());
+					Date heureDebut = formatHeure.parse(vm.getFormattedTextField_1().getText());
+					Date heureFin = formatHeure.parse(vm.getFormattedTextField_2().getText());
+					Date dateDebut = formatDate.parse(vm.getFormattedTextField_3().getText());
+					Date dateFin = formatDate.parse(vm.getFormattedTextField_4().getText());
 					Timestamp theureDebut = new Timestamp(heureDebut.getTime());
 					Timestamp theureFin = new Timestamp(heureFin.getTime());
 					Timestamp tdateDebut = new Timestamp(dateDebut.getTime());
 					Timestamp tdateFin = new Timestamp(dateFin.getTime());
-					idSal = personnelRH.monELAnnuaire.creerSalarie(vm.getTextField_2().getText(), vm.getTextField_4().getText(), vm.getTextField_3().getText(), vm.getTextField_1().getText(), new modControledAcces.Date(heureDebut.toString()), new modControledAcces.Date(heureFin.toString()), new modControledAcces.Date(dateDebut.toString()), new modControledAcces.Date(dateFin.toString()), new modControledAcces.Date(tdateHeureFinValidite.toString()), true);
+					idSal = personnelRH.monELAnnuaire.creerSalarie(vm.getTextField_2().getText(), vm.getTextField_4().getText(), vm.getTextField_3().getText(), vm.getTextField_1().getText(), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()), new modControledAcces.Date(tdateDebut.toString()), new modControledAcces.Date(tdateFin.toString()), new modControledAcces.Date(tdateHeureFinValidite.toString()), false);
 				}
 				
 				if(idSal.equals(""))
