@@ -43,13 +43,16 @@ public class LValiderChoixRecupererNomPhoto implements ActionListener
 				PersonnelRH personnelRH = new PersonnelRH();
 				personnelRH.connexionELannuaire(main.param);
 				
-				InfoSalarie infoSalarie = personnelRH.monELAnnuaire.recupererNomPhotoSalarie(idSal);
+				InfoSalarie infoSalarie = personnelRH.monELAnnuaire.recupererNomPhotoSalarie(idSal,personnelRH.cleAnnuaire);
 				
 				VueRecupererNomPhoto vRNP = new VueRecupererNomPhoto(infoSalarie);
 				vRNP.setVisible(true);
 				vRNP.setLocation(800, 300);
 				
 			} catch (ErreurSalarieInexistant e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (CleInconnue e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

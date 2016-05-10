@@ -158,9 +158,9 @@ module modControledAcces
 	
 		ListeSalaries listeTousSalaries();
 		
-		InfoSalarie recupererNomPhotoSalarie(in string idSal) raises (ErreurSalarieInexistant);
+		InfoSalarie recupererNomPhotoSalarie(in string idSal, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue);
 		
-		InfoSalarie infosSalarie(in string idSal) raises (ErreurSalarieInexistant);
+		InfoSalarie infosSalarie(in string idSal, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue);
 
 		//retourne l'id d'un salarié
 		string creerSalarie(in string mdp, in string nom, in string prenom, in string photo, in Date heureDebut, in Date heureFin, in Date jourDebut, in Date jourFin, in Date dateFinValiditeCompte, in boolean estPermanent) raises (ErreurSalarieExistant);		

@@ -15,14 +15,14 @@ public interface EntiteLogicielleAnnuaireOperations
     /**
      * Operation recupererNomPhotoSalarie
      */
-    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal)
-        throws modControledAcces.ErreurSalarieInexistant;
+    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, String cleDemandeur)
+        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue;
 
     /**
      * Operation infosSalarie
      */
-    public modControledAcces.InfoSalarie infosSalarie(String idSal)
-        throws modControledAcces.ErreurSalarieInexistant;
+    public modControledAcces.InfoSalarie infosSalarie(String idSal, String cleDemandeur)
+        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue;
 
     /**
      * Operation creerSalarie

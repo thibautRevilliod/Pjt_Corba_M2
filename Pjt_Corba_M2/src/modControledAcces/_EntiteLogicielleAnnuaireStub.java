@@ -72,8 +72,8 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
     /**
      * Operation recupererNomPhotoSalarie
      */
-    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal)
-        throws modControledAcces.ErreurSalarieInexistant
+    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, String cleDemandeur)
+        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue
     {
         while(true)
         {
@@ -84,6 +84,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 {
                     org.omg.CORBA.portable.OutputStream _output = this._request("recupererNomPhotoSalarie",true);
                     _output.write_string(idSal);
+                    _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
                     modControledAcces.InfoSalarie _arg_ret = modControledAcces.InfoSalarieHelper.read(_input);
                     return _arg_ret;
@@ -98,6 +99,11 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                     if (_exception_id.equals(modControledAcces.ErreurSalarieInexistantHelper.id()))
                     {
                         throw modControledAcces.ErreurSalarieInexistantHelper.read(_exception.getInputStream());
+                    }
+
+                    if (_exception_id.equals(modControledAcces.CleInconnueHelper.id()))
+                    {
+                        throw modControledAcces.CleInconnueHelper.read(_exception.getInputStream());
                     }
 
                     throw new org.omg.CORBA.UNKNOWN("Unexpected User Exception: "+ _exception_id);
@@ -115,7 +121,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 modControledAcces.EntiteLogicielleAnnuaireOperations _self = (modControledAcces.EntiteLogicielleAnnuaireOperations) _so.servant;
                 try
                 {
-                    return _self.recupererNomPhotoSalarie( idSal);
+                    return _self.recupererNomPhotoSalarie( idSal,  cleDemandeur);
                 }
                 finally
                 {
@@ -128,8 +134,8 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
     /**
      * Operation infosSalarie
      */
-    public modControledAcces.InfoSalarie infosSalarie(String idSal)
-        throws modControledAcces.ErreurSalarieInexistant
+    public modControledAcces.InfoSalarie infosSalarie(String idSal, String cleDemandeur)
+        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue
     {
         while(true)
         {
@@ -140,6 +146,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 {
                     org.omg.CORBA.portable.OutputStream _output = this._request("infosSalarie",true);
                     _output.write_string(idSal);
+                    _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
                     modControledAcces.InfoSalarie _arg_ret = modControledAcces.InfoSalarieHelper.read(_input);
                     return _arg_ret;
@@ -154,6 +161,11 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                     if (_exception_id.equals(modControledAcces.ErreurSalarieInexistantHelper.id()))
                     {
                         throw modControledAcces.ErreurSalarieInexistantHelper.read(_exception.getInputStream());
+                    }
+
+                    if (_exception_id.equals(modControledAcces.CleInconnueHelper.id()))
+                    {
+                        throw modControledAcces.CleInconnueHelper.read(_exception.getInputStream());
                     }
 
                     throw new org.omg.CORBA.UNKNOWN("Unexpected User Exception: "+ _exception_id);
@@ -171,7 +183,7 @@ public class _EntiteLogicielleAnnuaireStub extends org.omg.CORBA.portable.Object
                 modControledAcces.EntiteLogicielleAnnuaireOperations _self = (modControledAcces.EntiteLogicielleAnnuaireOperations) _so.servant;
                 try
                 {
-                    return _self.infosSalarie( idSal);
+                    return _self.infosSalarie( idSal,  cleDemandeur);
                 }
                 finally
                 {

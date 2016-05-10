@@ -13,7 +13,7 @@ public class PersonnelRH {
 	public static InfoSalarie[] listeSalaries;
 	public static EntiteLogicielleEmpreinte monELEmpreinte;
 	public static EntiteLogicielleAnnuaire monELAnnuaire;
-	public static String cleEmpreinte = "personnel_rh_empreinte";
+	public static String cleAnnuaire = "personnel_rh_annuaire";
 	
 	public static void connexionELempreinte (String[] args) {
 		
@@ -154,7 +154,7 @@ public class PersonnelRH {
 		}
 		*/
 		connexionELannuaire(args);
-		System.out.println(monELAnnuaire.infosSalarie("1").idSal);
+		System.out.println(monELAnnuaire.infosSalarie("1", cleAnnuaire).idSal);
 		
 	}
 

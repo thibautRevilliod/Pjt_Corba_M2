@@ -73,19 +73,19 @@ public class EntiteLogicielleAnnuairePOATie extends EntiteLogicielleAnnuairePOA
     /**
      * Operation recupererNomPhotoSalarie
      */
-    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal)
-        throws modControledAcces.ErreurSalarieInexistant
+    public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, String cleDemandeur)
+        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue
     {
-        return _tie.recupererNomPhotoSalarie( idSal);
+        return _tie.recupererNomPhotoSalarie( idSal,  cleDemandeur);
     }
 
     /**
      * Operation infosSalarie
      */
-    public modControledAcces.InfoSalarie infosSalarie(String idSal)
-        throws modControledAcces.ErreurSalarieInexistant
+    public modControledAcces.InfoSalarie infosSalarie(String idSal, String cleDemandeur)
+        throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue
     {
-        return _tie.infosSalarie( idSal);
+        return _tie.infosSalarie( idSal,  cleDemandeur);
     }
 
     /**

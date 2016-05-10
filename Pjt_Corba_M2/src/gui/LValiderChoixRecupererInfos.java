@@ -11,11 +11,13 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
+import LanceurPersonnel.PersonnelRH;
 import LanceurPersonnel.PersonnelSecurite;
 import modControledAcces.CleInconnue;
 import modControledAcces.ErreurSalarieInexistant;
 import modControledAcces.ErreurZoneInexistant;
 import modControledAcces.EvenementJournalisation;
+import modControledAcces.InfoSalarie;
 import modControledAcces.InfoSalarieAccreditation;
 
 public class LValiderChoixRecupererInfos implements ActionListener
@@ -32,11 +34,36 @@ public class LValiderChoixRecupererInfos implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{	
-		System.out.println("ok ça ouvre la prochaine fenetre! ");
-		VueRecupererInfos vRI = new VueRecupererInfos();
-		vRI.setVisible(true);
-		vRI.setLocation(800, 300);
-		
+		String message = null;
+		if(!vm.getComboBox().getSelectedItem().equals(""))
+		{
+			String idSal = (String) vm.getComboBox().getSelectedItem();
+			
+			try {
+				PersonnelRH personnelRH = new PersonnelRH();
+				personnelRH.connexionELannuaire(main.param);
+				
+				InfoSalarie infoSalarie = personnelRH.monELAnnuaire.infosSalarie(idSal, personnelRH.cleAnnuaire);
+				
+				VueRecupererInfos vRI = new VueRecupererInfos(infoSalarie);
+				vRI.setVisible(true);
+				vRI.setLocation(800, 300);
+				
+			} catch (ErreurSalarieInexistant e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (CleInconnue e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+			//fermeture fenêtre
+			this.vm.setVisible(false);
+			
+		}else {
+			message = "Vous devez remplir les champs";
+			JOptionPane.showMessageDialog(vm, message, "Erreur", JOptionPane.WARNING_MESSAGE);
+		}	
 		
 	}
 }

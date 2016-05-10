@@ -116,7 +116,7 @@ public class BddJDBC_EL_Annuaire {
 			ResultSet rs = s.executeQuery("select idSal,mdp,nom,prenom,photo,dateFinValiditeCompte,estPermanent from Salaries where idSal = "+pidSal);
     		if(rs.next())
     		{
-    			res = new InfoSalarie(String.valueOf(rs.getInt(1)),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), new modControledAcces.Date(rs.getTimestamp(6).toString()), rs.getBoolean(7));
+    			res = new InfoSalarie(String.valueOf(rs.getInt(1)),rs.getString(3), rs.getString(4), rs.getString(5), "", new modControledAcces.Date(rs.getTimestamp(6).toString()), rs.getBoolean(7));
     		}
     		
         	return res;
