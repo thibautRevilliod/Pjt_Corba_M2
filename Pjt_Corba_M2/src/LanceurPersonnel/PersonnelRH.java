@@ -14,6 +14,7 @@ public class PersonnelRH {
 	public static EntiteLogicielleEmpreinte monELEmpreinte;
 	public static EntiteLogicielleAnnuaire monELAnnuaire;
 	public static String cleAnnuaire = "personnel_rh_annuaire";
+	public static String cleEmpreinte = "personnel_rh_empreinte";
 	
 	public static void connexionELempreinte (String[] args) {
 		
