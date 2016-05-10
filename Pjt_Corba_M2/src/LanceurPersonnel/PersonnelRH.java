@@ -104,7 +104,7 @@ public class PersonnelRH {
 	public static void main(String[] args) throws ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant {
 		// TODO Auto-generated method stub
 		
-		connexionELempreinte(args);
+		/*connexionELempreinte(args);
 		String empreinte = null;
 		monELEmpreinte.getCorrespondance(empreinte, cleEmpreinte);
 		
@@ -152,9 +152,9 @@ public class PersonnelRH {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 		connexionELannuaire(args);
-		monELAnnuaire.recupererNomPhotoSalarie(idSal);
+		System.out.println(monELAnnuaire.infosSalarie("1").idSal);
 		
 	}
 

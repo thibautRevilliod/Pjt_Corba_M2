@@ -164,7 +164,7 @@ public class BddJDBC_EL_Annuaire {
 			ResultSet rs = s.executeQuery("select nom,photo,estPermanent from Salaries where idSal = "+pidSal);
     		if(rs.next())
     		{
-    			res = new InfoSalarie(pidSal, rs.getString(1), "",rs.getString(2),"",null,rs.getBoolean(3));
+    			res = new InfoSalarie(pidSal, rs.getString(1), "",rs.getString(2),"",new modControledAcces.Date("") ,rs.getBoolean(3));
     		}
     		
         	return res;
@@ -300,9 +300,11 @@ public class BddJDBC_EL_Annuaire {
 		
 	//	bddJDBC_EL_Annuaire.listeTousSalaries();
 		
-		java.util.Date d = new java.util.Date();
+		/*java.util.Date d = new java.util.Date();
 		Timestamp tdate = new Timestamp(d.getTime());
-		System.out.println(bddJDBC_EL_Annuaire.sauthentifier("photo1", tdate));
+		System.out.println(bddJDBC_EL_Annuaire.sauthentifier("photo1", tdate));*/
+		
+		System.out.println(bddJDBC_EL_Annuaire.infoSalarieNomPhoto("1").nom);
 		
 		try {
 			bddJDBC_EL_Annuaire.fermer();

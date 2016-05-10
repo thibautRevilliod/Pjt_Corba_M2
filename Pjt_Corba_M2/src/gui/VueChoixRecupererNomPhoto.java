@@ -13,15 +13,17 @@ import javax.swing.JButton;
 public class VueChoixRecupererNomPhoto extends JFrame {
 
 	private JPanel contentPane;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		JComboBox comboBox = new JComboBox();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueChoixRecupererNomPhoto frame = new VueChoixRecupererNomPhoto();
+					VueChoixRecupererNomPhoto frame = new VueChoixRecupererNomPhoto(comboBox);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,8 +34,9 @@ public class VueChoixRecupererNomPhoto extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param _idSal 
 	 */
-	public VueChoixRecupererNomPhoto() {
+	public VueChoixRecupererNomPhoto(JComboBox _idSal) {
 		setTitle("Choix r\u00E9cup\u00E9ration nom et photo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 266, 218);
@@ -50,7 +53,7 @@ public class VueChoixRecupererNomPhoto extends JFrame {
 		lblSouhaitezRcuprerLe.setBounds(10, 51, 230, 14);
 		contentPane.add(lblSouhaitezRcuprerLe);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = _idSal;
 		comboBox.setBounds(53, 76, 135, 20);
 		contentPane.add(comboBox);
 		
@@ -69,5 +72,13 @@ public class VueChoixRecupererNomPhoto extends JFrame {
 		// traitement pour le valider 
 
 		btnValider.addActionListener(new LValiderChoixRecupererNomPhoto(this)); 
+	}
+
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox comboBox) {
+		this.comboBox = comboBox;
 	}
 }

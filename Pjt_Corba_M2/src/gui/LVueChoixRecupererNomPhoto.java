@@ -26,9 +26,32 @@ public class LVueChoixRecupererNomPhoto implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		VueChoixRecupererNomPhoto vRNP = new VueChoixRecupererNomPhoto();
+		VueChoixRecupererNomPhoto vRNP = new VueChoixRecupererNomPhoto(remplirComboBoxSal());
 		vRNP.setVisible(true);
 		vRNP.setLocation(800, 300);
 		
+	}
+	
+	private InfoSalarie[] listeIdSal() {
+		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
+		personnelSecurite.connexionELannuaire(main.param);
+		InfoSalarie[] infoSalarie = personnelSecurite.monELAnnuaire.listeTousSalaries();
+		
+		return infoSalarie;
+	}
+	
+	private JComboBox remplirComboBoxSal()
+	{
+		InfoSalarie[] is = listeIdSal();
+		
+		JComboBox _comboBox = new JComboBox();
+		
+		_comboBox.addItem("");
+		
+		for(int i = 0; i < is.length; i++)
+		{
+			_comboBox.addItem(is[i].idSal);
+		}
+		return _comboBox;
 	}
 }

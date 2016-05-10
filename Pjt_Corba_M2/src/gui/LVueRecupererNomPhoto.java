@@ -16,8 +16,8 @@ public class LVueRecupererNomPhoto implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		VueRecupererNomPhoto vPP = new VueRecupererNomPhoto();
+		/*VueRecupererNomPhoto vPP = new VueRecupererNomPhoto();
 		vPP.setVisible(true);
-		vPP.setLocation(800, 300);
+		vPP.setLocation(800, 300);*/
 	}
 }

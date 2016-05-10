@@ -22,8 +22,7 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	}
 
 	@Override
-	public InfoSalarie recupererNomPhotoSalarie(String idSal)
-			throws ErreurSalarieInexistant {
+	public InfoSalarie recupererNomPhotoSalarie(String idSal) throws ErreurSalarieInexistant {
 		
 		return bddJDBC_EL_Annuaire.infoSalarieNomPhoto(idSal);
 	}
