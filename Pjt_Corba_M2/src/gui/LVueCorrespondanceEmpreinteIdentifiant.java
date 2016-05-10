@@ -4,19 +4,19 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LVueCorrespondanceEmpreinteNom implements ActionListener
+public class LVueCorrespondanceEmpreinteIdentifiant implements ActionListener
 {
 
 	private VueMenuRH vm;
 
-	public LVueCorrespondanceEmpreinteNom (VueMenuRH vueMenuRH)
+	public LVueCorrespondanceEmpreinteIdentifiant (VueMenuRH vueMenuRH)
 	{
 		this.vm=vueMenuRH;
 	}
 
 	public void actionPerformed(ActionEvent e)
 	{
-		VueCorrespondanceEmpreinteNom vPP = new VueCorrespondanceEmpreinteNom();
+		VueCorrespondanceEmpreinteIdentifiant vPP = new VueCorrespondanceEmpreinteIdentifiant();
 		vPP.setVisible(true);
 		vPP.setLocation(800, 300);
 	}

@@ -6,14 +6,14 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JOptionPane;
 
-public class LFermerVueCorrespondanceEmpreinteNom implements ActionListener, WindowListener 
+public class LFermerVueCorrespondanceEmpreinteIdentifiant implements ActionListener, WindowListener 
 {
 
 		
-	private VueCorrespondanceEmpreinteNom vue;
+	private VueCorrespondanceEmpreinteIdentifiant vue;
 		
 	
-	public LFermerVueCorrespondanceEmpreinteNom (VueCorrespondanceEmpreinteNom pvue)
+	public LFermerVueCorrespondanceEmpreinteIdentifiant (VueCorrespondanceEmpreinteIdentifiant pvue)
 	{
 			this.vue=pvue;
 	}

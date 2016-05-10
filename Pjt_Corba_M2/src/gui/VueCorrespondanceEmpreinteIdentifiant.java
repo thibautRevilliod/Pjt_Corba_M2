@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.JButton;
 
-public class VueCorrespondanceEmpreinteNom extends JFrame {
+public class VueCorrespondanceEmpreinteIdentifiant extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -21,7 +21,7 @@ public class VueCorrespondanceEmpreinteNom extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueCorrespondanceEmpreinteNom frame = new VueCorrespondanceEmpreinteNom();
+					VueCorrespondanceEmpreinteIdentifiant frame = new VueCorrespondanceEmpreinteIdentifiant();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,8 +33,8 @@ public class VueCorrespondanceEmpreinteNom extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VueCorrespondanceEmpreinteNom() {
-		setTitle("Correspondance Nom / Empreinte");
+	public VueCorrespondanceEmpreinteIdentifiant() {
+		setTitle("Correspondance Identifiant / Empreinte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -52,7 +52,7 @@ public class VueCorrespondanceEmpreinteNom extends JFrame {
 		
 		// abonnement
 		
-		btnQuitter.addActionListener(new LFermerVueCorrespondanceEmpreinteNom(this)); 
+		btnQuitter.addActionListener(new LFermerVueCorrespondanceEmpreinteIdentifiant(this)); 
 		
 	}
 

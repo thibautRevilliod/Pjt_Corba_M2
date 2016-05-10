@@ -68,7 +68,7 @@ public class VueMenuRH extends JFrame {
 		// abonnements
 		
 		btnQuitter.addActionListener(new LFermerVueMenuRH(this)); 
-		btnVrifierLaCorrespondance.addActionListener(new LVueCorrespondanceEmpreinteNom(this)); 
+		btnVrifierLaCorrespondance.addActionListener(new LVueCorrespondanceEmpreinteIdentifiant(this)); 
 		btnSupprimerUneEmpreinte.addActionListener(new LVueSupprimerEmpreinte(this)); 
 		btnAjouterUneEmpreinte.addActionListener(new LVueAjouterEmpreinte(this)); 
 		btnOuvrirLannuaire.addActionListener(new LVueMenuAnnuaire(this)); 
