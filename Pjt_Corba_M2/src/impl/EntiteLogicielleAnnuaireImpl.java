@@ -3,6 +3,7 @@ package impl;
 import java.sql.Timestamp;
 
 import bdd.BddJDBC_EL_Annuaire;
+import modControledAcces.CleInconnue;
 import modControledAcces.Date;
 import modControledAcces.EntiteLogicielleAnnuairePOA;
 import modControledAcces.EntiteLogicielleEmpreinte;
@@ -14,24 +15,12 @@ import modControledAcces.InfoSalarie;
 public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	
 	public static BddJDBC_EL_Annuaire bddJDBC_EL_Annuaire = new BddJDBC_EL_Annuaire("BD_Annuaire");
+	public static String clePersonnelRh = "personnel_rh_annuaire";
 	
 	@Override
 	public InfoSalarie[] listeTousSalaries() {
 		
 		return bddJDBC_EL_Annuaire.listeTousSalaries();
-	}
-
-	@Override
-	public InfoSalarie recupererNomPhotoSalarie(String idSal) throws ErreurSalarieInexistant {
-		
-		return bddJDBC_EL_Annuaire.infoSalarieNomPhoto(idSal);
-	}
-
-	@Override
-	public InfoSalarie infosSalarie(String idSal)
-			throws ErreurSalarieInexistant {
-		
-		return bddJDBC_EL_Annuaire.infoSalarie(idSal);
 	}
 
 	@Override
@@ -64,6 +53,25 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 		java.util.Date d = new java.util.Date();
 		Timestamp tdate = new Timestamp(d.getTime());
 		return bddJDBC_EL_Annuaire.sauthentifier(photo,tdate);
+	}
+
+	@Override
+	public InfoSalarie recupererNomPhotoSalarie(String idSal, String cleDemandeur)
+			throws ErreurSalarieInexistant, CleInconnue {
+		if(!cleDemandeur.equals(clePersonnelRh))
+		{
+			throw new CleInconnue("La clé demandeur n'est pas valide");
+		}
+		return bddJDBC_EL_Annuaire.infoSalarieNomPhoto(idSal);
+	}
+
+	@Override
+	public InfoSalarie infosSalarie(String idSal, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue {
+		if(!cleDemandeur.equals(clePersonnelRh))
+		{
+			throw new CleInconnue("La clé demandeur n'est pas valide");
+		}
+		return bddJDBC_EL_Annuaire.infoSalarie(idSal);
 	}
 
 }

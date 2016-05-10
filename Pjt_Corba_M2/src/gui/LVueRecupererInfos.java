@@ -16,8 +16,8 @@ public class LVueRecupererInfos implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		VueRecupererInfos vPP = new VueRecupererInfos();
+		/*VueRecupererInfos vPP = new VueRecupererInfos();
 		vPP.setVisible(true);
-		vPP.setLocation(800, 300);
+		vPP.setLocation(800, 300);*/
 	}
 }

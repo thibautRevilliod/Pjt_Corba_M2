@@ -34,16 +34,16 @@ public class main {
 		
 		// pour ouvrir le menu RH 		
 		
-		/*menuRH = new VueMenuRH();
+		menuRH = new VueMenuRH();
 		menuRH.setVisible(true);
 		menuRH.setLocation(500, 200);
-	*/
+	
 		
 	// pour ouvrir le menu Annuaire		
 		
-		menuAnnuaire = new VueMenuAnnuaire();
+		/*menuAnnuaire = new VueMenuAnnuaire();
 		menuAnnuaire.setVisible(true);
-		menuAnnuaire.setLocation(500, 200);
+		menuAnnuaire.setLocation(500, 200);*/
 		
 			
 		

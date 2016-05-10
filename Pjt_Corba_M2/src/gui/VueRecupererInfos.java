@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modControledAcces.InfoSalarie;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -19,10 +22,11 @@ public class VueRecupererInfos extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		InfoSalarie infoSalarie = null;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueRecupererInfos frame = new VueRecupererInfos();
+					VueRecupererInfos frame = new VueRecupererInfos(infoSalarie);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,8 +37,9 @@ public class VueRecupererInfos extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param _infoSalarie 
 	 */
-	public VueRecupererInfos() {
+	public VueRecupererInfos(InfoSalarie _infoSalarie) {
 		setTitle("R\u00E9cup\u00E9rer les informations d'un salari\u00E9");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -43,20 +48,12 @@ public class VueRecupererInfos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblDeQuiSouhaitez = new JLabel("De qui souhaitez vous r\u00E9cuperer les informations  ? ");
-		lblDeQuiSouhaitez.setBounds(10, 11, 347, 14);
-		contentPane.add(lblDeQuiSouhaitez);
-		
-		textField = new JTextField();
-		textField.setBounds(315, 8, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
+				
 		JLabel lblIdentifiant = new JLabel("Identifiant :");
 		lblIdentifiant.setBounds(30, 36, 86, 14);
 		contentPane.add(lblIdentifiant);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel(_infoSalarie.idSal);
 		lblNewLabel.setBounds(157, 36, 86, 14);
 		contentPane.add(lblNewLabel);
 		
@@ -64,7 +61,7 @@ public class VueRecupererInfos extends JFrame {
 		lblNom.setBounds(30, 62, 46, 14);
 		contentPane.add(lblNom);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel(_infoSalarie.nom);
 		lblNewLabel_1.setBounds(157, 61, 86, 14);
 		contentPane.add(lblNewLabel_1);
 		
@@ -72,40 +69,32 @@ public class VueRecupererInfos extends JFrame {
 		lblPrnom.setBounds(30, 87, 46, 14);
 		contentPane.add(lblPrnom);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		JLabel lblNewLabel_2 = new JLabel(_infoSalarie.prenom);
 		lblNewLabel_2.setBounds(157, 87, 86, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblMotDePasse = new JLabel("Mot de passe : ");
-		lblMotDePasse.setBounds(30, 119, 100, 14);
-		contentPane.add(lblMotDePasse);
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setBounds(157, 119, 100, 14);
-		contentPane.add(lblNewLabel_3);
-		
 		JLabel lblPhoto = new JLabel("Photo :");
-		lblPhoto.setBounds(30, 144, 46, 14);
+		lblPhoto.setBounds(30, 118, 46, 14);
 		contentPane.add(lblPhoto);
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setBounds(157, 144, 100, 14);
+		JLabel lblNewLabel_4 = new JLabel(_infoSalarie.photo);
+		lblNewLabel_4.setBounds(157, 118, 100, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblDateDeValidit = new JLabel("Date de validit\u00E9 : ");
-		lblDateDeValidit.setBounds(30, 170, 100, 14);
+		lblDateDeValidit.setBounds(30, 144, 100, 14);
 		contentPane.add(lblDateDeValidit);
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		lblNewLabel_5.setBounds(157, 169, 107, 14);
+		JLabel lblNewLabel_5 = new JLabel(_infoSalarie.dateFinValiditeCompte.timestamp);
+		lblNewLabel_5.setBounds(157, 143, 200, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblPermanent = new JLabel("Permanent ?");
-		lblPermanent.setBounds(30, 200, 86, 14);
+		lblPermanent.setBounds(30, 174, 86, 14);
 		contentPane.add(lblPermanent);
 		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		lblNewLabel_6.setBounds(157, 200, 86, 14);
+		JLabel lblNewLabel_6 = new JLabel(String.valueOf(_infoSalarie.estPermanent));
+		lblNewLabel_6.setBounds(157, 174, 86, 14);
 		contentPane.add(lblNewLabel_6);
 		
 		JButton btnQuitter = new JButton("Quitter");

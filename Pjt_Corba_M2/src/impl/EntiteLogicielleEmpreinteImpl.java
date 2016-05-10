@@ -16,11 +16,17 @@ import modControledAcces.InfoSalarie;
 public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA {
 	
 	public static BddJDBC_EL_Empreinte bddJDBC_EL_Empreinte = new BddJDBC_EL_Empreinte("BD_Empreinte");
+	public static String clePersonnelRh = "personnel_rh_annuaire";
+	public static String cleEmpreinte = "EntiteLogiciellePorte_empreinte";
+
 
 	@Override
 	public void ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
 			throws EmpreinteExistante, CleInconnue, EmpreinteIncorrecte {
-		
+		if(!cleDemandeur.equals(clePersonnelRh))
+		{
+			throw new CleInconnue("La clé demandeur n'est pas valide");
+		}
 		bddJDBC_EL_Empreinte.ajouterEmpreinte(idSal, empreinte);
 		
 	}
@@ -28,14 +34,20 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 	@Override
 	public String modifierEmpreinte(String idSal, String empreinte, String cleDemandeur)
 			throws EmpreinteExistante, CleInconnue, EmpreinteIncorrecte {
-		
+		if(!cleDemandeur.equals(clePersonnelRh))
+		{
+			throw new CleInconnue("La clé demandeur n'est pas valide");
+		}
 		return bddJDBC_EL_Empreinte.modifierEmpreinte(idSal, empreinte);
 		
 	}
 
 	@Override
 	public String getCorrespondance(String empreinte, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue {
-		
+		if(!cleDemandeur.equals(clePersonnelRh))
+		{
+			throw new CleInconnue("La clé demandeur n'est pas valide");
+		}		
 		return bddJDBC_EL_Empreinte.getCorrespondance(empreinte);
 		
 	}
@@ -43,14 +55,20 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 	@Override
 	public boolean verifierCorrespondance(String idSal, String empreinte, String cleDemandeur)
 			throws ErreurSalarieInexistant, CleInconnue, EmpreinteIncorrecte {
-		
+		if(!(cleDemandeur.equals(clePersonnelRh))&&!(cleDemandeur.equals(cleEmpreinte)))
+		{
+			throw new CleInconnue("La clé demandeur n'est pas valide");
+		}
 		return bddJDBC_EL_Empreinte.verifierCorrespondance(idSal, empreinte);
 		
 	}
 
 	@Override
 	public void supprimerEmpreinte(String idSal, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue {
-		
+		if(!cleDemandeur.equals(clePersonnelRh))
+		{
+			throw new CleInconnue("La clé demandeur n'est pas valide");
+		}
 		bddJDBC_EL_Empreinte.supprimerEmpreinte(idSal);
 		
 	}
