@@ -64,7 +64,7 @@ public class VueMenuAnnuaire extends JFrame {
 		// abonnements
 		btnQuitter.addActionListener(new LFermerVueMenuAnnuaire(this)); 
 		btnCrerUnSalari.addActionListener(new LVueCreerSalarie(this)); 
-		btnRcuprerLesInformations.addActionListener(new LVueRecupererInfos(this)); 
+		btnRcuprerLesInformations.addActionListener(new LVueChoixRecupererInfos(this)); 
 		btnRcuprerLeNom.addActionListener(new LVueChoixRecupererNomPhoto(this)); 
 		
 		
