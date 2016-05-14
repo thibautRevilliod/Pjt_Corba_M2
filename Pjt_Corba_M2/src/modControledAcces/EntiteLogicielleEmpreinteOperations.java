@@ -10,7 +10,7 @@ public interface EntiteLogicielleEmpreinteOperations
     /**
      * Operation ajouterEmpreinte
      */
-    public void ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
+    public String ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte;
 
     /**
@@ -34,7 +34,7 @@ public interface EntiteLogicielleEmpreinteOperations
     /**
      * Operation supprimerEmpreinte
      */
-    public void supprimerEmpreinte(String idSal, String cleDemandeur)
+    public String supprimerEmpreinte(String idSal, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue;
 
 }

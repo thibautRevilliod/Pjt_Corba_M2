@@ -13,6 +13,11 @@ public interface EntiteLogicielleAnnuaireOperations
     public modControledAcces.InfoSalarie[] listeTousSalaries();
 
     /**
+     * Operation listeSalariesTemporaires
+     */
+    public modControledAcces.InfoSalarie[] listeSalariesTemporaires();
+
+    /**
      * Operation recupererNomPhotoSalarie
      */
     public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, String cleDemandeur)

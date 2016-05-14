@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import LanceurPersonnel.PersonnelRH;
 import LanceurPersonnel.PersonnelSecurite;
 import modControledAcces.CleInconnue;
+import modControledAcces.EmpreinteIncorrecte;
 import modControledAcces.ErreurSalarieInexistant;
 import modControledAcces.ErreurZoneInexistant;
 import modControledAcces.EvenementJournalisation;
@@ -38,27 +39,40 @@ public class LValiderCorrespondanceEmpreinteIdentifiant implements ActionListene
 		{
 			String salarie = (String) vm.getListeSalaries().getSelectedItem();
 			String empreinte = (String) vm.getEmpreinte().getText();
-			
 
+
+			boolean isCorrespondanceOK;
+
+					
+					try {
+						isCorrespondanceOK = PersonnelRH.monELEmpreinte.verifierCorrespondance(salarie, empreinte, PersonnelRH.cleEmpreinte);
+						
+						if(!isCorrespondanceOK)
+						{
+							message = "L'empreinte fournie ne correspond pas à cet identifiant";
+							JOptionPane.showMessageDialog(vm, message, "Erreur", JOptionPane.WARNING_MESSAGE);
+						}else
+						{
+							message = "L'empreinte fournie  correspond à cet identifiant";
+							JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
+						}
+						vm.setVisible(false);
+						
+					} catch (ErreurSalarieInexistant e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (CleInconnue e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (EmpreinteIncorrecte e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					
 				
-		try {
-			String retourGetCorrespondance = PersonnelRH.monELEmpreinte.getCorrespondance(empreinte, PersonnelRH.cleEmpreinte);
-			
-			if(retourGetCorrespondance.equals("non"))
-			{
-				message = "L'empreinte fournie ne correspond pas à cet identifiant";
-				JOptionPane.showMessageDialog(vm, message, "Erreur", JOptionPane.WARNING_MESSAGE);
-			}else
-			{
-				message = "L'empreinte fournie  correspond à cet identifiant";
-				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
-			}
-			vm.setVisible(false);
-			
-		} catch (ErreurSalarieInexistant | CleInconnue e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
+
 		
 		}
 			

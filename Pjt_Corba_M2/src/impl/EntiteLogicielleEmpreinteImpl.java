@@ -21,13 +21,13 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 
 
 	@Override
-	public void ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
+	public String ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
 			throws EmpreinteExistante, CleInconnue, EmpreinteIncorrecte {
 		if(!cleDemandeur.equals(clePersonnelRh))
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
-		bddJDBC_EL_Empreinte.ajouterEmpreinte(idSal, empreinte);
+		return bddJDBC_EL_Empreinte.ajouterEmpreinte(idSal, empreinte);
 		
 	}
 
@@ -41,7 +41,8 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 		return bddJDBC_EL_Empreinte.modifierEmpreinte(idSal, empreinte);
 		
 	}
-
+	
+	//TODO à supprimer
 	@Override
 	public String getCorrespondance(String empreinte, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue {
 		if(!cleDemandeur.equals(clePersonnelRh))
@@ -64,12 +65,12 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 	}
 
 	@Override
-	public void supprimerEmpreinte(String idSal, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue {
+	public String supprimerEmpreinte(String idSal, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue {
 		if(!cleDemandeur.equals(clePersonnelRh))
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
-		bddJDBC_EL_Empreinte.supprimerEmpreinte(idSal);
+		return bddJDBC_EL_Empreinte.supprimerEmpreinte(idSal);
 		
 	}
 	

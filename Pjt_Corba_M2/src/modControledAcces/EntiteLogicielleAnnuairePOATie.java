@@ -71,6 +71,14 @@ public class EntiteLogicielleAnnuairePOATie extends EntiteLogicielleAnnuairePOA
     }
 
     /**
+     * Operation listeSalariesTemporaires
+     */
+    public modControledAcces.InfoSalarie[] listeSalariesTemporaires()
+    {
+        return _tie.listeSalariesTemporaires();
+    }
+
+    /**
      * Operation recupererNomPhotoSalarie
      */
     public modControledAcces.InfoSalarie recupererNomPhotoSalarie(String idSal, String cleDemandeur)

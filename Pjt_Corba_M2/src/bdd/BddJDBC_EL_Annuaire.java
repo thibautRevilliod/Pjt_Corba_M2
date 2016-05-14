@@ -126,7 +126,7 @@ public class BddJDBC_EL_Annuaire {
 		}
 	}
 	
-	//liste zones
+	//liste salaries
 	public InfoSalarie[] listeTousSalaries() {
 		InfoSalarie[] res = null;
 		
@@ -155,6 +155,36 @@ public class BddJDBC_EL_Annuaire {
 			return res;
 		}
 	}
+	
+	//liste salaries temporaires
+		public InfoSalarie[] listeSalariesTemporaires() {
+			InfoSalarie[] res = null;
+			
+			try {
+				Statement s = conn.createStatement();
+				
+				ResultSet rs = s.executeQuery("select COUNT(*) FROM salaries ");
+
+				if (rs.next())
+	        	{
+					res = new InfoSalarie[rs.getInt(1)];
+	        	}
+				
+	        	
+				rs = s.executeQuery("select idSal, nom, prenom, photo, dateFinValiditeCompte from salaries where estPermanent = false");
+				int i =0;
+	    		while(rs.next())
+	    		{
+	    			res[i] = new InfoSalarie(String.valueOf(rs.getInt(1)),rs.getString(2),rs.getString(3),rs.getString(4),"",new modControledAcces.Date(rs.getTimestamp(5).toString()), rs.getBoolean(6));
+	    			i++;
+	    		}
+	    		
+	        	return res;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return res;
+			}
+		}
 	
 	public InfoSalarie infoSalarieNomPhoto(String pidSal) {
 		InfoSalarie res = null;

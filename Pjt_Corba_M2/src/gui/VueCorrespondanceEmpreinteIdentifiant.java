@@ -23,10 +23,11 @@ public class VueCorrespondanceEmpreinteIdentifiant extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		JComboBox mcomboBox = new JComboBox();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueCorrespondanceEmpreinteIdentifiant frame = new VueCorrespondanceEmpreinteIdentifiant();
+					VueCorrespondanceEmpreinteIdentifiant frame = new VueCorrespondanceEmpreinteIdentifiant(mcomboBox);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +39,7 @@ public class VueCorrespondanceEmpreinteIdentifiant extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VueCorrespondanceEmpreinteIdentifiant() {
+	public VueCorrespondanceEmpreinteIdentifiant(JComboBox pListeSalaries) {
 		setTitle("Correspondance Identifiant / Empreinte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 439, 336);
@@ -55,7 +56,7 @@ public class VueCorrespondanceEmpreinteIdentifiant extends JFrame {
 		lblChoisirUnIdentifiant.setBounds(41, 37, 147, 20);
 		contentPane.add(lblChoisirUnIdentifiant);
 		
-		listeSalaries = new JComboBox();
+		listeSalaries = pListeSalaries;
 		listeSalaries.setBounds(203, 34, 80, 26);
 		contentPane.add(listeSalaries);
 		

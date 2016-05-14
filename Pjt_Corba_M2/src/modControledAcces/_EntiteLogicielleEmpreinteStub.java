@@ -23,7 +23,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
     /**
      * Operation ajouterEmpreinte
      */
-    public void ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
+    public String ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte
     {
         while(true)
@@ -38,7 +38,8 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                     _output.write_string(empreinte);
                     _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
-                    return;
+                    String _arg_ret = _input.read_string();
+                    return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)
                 {
@@ -77,8 +78,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                 modControledAcces.EntiteLogicielleEmpreinteOperations _self = (modControledAcces.EntiteLogicielleEmpreinteOperations) _so.servant;
                 try
                 {
-                    _self.ajouterEmpreinte( idSal,  empreinte,  cleDemandeur);
-                    return;
+                    return _self.ajouterEmpreinte( idSal,  empreinte,  cleDemandeur);
                 }
                 finally
                 {
@@ -289,7 +289,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
     /**
      * Operation supprimerEmpreinte
      */
-    public void supprimerEmpreinte(String idSal, String cleDemandeur)
+    public String supprimerEmpreinte(String idSal, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue
     {
         while(true)
@@ -303,7 +303,8 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                     _output.write_string(idSal);
                     _output.write_string(cleDemandeur);
                     _input = this._invoke(_output);
-                    return;
+                    String _arg_ret = _input.read_string();
+                    return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)
                 {
@@ -337,8 +338,7 @@ public class _EntiteLogicielleEmpreinteStub extends org.omg.CORBA.portable.Objec
                 modControledAcces.EntiteLogicielleEmpreinteOperations _self = (modControledAcces.EntiteLogicielleEmpreinteOperations) _so.servant;
                 try
                 {
-                    _self.supprimerEmpreinte( idSal,  cleDemandeur);
-                    return;
+                    return _self.supprimerEmpreinte( idSal,  cleDemandeur);
                 }
                 finally
                 {

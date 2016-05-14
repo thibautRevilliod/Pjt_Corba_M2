@@ -84,6 +84,7 @@ public class BddJDBC_EL_Empreinte {
 		}
 	}
 	
+	//TODO à supprimer
 	public String getCorrespondance(String pEmpreinte) {
 		String res = "";
 		
@@ -120,25 +121,26 @@ public class BddJDBC_EL_Empreinte {
 		}
 	}
 	
-	public int supprimerEmpreinte(String pEmpreinte) {
-		int id = 0;
+	public String supprimerEmpreinte(String pIdSal) {
+		String ide = "";
 		try {
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("SELECT idEmpreinte FROM Empreintes WHERE empreinte = '"+pEmpreinte+"'");
+			ResultSet rs = s.executeQuery("SELECT idEmpreinte FROM Empreintes WHERE idSal = '"+pIdSal+"'");
         	if (rs.next())
         	{
-        		s.executeUpdate("DELETE FROM Empreintes WHERE idEmpreinte = '"+pEmpreinte+"'");
+        		s.executeUpdate("DELETE FROM Empreintes WHERE idSal = '"+pIdSal+"'");
+        		ide = String.valueOf(pIdSal);
         	}
         	else
         	{
         		// Erreur : l'abonnement n'existe pas
-        		id = -2;
+        		ide = "-2";
         	}
-        	return id;
+        	return ide;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			id = -1;
-			return id;
+			ide = "-1";
+			return ide;
 		}
 	}
 	

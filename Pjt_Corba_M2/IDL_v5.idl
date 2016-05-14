@@ -119,7 +119,7 @@ module modControledAcces
 	
 	interface EntiteLogicielleEmpreinte
 	{
-		void ajouterEmpreinte (in string idSal, in string empreinte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
+		string ajouterEmpreinte (in string idSal, in string empreinte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
 		//modifierEmpreinte <=> modifier sa propre empreinte
 		string modifierEmpreinte(in string idSal, in string empreinte, in string cleDemandeur) raises (EmpreinteExistante, CleInconnue, EmpreinteIncorrecte);
 		
@@ -133,7 +133,7 @@ module modControledAcces
 		
 		//verifierCorrespondance <=> Vérifier correspondance empreinte et identifiant
 		boolean verifierCorrespondance (in string idSal, in string empreinte, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue, EmpreinteIncorrecte);
-		void supprimerEmpreinte(in string idSal, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue); 
+		string supprimerEmpreinte(in string idSal, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue); 
 		
 	};
 	
@@ -157,6 +157,7 @@ module modControledAcces
 	{
 	
 		ListeSalaries listeTousSalaries();
+		ListeSalaries listeSalariesTemporaires();
 		
 		InfoSalarie recupererNomPhotoSalarie(in string idSal, in string cleDemandeur) raises (ErreurSalarieInexistant, CleInconnue);
 		

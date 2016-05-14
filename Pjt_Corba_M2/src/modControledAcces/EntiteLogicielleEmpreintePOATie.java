@@ -65,10 +65,10 @@ public class EntiteLogicielleEmpreintePOATie extends EntiteLogicielleEmpreintePO
     /**
      * Operation ajouterEmpreinte
      */
-    public void ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
+    public String ajouterEmpreinte(String idSal, String empreinte, String cleDemandeur)
         throws modControledAcces.EmpreinteExistante, modControledAcces.CleInconnue, modControledAcces.EmpreinteIncorrecte
     {
-        _tie.ajouterEmpreinte( idSal,  empreinte,  cleDemandeur);
+        return _tie.ajouterEmpreinte( idSal,  empreinte,  cleDemandeur);
     }
 
     /**
@@ -101,10 +101,10 @@ public class EntiteLogicielleEmpreintePOATie extends EntiteLogicielleEmpreintePO
     /**
      * Operation supprimerEmpreinte
      */
-    public void supprimerEmpreinte(String idSal, String cleDemandeur)
+    public String supprimerEmpreinte(String idSal, String cleDemandeur)
         throws modControledAcces.ErreurSalarieInexistant, modControledAcces.CleInconnue
     {
-        _tie.supprimerEmpreinte( idSal,  cleDemandeur);
+        return _tie.supprimerEmpreinte( idSal,  cleDemandeur);
     }
 
 }

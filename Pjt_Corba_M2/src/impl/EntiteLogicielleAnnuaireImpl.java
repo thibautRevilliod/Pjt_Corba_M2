@@ -22,6 +22,12 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 		
 		return bddJDBC_EL_Annuaire.listeTousSalaries();
 	}
+	
+	@Override
+	public InfoSalarie[] listeSalariesTemporaires() {
+		
+		return bddJDBC_EL_Annuaire.listeSalariesTemporaires();
+	}
 
 	@Override
 	public String creerSalarie(String mdp, String nom, String prenom, String photo, Date heureDebut, Date heureFin,
@@ -73,5 +79,7 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 		}
 		return bddJDBC_EL_Annuaire.infoSalarie(idSal);
 	}
+
+	
 
 }
