@@ -40,10 +40,9 @@ public class LValiderChoixRecupererInfos implements ActionListener
 			String idSal = (String) vm.getComboBox().getSelectedItem();
 			
 			try {
-				PersonnelRH personnelRH = new PersonnelRH();
-				personnelRH.connexionELannuaire(main.param);
+				PersonnelRH.connexionELannuaire(main.param);
 				
-				InfoSalarie infoSalarie = personnelRH.monELAnnuaire.infosSalarie(idSal, personnelRH.cleAnnuaire);
+				InfoSalarie infoSalarie = PersonnelRH.monELAnnuaire.infosSalarie(idSal, PersonnelRH.cleAnnuaire);
 				
 				VueRecupererInfos vRI = new VueRecupererInfos(infoSalarie);
 				vRI.setVisible(true);

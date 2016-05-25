@@ -20,10 +20,10 @@ public class main {
 		VueParametragePorte paramPorte;
 	
 		//pour ouvrir la fenetre de paramétrage de la porte: 
-	/*	paramPorte = new VueParametragePorte();
-		paramPorte.setVisible(true);
-		paramPorte.setLocation(500, 200);
-	*/	
+//		paramPorte = new VueParametragePorte();
+//		paramPorte.setVisible(true);
+//		paramPorte.setLocation(500, 200);
+		
 		// pour ouvrir le menu Porte 		
 		
 		/* A ne jamais lancer sans passer par la fenetre de parametrage de la porte !
@@ -34,25 +34,25 @@ public class main {
 		
 		// pour ouvrir le menu RH 		
 		
-		menuRH = new VueMenuRH();
-		menuRH.setVisible(true);
-		menuRH.setLocation(500, 200);
+//		menuRH = new VueMenuRH();
+//		menuRH.setVisible(true);
+//		menuRH.setLocation(500, 200);
 	
 		
 	// pour ouvrir le menu Annuaire		
 		
-		/*menuAnnuaire = new VueMenuAnnuaire();
-		menuAnnuaire.setVisible(true);
-		menuAnnuaire.setLocation(500, 200);*/
+//		menuAnnuaire = new VueMenuAnnuaire();
+//		menuAnnuaire.setVisible(true);
+//		menuAnnuaire.setLocation(500, 200);
 		
 			
 		
 	// pour ouvrir le menu Securite		
-		/*
+		
 		menuSecurite = new VueMenuSecurite();
 		menuSecurite.setVisible(true);
 		menuSecurite.setLocation(500, 200);
-		*/
+		
 	}
 
 }

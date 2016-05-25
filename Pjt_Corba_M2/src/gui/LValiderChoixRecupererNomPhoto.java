@@ -40,10 +40,9 @@ public class LValiderChoixRecupererNomPhoto implements ActionListener
 			String idSal = (String) vm.getComboBox().getSelectedItem();
 			
 			try {
-				PersonnelRH personnelRH = new PersonnelRH();
-				personnelRH.connexionELannuaire(main.param);
+				PersonnelRH.connexionELannuaire(main.param);
 				
-				InfoSalarie infoSalarie = personnelRH.monELAnnuaire.recupererNomPhotoSalarie(idSal,personnelRH.cleAnnuaire);
+				InfoSalarie infoSalarie = PersonnelRH.monELAnnuaire.recupererNomPhotoSalarie(idSal,PersonnelRH.cleAnnuaire);
 				
 				VueRecupererNomPhoto vRNP = new VueRecupererNomPhoto(infoSalarie);
 				vRNP.setVisible(true);

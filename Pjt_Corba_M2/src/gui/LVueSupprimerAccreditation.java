@@ -30,17 +30,15 @@ public class LVueSupprimerAccreditation implements ActionListener
 	}
 	
 	private InfoSalarie[] listeIdSal() {
-		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-		personnelSecurite.connexionELannuaire(main.param);
-		InfoSalarie[] infoSalarie = personnelSecurite.monELAnnuaire.listeTousSalaries();
+		PersonnelSecurite.connexionELannuaire(main.param);
+		InfoSalarie[] infoSalarie = PersonnelSecurite.monELAnnuaire.listeTousSalaries();
 		
 		return infoSalarie;
 	}
 	
 	private InfoZone[] listeIdZone() {
-		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-		personnelSecurite.connexionELautorisation(main.param);
-		InfoZone[] infoZone = personnelSecurite.monELAutorisation.listeToutesZones();
+		PersonnelSecurite.connexionELautorisation(main.param);
+		InfoZone[] infoZone = PersonnelSecurite.monELAutorisation.listeToutesZones();
 		
 		return infoZone;
 	}

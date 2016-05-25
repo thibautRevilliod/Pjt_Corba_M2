@@ -26,14 +26,13 @@ public class LValiderModifierEmpreinte implements ActionListener
 		
 		if(!vm.getTextField().getText().equals("") && !vm.getTextField_1().getText().equals(""))
 		{
-			Utilisateur utilisateur = new Utilisateur();
-			utilisateur.connexionELporte(main.param);
+			Utilisateur.connexionELporte(main.param);
 			
-			idSal = utilisateur.monELPorte.demanderAuthentifier(vm.getTextField_2().getText(),vm.getTextField().getText());
+			idSal = Utilisateur.monELPorte.demanderAuthentifier(vm.getTextField_2().getText(),vm.getTextField().getText());
 			
 			if(!idSal.equals(""))
 			{
-				utilisateur.monELPorte.demanderModifierEmpreinte(idSal,vm.getTextField_1().getText());
+				Utilisateur.monELPorte.demanderModifierEmpreinte(idSal,vm.getTextField_1().getText());
 				message = "Empreinte modifiée";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 			}else

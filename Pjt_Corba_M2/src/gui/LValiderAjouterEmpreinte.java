@@ -31,6 +31,8 @@ public class LValiderAjouterEmpreinte implements ActionListener
 			String salarie = (String) vm.getListeIdSalaries().getSelectedItem();
 			String empreinte = (String) vm.getEmpreinte().getText();
 			
+			PersonnelRH.connexionELempreinte(main.param);
+			
 			try {
 				resAjoutEmpreinte = PersonnelRH.monELEmpreinte.ajouterEmpreinte(salarie, empreinte, PersonnelRH.cleEmpreinte);
 				

@@ -34,17 +34,15 @@ public class LVueChoixEvenements implements ActionListener
 	}
 	
 	private InfoSalarie[] listeIdSal() {
-		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-		personnelSecurite.connexionELannuaire(main.param);
-		InfoSalarie[] infoSalarie = personnelSecurite.monELAnnuaire.listeTousSalaries();
+		PersonnelSecurite.connexionELannuaire(main.param);
+		InfoSalarie[] infoSalarie = PersonnelSecurite.monELAnnuaire.listeTousSalaries();
 		
 		return infoSalarie;
 	}
 	
 	private InfoOperation[] listeOpreations() {
-		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-		personnelSecurite.connexionELjournalisation(main.param);
-		InfoOperation[] infoOperation = personnelSecurite.monELJournalisation.listeOperations();
+		PersonnelSecurite.connexionELjournalisation(main.param);
+		InfoOperation[] infoOperation = PersonnelSecurite.monELJournalisation.listeOperations();
 		
 		return infoOperation;
 	}

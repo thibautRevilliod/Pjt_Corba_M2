@@ -28,11 +28,10 @@ public class LValiderParametragePorte implements ActionListener
 		
 		if(!vm.getTextField().getText().equals("") && !vm.getComboBox().getSelectedItem().equals(""))
 		{
-			Utilisateur utilisateur = new Utilisateur();
-			utilisateur.connexionELporte(main.param);
+			Utilisateur.connexionELporte(main.param);
 			
 			try {
-				idPorte = utilisateur.monELPorte.creerPorte(vm.getTextField().getText(),(String)vm.getComboBox().getSelectedItem());
+				idPorte = Utilisateur.monELPorte.creerPorte(vm.getTextField().getText(),(String)vm.getComboBox().getSelectedItem());
 			} catch (ErreurPorteExistant e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

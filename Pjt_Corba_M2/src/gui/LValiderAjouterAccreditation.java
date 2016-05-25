@@ -33,8 +33,7 @@ public class LValiderAjouterAccreditation implements ActionListener
 				&& !vm.getFormattedTextField_3().getText().equals("") && !vm.getTextField().getText().equals("") && !vm.getTextField_5().getText().equals(""))
 		{
 			try {
-				PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-				personnelSecurite.connexionELautorisation(main.param);
+				PersonnelSecurite.connexionELautorisation(main.param);
 				
 				SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
 				Date jourDebut = formatDate.parse(vm.getFormattedTextField().getText());
@@ -47,7 +46,7 @@ public class LValiderAjouterAccreditation implements ActionListener
 				Timestamp theureDebut = new Timestamp(heureDebut.getTime());
 				Timestamp theureFin = new Timestamp(heureFin.getTime());
 				
-				personnelSecurite.monELAutorisation.creerAccreditation(vm.getTextField().getText(), vm.getTextField_5().getText(), new modControledAcces.Date(tjourDebut.toString()), new modControledAcces.Date(tjourFin.toString()), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()), personnelSecurite.getCleAutorisation());
+				PersonnelSecurite.monELAutorisation.creerAccreditation(vm.getTextField().getText(), vm.getTextField_5().getText(), new modControledAcces.Date(tjourDebut.toString()), new modControledAcces.Date(tjourFin.toString()), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()), PersonnelSecurite.getCleAutorisation());
 			} catch (ErreurSalarieInexistant e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

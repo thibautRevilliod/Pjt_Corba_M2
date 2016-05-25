@@ -49,7 +49,7 @@ public class VueCorrespondanceEmpreinteIdentifiant extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnQuitter = new JButton("Quitter");
-		btnQuitter.setBounds(156, 227, 89, 23);
+		btnQuitter.setBounds(249, 157, 89, 23);
 		contentPane.add(btnQuitter);
 		
 		JLabel lblChoisirUnIdentifiant = new JLabel("Choisir un identifiant");
@@ -70,12 +70,8 @@ public class VueCorrespondanceEmpreinteIdentifiant extends JFrame {
 		empreinte.setColumns(10);
 		
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(156, 137, 100, 29);
+		btnValider.setBounds(68, 157, 100, 23);
 		contentPane.add(btnValider);
-		
-		JLabel lblRsultatDeLa = new JLabel("R\u00E9sultat de la correspondance");
-		lblRsultatDeLa.setBounds(41, 184, 231, 20);
-		contentPane.add(lblRsultatDeLa);
 		
 		JLabel resCorresp = new JLabel("");
 		resCorresp.setBounds(305, 184, 69, 20);

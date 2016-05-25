@@ -55,7 +55,7 @@ public class BddJDBC_EL_Empreinte {
 		return res;
 	}
 	
-	public String ajouterEmpreinte(String pempreinte, String pidSal) {
+	public String ajouterEmpreinte(String  pidSal, String pempreinte) {
 		String ide = "";
 		int id = 0;
 		
@@ -69,7 +69,8 @@ public class BddJDBC_EL_Empreinte {
 			rs = s.executeQuery("select empreinte from empreintes WHERE empreinte = '"+pempreinte+"'");
 			if (!rs.next())
 			{
-	        	s.executeUpdate("insert into Empreintes (idEmpreinte,empreinte, idSal) values ("+id+", '"+pempreinte+"', "+pidSal+")");
+	        	s.executeUpdate("insert into Empreintes (idEmpreinte,empreinte,idSal) "
+	        			+ "values ("+id+", '"+pempreinte+"', "+pidSal+")");
 	        	ide = String.valueOf(id);
 			}
 			else

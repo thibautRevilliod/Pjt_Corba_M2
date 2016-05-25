@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import LanceurPersonnel.PersonnelSecurite;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -35,6 +38,11 @@ public class VueMenuSecurite extends JFrame {
 	 * Create the frame.
 	 */
 	public VueMenuSecurite() {
+		
+//		PersonnelSecurite.connexionELannuaire(main.param);
+//		PersonnelSecurite.connexionELautorisation(main.param);
+//		PersonnelSecurite.connexionELjournalisation(main.param);
+		
 		setTitle("Menu S\u00E9curit\u00E9");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 328, 291);
@@ -74,6 +82,8 @@ public class VueMenuSecurite extends JFrame {
 		btnSupprimerUneAccrditation.addActionListener(new LVueSupprimerAccreditation(this)); 
 		btnLireUneAccrditation.addActionListener(new LVueChoixLireAccreditation(this)); 
 		btnConsulterUnvnement.addActionListener(new LVueChoixEvenements(this)); 
+		
+		
 	}
 
 }

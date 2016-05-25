@@ -74,9 +74,8 @@ public class VueChoixLireAccreditation extends JFrame {
 	}
 
 	private InfoSalarie[] listeIdSal() {
-		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-		personnelSecurite.connexionELannuaire(main.param);
-		InfoSalarie[] infoSalarie = personnelSecurite.monELAnnuaire.listeTousSalaries();
+		PersonnelSecurite.connexionELannuaire(main.param);
+		InfoSalarie[] infoSalarie = PersonnelSecurite.monELAnnuaire.listeTousSalaries();
 		
 		return infoSalarie;
 	}

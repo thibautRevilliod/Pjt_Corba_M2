@@ -16,8 +16,22 @@ public class PersonnelSecurite {
 	public static EntiteLogicielleJournalisation monELJournalisation;
 	public static String cleAutorisation = "personnel_securite_autorisation";
 	public static String cleJournalisation = "personnel_securite_journalisation";
+	public static String IOR_EL_autorisation = "";
+	public static String IOR_EL_annuaire = "";
+	public static String IOR_EL_journalisation = "";
 	
 	public static void connexionELautorisation (String[] args) {
+		if(IOR_EL_autorisation.equals(""))
+		{
+			connexionELautorisationNS(args);
+		}
+		else
+		{
+			connexionELautorisationIOR(args);
+		}
+	}
+	
+	public static void connexionELautorisationNS (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
@@ -42,11 +56,7 @@ public class PersonnelSecurite {
 	        org.omg.CORBA.Object distantELAutorisation = nameRoot.resolve(nameToFind);
 	        System.out.println("Objet '" + idObj + "' trouve aupres du service de noms. IOR de l'objet :");
 	        System.out.println(orb.object_to_string(distantELAutorisation));
-	        Config.IOR_EL_Autorisation = orb.object_to_string(distantELAutorisation);
-
-	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
-//	        org.omg.CORBA.Object distantEuro = orb.string_to_object("IOR:000000000000001B49444C3A436F6E766572746973736575722F4575726F3A312E300000000000010000000000000060000102000000000D3139322E3136382E35362E31000012A000000014004F4F01A72446DC50010000504F41FE7703957F00000001000000010000002400000000100204E4000000030001000F0001000100010020000101090000000100010100");
-	        // Casting de l'objet CORBA au type convertisseur euro
+	        IOR_EL_autorisation = orb.object_to_string(distantELAutorisation);
 
 	        monELAutorisation = EntiteLogicielleAutorisationHelper.narrow(distantELAutorisation);
 
@@ -60,7 +70,40 @@ public class PersonnelSecurite {
 		
 	}
 	
+	public static void connexionELautorisationIOR (String[] args) {
+		
+		try {
+			// Intialisation de l'orb
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
+
+
+	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
+	        org.omg.CORBA.Object distantELAutorisation = orb.string_to_object(IOR_EL_autorisation);
+	        // Casting de l'objet CORBA au type convertisseur euro
+	        
+	        System.out.println("Utilisation IOR directe pour EL_autorisation");
+	        monELAutorisation = EntiteLogicielleAutorisationHelper.narrow(distantELAutorisation);
+
+     
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void connexionELannuaire (String[] args) {
+		if(IOR_EL_annuaire.equals(""))
+		{
+			connexionELannuaireNS(args);
+		}
+		else
+		{
+			connexionELannuaireIOR(args);
+		}
+	}
+	
+	public static void connexionELannuaireNS (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
@@ -85,17 +128,30 @@ public class PersonnelSecurite {
 	        org.omg.CORBA.Object distantELAnnuaire = nameRoot.resolve(nameToFind);
 	        System.out.println("Objet '" + idObj + "' trouve aupres du service de noms. IOR de l'objet :");
 	        System.out.println(orb.object_to_string(distantELAnnuaire));
-	        Config.IOR_EL_Autorisation = orb.object_to_string(distantELAnnuaire);
+	        IOR_EL_annuaire = orb.object_to_string(distantELAnnuaire);
+
+	        monELAnnuaire = EntiteLogicielleAnnuaireHelper.narrow(distantELAnnuaire);      
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void connexionELannuaireIOR (String[] args) {
+		
+		try {
+			// Intialisation de l'orb
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
+
 
 	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
-//	        org.omg.CORBA.Object distantEuro = orb.string_to_object("IOR:000000000000001B49444C3A436F6E766572746973736575722F4575726F3A312E300000000000010000000000000060000102000000000D3139322E3136382E35362E31000012A000000014004F4F01A72446DC50010000504F41FE7703957F00000001000000010000002400000000100204E4000000030001000F0001000100010020000101090000000100010100");
+	        org.omg.CORBA.Object distantELAnnuaire = orb.string_to_object(IOR_EL_annuaire);
 	        // Casting de l'objet CORBA au type convertisseur euro
-
+	        
+	        System.out.println("Utilisation IOR directe pour EL_annuaire");
 	        monELAnnuaire = EntiteLogicielleAnnuaireHelper.narrow(distantELAnnuaire);
-
-	        // Appel de l'interface graphique
-//	        JFrame frame = new InterfaceFrame();
-//	        frame.setVisible(true);	        
+       
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -104,6 +160,17 @@ public class PersonnelSecurite {
 	}
 	
 	public static void connexionELjournalisation (String[] args) {
+		if(IOR_EL_journalisation.equals(""))
+		{
+			connexionELjournalisationNS(args);
+		}
+		else
+		{
+			connexionELjournalisationNS(args);
+		}
+	}
+	
+	public static void connexionELjournalisationNS (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
@@ -128,7 +195,7 @@ public class PersonnelSecurite {
 	        org.omg.CORBA.Object distantELJournalisation = nameRoot.resolve(nameToFind);
 	        System.out.println("Objet '" + idObj + "' trouve aupres du service de noms. IOR de l'objet :");
 	        System.out.println(orb.object_to_string(distantELJournalisation));
-	        Config.IOR_EL_Autorisation = orb.object_to_string(distantELJournalisation);
+	        IOR_EL_journalisation = orb.object_to_string(distantELJournalisation);
 
 	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
 //	        org.omg.CORBA.Object distantEuro = orb.string_to_object("IOR:000000000000001B49444C3A436F6E766572746973736575722F4575726F3A312E300000000000010000000000000060000102000000000D3139322E3136382E35362E31000012A000000014004F4F01A72446DC50010000504F41FE7703957F00000001000000010000002400000000100204E4000000030001000F0001000100010020000101090000000100010100");
@@ -139,6 +206,25 @@ public class PersonnelSecurite {
 	        // Appel de l'interface graphique
 //	        JFrame frame = new InterfaceFrame();
 //	        frame.setVisible(true);	        
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void connexionELjournalisationIOR (String[] args) {
+		
+		try {
+			// Intialisation de l'orb
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
+
+	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
+	        org.omg.CORBA.Object distantELJournalisation = orb.string_to_object(IOR_EL_journalisation);
+	        // Casting de l'objet CORBA au type convertisseur euro
+	        
+	        System.out.println("Utilisation IOR directe pour EL_journalisation");
+	        monELJournalisation = EntiteLogicielleJournalisationHelper.narrow(distantELJournalisation);      
 		}
 		catch (Exception e) {
 			e.printStackTrace();

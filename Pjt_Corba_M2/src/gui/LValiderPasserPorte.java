@@ -28,14 +28,13 @@ public class LValiderPasserPorte implements ActionListener
 		
 		if(!vm.getTextField().getText().equals("") && !vm.getTextField_1().getText().equals(""))
 		{
-			Utilisateur utilisateur = new Utilisateur();
-			utilisateur.connexionELporte(main.param);
+			Utilisateur.connexionELporte(main.param);
 			
-			idSal = utilisateur.monELPorte.demanderAuthentifier(vm.getTextField_1().getText(),vm.getTextField().getText());
+			idSal = Utilisateur.monELPorte.demanderAuthentifier(vm.getTextField_1().getText(),vm.getTextField().getText());
 			
 			if(!idSal.equals(""))
 			{
-				utilisateur.monELPorte.demandeEntrerSortirZone(idSal,vm.getIdZone());
+				Utilisateur.monELPorte.demandeEntrerSortirZone(idSal,vm.getIdZone());
 				message = "Bienvenue [les portes s'ouvrent..]";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 			}else

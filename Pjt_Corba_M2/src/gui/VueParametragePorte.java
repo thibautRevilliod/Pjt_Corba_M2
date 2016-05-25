@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import LanceurPersonnel.PersonnelRH;
 import LanceurPersonnel.PersonnelSecurite;
+import LanceurPersonnel.Utilisateur;
 import modControledAcces.InfoZone;
 
 import javax.swing.JLabel;
@@ -43,6 +45,9 @@ public class VueParametragePorte extends JFrame {
 	 * Create the frame.
 	 */
 	public VueParametragePorte() {
+//		Utilisateur.connexionELporte(main.param);
+//		PersonnelSecurite.connexionELautorisation(main.param);
+		
 		setTitle("Param\u00E9trage Porte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 283, 219);
@@ -89,6 +94,7 @@ public class VueParametragePorte extends JFrame {
 		btnQuitter.addActionListener(new LFermerVueParametragePorte(this)); 
 		btnValider.addActionListener(new LValiderParametragePorte(this)); 
 		
+		
 	}
 
 	public JTextField getTextField() {
@@ -108,9 +114,8 @@ public class VueParametragePorte extends JFrame {
 	}
 	
 	private InfoZone[] listeZones() {
-		PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-		personnelSecurite.connexionELautorisation(main.param);
-		InfoZone[] infoZone = personnelSecurite.monELAutorisation.listeToutesZones();
+		PersonnelSecurite.connexionELautorisation(main.param);
+		InfoZone[] infoZone = PersonnelSecurite.monELAutorisation.listeToutesZones();
 		
 		return infoZone;
 	}

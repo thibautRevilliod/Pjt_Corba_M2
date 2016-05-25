@@ -46,10 +46,9 @@ public class LValiderChoixEvenements implements ActionListener
 				Timestamp tdateHeureDebut = new Timestamp(dateHeureDebut.getTime());
 				Timestamp tdateHeureFin = new Timestamp(dateHeureFin.getTime());
 				
-				PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-				personnelSecurite.connexionELjournalisation(main.param);
+				PersonnelSecurite.connexionELjournalisation(main.param);
 
-				EvenementJournalisation[] evenementJournalisation = personnelSecurite.monELJournalisation.consulter((String)vm.getComboBox().getSelectedItem(), (String)vm.getComboBox_1().getSelectedItem(), tdateHeureDebut.toString(), tdateHeureFin.toString(), personnelSecurite.cleJournalisation);
+				EvenementJournalisation[] evenementJournalisation = PersonnelSecurite.monELJournalisation.consulter((String)vm.getComboBox().getSelectedItem(), (String)vm.getComboBox_1().getSelectedItem(), tdateHeureDebut.toString(), tdateHeureFin.toString(), PersonnelSecurite.cleJournalisation);
 				
 				Object rowData[][] = new Object[evenementJournalisation.length][6];
 				

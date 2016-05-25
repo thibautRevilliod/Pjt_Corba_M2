@@ -38,10 +38,9 @@ public class LValiderChoixLireAccreditation implements ActionListener
 		if(!vm.getComboBox().getSelectedItem().equals(""))
 		{
 			try {
-				PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-				personnelSecurite.connexionELautorisation(main.param);
+				PersonnelSecurite.connexionELautorisation(main.param);
 
-				InfoSalarieAccreditation infoSalarieAccreditation = personnelSecurite.monELAutorisation.lireAccreditationSalarie((String)vm.getComboBox().getSelectedItem());
+				InfoSalarieAccreditation infoSalarieAccreditation = PersonnelSecurite.monELAutorisation.lireAccreditationSalarie((String)vm.getComboBox().getSelectedItem());
 				
 				Object rowData[][] = new Object[infoSalarieAccreditation.listeAccreditationSal.length][7];
 				

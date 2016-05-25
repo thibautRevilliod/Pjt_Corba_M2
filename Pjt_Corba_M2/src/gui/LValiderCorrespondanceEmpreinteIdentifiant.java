@@ -43,7 +43,8 @@ public class LValiderCorrespondanceEmpreinteIdentifiant implements ActionListene
 
 			boolean isCorrespondanceOK;
 
-					
+			PersonnelRH.connexionELempreinte(main.param);		
+			
 					try {
 						isCorrespondanceOK = PersonnelRH.monELEmpreinte.verifierCorrespondance(salarie, empreinte, PersonnelRH.cleEmpreinte);
 						
@@ -56,7 +57,6 @@ public class LValiderCorrespondanceEmpreinteIdentifiant implements ActionListene
 							message = "L'empreinte fournie  correspond à cet identifiant";
 							JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 						}
-						vm.setVisible(false);
 						
 					} catch (ErreurSalarieInexistant e1) {
 						// TODO Auto-generated catch block

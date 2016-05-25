@@ -15,8 +15,21 @@ public class PersonnelRH {
 	public static EntiteLogicielleAnnuaire monELAnnuaire;
 	public static String cleAnnuaire = "personnel_rh_annuaire";
 	public static String cleEmpreinte = "personnel_rh_empreinte";
+	public static String IOR_EL_empreinte = "";
+	public static String IOR_EL_annuaire = "";
 	
 	public static void connexionELempreinte (String[] args) {
+		if(IOR_EL_empreinte.equals(""))
+		{
+			connexionELempreinteNS(args);
+		}
+		else
+		{
+			connexionELempreinteIOR(args);
+		}
+	}
+	
+	public static void connexionELempreinteNS (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
@@ -41,7 +54,7 @@ public class PersonnelRH {
 	        org.omg.CORBA.Object distantELEmpreinte = nameRoot.resolve(nameToFind);
 	        System.out.println("Objet '" + idObj + "' trouve aupres du service de noms. IOR de l'objet :");
 	        System.out.println(orb.object_to_string(distantELEmpreinte));
-	        Config.IOR_EL_Empreinte = orb.object_to_string(distantELEmpreinte);
+	        IOR_EL_empreinte = orb.object_to_string(distantELEmpreinte);
 
 	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
 //	        org.omg.CORBA.Object distantEuro = orb.string_to_object("IOR:000000000000001B49444C3A436F6E766572746973736575722F4575726F3A312E300000000000010000000000000060000102000000000D3139322E3136382E35362E31000012A000000014004F4F01A72446DC50010000504F41FE7703957F00000001000000010000002400000000100204E4000000030001000F0001000100010020000101090000000100010100");
@@ -59,7 +72,37 @@ public class PersonnelRH {
 		
 	}
 	
+	public static void connexionELempreinteIOR (String[] args) {
+		
+		try {
+			// Intialisation de l'orb
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
+
+	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
+	        org.omg.CORBA.Object distantELEmpreinte = orb.string_to_object(IOR_EL_empreinte);
+	        // Casting de l'objet CORBA au type convertisseur euro
+
+	        monELEmpreinte = EntiteLogicielleEmpreinteHelper.narrow(distantELEmpreinte);
+      
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void connexionELannuaire (String[] args) {
+		if(IOR_EL_annuaire.equals(""))
+		{
+			connexionELempreinteNS(args);
+		}
+		else
+		{
+			connexionELempreinteIOR(args);
+		}
+	}
+	
+	public static void connexionELannuaireNS (String[] args) {
 		
 		try {
 			// Intialisation de l'orb
@@ -84,7 +127,7 @@ public class PersonnelRH {
 	        org.omg.CORBA.Object distantELAnnuaire = nameRoot.resolve(nameToFind);
 	        System.out.println("Objet '" + idObj + "' trouve aupres du service de noms. IOR de l'objet :");
 	        System.out.println(orb.object_to_string(distantELAnnuaire));
-	        Config.IOR_EL_Annuaire = orb.object_to_string(distantELAnnuaire);
+	        IOR_EL_annuaire = orb.object_to_string(distantELAnnuaire);
 
 	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
 //	        org.omg.CORBA.Object distantEuro = orb.string_to_object("IOR:000000000000001B49444C3A436F6E766572746973736575722F4575726F3A312E300000000000010000000000000060000102000000000D3139322E3136382E35362E31000012A000000014004F4F01A72446DC50010000504F41FE7703957F00000001000000010000002400000000100204E4000000030001000F0001000100010020000101090000000100010100");
@@ -95,6 +138,25 @@ public class PersonnelRH {
 	        // Appel de l'interface graphique
 //	        JFrame frame = new InterfaceFrame();
 //	        frame.setVisible(true);	        
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void connexionELannuaireIOR (String[] args) {
+		
+		try {
+			// Intialisation de l'orb
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
+
+	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
+	        org.omg.CORBA.Object distantELAnnuaire = orb.string_to_object(IOR_EL_annuaire);
+	        // Casting de l'objet CORBA au type convertisseur euro
+
+	        monELAnnuaire = EntiteLogicielleAnnuaireHelper.narrow(distantELAnnuaire);
+      
 		}
 		catch (Exception e) {
 			e.printStackTrace();

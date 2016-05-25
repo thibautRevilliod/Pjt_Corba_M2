@@ -37,8 +37,7 @@ public class LValiderCreerSalarie implements ActionListener
 				!vm.getTextField_3().getText().equals("") && !vm.getFormattedTextField_1().getText().equals("") && !vm.getFormattedTextField_2().getText().equals("")
 				 && !vm.getFormattedTextField_3().getText().equals("") && !vm.getFormattedTextField_4().getText().equals("")) && vm.getRdbtnNon().isSelected()))
 		{
-			PersonnelRH personnelRH = new PersonnelRH();
-			personnelRH.connexionELannuaire(main.param);
+			PersonnelRH.connexionELannuaire(main.param);
 			
 			try{
 				SimpleDateFormat formatDateHeure = new SimpleDateFormat("yyyy/MM/dd HH:mm");
@@ -47,7 +46,7 @@ public class LValiderCreerSalarie implements ActionListener
 	
 				if(vm.getRdbtnOui().isSelected())
 				{
-					idSal = personnelRH.monELAnnuaire.creerSalarie(vm.getTextField_2().getText(), vm.getTextField_4().getText(), vm.getTextField_3().getText(), vm.getTextField_1().getText(), new modControledAcces.Date(""), new modControledAcces.Date(""), new modControledAcces.Date(""), new modControledAcces.Date(""), new modControledAcces.Date(tdateHeureFinValidite.toString()), true);
+					idSal = PersonnelRH.monELAnnuaire.creerSalarie(vm.getTextField_2().getText(), vm.getTextField_4().getText(), vm.getTextField_3().getText(), vm.getTextField_1().getText(), new modControledAcces.Date(""), new modControledAcces.Date(""), new modControledAcces.Date(""), new modControledAcces.Date(""), new modControledAcces.Date(tdateHeureFinValidite.toString()), true);
 				}else
 				{
 					//remplir avec les champs correspondant getjFormattedTextField_1 , ????
@@ -61,7 +60,7 @@ public class LValiderCreerSalarie implements ActionListener
 					Timestamp theureFin = new Timestamp(heureFin.getTime());
 					Timestamp tdateDebut = new Timestamp(dateDebut.getTime());
 					Timestamp tdateFin = new Timestamp(dateFin.getTime());
-					idSal = personnelRH.monELAnnuaire.creerSalarie(vm.getTextField_2().getText(), vm.getTextField_4().getText(), vm.getTextField_3().getText(), vm.getTextField_1().getText(), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()), new modControledAcces.Date(tdateDebut.toString()), new modControledAcces.Date(tdateFin.toString()), new modControledAcces.Date(tdateHeureFinValidite.toString()), false);
+					idSal = PersonnelRH.monELAnnuaire.creerSalarie(vm.getTextField_2().getText(), vm.getTextField_4().getText(), vm.getTextField_3().getText(), vm.getTextField_1().getText(), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()), new modControledAcces.Date(tdateDebut.toString()), new modControledAcces.Date(tdateFin.toString()), new modControledAcces.Date(tdateHeureFinValidite.toString()), false);
 				}
 				
 				if(idSal.equals(""))

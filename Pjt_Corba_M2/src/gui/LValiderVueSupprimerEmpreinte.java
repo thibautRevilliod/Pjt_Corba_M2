@@ -28,7 +28,8 @@ public class LValiderVueSupprimerEmpreinte implements ActionListener
 		if(!vm.getListeIdSalaries().getSelectedItem().equals(""))
 		{
 			String salarie = (String) vm.getListeIdSalaries().getSelectedItem();
-			
+				
+			PersonnelRH.connexionELempreinte(main.param);
 
 				try {
 					resSupprEmpreinte = PersonnelRH.monELEmpreinte.supprimerEmpreinte(salarie, PersonnelRH.cleEmpreinte);

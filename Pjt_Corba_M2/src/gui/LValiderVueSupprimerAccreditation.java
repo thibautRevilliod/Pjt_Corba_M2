@@ -35,10 +35,9 @@ public class LValiderVueSupprimerAccreditation implements ActionListener
 			String idZone = (String) vm.getComboBox_1().getSelectedItem();
 			
 			try {
-				PersonnelSecurite personnelSecurite = new PersonnelSecurite();
-				personnelSecurite.connexionELautorisation(main.param);
+				PersonnelSecurite.connexionELautorisation(main.param);
 				
-				InfoSalarieAccreditation infoSalarieAccreditation = personnelSecurite.monELAutorisation.supprimerAccreditation(idSal, idZone);
+				InfoSalarieAccreditation infoSalarieAccreditation = PersonnelSecurite.monELAutorisation.supprimerAccreditation(idSal, idZone);
 				
 				message = "Salarie : " + infoSalarieAccreditation.idSal + ": \n";
 				

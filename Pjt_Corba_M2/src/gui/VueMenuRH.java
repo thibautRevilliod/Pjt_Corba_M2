@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import LanceurPersonnel.PersonnelRH;
+import LanceurPersonnel.PersonnelSecurite;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
@@ -33,6 +37,10 @@ public class VueMenuRH extends JFrame {
 	 * Create the frame.
 	 */
 	public VueMenuRH() {
+		
+//		PersonnelRH.connexionELannuaire(main.param);
+//		PersonnelRH.connexionELempreinte(main.param);
+		
 		setTitle("Menu RH");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 391, 263);
@@ -72,6 +80,8 @@ public class VueMenuRH extends JFrame {
 		btnSupprimerUneEmpreinte.addActionListener(new LVueSupprimerEmpreinte(this)); 
 		btnAjouterUneEmpreinte.addActionListener(new LVueAjouterEmpreinte(this)); 
 		btnOuvrirLannuaire.addActionListener(new LVueMenuAnnuaire(this)); 
+		
+		
 	}
 
 }
