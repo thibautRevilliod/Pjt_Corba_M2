@@ -49,10 +49,10 @@ public class LValiderChoixLireAccreditation implements ActionListener
 					rowData[i][0] = infoSalarieAccreditation.idSal;
 					rowData[i][1] = infoSalarieAccreditation.listeAccreditationSal[i].idZone;
 					rowData[i][2] = infoSalarieAccreditation.listeAccreditationSal[i].dateAcreditation.timestamp;
-					rowData[i][3] = infoSalarieAccreditation.listeAccreditationSal[i].heureDebut.timestamp;
-					rowData[i][4] = infoSalarieAccreditation.listeAccreditationSal[i].heureFin.timestamp;
-					rowData[i][5] = infoSalarieAccreditation.listeAccreditationSal[i].jourDebut.timestamp;
-					rowData[i][6] = infoSalarieAccreditation.listeAccreditationSal[i].jourFin.timestamp;
+					rowData[i][3] = infoSalarieAccreditation.listeAccreditationSal[i].heureDebut.timestamp.substring(11, 21);
+					rowData[i][4] = infoSalarieAccreditation.listeAccreditationSal[i].heureFin.timestamp.substring(11, 21);
+					rowData[i][5] = infoSalarieAccreditation.listeAccreditationSal[i].jourDebut.timestamp.substring(0, 10);
+					rowData[i][6] = infoSalarieAccreditation.listeAccreditationSal[i].jourFin.timestamp.substring(0, 10);
 				}
 				
 				Object columnNames[] = { "idSal", "idZone", "dateAcreditation", "heureDebut", "heureFin", "jourDebut", "jourFin",};

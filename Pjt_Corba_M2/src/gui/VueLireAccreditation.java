@@ -14,7 +14,7 @@ import javax.swing.JComboBox;
 
 public class VueLireAccreditation extends JFrame {
 
-	private JPanel contentPane;
+	private JScrollPane contentPane;
 	private JTable table;
 
 	/**
@@ -41,16 +41,17 @@ public class VueLireAccreditation extends JFrame {
 	public VueLireAccreditation(JTable _table) {
 		setTitle("Lire les accreditations");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		setBounds(100, 100, 800, 300);
+		contentPane = new JScrollPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		table = new JTable();
 		table = _table;
-		table.setBounds(35, 26, 353, 189);
+		table.setBounds(35, 26, 700, 189);
 		contentPane.add(table);
+		table.getColumnModel().getColumn(2).setPreferredWidth(200);
 		//TODO : Afficher le Header du table
 		//contentPane.add(new JScrollPane(table));
 		
