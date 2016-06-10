@@ -425,7 +425,7 @@ public class BddJDBC_EL_Autorisation {
 				cal3 = GregorianCalendar.getInstance();
 				cal3.set(Calendar.DAY_OF_MONTH, 21);
 				cal3.set(Calendar.MONTH, 05-1);// -1 as month is zero-based
-				cal3.set(Calendar.YEAR, 2016);
+				cal3.set(Calendar.YEAR, 2017);
 				tstamp3 = new Timestamp(cal3.getTimeInMillis());
 				//cal4 : pheureDebut
 				cal4 = GregorianCalendar.getInstance();
@@ -445,7 +445,7 @@ public class BddJDBC_EL_Autorisation {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BddJDBC_EL_Autorisation bddJDBC_EL_Autorisation = new BddJDBC_EL_Autorisation("BD_autorisation");
-		//bddJDBC_EL_Annuaire.init();
+		bddJDBC_EL_Autorisation.init();
 		/*
 		bddJDBC_EL_Autorisation.supprimerAccreditation("1", "1");
 		try {

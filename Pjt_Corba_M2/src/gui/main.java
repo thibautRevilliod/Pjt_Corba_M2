@@ -20,9 +20,9 @@ public class main {
 		VueParametragePorte paramPorte;
 	
 		//pour ouvrir la fenetre de paramétrage de la porte: 
-//		paramPorte = new VueParametragePorte();
-//		paramPorte.setVisible(true);
-//		paramPorte.setLocation(500, 200);
+		paramPorte = new VueParametragePorte();
+		paramPorte.setVisible(true);
+		paramPorte.setLocation(500, 200);
 		
 		// pour ouvrir le menu Porte 		
 		
@@ -49,9 +49,9 @@ public class main {
 		
 	// pour ouvrir le menu Securite		
 		
-		menuSecurite = new VueMenuSecurite();
-		menuSecurite.setVisible(true);
-		menuSecurite.setLocation(500, 200);
+//		menuSecurite = new VueMenuSecurite();
+//		menuSecurite.setVisible(true);
+//		menuSecurite.setLocation(500, 200);
 		
 	}
 
