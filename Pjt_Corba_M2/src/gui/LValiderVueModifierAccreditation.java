@@ -4,7 +4,6 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,25 +14,26 @@ import LanceurPersonnel.PersonnelSecurite;
 import modControledAcces.CleInconnue;
 import modControledAcces.ErreurSalarieInexistant;
 import modControledAcces.ErreurZoneInexistant;
+import modControledAcces.InfoSalarieAccreditation;
 
-public class LValiderAjouterAccreditation implements ActionListener
+public class LValiderVueModifierAccreditation implements ActionListener
 {
 
-	private VueAjouterAccreditation vm;
+	private VueModifierAccreditation vm;
 
-	public LValiderAjouterAccreditation (VueAjouterAccreditation vueAjouterEmpreinte)
+	public LValiderVueModifierAccreditation (VueModifierAccreditation vueModifierAccreditation)
 	{
-		this.vm=vueAjouterEmpreinte;
+		this.vm=vueModifierAccreditation;
 	}
 
 	public void actionPerformed(ActionEvent e)
 	{
 		String message;
 		if (!vm.getFormattedTextField().getText().equals("") && !vm.getFormattedTextField_1().getText().equals("") && !vm.getFormattedTextField_2().getText().equals("") 
-				&& !vm.getFormattedTextField_3().getText().equals("") && !vm.getListeIdSalaries().getSelectedItem().equals("") && !vm.getListeIdZones().getSelectedItem().equals(""))
+				&& !vm.getFormattedTextField_3().getText().equals("") && !vm.getIdSalarie().getText().equals("") && !vm.getIdZone().getText().equals(""))
 		{
-			String idSal = (String) vm.getListeIdSalaries().getSelectedItem();
-			String idZone = (String) vm.getListeIdZones().getSelectedItem();
+			String idSal = vm.getIdSalarie().getText();
+			String idZone = vm.getIdZone().getText();
 			
 			try {
 				PersonnelSecurite.connexionELautorisation(main.param);
@@ -49,11 +49,8 @@ public class LValiderAjouterAccreditation implements ActionListener
 				Timestamp theureDebut = new Timestamp(heureDebut.getTime());
 				Timestamp theureFin = new Timestamp(heureFin.getTime());
 				
-				PersonnelSecurite.monELAutorisation.creerAccreditation(idSal, idZone, new modControledAcces.Date(tjourDebut.toString()), new modControledAcces.Date(tjourFin.toString()), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()), PersonnelSecurite.getCleAutorisation());
+				PersonnelSecurite.monELAutorisation.modifierAccreditation(idSal, idZone, new modControledAcces.Date(tjourDebut.toString()), new modControledAcces.Date(tjourFin.toString()), new modControledAcces.Date(theureDebut.toString()), new modControledAcces.Date(theureFin.toString()));
 			} catch (ErreurSalarieInexistant e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (CleInconnue e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (ErreurZoneInexistant e1) {
@@ -64,7 +61,7 @@ public class LValiderAjouterAccreditation implements ActionListener
 				e1.printStackTrace();
 			}
 			
-			message = "creerAccreditation : OK";
+			message = "modifierAccreditation : OK";
 			JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 	
 			//fermeture fenêtre

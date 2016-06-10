@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,26 +15,30 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JComboBox;
 
-public class VueAjouterAccreditation extends JFrame {
+public class VueModifierAccreditation extends JFrame {
 
 	private JPanel contentPane;
 	private JFormattedTextField formattedTextField;
 	private JFormattedTextField formattedTextField_1;
 	private JFormattedTextField formattedTextField_2;
 	private JFormattedTextField formattedTextField_3;
-	private JComboBox listeIdSalaries;
-	private JComboBox listeIdZones;
+	private JLabel idSalarie;
+	private JLabel idZone;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		JComboBox mcomboBox = new JComboBox();
-		JComboBox mcomboBox_1 = new JComboBox();
+		String s1 = "";
+		String s2 = "";
+		String s3 = "";
+		String s4 = "";
+		String s5 = "";
+		String s6 = "";
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueAjouterAccreditation frame = new VueAjouterAccreditation(mcomboBox, mcomboBox_1);
+					VueModifierAccreditation frame = new VueModifierAccreditation(s1, s2, s3, s4, s5, s6);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +50,7 @@ public class VueAjouterAccreditation extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VueAjouterAccreditation(JComboBox pListeIdSalaries, JComboBox pListeIdZones) {
+	public VueModifierAccreditation(String pIdSalarie, String pIdZone, String pHeureDebut, String pHeureFin, String pJourDebut, String pJourFin) {
 		setTitle("Ajouter une accredidation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 425, 327);
@@ -94,58 +99,62 @@ public class VueAjouterAccreditation extends JFrame {
 		DateFormat formatHeure = new SimpleDateFormat("HH:mm");
 		
 		formattedTextField = new JFormattedTextField(formatDate);
+		formattedTextField.setText(pJourDebut);
 		formattedTextField.setBounds(227, 58, 86, 20);
 		contentPane.add(formattedTextField);
 		
 		formattedTextField_1 = new JFormattedTextField(formatDate);
+		formattedTextField_1.setText(pJourFin);
 		formattedTextField_1.setBounds(227, 93, 86, 20);
 		contentPane.add(formattedTextField_1);
 		
 		formattedTextField_2 = new JFormattedTextField(formatHeure);
+		formattedTextField_2.setText(pHeureDebut);
 		formattedTextField_2.setBounds(227, 118, 86, 20);
 		contentPane.add(formattedTextField_2);
 		
 		formattedTextField_3 = new JFormattedTextField(formatHeure);
+		formattedTextField_3.setText(pHeureFin);
 		formattedTextField_3.setBounds(227, 145, 86, 20);
 		contentPane.add(formattedTextField_3);
-		
-		listeIdSalaries = pListeIdSalaries;
-		listeIdSalaries.setBounds(227, 28, 86, 20);
-		contentPane.add(listeIdSalaries);
-		
-		listeIdZones = pListeIdZones;
-		listeIdZones.setBounds(227, 170, 86, 20);
-		contentPane.add(listeIdZones);
 		
 		JLabel lblH_1 = new JLabel("h");
 		lblH_1.setBounds(323, 121, 18, 14);
 		contentPane.add(lblH_1);
 		
+		idSalarie = new JLabel(pIdSalarie);
+		idSalarie.setBounds(227, 27, 46, 14);
+		contentPane.add(idSalarie);
+		
+		idZone = new JLabel(pIdZone);
+		idZone.setBounds(227, 173, 46, 14);
+		contentPane.add(idZone);
+		
 		
 		
 		// abonnements
-		btnQuitter.addActionListener(new LFermerVueAjouterAccreditation(this)); 
+		btnQuitter.addActionListener(new LFermerVueModifierAccreditation(this)); 
 		
 		// traitement pour le bouton valider
-		btnValider.addActionListener(new LValiderAjouterAccreditation(this)); 
+		btnValider.addActionListener(new LValiderVueModifierAccreditation(this)); 
 	}
-
+	
 	
 
-	public JComboBox getListeIdSalaries() {
-		return listeIdSalaries;
+	public JLabel getIdSalarie() {
+		return idSalarie;
 	}
 
-	public void setListeIdSalaries(JComboBox listeIdSalaries) {
-		this.listeIdSalaries = listeIdSalaries;
+	public void setIdSalarie(JLabel idSalarie) {
+		this.idSalarie = idSalarie;
 	}
 
-	public JComboBox getListeIdZones() {
-		return listeIdZones;
+	public JLabel getIdZone() {
+		return idZone;
 	}
 
-	public void setListeIdZones(JComboBox listeIdZones) {
-		this.listeIdZones = listeIdZones;
+	public void setIdZone(JLabel idZone) {
+		this.idZone = idZone;
 	}
 
 	public JFormattedTextField getFormattedTextField() {

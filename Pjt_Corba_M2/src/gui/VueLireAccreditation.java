@@ -58,9 +58,14 @@ public class VueLireAccreditation extends JFrame {
 		btnQuitter.setBounds(152, 227, 89, 23);
 		contentPane.add(btnQuitter);
 		
+		JButton btnModifier = new JButton("Modifier");
+		btnModifier.setBounds(41, 227, 89, 23);
+		contentPane.add(btnModifier);
+		
 		
 		// abonnements
 		btnQuitter.addActionListener(new LFermerVueLireAccreditation(this)); 
+		btnModifier.addActionListener(new LModifierVueLireAccreditation(this)); 
 	}
 
 	public JTable getTable() {
@@ -70,5 +75,4 @@ public class VueLireAccreditation extends JFrame {
 	public void setTable(JTable table) {
 		this.table = table;
 	}
-
 }
