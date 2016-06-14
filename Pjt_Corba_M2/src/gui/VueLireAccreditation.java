@@ -54,7 +54,7 @@ public class VueLireAccreditation extends JFrame {
 		contentPane.add(table.getTableHeader(), BorderLayout.NORTH);
 		contentPane.add(table, BorderLayout.CENTER);
 		//TODO : Afficher le Header du table
-		//contentPane.add(new JScrollPane(table));
+		//contentPane.add(new JScrollPane(table)); 
 		
 		JButton btnQuitter = new JButton("Quitter");
 		btnQuitter.setBounds(152, 227, 89, 23);
