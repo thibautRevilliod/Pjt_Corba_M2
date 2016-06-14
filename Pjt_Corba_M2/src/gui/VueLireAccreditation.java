@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -47,12 +48,23 @@ public class VueLireAccreditation extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		table = new JTable();
+		String column_names[]= { "idSal", "idZone", "dateAcreditation", "heureDebut", "heureFin", "jourDebut", "jourFin"};
+		DefaultTableModel table_model=new DefaultTableModel(column_names,3);
+		table=new JTable(table_model);
+		contentPane.setViewportView(table);
 		table = _table;
 		table.setBounds(35, 26, 353, 189);
+		
+//		table = new JTable();
+//		table = _table;
+//		table.setBounds(35, 26, 353, 189);
+		
+		
+		
 		contentPane.add(table);
 		contentPane.add(table.getTableHeader(), BorderLayout.NORTH);
 		contentPane.add(table, BorderLayout.CENTER);
+//		contentPane.setViewportView(table);
 		//TODO : Afficher le Header du table
 		//contentPane.add(new JScrollPane(table)); 
 		
@@ -63,6 +75,7 @@ public class VueLireAccreditation extends JFrame {
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.setBounds(41, 227, 89, 23);
 		contentPane.add(btnModifier);
+
 		
 		
 		// abonnements

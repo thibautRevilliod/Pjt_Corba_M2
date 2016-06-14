@@ -14,13 +14,14 @@ import modControledAcces.InfoOperation;
 public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournalisationPOA {
 	
 	public static BddJDBC_EL_Journalisation bddJDBC_EL_Journalisation = new BddJDBC_EL_Journalisation("BD_Journalisation");
-	public static String clePersonnelSecurite = "personnel_securite_autorisation";
+	public static String clePersonnelSecuriteAutorisation = "personnel_securite_autorisation";
+	public static String clePersonnelSecuriteJournalisation = "personnel_securite_journalisation";
 	
 	@Override
 	public EvenementJournalisation[] consulter(String qui, String quoi, String quand_debut, String quand_fin,
 			String cleDemandeur) throws CleInconnue {
 	
-		if(!cleDemandeur.equals(clePersonnelSecurite))
+		if((!cleDemandeur.equals(clePersonnelSecuriteAutorisation)) && (!cleDemandeur.equals(clePersonnelSecuriteJournalisation)))
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}

@@ -55,7 +55,7 @@ public class LValiderChoixLireAccreditation implements ActionListener
 					rowData[i][6] = infoSalarieAccreditation.listeAccreditationSal[i].jourFin.timestamp;
 				}
 				
-				Object columnNames[] = { "idSal", "idZone", "dateAcreditation", "heureDebut", "heureFin", "jourDebut", "jourFin",};
+				Object columnNames[] = { "idSal", "idZone", "dateAcreditation", "heureDebut", "heureFin", "jourDebut", "jourFin"};
 				table = new JTable(rowData, columnNames);
 				
 			} catch (ErreurSalarieInexistant e1) {
