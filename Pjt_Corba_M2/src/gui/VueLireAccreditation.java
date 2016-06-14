@@ -42,7 +42,7 @@ public class VueLireAccreditation extends JFrame {
 	public VueLireAccreditation(JTable _table) {
 		setTitle("Lire les accreditations");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 900, 300);
 		contentPane = new JScrollPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -53,7 +53,14 @@ public class VueLireAccreditation extends JFrame {
 		table=new JTable(table_model);
 		contentPane.setViewportView(table);
 		table = _table;
-		table.setBounds(35, 26, 353, 189);
+		table.setBounds(35, 26, 800, 189);
+		table.getColumnModel().getColumn(0).setPreferredWidth(20);
+		table.getColumnModel().getColumn(1).setPreferredWidth(20);
+		table.getColumnModel().getColumn(2).setPreferredWidth(80);
+		table.getColumnModel().getColumn(3).setPreferredWidth(50);
+		table.getColumnModel().getColumn(4).setPreferredWidth(50);
+		table.getColumnModel().getColumn(5).setPreferredWidth(60);
+		table.getColumnModel().getColumn(6).setPreferredWidth(60);
 		
 //		table = new JTable();
 //		table = _table;

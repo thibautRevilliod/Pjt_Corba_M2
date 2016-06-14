@@ -38,7 +38,7 @@ public class VueConsulterEvenements extends JFrame {
 	public VueConsulterEvenements(JTable _table) {
 		setTitle("Consulter les \u00E9v\u00E9nements");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 281);
+		setBounds(100, 100, 900, 281);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -46,7 +46,12 @@ public class VueConsulterEvenements extends JFrame {
 		
 		//table = new JTable();
 		table = _table;
-		table.setBounds(23, 11, 372, 189);
+		table.setBounds(23, 11, 800, 189);
+		table.getColumnModel().getColumn(0).setPreferredWidth(20);
+		table.getColumnModel().getColumn(1).setPreferredWidth(20);
+		table.getColumnModel().getColumn(2).setPreferredWidth(80);
+		table.getColumnModel().getColumn(3).setPreferredWidth(50);
+		table.getColumnModel().getColumn(4).setPreferredWidth(50);
 		contentPane.add(table);
 		
 		JButton btnQuitter = new JButton("Quitter");

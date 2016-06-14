@@ -28,7 +28,7 @@ public class LanceurEntiteLogiciellePorte {
 	        //****************
 	        // Recuperation du POA
 	        POA rootPOA = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
-	        //POA rootPOA = POAHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@169.254.154.204:2001/NameService"));
+//	        POA rootPOA = POAHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@169.254.154.204:2001/NameService"));
 
 	        // Creation du servant
 	        //*********************
@@ -44,7 +44,7 @@ public class LanceurEntiteLogiciellePorte {
 	        // Enregistrement dans le service de nommage
 	        //*******************************************
 	        // Recuperation du naming service
-	        NamingContext nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@169.254.201.50:2001/NameService"));
+	        NamingContext nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@169.254.77.228:2001/NameService"));
 
 //"corbaloc:iiop:1.2@169.254.201.50:2001/NameService"
 	        // Construction du nom a enregistrer
