@@ -9,7 +9,7 @@ import modControledAcces.*;
 public class PersonnelSecurite2 {
 	
 	public static EntiteLogicielleAutorisation monELAutorisation;
-
+/*
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -34,7 +34,7 @@ public class PersonnelSecurite2 {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-
+*/
 	}
 
-}
+
