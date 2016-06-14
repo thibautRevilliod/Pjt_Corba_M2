@@ -44,8 +44,16 @@ public class LanceurEntiteLogicielleAutorisation {
 	        // Enregistrement dans le service de nommage
 	        //*******************************************
 	        // Recuperation du naming service
-	        NamingContext nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("iiop:1.2@169.254.77.228:2001/NameService"));
-	       
+
+	        NamingContext nameRoot;
+	        if(Config.estSoutenanceDistante)
+	        {
+	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@"+Config.ipServeur+":2001/NameService"));
+	        }else
+	        {
+	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
+	        }
+
 	        // Construction du nom a enregistrer
 	        org.omg.CosNaming.NameComponent[] nameToRegister = new org.omg.CosNaming.NameComponent[1];
 /*	        System.out.println("Sous quel nom voulez-vous enregistrer l'objet Corba ?");
