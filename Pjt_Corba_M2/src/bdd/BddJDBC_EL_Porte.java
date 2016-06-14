@@ -100,4 +100,11 @@ public class BddJDBC_EL_Porte {
 		//journalisation 2
 			creerPorte("P2", "2");	
 	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BddJDBC_EL_Porte bddJDBC_EL_Porte = new BddJDBC_EL_Porte("BD_Porte");
+		bddJDBC_EL_Porte.init();
+		
+	}
 }

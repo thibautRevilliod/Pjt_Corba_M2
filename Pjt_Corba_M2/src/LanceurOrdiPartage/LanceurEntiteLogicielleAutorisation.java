@@ -27,7 +27,7 @@ public class LanceurEntiteLogicielleAutorisation {
 	        //****************
 	        // Recuperation du POA
 	       // POA rootPOA = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
-	        POA rootPOA = POAHelper.narrow(orb.string_to_object("iiop:1.2@169.254.154.204:2001/NameService"));
+	        POA rootPOA = POAHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@192.168.56.1:2001/NameService"));
 
 	        // Creation du servant
 	        //*********************

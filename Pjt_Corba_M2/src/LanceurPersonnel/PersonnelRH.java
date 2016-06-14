@@ -94,11 +94,11 @@ public class PersonnelRH {
 	public static void connexionELannuaire (String[] args) {
 		if(IOR_EL_annuaire.equals(""))
 		{
-			connexionELempreinteNS(args);
+			connexionELannuaireNS(args);
 		}
 		else
 		{
-			connexionELempreinteIOR(args);
+			connexionELannuaireIOR(args);
 		}
 	}
 	

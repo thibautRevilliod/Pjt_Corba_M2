@@ -326,7 +326,7 @@ public class BddJDBC_EL_Annuaire {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BddJDBC_EL_Annuaire bddJDBC_EL_Annuaire = new BddJDBC_EL_Annuaire("BD_Annuaire");
-		//bddJDBC_EL_Annuaire.init();
+		bddJDBC_EL_Annuaire.init();
 		
 	//	bddJDBC_EL_Annuaire.listeTousSalaries();
 		
@@ -334,8 +334,7 @@ public class BddJDBC_EL_Annuaire {
 		Timestamp tdate = new Timestamp(d.getTime());
 		System.out.println(bddJDBC_EL_Annuaire.sauthentifier("photo1", tdate));*/
 		
-		System.out.println(bddJDBC_EL_Annuaire.infoSalarieNomPhoto("1").nom);
-		
+		System.out.println(bddJDBC_EL_Annuaire.infoSalarieNomPhoto("2").nom);
 		try {
 			bddJDBC_EL_Annuaire.fermer();
 		} catch (Exception e) {

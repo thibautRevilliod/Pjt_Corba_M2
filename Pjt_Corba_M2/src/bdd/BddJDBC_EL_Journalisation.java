@@ -180,7 +180,7 @@ public class BddJDBC_EL_Journalisation {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BddJDBC_EL_Journalisation bddJDBC_EL_Journalisation = new BddJDBC_EL_Journalisation("BD_Journalisation");
-		//bddJDBC_EL_Annuaire.init();
+		bddJDBC_EL_Journalisation.init();
 		
 		bddJDBC_EL_Journalisation.listeOperations();
 		try {

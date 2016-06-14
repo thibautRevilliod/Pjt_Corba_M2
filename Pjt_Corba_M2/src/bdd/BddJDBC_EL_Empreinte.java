@@ -176,15 +176,15 @@ public class BddJDBC_EL_Empreinte {
 	
 	public void init() {
 		//Empreinte 1
-			ajouterEmpreinte("empreinte1", "1");	
+			ajouterEmpreinte("1", "empreinte1");	
 		//Empreinte 2
-			ajouterEmpreinte("empreinte2", "2");
+			ajouterEmpreinte("2", "empreinte2");
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BddJDBC_EL_Empreinte bddJDBC_EL_Empreinte = new BddJDBC_EL_Empreinte("BD_Empreinte");
-		//bddJDBC_EL_Annuaire.init();
+		//bddJDBC_EL_Empreinte.init();
 		
 		bddJDBC_EL_Empreinte.init();
 		try {
