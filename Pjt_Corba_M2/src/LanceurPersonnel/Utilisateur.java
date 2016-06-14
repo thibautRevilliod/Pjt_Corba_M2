@@ -45,7 +45,7 @@ public class Utilisateur {
 	        
 	        if(Config.estSoutenanceDistante)
 	        {
-	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("iiop:1.2@"+Config.ipServeur+":2001/NameService"));
+	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@"+Config.ipServeur+":2001/NameService"));
 	        }else
 	        {
 	        	nameRoot = org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
@@ -111,10 +111,16 @@ public class Utilisateur {
 */
 			String idObj = "ELannuaire";
 			
-	        // Recuperation du naming service
-	        org.omg.CosNaming.NamingContext nameRoot =
-	        		org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
-
+			// Recuperation du naming service
+	        org.omg.CosNaming.NamingContext nameRoot;
+	        
+	        if(Config.estSoutenanceDistante)
+	        {
+	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@"+Config.ipServeur+":2001/NameService"));
+	        }else
+	        {
+	        	nameRoot = org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
+	        }
 	        // Construction du nom a rechercher
 	        org.omg.CosNaming.NameComponent[] nameToFind = new org.omg.CosNaming.NameComponent[1];
 	         nameToFind[0] = new org.omg.CosNaming.NameComponent(idObj,"");
