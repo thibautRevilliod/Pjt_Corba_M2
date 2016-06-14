@@ -23,7 +23,6 @@ public class LVueSupprimerAccreditation implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{	
-		//TODO : la comboBoxZone bug à l'affichage : problème graphique de repaint ? actualisation ? ....
 		VueSupprimerAccreditation vPP = new VueSupprimerAccreditation(remplirComboBoxSal(),remplirComboBoxZone());
 		vPP.setVisible(true);
 		vPP.setLocation(800, 300);

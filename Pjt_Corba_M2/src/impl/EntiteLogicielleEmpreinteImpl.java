@@ -42,7 +42,6 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 		
 	}
 	
-	//TODO à supprimer
 	@Override
 	public String getCorrespondance(String empreinte, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue {
 		if(!cleDemandeur.equals(clePersonnelRh))

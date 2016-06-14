@@ -85,7 +85,6 @@ public class BddJDBC_EL_Empreinte {
 		}
 	}
 	
-	//TODO à supprimer
 	public String getCorrespondance(String pEmpreinte) {
 		String res = "";
 		
@@ -145,7 +144,6 @@ public class BddJDBC_EL_Empreinte {
 		}
 	}
 	
-	//TODO : Gérer plusieurs empreinte pour un salarié ? si oui, cette méthode fonctionne pas... !
 	public String modifierEmpreinte(String pidSal, String pempreinte) {
 		String id = "0";
 		try {

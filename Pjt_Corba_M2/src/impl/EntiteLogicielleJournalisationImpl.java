@@ -31,13 +31,11 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 		
 		EvenementJournalisation[] evenementJournalisation = bddJDBC_EL_Journalisation.consulterEvenement(qui, quoi, tquand_debut, tquand_fin);
 		
-		//TODO : Erreur dans l'IDL => faut retourner un tableau non ?? car il peut y avoir plusieurs évènements
 		return evenementJournalisation;
 	}
 
 	@Override
 	public void enregistrerEvenement(EvenementJournalisation evenementJournalisation) {
-		// TODO : il faut tranformer evenementJournalisation.accesZoneSal.jourHeure en type TimesTamp pour le passer en paramètre de la méthode : comment fait-on pour le transformer ? :: OK
 		
 		Timestamp tjourHeure = Timestamp.valueOf(evenementJournalisation.accesZoneSal.jourHeure.timestamp);
 		

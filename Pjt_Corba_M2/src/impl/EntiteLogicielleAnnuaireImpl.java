@@ -32,7 +32,6 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	@Override
 	public String creerSalarie(String mdp, String nom, String prenom, String photo, Date heureDebut, Date heureFin,
 			Date jourDebut, Date jourFin, Date dateValiditeCompte, boolean estPermanent) throws ErreurSalarieExistant {
-		//TODO: Il manque estPermanent et le type de date ne correspond pas : il faut juste une dateFinValiditeCompte de type Timestamp
 		
 		String res;
 		

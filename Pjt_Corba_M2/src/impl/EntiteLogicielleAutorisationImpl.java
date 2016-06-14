@@ -55,7 +55,6 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 			Date heureDebut, Date heureFin, String cleDemandeur) throws ErreurSalarieInexistant, CleInconnue, ErreurZoneInexistant {
 		if(cleDemandeur.equals(clePersonnel))
 		{
-			//TODO : il faut transformer les types date en TimesTamp :: OK
 			java.util.Date d = new java.util.Date();
 			Timestamp tdate = new Timestamp(d.getTime());
 			Timestamp tjourDebut = Timestamp.valueOf(jourDebut.timestamp);
@@ -95,7 +94,6 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		Timestamp theureDebut = Timestamp.valueOf(heureDebut.timestamp);
 		Timestamp theureFin = Timestamp.valueOf(heureFin.timestamp);
 		
-		// TODO : modifier le type date en TimesTamp
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.modifierAccreditation(idSal, idZone, tjourDebut, tjourFin, theureDebut, theureFin);
 		
 		return infoSalarieAccreditation;
@@ -106,7 +104,6 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.supprimerAccreditation(idSal, idZone);
 		
-		//TODO : il faut pas mettre "null" sinon ça va planter ! :: OK
 		connexionELjournalisation(main.param);
 		java.util.Date d = new java.util.Date();
 		Timestamp tdate = new Timestamp(d.getTime());
