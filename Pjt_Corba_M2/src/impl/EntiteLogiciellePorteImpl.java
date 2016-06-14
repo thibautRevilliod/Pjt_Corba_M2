@@ -37,7 +37,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	public static EntiteLogicielleEmpreinte monELEmpreinte;
 	public static EntiteLogicielleAutorisation monELAutorisation;
 	public static EntiteLogicielleJournalisation monELJournalisation;
-	public static String cleEmpreinte = "EntiteLogiciellePorte_empreinte";
+	public static String cleEmpreinte = "porte_empreinte";
 	public static BddJDBC_EL_Porte bddJDBC_EL_Porte = new BddJDBC_EL_Porte("BD_Porte");
 
 	@Override
