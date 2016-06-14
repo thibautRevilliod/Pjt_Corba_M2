@@ -5,6 +5,7 @@ import org.omg.CosNaming.NamingContext;
 import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAHelper;
 
+import config.Config;
 import impl.EntiteLogicielleAutorisationImpl;
 import impl.EntiteLogicielleJournalisationImpl;
 
@@ -42,8 +43,14 @@ public class LanceurEntiteLogicielleJournalisation {
 	        // Enregistrement dans le service de nommage
 	        //*******************************************
 	        // Recuperation du naming service
-	        NamingContext nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
-
+	        NamingContext nameRoot;
+	        if(Config.estSoutenanceDistante)
+	        {
+	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("iiop:1.2@"+Config.ipServeur+":2001/NameService"));
+	        }else
+	        {
+	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
+	        }
 	        // Construction du nom a enregistrer
 	        org.omg.CosNaming.NameComponent[] nameToRegister = new org.omg.CosNaming.NameComponent[1];
 /*	        System.out.println("Sous quel nom voulez-vous enregistrer l'objet Corba ?");
