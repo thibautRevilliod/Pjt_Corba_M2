@@ -48,7 +48,7 @@ public class LanceurEntiteLogiciellePorte {
 	        NamingContext nameRoot;
 	        if(Config.estSoutenanceDistante)
 	        {
-	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("iiop:1.2@"+Config.ipServeur+":2001/NameService"));
+	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.string_to_object("corbaloc:iiop:1.2@"+Config.ipServeur+":2001/NameService"));
 	        }else
 	        {
 	        	nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
