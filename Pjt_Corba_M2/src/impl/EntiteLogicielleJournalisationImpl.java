@@ -32,6 +32,7 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 		
 		EvenementJournalisation[] evenementJournalisation = bddJDBC_EL_Journalisation.consulterEvenement(qui, quoi, tquand_debut, tquand_fin);
 		
+		System.out.println("[EntiteLogicielleJournalisationImpl] : consulter");
 		return evenementJournalisation;
 	}
 
@@ -41,6 +42,8 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 		Timestamp tjourHeure = Timestamp.valueOf(evenementJournalisation.accesZoneSal.jourHeure.timestamp);
 		
 		bddJDBC_EL_Journalisation.enregistrerEvenement(evenementJournalisation.accesZoneSal.idSal, evenementJournalisation.accesZoneSal.idZone, evenementJournalisation.accesZoneSal.statutAcces, tjourHeure, evenementJournalisation.operation, evenementJournalisation.contenuOperation);
+		
+		System.out.println("[EntiteLogicielleJournalisationImpl] : enregistrerEvenement");
 	}
 
 	@Override
@@ -48,7 +51,9 @@ public class EntiteLogicielleJournalisationImpl extends EntiteLogicielleJournali
 		// TODO Auto-generated method stub
 		
 		InfoOperation[] infoOperation = bddJDBC_EL_Journalisation.listeOperations();
-
+		
+		System.out.println("[EntiteLogicielleJournalisationImpl] : listeOperations");
+		
 		return infoOperation;
 	}
 

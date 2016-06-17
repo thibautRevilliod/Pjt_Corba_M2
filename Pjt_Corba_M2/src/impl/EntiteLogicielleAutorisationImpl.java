@@ -37,7 +37,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 //		BddJDBC_EL_Autorisation.clearBDD("BD_autorisation");
 		InfoZone[] listeZones = bddJDBC_EL_Autorisation.listeZones();
 		
-
+		System.out.println("[EntiteLogicielleAutorisationImpl] : listeToutesZones");
 		
 		return listeZones;
 	}
@@ -47,6 +47,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 			throws ErreurSalarieInexistant, ErreurZoneInexistant {
 		java.util.Date d = new java.util.Date();
 		
+		System.out.println("[EntiteLogicielleAutorisationImpl] : verifierAutorisation");
 		return bddJDBC_EL_Autorisation.verifierAutorisation(idSal, idZone, new Timestamp(d.getTime()));
 	}
 
@@ -75,6 +76,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
+		System.out.println("[EntiteLogicielleAutorisationImpl] : creerAccreditation");
 	}
 
 	@Override
@@ -82,6 +84,7 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.lireAccreditation(idSal);
 		
+		System.out.println("[EntiteLogicielleAutorisationImpl] : lireAccreditationSalarie");
 		return infoSalarieAccreditation;
 	}
 
@@ -106,7 +109,8 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "modifierAccreditation", "jourDebut : "+jourDebut.timestamp+ " jourFin : "+jourFin.timestamp+ 
 				" heureDebut : "+heureDebut.timestamp+ " heureFin : "+heureFin.timestamp);
 		monELJournalisation.enregistrerEvenement(evenementJournalisation);
-
+		
+		System.out.println("[EntiteLogicielleAutorisationImpl] : modifierAccreditation");
 		return infoSalarieAccreditation;
 	}
 
@@ -122,11 +126,13 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "supprimerAccreditation","");
 		monELJournalisation.enregistrerEvenement(evenementJournalisation);
 		
+		System.out.println("[EntiteLogicielleAutorisationImpl] : supprimerAccreditation");
 		return infoSalarieAccreditation;
 	}
 	
 	private static void connexionELjournalisation (String[] args) {
 		
+		System.out.println("[EntiteLogicielleAutorisationImpl] : connexionELjournalisation");
 		try {
 			// Intialisation de l'orb
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);

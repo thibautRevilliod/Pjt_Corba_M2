@@ -20,12 +20,14 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	@Override
 	public InfoSalarie[] listeTousSalaries() {
 		
+		System.out.println("[EntiteLogicielleAnnuaireImpl] : listeTousSalaries");
 		return bddJDBC_EL_Annuaire.listeTousSalaries();
 	}
 	
 	@Override
 	public InfoSalarie[] listeSalariesTemporaires() {
 		
+		System.out.println("[EntiteLogicielleAnnuaireImpl] : listeSalariesTemporaires");
 		return bddJDBC_EL_Annuaire.listeSalariesTemporaires();
 	}
 
@@ -50,6 +52,7 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 			res = bddJDBC_EL_Annuaire.creerSalarie(mdp, nom, prenom, photo, null, null, null, null, tdateValiditeCompte, estPermanent);
 		}
 		
+		System.out.println("[EntiteLogicielleAnnuaireImpl] : creerSalarie");
 		return res;
 	}
 
@@ -57,6 +60,7 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 	public String sauthentifier(String photo) throws ErreurSalarieInexistant {
 		java.util.Date d = new java.util.Date();
 		Timestamp tdate = new Timestamp(d.getTime());
+		System.out.println("[EntiteLogicielleAnnuaireImpl] : sauthentifier");
 		return bddJDBC_EL_Annuaire.sauthentifier(photo,tdate);
 	}
 
@@ -67,6 +71,7 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
+		System.out.println("[EntiteLogicielleAnnuaireImpl] : recupererNomPhotoSalarie");
 		return bddJDBC_EL_Annuaire.infoSalarieNomPhoto(idSal);
 	}
 
@@ -76,6 +81,7 @@ public class EntiteLogicielleAnnuaireImpl extends EntiteLogicielleAnnuairePOA {
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
+		System.out.println("[EntiteLogicielleAnnuaireImpl] : infosSalarie");
 		return bddJDBC_EL_Annuaire.infoSalarie(idSal);
 	}
 

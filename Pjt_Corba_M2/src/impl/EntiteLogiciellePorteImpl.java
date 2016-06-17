@@ -51,6 +51,9 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		boolean res = false;
 		// TODO Auto-generated method stub
 		connexionELautorisation(main.param);
+		
+		System.out.println("[EntiteLogiciellePorteImpl] : demandeEntrerSortirZone");
+		
 		try {
 			res = monELAutorisation.verifierAutorisation(idSal, idZone);
 		} catch (ErreurSalarieInexistant e) {
@@ -105,6 +108,9 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 				idSal = "";
 			}
 		}
+		
+		System.out.println("[EntiteLogiciellePorteImpl] : demanderAuthentifier");
+		
 		return idSal;
 	}
 
@@ -113,6 +119,9 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		// TODO Auto-generated method stub
 		
 		connexionELempreinte(main.param);
+		
+		System.out.println("[EntiteLogiciellePorteImpl] : demanderModifierEmpreinte");
+		
 		try {
 			monELEmpreinte.modifierEmpreinte(idSal, empreinte, cleEmpreinte);
 		} catch (EmpreinteExistante e) {
@@ -129,6 +138,8 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	}
 	
 	private static void connexionELannuaire (String[] args) {
+		
+		System.out.println("[EntiteLogiciellePorteImpl] : connexionELannuaire");
 		
 		try {
 			// Intialisation de l'orb
@@ -173,6 +184,8 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	
 	private static void connexionELempreinte (String[] args) {
 		
+		System.out.println("[EntiteLogiciellePorteImpl] : connexionELempreinte");
+		
 		try {
 			// Intialisation de l'orb
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
@@ -215,6 +228,8 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	}
 	
 	private static void connexionELautorisation (String[] args) {
+		
+		System.out.println("[EntiteLogiciellePorteImpl] : connexionELautorisation");
 		
 		try {
 			// Intialisation de l'orb
@@ -260,6 +275,8 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	
 	private static void connexionELjournalisation (String[] args) {
 		
+		System.out.println("[EntiteLogiciellePorteImpl] : connexionELjournalisation");
+		
 		try {
 			// Intialisation de l'orb
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
@@ -303,6 +320,9 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 
 	@Override
 	public String creerPorte(String libellePorte, String idZone) throws ErreurPorteExistant {
+		
+		System.out.println("[EntiteLogiciellePorteImpl] : creerPorte");
+		
 		return bddJDBC_EL_Porte.creerPorte(libellePorte, idZone);
 	}
 

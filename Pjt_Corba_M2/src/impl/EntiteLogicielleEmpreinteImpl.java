@@ -28,6 +28,7 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
+		System.out.println("[EntiteLogicielleEmpreinteImpl] : ajouterEmpreinte");
 		return bddJDBC_EL_Empreinte.ajouterEmpreinte(idSal, empreinte);
 		
 	}
@@ -39,6 +40,7 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
+		System.out.println("[EntiteLogicielleEmpreinteImpl] : modifierEmpreinte");
 		return bddJDBC_EL_Empreinte.modifierEmpreinte(idSal, empreinte);
 		
 	}
@@ -49,6 +51,7 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}		
+		System.out.println("[EntiteLogicielleEmpreinteImpl] : getCorrespondance");
 		return bddJDBC_EL_Empreinte.getCorrespondance(empreinte);
 		
 	}
@@ -60,6 +63,7 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
+		System.out.println("[EntiteLogicielleEmpreinteImpl] : verifierCorrespondance");
 		return bddJDBC_EL_Empreinte.verifierCorrespondance(idSal, empreinte);
 		
 	}
@@ -70,6 +74,7 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}
+		System.out.println("[EntiteLogicielleEmpreinteImpl] : supprimerEmpreinte");
 		return bddJDBC_EL_Empreinte.supprimerEmpreinte(idSal);
 		
 	}
