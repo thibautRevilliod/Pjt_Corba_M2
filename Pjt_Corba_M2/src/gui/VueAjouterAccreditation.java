@@ -74,10 +74,6 @@ public class VueAjouterAccreditation extends JFrame {
 		lblHEt.setBounds(23, 148, 114, 14);
 		contentPane.add(lblHEt);
 		
-		JLabel lblH = new JLabel("h");
-		lblH.setBounds(323, 148, 18, 14);
-		contentPane.add(lblH);
-		
 		JLabel lblZone = new JLabel("Zone : ");
 		lblZone.setBounds(23, 173, 148, 14);
 		contentPane.add(lblZone);
@@ -116,10 +112,6 @@ public class VueAjouterAccreditation extends JFrame {
 		listeIdZones = pListeIdZones;
 		listeIdZones.setBounds(227, 170, 86, 20);
 		contentPane.add(listeIdZones);
-		
-		JLabel lblH_1 = new JLabel("h");
-		lblH_1.setBounds(323, 121, 18, 14);
-		contentPane.add(lblH_1);
 		
 		
 		

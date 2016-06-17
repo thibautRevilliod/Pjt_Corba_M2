@@ -72,7 +72,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
     /**
      * Operation demandeEntrerSortirZone
      */
-    public void demandeEntrerSortirZone(String idSal, String idZone)
+    public boolean demandeEntrerSortirZone(String idSal, String idZone)
     {
         while(true)
         {
@@ -85,7 +85,8 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                     _output.write_string(idSal);
                     _output.write_string(idZone);
                     _input = this._invoke(_output);
-                    return;
+                    boolean _arg_ret = _input.read_boolean();
+                    return _arg_ret;
                 }
                 catch(org.omg.CORBA.portable.RemarshalException _exception)
                 {
@@ -109,8 +110,7 @@ public class _EntiteLogiciellePorteStub extends org.omg.CORBA.portable.ObjectImp
                 modControledAcces.EntiteLogiciellePorteOperations _self = (modControledAcces.EntiteLogiciellePorteOperations) _so.servant;
                 try
                 {
-                    _self.demandeEntrerSortirZone( idSal,  idZone);
-                    return;
+                    return _self.demandeEntrerSortirZone( idSal,  idZone);
                 }
                 finally
                 {

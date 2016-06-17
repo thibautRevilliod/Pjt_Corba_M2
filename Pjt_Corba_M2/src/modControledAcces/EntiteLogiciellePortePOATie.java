@@ -73,9 +73,9 @@ public class EntiteLogiciellePortePOATie extends EntiteLogiciellePortePOA
     /**
      * Operation demandeEntrerSortirZone
      */
-    public void demandeEntrerSortirZone(String idSal, String idZone)
+    public boolean demandeEntrerSortirZone(String idSal, String idZone)
     {
-        _tie.demandeEntrerSortirZone( idSal,  idZone);
+        return _tie.demandeEntrerSortirZone( idSal,  idZone);
     }
 
     /**

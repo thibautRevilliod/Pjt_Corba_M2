@@ -59,7 +59,7 @@ public class VueCreerSalarie extends JFrame {
 			
 		setTitle("Cr\u00E9er un salari\u00E9");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 307, 405);
+		setBounds(100, 100, 588, 417);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -74,15 +74,15 @@ public class VueCreerSalarie extends JFrame {
 		contentPane.add(lblPrnom);
 		
 		JLabel lblMotDePasse = new JLabel("Mot de passe : ");
-		lblMotDePasse.setBounds(10, 65, 81, 14);
+		lblMotDePasse.setBounds(10, 65, 112, 14);
 		contentPane.add(lblMotDePasse);
 		
 		JLabel lblPhoto = new JLabel("Photo :");
-		lblPhoto.setBounds(10, 90, 46, 14);
+		lblPhoto.setBounds(10, 90, 99, 14);
 		contentPane.add(lblPhoto);
 		
 		JLabel lblDateDeFin = new JLabel("Date de fin de validit\u00E9 :");
-		lblDateDeFin.setBounds(10, 115, 153, 14);
+		lblDateDeFin.setBounds(10, 115, 205, 20);
 		contentPane.add(lblDateDeFin);
 		
 		JLabel lblPermanent = new JLabel("Permanent ? ");
@@ -91,11 +91,11 @@ public class VueCreerSalarie extends JFrame {
 			
 		
 		rdbtnOui = new JRadioButton("Oui");
-		rdbtnOui.setBounds(142, 147, 46, 29);
+		rdbtnOui.setBounds(142, 147, 81, 29);
 		rdbtnOui.setName("Oui");
 		
 		rdbtnNon = new JRadioButton("Non");
-		rdbtnNon.setBounds(193, 147, 76, 29);
+		rdbtnNon.setBounds(225, 147, 76, 29);
 		rdbtnNon.setName("Non");
 		rdbtnNon.setSelected(true);
 		
@@ -112,27 +112,27 @@ public class VueCreerSalarie extends JFrame {
         DateFormat formatDate= new SimpleDateFormat("yyyy/MM/dd");
         
         formattedTextField = new JFormattedTextField(formatDateheure);
-        formattedTextField.setBounds(173, 112, 86, 20);
+        formattedTextField.setBounds(235, 112, 86, 20);
 		contentPane.add(formattedTextField);
 		formattedTextField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(173, 87, 86, 20);
+		textField_1.setBounds(235, 87, 86, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(173, 62, 86, 20);
+		textField_2.setBounds(235, 62, 86, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(173, 33, 86, 20);
+		textField_3.setBounds(235, 33, 86, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(173, 8, 86, 20);
+		textField_4.setBounds(235, 8, 86, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
@@ -146,7 +146,7 @@ public class VueCreerSalarie extends JFrame {
 		
 		formattedTextField_1 = new JFormattedTextField(formatHeure);
 		formattedTextField_1.setColumns(10);
-		formattedTextField_1.setBounds(173, 194, 86, 20);
+		formattedTextField_1.setBounds(235, 194, 86, 20);
 		contentPane.add(formattedTextField_1);
 		
 		JLabel lblHeureDebut = new JLabel("Heure debut :");
@@ -155,7 +155,7 @@ public class VueCreerSalarie extends JFrame {
 		
 		formattedTextField_2 = new JFormattedTextField(formatHeure);
 		formattedTextField_2.setColumns(10);
-		formattedTextField_2.setBounds(173, 225, 86, 20);
+		formattedTextField_2.setBounds(235, 225, 86, 20);
 		contentPane.add(formattedTextField_2);
 		
 		JLabel lblHeureFin = new JLabel("Heure fin :");
@@ -164,7 +164,7 @@ public class VueCreerSalarie extends JFrame {
 		
 		formattedTextField_3 = new JFormattedTextField(formatDate);
 		formattedTextField_3.setColumns(10);
-		formattedTextField_3.setBounds(173, 256, 86, 20);
+		formattedTextField_3.setBounds(235, 256, 86, 20);
 		contentPane.add(formattedTextField_3);
 		
 		JLabel lblJourDbut = new JLabel("Jour d\u00E9but :");
@@ -173,12 +173,32 @@ public class VueCreerSalarie extends JFrame {
 		
 		formattedTextField_4 = new JFormattedTextField(formatDate);
 		formattedTextField_4.setColumns(10);
-		formattedTextField_4.setBounds(173, 287, 86, 20);
+		formattedTextField_4.setBounds(235, 287, 86, 20);
 		contentPane.add(formattedTextField_4);
 		
 		JLabel lblJourFin = new JLabel("Jour fin :");
 		lblJourFin.setBounds(10, 290, 153, 14);
 		contentPane.add(lblJourFin);
+		
+		JLabel lblFormat = new JLabel("Format : YYYY/MM/DD HH:MM");
+		lblFormat.setBounds(330, 115, 236, 20);
+		contentPane.add(lblFormat);
+		
+		JLabel lblFormat_1 = new JLabel("Format : HH:MM");
+		lblFormat_1.setBounds(330, 194, 205, 20);
+		contentPane.add(lblFormat_1);
+		
+		JLabel lblFormat_2 = new JLabel("Format : HH:MM");
+		lblFormat_2.setBounds(330, 225, 205, 20);
+		contentPane.add(lblFormat_2);
+		
+		JLabel lblFormatYyyymmdd = new JLabel("Format : YYYY/MM/DD");
+		lblFormatYyyymmdd.setBounds(330, 256, 205, 20);
+		contentPane.add(lblFormatYyyymmdd);
+		
+		JLabel lblFormatYyyymmdd_1 = new JLabel("Format : YYYY/MM/DD");
+		lblFormatYyyymmdd_1.setBounds(330, 287, 205, 20);
+		contentPane.add(lblFormatYyyymmdd_1);
 		
 		rdbtnNon.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {

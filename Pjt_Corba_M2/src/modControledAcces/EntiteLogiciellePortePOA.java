@@ -68,9 +68,10 @@ public abstract class EntiteLogiciellePortePOA extends org.omg.PortableServer.Se
         String arg0_in = _is.read_string();
         String arg1_in = _is.read_string();
 
-        demandeEntrerSortirZone(arg0_in, arg1_in);
+        boolean _arg_result = demandeEntrerSortirZone(arg0_in, arg1_in);
 
         _output = handler.createReply();
+        _output.write_boolean(_arg_result);
 
         return _output;
     }

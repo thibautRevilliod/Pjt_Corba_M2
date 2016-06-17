@@ -110,7 +110,7 @@ module modControledAcces
 		//Landry: on le renomme ou pas ? afficherMessage --> deverrouillagePorte ? C'est ce que Teyssier nous avait conseiller. Mais je trouve pas que c'est plus clair...
 		
 		//pour information dans le code généré : appel de la méthode sauthentifier puis de la méthode verifierCorrespondance
-		void demandeEntrerSortirZone(in string idSal, in string idZone);
+		boolean demandeEntrerSortirZone(in string idSal, in string idZone);
 		string demanderAuthentifier (in string photo, in string empreinte);
 		void demanderModifierEmpreinte(in string idSal, in string empreinte);
 		

@@ -34,12 +34,18 @@ public class LValiderPasserPorte implements ActionListener
 			
 			if(!idSal.equals(""))
 			{
-				Utilisateur.monELPorte.demandeEntrerSortirZone(idSal,vm.getIdZone());
-				message = "Bienvenue [les portes s'ouvrent..]";
-				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
+				boolean test = Utilisateur.monELPorte.demandeEntrerSortirZone(idSal,vm.getIdZone());
+				if(test){
+					message = "Bienvenue [les portes s'ouvrent..]";
+					JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
+				}else
+				{
+					message = "Vous n'êtes pas autorisé à rentrer [les portes se ferment..]";
+					JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}else
 			{
-				message = "Vous n'êtes pas autorisé à rentrer [les portes se ferment..]";
+				message = "Authentification invalide";
 				JOptionPane.showMessageDialog(vm, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 			}
 

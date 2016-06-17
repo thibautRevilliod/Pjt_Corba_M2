@@ -47,7 +47,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 	}
 
 	@Override
-	public void demandeEntrerSortirZone(String idSal, String idZone) {
+	public boolean demandeEntrerSortirZone(String idSal, String idZone) {
 		boolean res = false;
 		// TODO Auto-generated method stub
 		connexionELautorisation(main.param);
@@ -70,6 +70,7 @@ public class EntiteLogiciellePorteImpl extends EntiteLogiciellePortePOA {
 		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "demandeEntrerSortirZone", "idSal : "+idSal+ "  --  idZone : "+idZone);
 		monELJournalisation.enregistrerEvenement(evenementJournalisation);
 		
+		return res;
 	}
 
 	@Override

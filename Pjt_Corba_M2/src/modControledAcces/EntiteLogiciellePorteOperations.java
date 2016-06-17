@@ -15,7 +15,7 @@ public interface EntiteLogiciellePorteOperations
     /**
      * Operation demandeEntrerSortirZone
      */
-    public void demandeEntrerSortirZone(String idSal, String idZone);
+    public boolean demandeEntrerSortirZone(String idSal, String idZone);
 
     /**
      * Operation demanderAuthentifier
