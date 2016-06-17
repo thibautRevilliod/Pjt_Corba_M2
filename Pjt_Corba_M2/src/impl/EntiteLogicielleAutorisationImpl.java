@@ -95,17 +95,18 @@ public class EntiteLogicielleAutorisationImpl extends EntiteLogicielleAutorisati
 		Timestamp theureFin = Timestamp.valueOf(heureFin.timestamp);
 		
 		InfoSalarieAccreditation infoSalarieAccreditation = bddJDBC_EL_Autorisation.modifierAccreditation(idSal, idZone, tjourDebut, tjourFin, theureDebut, theureFin);
-		
+
 		java.util.Date d = new java.util.Date();
 		d = new java.util.Date();
 		Timestamp tdate = new Timestamp(d.getTime());
 		tdate = new Timestamp(d.getTime());
 		AccesZone accesZone = new AccesZone(idSal, idZone, true, new Date(tdate.toString()));
-		
+
+		connexionELjournalisation(main.param);
 		EvenementJournalisation evenementJournalisation = new EvenementJournalisation(accesZone, "modifierAccreditation", "jourDebut : "+jourDebut.timestamp+ " jourFin : "+jourFin.timestamp+ 
 				" heureDebut : "+heureDebut.timestamp+ " heureFin : "+heureFin.timestamp);
 		monELJournalisation.enregistrerEvenement(evenementJournalisation);
-		
+
 		return infoSalarieAccreditation;
 	}
 

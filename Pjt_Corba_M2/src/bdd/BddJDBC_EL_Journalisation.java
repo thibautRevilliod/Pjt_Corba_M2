@@ -114,14 +114,14 @@ public class BddJDBC_EL_Journalisation {
 		try {
 			Statement s = conn.createStatement();
 			//récupère le dernier ID
-			ResultSet rs = s.executeQuery("select COUNT(*) FROM Acceder ");
+			ResultSet rs = s.executeQuery("select COUNT(distinct operation) FROM Acceder ");
 
 			if (rs.next())
         	{
 				res = new InfoOperation[rs.getInt(1)];
         	}
         	//récupère le dernier ID
-			rs = s.executeQuery("select operation from Acceder");
+			rs = s.executeQuery("SELECT distinct operation FROM ACCEDER ");
 			int i =0;
     		while(rs.next())
     		{
@@ -180,9 +180,9 @@ public class BddJDBC_EL_Journalisation {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BddJDBC_EL_Journalisation bddJDBC_EL_Journalisation = new BddJDBC_EL_Journalisation("BD_Journalisation");
-		bddJDBC_EL_Journalisation.init();
+		//bddJDBC_EL_Journalisation.init();
 		
-		bddJDBC_EL_Journalisation.listeOperations();
+		System.out.println("test : " + bddJDBC_EL_Journalisation.listeOperations());
 		try {
 			bddJDBC_EL_Journalisation.fermer();
 		} catch (Exception e) {
