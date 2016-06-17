@@ -178,7 +178,7 @@ public class PersonnelSecurite {
 		}
 		else
 		{
-			connexionELjournalisationNS(args);
+			connexionELjournalisationIOR(args);
 		}
 	}
 	

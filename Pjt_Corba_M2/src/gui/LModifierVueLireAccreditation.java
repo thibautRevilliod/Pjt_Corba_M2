@@ -25,7 +25,9 @@ public class LModifierVueLireAccreditation implements ActionListener, WindowList
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		SimpleDateFormat formatDateNew = new SimpleDateFormat("yyyy/MM/dd");
-		SimpleDateFormat formatDateOld = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		SimpleDateFormat formatDateOldDay = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatDateOldHour = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat formatDateOldDateAccr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		SimpleDateFormat formatHeure = new SimpleDateFormat("HH:mm");
 		
 		try {
@@ -34,12 +36,12 @@ public class LModifierVueLireAccreditation implements ActionListener, WindowList
 			String idSalarie = (String) vue.getTable().getModel().getValueAt(selectedRowIndex, 0);
 			String idZone = (String) vue.getTable().getModel().getValueAt(selectedRowIndex, 1);
 			
-			String dateAccreditation = formatDateNew.format(formatDateOld.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 2)));
+			String dateAccreditation = formatDateNew.format(formatDateOldDateAccr.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 2)));
 			
-			String heureDebut = formatHeure.format(formatDateOld.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 3)));
-			String heureFin = formatHeure.format(formatDateOld.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 4)));
-			String jourDebut = formatDateNew.format(formatDateOld.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 5)));
-			String jourFin = formatDateNew.format(formatDateOld.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 6)));
+			String heureDebut = formatHeure.format(formatDateOldHour.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 3)));
+			String heureFin = formatHeure.format(formatDateOldHour.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 4)));
+			String jourDebut = formatDateNew.format(formatDateOldDay.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 5)));
+			String jourFin = formatDateNew.format(formatDateOldDay.parse((String) vue.getTable().getModel().getValueAt(selectedRowIndex, 6)));
 		
 		
 		
