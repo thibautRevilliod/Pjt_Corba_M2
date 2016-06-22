@@ -24,10 +24,12 @@ public class PersonnelSecurite {
 		if(IOR_EL_autorisation.equals(""))
 		{
 			connexionELautorisationNS(args);
+			System.out.println("[Autorisation] Appel NamingService");
 		}
 		else
 		{
 			connexionELautorisationIOR(args);
+			System.out.println("[Autorisation] Appel à l'IOR stockée");
 		}
 	}
 	
@@ -86,8 +88,7 @@ public class PersonnelSecurite {
 	        // Utilisation directe de l'IOR (SAUF utilisation du service de nommage)
 	        org.omg.CORBA.Object distantELAutorisation = orb.string_to_object(IOR_EL_autorisation);
 	        // Casting de l'objet CORBA au type convertisseur euro
-	        
-	        System.out.println("Utilisation IOR directe pour EL_autorisation");
+	       
 	        monELAutorisation = EntiteLogicielleAutorisationHelper.narrow(distantELAutorisation);
 
      
@@ -102,10 +103,12 @@ public class PersonnelSecurite {
 		if(IOR_EL_annuaire.equals(""))
 		{
 			connexionELannuaireNS(args);
+			System.out.println("[Annuaire] Appel NamingService");
 		}
 		else
 		{
 			connexionELannuaireIOR(args);
+			System.out.println("[Annuaire] Appel à l'IOR stockée");
 		}
 	}
 	
@@ -161,7 +164,6 @@ public class PersonnelSecurite {
 	        org.omg.CORBA.Object distantELAnnuaire = orb.string_to_object(IOR_EL_annuaire);
 	        // Casting de l'objet CORBA au type convertisseur euro
 	        
-	        System.out.println("Utilisation IOR directe pour EL_annuaire");
 	        monELAnnuaire = EntiteLogicielleAnnuaireHelper.narrow(distantELAnnuaire);
        
 		}
@@ -175,10 +177,12 @@ public class PersonnelSecurite {
 		if(IOR_EL_journalisation.equals(""))
 		{
 			connexionELjournalisationNS(args);
+			System.out.println("[Journalisation] Appel NamingService");
 		}
 		else
 		{
 			connexionELjournalisationIOR(args);
+			System.out.println("[Journalisation] Appel à l'IOR stockée");
 		}
 	}
 	
@@ -241,7 +245,6 @@ public class PersonnelSecurite {
 	        org.omg.CORBA.Object distantELJournalisation = orb.string_to_object(IOR_EL_journalisation);
 	        // Casting de l'objet CORBA au type convertisseur euro
 	        
-	        System.out.println("Utilisation IOR directe pour EL_journalisation");
 	        monELJournalisation = EntiteLogicielleJournalisationHelper.narrow(distantELJournalisation);      
 		}
 		catch (Exception e) {

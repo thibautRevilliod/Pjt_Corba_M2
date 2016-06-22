@@ -22,10 +22,12 @@ public class PersonnelRH {
 		if(IOR_EL_empreinte.equals(""))
 		{
 			connexionELempreinteNS(args);
+			System.out.println("[Empreinte] Appel NamingService");
 		}
 		else
 		{
 			connexionELempreinteIOR(args);
+			System.out.println("[Empreinte] Appel à l'IOR stockée");
 		}
 	}
 	
@@ -102,10 +104,12 @@ public class PersonnelRH {
 		if(IOR_EL_annuaire.equals(""))
 		{
 			connexionELannuaireNS(args);
+			System.out.println("[Annuaire] Appel NamingService");
 		}
 		else
 		{
 			connexionELannuaireIOR(args);
+			System.out.println("[Annuaire] Appel à l'IOR stockée");
 		}
 	}
 	

@@ -36,7 +36,7 @@ public class EntiteLogicielleEmpreinteImpl extends EntiteLogicielleEmpreintePOA 
 	@Override
 	public String modifierEmpreinte(String idSal, String empreinte, String cleDemandeur)
 			throws EmpreinteExistante, CleInconnue, EmpreinteIncorrecte {
-		if(!cleDemandeur.equals(clePersonnelRh))
+		if(!cleDemandeur.equals(clePersonnelRh) && (!cleDemandeur.equals(cleEmpreintePorte)))
 		{
 			throw new CleInconnue("La clé demandeur n'est pas valide");
 		}

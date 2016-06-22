@@ -55,6 +55,33 @@ public class BddJDBC_EL_Porte {
 		return res;
 	}
 	
+	public static boolean deleteDataBDD(String nomBD) {
+		boolean res = true;
+		try {
+			Class.forName("org.h2.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:h2:"+nomBD+";IGNORECASE=TRUE", "sa", "");
+			Statement s = conn.createStatement();
+			ResultSet rs = conn.getMetaData().getTables(null, null, "Portes", null);
+	        if (rs.next()) {
+	        	// la table existe
+	        	s.execute("delete from Portes");
+	        	res = true;
+	        } else {	
+	        	res = false;
+	        }
+	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+			res = false;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			res = false;
+		}
+		
+		return res;
+	}
+	
 	public String creerPorte(String plibellePorte, String pidZone) {
 		String idp = "";
 		int id = 0;
@@ -104,7 +131,9 @@ public class BddJDBC_EL_Porte {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BddJDBC_EL_Porte bddJDBC_EL_Porte = new BddJDBC_EL_Porte("BD_Porte");
-		bddJDBC_EL_Porte.init();
-		
+		deleteDataBDD("BD_Porte");
+		//clearBDD("BD_Porte");
+		//bddJDBC_EL_Porte.init();
+		System.out.println("OK - init porte");
 	}
 }

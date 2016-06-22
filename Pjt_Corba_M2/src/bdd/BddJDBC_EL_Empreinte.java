@@ -79,7 +79,7 @@ public class BddJDBC_EL_Empreinte {
 			}
 	        return ide;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			ide = "-1";
 			return ide;
 		}

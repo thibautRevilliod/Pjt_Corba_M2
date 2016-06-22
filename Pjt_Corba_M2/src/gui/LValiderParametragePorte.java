@@ -47,7 +47,7 @@ public class LValiderParametragePorte implements ActionListener
 				JOptionPane.showMessageDialog(vm, message, "Erreur", JOptionPane.WARNING_MESSAGE);
 			}else{
 				vm.setVisible(false);
-				VueMenuPorte vMP = new VueMenuPorte((String)vm.getComboBox().getSelectedItem());
+				VueMenuPorte vMP = new VueMenuPorte((String)vm.getComboBox().getSelectedItem(),vm.getTextField().getText());
 				vMP.setVisible(true);
 				vMP.setLocation(800, 300);
 			}

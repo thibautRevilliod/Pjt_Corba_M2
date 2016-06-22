@@ -20,10 +20,12 @@ public class Utilisateur {
 		if(IOR_EL_porte.equals(""))
 		{
 			connexionELporteNS(args);
+			System.out.println("[Porte] Appel NamingService");
 		}
 		else
 		{
 			connexionELporteIOR(args);
+			System.out.println("[Porte] Appel à l'IOR stockée");
 		}
 	}
 	
@@ -91,10 +93,12 @@ public class Utilisateur {
 		if(IOR_EL_annuaire.equals(""))
 		{
 			connexionELannuaireNS(args);
+			System.out.println("[Annuaire] Appel NamingService");
 		}
 		else
 		{
 			connexionELannuaireIOR(args);
+			System.out.println("[Annuaire] Appel à l'IOR stockée");
 		}
 	}
 	
