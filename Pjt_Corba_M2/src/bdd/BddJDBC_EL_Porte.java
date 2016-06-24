@@ -61,14 +61,9 @@ public class BddJDBC_EL_Porte {
 			Class.forName("org.h2.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:h2:"+nomBD+";IGNORECASE=TRUE", "sa", "");
 			Statement s = conn.createStatement();
-			ResultSet rs = conn.getMetaData().getTables(null, null, "Portes", null);
-	        if (rs.next()) {
-	        	// la table existe
-	        	s.execute("delete from Portes");
-	        	res = true;
-	        } else {	
-	        	res = false;
-	        }
+			//ResultSet rs = conn.getMetaData().getTables(null, null, "Portes", null);
+        	s.execute("delete from Portes");
+        	res = true;
 	        
 		} catch (SQLException e) {
 			e.printStackTrace();
